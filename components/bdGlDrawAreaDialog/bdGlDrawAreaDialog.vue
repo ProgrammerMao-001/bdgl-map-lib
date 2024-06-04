@@ -7,11 +7,13 @@
   <!--地图绘制区域弹窗-->
   <el-dialog
     width="1300px"
-    :title="title"
-    v-dialog-out
     append-to-body
+    v-dialog-out
+    v-if="dialogVisible"
+    :title="title"
     :close-on-click-modal="false"
     :visible.sync="dialogVisible"
+    @close="hideDialog"
   >
     <div class="dialog-body">
       <ul class="dialog-body-panel">
@@ -30,7 +32,7 @@
     </div>
 
     <div slot="footer" class="dialog-footer">
-      <el-button @click="dialogVisible = false">取 消</el-button>
+      <el-button @click="hideDialog">取 消</el-button>
       <el-button type="primary" @click="handleSubmit()">保存</el-button>
     </div>
   </el-dialog>
@@ -178,8 +180,8 @@ export default {
           this.map.setMapStyleV2({
             styleId: this.mapConfig.styleId,
           });
-          // todo 异步后导致地图类型不可用？？？
-          // this.map.setMapType(this.mapConfig.mapType);
+
+          // this.map.setMapType(this.mapConfig.mapType); // todo 异步后导致地图类型不可用？？？
 
           function getCoordinates(isCustomCenter, latLng, mapConfig) {
             return {
@@ -194,19 +196,35 @@ export default {
             latLng,
             this.mapConfig
           );
-          // 添加 Marker 到地图上
-          // let myMarker = new this.BMapGL.Marker(
-          //   new this.BMapGL.Point(coordinates.lng, coordinates.lat),
-          // );
-          // this.map.addOverlay(myMarker);
-
           // 设置地图中心点和缩放级别
           this.map.centerAndZoom(
             new this.BMapGL.Point(coordinates.lng, coordinates.lat),
             this.mapConfig.zoom
           );
+
+          this.echoMapPolygon();
         });
       });
+    },
+
+    /**
+     * 回显图层（点 线 面 ...）
+     * @param: todo 需完善其他类型的数据回显
+     * @return:
+     * @author: mhf
+     * @time: 2024-05-31 16:35:25
+     **/
+    echoMapPolygon() {
+      /* 多边形回显 */
+      if (this.polygonObj.pointsArr) {
+        let pointsArr = JSON.parse(this.polygonObj.pointsArr);
+        let pointGlArr = pointsArr.map(
+          (item) => new BMapGL.Point(item.lng, item.lat)
+        );
+        var polygon = new BMapGL.Polygon(pointGlArr, this.styleOptions);
+        this.map.addOverlay(polygon);
+        this.map.setViewport(pointsArr);
+      }
     },
 
     /**
@@ -233,16 +251,26 @@ export default {
       });
       if (
         drawingManager._isOpen &&
-        drawingManager.getDrawingMode() === btnType
+        drawingManager.getDrawingMode() === this.activeBtn
       ) {
         drawingManager.close();
+        this.activeBtn === "";
       } else {
-        drawingManager.setDrawingMode(btnType);
+        drawingManager.setDrawingMode(this.activeBtn);
         drawingManager.open();
       }
 
       /* 点 */
-      if (btnType === "marker") {
+      if (this.activeBtn === "marker") {
+        let markerNum = 0;
+        this.map.addEventListener("click", (e) => {
+          markerNum++;
+          if (markerNum > 1) {
+            return;
+          }
+          drawingManager.close();
+          this.activeBtn === "";
+        });
         drawingManager.addEventListener("overlaycomplete", (e) => {
           const marker = e.overlay;
           // 获取标注的经纬度坐标
@@ -259,7 +287,7 @@ export default {
             console.log(this.markerObj, "点");
           });
         });
-      } else if (btnType === "polyline") {
+      } else if (this.activeBtn === "polyline") {
         /* 折线 */
         drawingManager.addEventListener("overlaycomplete", (e) => {
           this.polylineObj = {
@@ -268,7 +296,7 @@ export default {
           };
           console.log(this.polylineObj, "折线");
         });
-      } else if (btnType === "rectangle") {
+      } else if (this.activeBtn === "rectangle") {
         /* 矩形 */
         // 监听矩形绘制完成事件
         drawingManager.addEventListener("overlaycomplete", (e) => {
@@ -278,7 +306,7 @@ export default {
           };
           console.log(this.rectangleObj, "矩形");
         });
-      } else if (btnType === "polygon") {
+      } else if (this.activeBtn === "polygon") {
         /* 多边形 */
         drawingManager.addEventListener("overlaycomplete", (e) => {
           this.polygonObj = {
@@ -287,7 +315,7 @@ export default {
           };
           console.log(this.polygonObj, "多边形");
         });
-      } else if (btnType === "circle") {
+      } else if (this.activeBtn === "circle") {
         /* 圆 */
         // 监听圆形绘制完成事件
         drawingManager.addEventListener("overlaycomplete", (e) => {
@@ -340,6 +368,10 @@ export default {
       this.title = data.title;
       this.dialogVisible = true;
 
+      /* todo 回显的部分需优化 目前只考虑多边形一种情况 */
+      this.polygonObj.pointsArr = data.data;
+      /* todo 回显的部分需优化 目前只考虑多边形一种情况 */
+
       let that = this;
       this.$nextTick(() => {
         that.initMap();
@@ -347,11 +379,13 @@ export default {
     },
 
     hideDialog() {
+      this.activeBtn = "";
       this.map = null;
       this.dialogVisible = false;
     },
 
     async handleSubmit() {
+      console.log("点击保存");
       let obj = this[`${this.activeBtn}Obj`]; // 不同类型对应的Obj属性名
       if (!obj.e) {
         this.$message({
@@ -360,9 +394,19 @@ export default {
         });
         return;
       }
+      console.log(obj, "obj");
       this.$emit("on-response", obj);
       this.hideDialog();
     },
+
+    /**
+     * 回显数据
+     * @param:
+     * @return:
+     * @author: mhf
+     * @time: 2024-05-15 18:42:06
+     **/
+    echoData(data) {},
   },
   created() {},
   mounted() {},
@@ -397,7 +441,7 @@ export default {
       width: 64px;
       height: 100%;
       //background-image: url(//api.map.baidu.com/library/DrawingManager/1.4/src/bg_drawing_tool.png);
-      background-image: url("/img/btnIcon/bg_drawing_tool.png");
+      background-image: url("../assets/img/bg_drawing_tool.png");
       cursor: pointer;
     }
 
@@ -423,9 +467,6 @@ export default {
   }
 
   .map {
-    position: absolute;
-    left: 20px;
-    right: 20px;
     height: 65vh;
   }
 }
