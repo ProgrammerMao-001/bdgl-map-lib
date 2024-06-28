@@ -1,11 +1,11 @@
 <template>
   <div id="app">
     <mapComps
-        id="map"
-        ref="mapComps"
-        mapType="bdMap"
-        :bdMapConfig="bdMapConfig"
-        :bdInfoWindowStyle="bdInfoWindowStyle"
+      id="map"
+      ref="mapComps"
+      mapType="leafletMap"
+      :bdMapConfig="bdMapConfig"
+      :bdInfoWindowStyle="bdInfoWindowStyle"
     ></mapComps>
   </div>
 </template>
@@ -16,10 +16,10 @@ export default {
     return {
       bdMapConfig: {
         center: {
-          lng: 112.11083403138811,
-          lat: 41.57631859319542,
+          lng: 120.11083403138811,
+          lat: 30.57631859319542,
         },
-        zoom: 12,
+        zoom: 10,
         style: {
           // custom: "styleJson",
           custom: "styleId",
@@ -34,11 +34,10 @@ export default {
         "--closeBtnColor": "#fff", // 气泡关闭按钮的颜色
         "--titleHeight": "8px", // 气泡顶部标题高度
       },
-    }
+    };
   },
-  mounted() {
-  }
-}
+  mounted() {},
+};
 </script>
 
 <style lang="scss">
