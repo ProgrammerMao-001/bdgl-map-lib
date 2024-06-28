@@ -242,25 +242,21 @@ main.install = Vue => {
 };
 /* harmony default export */ var demo = (main);
 ;// CONCATENATED MODULE: ./components/index.js
-// 整个包的入口
-// 统一导出
+
+
 
 const components = [demo];
-// 定义install方法
 const install = function (Vue) {
-  // 注册所有的组件
   components.forEach(component => {
     Vue.component(component.name, component);
   });
 };
-// 判断是否直接引入文件，如果是，就不用调用Vue.use()
 if (typeof window !== "undefined" && window.Vue) {
   install(window.Vue);
 }
-// 导出install方法
 /* harmony default export */ var components_0 = ({
   install,
-  demo: demo
+  ...components
 });
 ;// CONCATENATED MODULE: ./node_modules/@vue/cli-service/lib/commands/build/entry-lib.js
 
