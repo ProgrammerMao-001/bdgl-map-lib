@@ -251,6 +251,10 @@ export default {
       // console.log(viewport, "viewport")
       this.$emit("mapChange", viewport); // 接受子组件的数据，并将子组件收到的数据传给父组件
     },
+
+    initShapeLayer() {
+      this.$refs[this.mapType].initShapeLayer();
+    },
   },
   created() {},
   mounted() {},

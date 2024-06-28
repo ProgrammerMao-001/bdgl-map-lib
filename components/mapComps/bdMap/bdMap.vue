@@ -5,13 +5,16 @@
  * @Date: 2024/2/29 15:28
 -->
 <template>
-  <div id="map-container" :style="mapStyle"></div>
+  <div id="map-container" :style="mapStyle">
+    <bdMapVGl ref="bdMapVGl" :bdMap="bdMap" />
+  </div>
 </template>
 
 <script>
+import bdMapVGl from "./bdMapVGl.vue";
 export default {
   name: "bdMap",
-  components: {},
+  components: {bdMapVGl},
   mixins: [],
   props: {
     infoWindowStyle: {
@@ -643,6 +646,10 @@ export default {
         this.$emit("mapChange", this.viewport); // 将更新的数据传给父组件
         // console.log(this.viewport, "地图拖拽事件");
       });
+    },
+
+    initShapeLayer() {
+      this.$refs.bdMapVGl.initShapeLayer();
     },
   },
   created() {},

@@ -1,11 +1,11 @@
 <template>
   <div id="app">
     <mapComps
-      id="map"
-      ref="mapComps"
-      mapType="bdMap"
-      :bdMapConfig="bdMapConfig"
-      :bdInfoWindowStyle="bdInfoWindowStyle"
+        id="map"
+        ref="mapComps"
+        mapType="bdMap"
+        :bdMapConfig="bdMapConfig"
+        :bdInfoWindowStyle="bdInfoWindowStyle"
     ></mapComps>
   </div>
 </template>
@@ -16,8 +16,8 @@ export default {
     return {
       bdMapConfig: {
         center: {
-          lng: 120.11083403138811,
-          lat: 30.57631859319542,
+          lng: 88.1166800275613,
+          lat: 44.10055180881898,
         },
         zoom: 10,
         style: {
@@ -36,7 +36,16 @@ export default {
       },
     };
   },
-  mounted() {},
+
+  methods: {
+  },
+  mounted() {
+    this.$nextTick(() => {
+      this.$refs.mapComps.initShapeLayer()
+    })
+  },
+  created() {
+  }
 };
 </script>
 
@@ -45,6 +54,7 @@ export default {
   margin: 0;
   padding: 0;
 }
+
 #map {
   width: 100vw;
   height: 100vh;
