@@ -62,6 +62,7 @@ export default {
      * @time: 2024-03-04 10:05:19
      **/
     initMap() {
+      console.log(BMapGL, "BMapGL")
       this.bdMap = new BMapGL.Map("map-container"); // 创建Map实例
       this.bdMap.centerAndZoom(
         new BMapGL.Point(this.mapConfig.center.lng, this.mapConfig.center.lat),

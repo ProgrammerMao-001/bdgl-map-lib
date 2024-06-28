@@ -31,10 +31,10 @@
 </template>
 
 <script>
-import aMap from "component/mapComps/aMap/aMap.vue";
-import bdMap from "component/mapComps/bdMap/bdMap.vue";
-import tdMap from "component/mapComps/tdMap/tdMap.vue";
-import leafletMap from "component/mapComps/leafletMap/leafletMap.vue";
+import aMap from "./aMap/aMap.vue";
+import bdMap from "./bdMap/bdMap.vue";
+import tdMap from "./tdMap/tdMap.vue";
+import leafletMap from "./leafletMap/leafletMap.vue";
 
 export default {
   name: "mapComps",
