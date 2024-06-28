@@ -3,7 +3,7 @@
     <mapComps
       id="map"
       ref="mapComps"
-      mapType="leafletMap"
+      mapType="bdMap"
       :bdMapConfig="bdMapConfig"
       :bdInfoWindowStyle="bdInfoWindowStyle"
     ></mapComps>
