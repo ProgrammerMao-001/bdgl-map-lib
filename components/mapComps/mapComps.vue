@@ -252,8 +252,14 @@ export default {
       this.$emit("mapChange", viewport); // 接受子组件的数据，并将子组件收到的数据传给父组件
     },
 
-    initShapeLayer() {
-      this.$refs[this.mapType].initShapeLayer();
+    /**
+     * 初始化用于展示大数据的立体多边形ShapeLayer。
+     * 参考文档: [ShapeLayer](https://mapv.baidu.com/gl/docs/ShapeLayer.html)
+     * @author: mhf
+     * @time: 2024-06-29 15:59:20
+     **/
+    initShapeLayer(params = {}) {
+      this.$refs[this.mapType].initShapeLayer(params);
     },
   },
   created() {},

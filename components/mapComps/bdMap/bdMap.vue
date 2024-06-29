@@ -14,7 +14,7 @@
 import bdMapVGl from "./bdMapVGl.vue";
 export default {
   name: "bdMap",
-  components: {bdMapVGl},
+  components: { bdMapVGl },
   mixins: [],
   props: {
     infoWindowStyle: {
@@ -648,8 +648,8 @@ export default {
       });
     },
 
-    initShapeLayer() {
-      this.$refs.bdMapVGl.initShapeLayer();
+    initShapeLayer(params = {}) {
+      this.$refs.bdMapVGl.initShapeLayer(params);
     },
   },
   created() {},
