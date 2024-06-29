@@ -39,7 +39,7 @@
 </template>
 
 <script>
-import { loadBaiDuDrawMap } from "@/components/bdGlDrawAreaDialog/bmpgl_lib";
+import { loadBaiDuDrawMap } from "./bmpgl_lib";
 
 export default {
   name: "bdGlDrawAreaDialog",

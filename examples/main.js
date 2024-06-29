@@ -1,6 +1,11 @@
 import Vue from 'vue'
 import App from './App.vue'
 
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
+Vue.use(ElementUI)
+
+
 /* 全局注册views下的组件 */
 function dynamicImportComponents(context) {
   context.keys().forEach(key => {

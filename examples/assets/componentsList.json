@@ -10,8 +10,8 @@
     "remark": "百度地图VGL版本使用"
   },
   {
-    "name": "bdGlDrawAreaDialog",
-    "compName": "",
+    "name": "bdLib",
+    "compName": "useBdLib",
     "remark": "百度地图lib插件使用"
   }
 ]
