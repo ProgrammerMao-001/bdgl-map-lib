@@ -1,14 +1,17 @@
 [
   {
     "name": "bdMap",
+    "compName": "useBdMap",
     "remark": "百度地图GL版本使用"
   },
   {
     "name": "bdMapVGL",
+    "compName": "useBdMapVGL",
     "remark": "百度地图VGL版本使用"
   },
   {
     "name": "bdGlDrawAreaDialog",
+    "compName": "",
     "remark": "百度地图lib插件使用"
   }
 ]

@@ -1,17 +1,17 @@
 <template>
   <div id="app">
-    <div class="content">
+    <div class="content" v-if="!component">
       <div
         class="content-box"
         v-for="(item, index) in componentsList"
         :key="index"
-        @click="component = item.component"
+        @click="component = item.compName"
       >
         <div class="content-box-name">{{ item.name }}</div>
         <div class="content-box-remark">{{ item.remark }}</div>
       </div>
     </div>
-    <component :is="component"></component>
+    <component :is="component" v-else></component>
   </div>
 </template>
 

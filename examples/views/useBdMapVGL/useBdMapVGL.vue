@@ -14,7 +14,10 @@
 </template>
 
 <script>
+import mapComps from "../../../components/mapComps/mapComps.vue";
+
 export default {
+  components: { mapComps },
   data() {
     return {
       bdMapConfig: {
@@ -39,11 +42,8 @@ export default {
       },
     };
   },
-
-  methods: {},
-  mounted() {
-    console.log("this.$refs.mapComps", this.$refs.mapComps);
-    this.$nextTick(() => {
+  methods: {
+    drawShapeLayer() {
       let xinjiangPart = require("./../../assets/xinjiangPart.js");
       this.$refs.mapComps.initShapeLayer({
         color: "rgba(0, 214, 236, 0.8)", // 柱状图颜色
@@ -56,6 +56,11 @@ export default {
           console.log(event, "event123");
         },
       });
+    },
+  },
+  mounted() {
+    this.$nextTick(() => {
+      this.drawShapeLayer();
     });
   },
   created() {},
