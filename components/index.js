@@ -3,9 +3,9 @@ import "./utils/index";
 
 import demo from "./demo";
 import mapComps from "./mapComps/mapComps.vue";
-import bdGlDrawAreaDialog from "./bdGlDrawAreaDialog/bdGlDrawAreaDialog.vue";
+import bdLib from "./bdLib/bdLib.vue";
 
-const components = [demo, mapComps, bdGlDrawAreaDialog];
+const components = [demo, mapComps, bdLib];
 const install = function (Vue) {
   components.forEach((component) => {
     Vue.component(component.name, component);
