@@ -90,6 +90,8 @@ export default {
         selectedColor: "#ee1111", // 选中项颜色
         autoSelect: true, // 根据鼠标位置来自动设置选中项
         data: polygons,
+        style: "windowAnimation", // 添加窗户动画效果
+        opacity: 1,
         onClick: (event) => {
           console.log(event, "chongqingPart");
         },
