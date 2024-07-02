@@ -13,11 +13,7 @@ vue2版本的百度地图GL版相关的组件库，针对百度组件进行全�
 ## 使用方法/示例
 
 ```javascript
-import Component from 'my-project'
-
-function App() {
-    return <Component/>
-}
+后续更新
 ```
 
 ## 致谢

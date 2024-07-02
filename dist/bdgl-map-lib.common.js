@@ -2335,8 +2335,8 @@ var aMap_component = normalizeComponent(
 )
 
 /* harmony default export */ var aMap = (aMap_component.exports);
-;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-40.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[3]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./components/mapComps/bdMap/bdMap.vue?vue&type=template&id=2a2834b2&scoped=true
-var bdMapvue_type_template_id_2a2834b2_scoped_true_render = function render() {
+;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-40.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[3]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./components/mapComps/bdMap/bdMap.vue?vue&type=template&id=5a2fc331&scoped=true
+var bdMapvue_type_template_id_5a2fc331_scoped_true_render = function render() {
   var _vm = this,
     _c = _vm._self._c;
   return _c('div', {
@@ -2351,7 +2351,7 @@ var bdMapvue_type_template_id_2a2834b2_scoped_true_render = function render() {
     }
   })], 1);
 };
-var bdMapvue_type_template_id_2a2834b2_scoped_true_staticRenderFns = [];
+var bdMapvue_type_template_id_5a2fc331_scoped_true_staticRenderFns = [];
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.push.js
 var es_array_push = __webpack_require__(4114);
@@ -2708,6 +2708,7 @@ var bdMapVGl_component = normalizeComponent(
      * @param: offsetY: 偏移量Y 垂直
      * @param: html: 信息窗体内容，如：`<span style="line-height: 60px;margin-left: 10px;color: #ff6b00">${item.name}</span>`
      * @param: newZoom: 点击点位后地图更改的缩放级别
+     * @param: className: 给生成的marker添加的类名【样式可以在自己的组件中定义】
      * @return: isReturn === true ? marker对象 : null
      * @author: mhf
      * @time: 2024-03-04 10:05:59
@@ -2733,7 +2734,8 @@ var bdMapVGl_component = normalizeComponent(
         labelText = undefined,
         labelStyle = undefined,
         html = undefined,
-        newZoom = 17
+        newZoom = 17,
+        className = undefined
       } = params;
       let point = new BMapGL.Point(obj.lng, obj.lat); // 创建点
       let marker = new BMapGL.Marker(point, {
@@ -2804,6 +2806,12 @@ var bdMapVGl_component = normalizeComponent(
             flag: false
           });
         });
+        if (className) {
+          setTimeout(() => {
+            // todo 测试异步的问题
+            marker.domElement.classList.add(className);
+          }, 100);
+        }
       }
       return isReturn ? marker : null;
     },
@@ -3109,10 +3117,10 @@ var bdMapVGl_component = normalizeComponent(
 });
 ;// CONCATENATED MODULE: ./components/mapComps/bdMap/bdMap.vue?vue&type=script&lang=js
  /* harmony default export */ var bdMap_bdMapvue_type_script_lang_js = (bdMapvue_type_script_lang_js); 
-;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-22.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-22.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-22.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22.use[3]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./components/mapComps/bdMap/bdMap.vue?vue&type=style&index=0&id=2a2834b2&prod&lang=scss&scoped=true
+;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-22.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-22.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-22.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-22.use[3]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./components/mapComps/bdMap/bdMap.vue?vue&type=style&index=0&id=5a2fc331&prod&lang=scss&scoped=true
 // extracted by mini-css-extract-plugin
 
-;// CONCATENATED MODULE: ./components/mapComps/bdMap/bdMap.vue?vue&type=style&index=0&id=2a2834b2&prod&lang=scss&scoped=true
+;// CONCATENATED MODULE: ./components/mapComps/bdMap/bdMap.vue?vue&type=style&index=0&id=5a2fc331&prod&lang=scss&scoped=true
 
 ;// CONCATENATED MODULE: ./components/mapComps/bdMap/bdMap.vue
 
@@ -3125,11 +3133,11 @@ var bdMapVGl_component = normalizeComponent(
 
 var bdMap_component = normalizeComponent(
   bdMap_bdMapvue_type_script_lang_js,
-  bdMapvue_type_template_id_2a2834b2_scoped_true_render,
-  bdMapvue_type_template_id_2a2834b2_scoped_true_staticRenderFns,
+  bdMapvue_type_template_id_5a2fc331_scoped_true_render,
+  bdMapvue_type_template_id_5a2fc331_scoped_true_staticRenderFns,
   false,
   null,
-  "2a2834b2",
+  "5a2fc331",
   null
   
 )
