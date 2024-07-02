@@ -120,10 +120,10 @@ export default {
   position: absolute !important; /* 或 absolute, fixed 根据实际情况选择 */
   width: 40px;
   height: 40px;
-  background: rgba(0, 255, 0, 0.1); // 修改初始背景透明度为完全透明
+  background: rgba(0, 255, 0, 0);
   border-radius: 25px;
   transform: scale(0);
-  transform-origin: center; // 添加此行以设定变换中心为元素中心
+  transform-origin: center;
   animation: radiate 2s;
   animation-iteration-count: infinite;
   z-index: -99999 !important;
@@ -136,7 +136,7 @@ export default {
     z-index: -99999 !important;
   }
   to {
-    background: rgba(0, 255, 0, 1);
+    background: rgba(0, 255, 0, .6);
     transform: scale(1.2);
     z-index: -99999 !important;
   }
