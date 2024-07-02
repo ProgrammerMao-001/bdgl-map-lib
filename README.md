@@ -22,7 +22,7 @@ function App() {
 
 ## 致谢
 
-- [github地址](https://github.com/ProgrammerMao-001/bdgl-map-lib)
+感谢 [百度地图开放平台](https://lbsyun.baidu.com/)
 
 
 

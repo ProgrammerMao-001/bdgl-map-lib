@@ -255,6 +255,7 @@ export default {
      * @param: offsetY: 偏移量Y 垂直
      * @param: html: 信息窗体内容，如：`<span style="line-height: 60px;margin-left: 10px;color: #ff6b00">${item.name}</span>`
      * @param: newZoom: 点击点位后地图更改的缩放级别
+     * @param: className: 给生成的marker添加的类名【样式可以在自己的组件中定义】
      * @return: isReturn === true ? marker对象 : null
      * @author: mhf
      * @time: 2024-03-04 10:05:59
@@ -281,6 +282,7 @@ export default {
         labelStyle = undefined,
         html = undefined,
         newZoom = 17,
+        className = undefined,
       } = params;
       let point = new BMapGL.Point(obj.lng, obj.lat); // 创建点
       let marker = new BMapGL.Marker(point, {
@@ -352,6 +354,9 @@ export default {
         marker.addEventListener("mouseout", () => {
           this.isOpenInfoWindow({ flag: false });
         });
+        if (className) {
+          marker.domElement.classList.add(className);
+        }
       }
       return isReturn ? marker : null;
     },
