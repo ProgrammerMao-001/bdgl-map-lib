@@ -355,7 +355,10 @@ export default {
           this.isOpenInfoWindow({ flag: false });
         });
         if (className) {
-          marker.domElement.classList.add(className);
+          setTimeout(() => {
+            // todo 测试异步的问题
+            marker.domElement.classList.add(className);
+          }, 500);
         }
       }
       return isReturn ? marker : null;
