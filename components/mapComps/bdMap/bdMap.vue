@@ -248,7 +248,8 @@ export default {
      * @param: isShowInfo 是否显示信息窗口
      * @param: isFloatShadow 是否需要添加气泡阴影，默认为true
      * @param: isShowInfo值为 true 时使用， key 显示信息窗口的key,即绘制点位时自定义对象customObj里面的key,
-     * @param: isResetCenterZoom 是否在点击点位时重置地图中心点和缩放级别
+     * @param: isResetCenter 是否在点击点位时重置地图中心点
+     * @param: isResetZoom 是否在点击点位时重置地图缩放级别
      * @param: isResetMakeIcon 是否给点击的marker设置选中的图标
      * @param: myChooseIcon 自定义选中的图标（点击点位时，替换的图标，isResetMakeIcon为true时使用）,
      * @param: offsetX: 偏移量X 水平
@@ -270,7 +271,8 @@ export default {
         isShowInfo = false,
         isFloatShadow = true,
         key,
-        isResetCenterZoom = true,
+        isResetCenter = true,
+        isResetZoom = true,
         isResetMakeIcon = false,
         myChooseIcon,
         offsetX = 0,
@@ -304,13 +306,16 @@ export default {
       this.bdMap.addOverlay(marker);
       const markerClick = (e) => {
         // console.log("点击了标注", e, e.target.customObj);
-        if (isResetCenterZoom) {
-          /* 重置地图中心点和缩放级别 */
-          this.setMapCenterAndZoom({
+        if (isResetCenter) {
+          /* 重置地图中心点 */
+          this.setMapCenter({
             lng: e.target.customObj.longitude,
             lat: e.target.customObj.latitude,
-            zoom: newZoom,
           });
+        }
+        if (isResetZoom) {
+          /* 重置地图缩放级别 */
+          this.setMapZoom({ zoom: newZoom });
         }
         if (isResetMakeIcon) {
           /* 给点击的marker设置选中的图标 */
@@ -359,6 +364,7 @@ export default {
             // todo 测试异步的问题
             marker.domElement.classList.add(className);
           }, 500);
+          // marker.domElement.classList.add(className);
         }
       }
       return isReturn ? marker : null;
@@ -584,6 +590,32 @@ export default {
     setMapCenterAndZoom(params = {}) {
       let { lat, lng, zoom = 16 } = params;
       this.bdMap.centerAndZoom(new BMapGL.Point(lng, lat), zoom);
+    },
+
+    /**
+     * 设置地图中心点
+     * @param: params：{lat: 纬度, lng: 经度}
+     * @param:
+     * @return:
+     * @author: mhf
+     * @time: 2024-03-04 16:22:17
+     **/
+    setMapCenter(params = {}) {
+      let { lat, lng } = params;
+      this.bdMap.setCenter(new BMapGL.Point(lng, lat));
+    },
+
+    /**
+     * 设置地图缩放层级
+     * @param: params：{zoom: 缩放层级}
+     * @param:
+     * @return:
+     * @author: mhf
+     * @time: 2024-03-04 16:22:17
+     **/
+    setMapZoom(params = {}) {
+      let { zoom } = params;
+      this.bdMap.setZoom(zoom);
     },
 
     /**
