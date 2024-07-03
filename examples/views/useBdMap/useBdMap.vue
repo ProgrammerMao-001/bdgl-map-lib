@@ -117,58 +117,20 @@ export default {
 
 <style lang="scss" scoped>
 ::v-deep .markerClass {
-  width: 40px;
-  height: 40px;
-  background: rgba(0, 255, 0, 0);
+  width: 30px;
+  height: 30px;
+  background: rgba(255, 0, 0, .5);
   border-radius: 25px;
   transform: scale(0);
-  transform-origin: center;
-  animation: continuousRadiateFade 9s infinite; /* 调整动画时间为3秒，确保连续性 */
-  z-index: -99999;
+  transform-origin: center !important;
+  animation: radiate 2s;
+  animation-iteration-count: infinite;
 }
 
-@keyframes continuousRadiateFade {
-  0%,
-  66.666% {
-    /* 从0%到66.666%，元素放大并改变颜色 */
-    background: rgba(0, 255, 0, 0);
-    transform: scale(1.4);
-    opacity: 1;
-  }
-  33.333%,
-  100% {
-    /* 从33.333%到100%，元素开始淡出 */
-    background: rgba(255, 0, 0, 0.9);
-    transform: scale(1.4);
-    opacity: 0;
+@keyframes radiate {
+  to{
+    transform: scale(2.5);
+    background: rgba(0, 0, 0, 0);
   }
 }
-
-//::v-deep .markerClass {
-//  width: 40px;
-//  height: 40px;
-//  background: rgba(0, 255, 0, 0);
-//  border-radius: 25px;
-//  transform: scale(0);
-//  transform-origin: center !important;
-//  animation: radiateAndFadeOut 4s ease-in-out infinite;
-//  z-index: -99999 !important;
-//}
-//
-//@keyframes radiateAndFadeOut {
-//  0%, 100% { /* 确保动画结束时回到初始状态，准备开始下一轮 */
-//    background: rgba(0, 255, 0, 0);
-//    transform: scale(0);
-//    opacity: 1;
-//  }
-//  50% {
-//    background: rgba(255, 0, 0, 0.4);
-//    transform: scale(1.4);
-//    opacity: 1;
-//  }
-//  75% {
-//    transform: scale(1.4);
-//    opacity: 0;
-//  }
-//}
 </style>
