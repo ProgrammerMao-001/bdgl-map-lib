@@ -119,7 +119,7 @@ export default {
 ::v-deep .markerClass {
   width: 30px;
   height: 30px;
-  background: rgba(255, 0, 0, .5);
+  background: rgba(255, 0, 0, 0.5);
   border-radius: 25px;
   transform: scale(0);
   transform-origin: center !important;
@@ -128,7 +128,7 @@ export default {
 }
 
 @keyframes radiate {
-  to{
+  to {
     transform: scale(2.5);
     background: rgba(0, 0, 0, 0);
   }
