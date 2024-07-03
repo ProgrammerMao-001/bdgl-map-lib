@@ -358,7 +358,7 @@ export default {
           setTimeout(() => {
             // todo 测试异步的问题
             marker.domElement.classList.add(className);
-          }, 100);
+          }, 500);
         }
       }
       return isReturn ? marker : null;
