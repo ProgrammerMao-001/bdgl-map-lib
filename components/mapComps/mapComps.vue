@@ -22,6 +22,7 @@
       @showMarkerDetail="showMarkerDetail"
       @showPolylineDetail="showPolylineDetail"
       @showPolygonDetail="showPolygonDetail"
+      @showCustomOverlayDetail="showCustomOverlayDetail"
       @return-sectionObj="getSectionObj"
       @mapChange="mapChange"
       @mapClick="mapClick"
@@ -213,6 +214,17 @@ export default {
      **/
     showPolygonDetail(params) {
       this.$emit("showPolygonDetail", params);
+    },
+
+    /**
+     * 展示自定义覆盖物详情
+     * @param:
+     * @return:
+     * @author: mhf
+     * @time: 2024-03-04 16:12:05
+     **/
+    showCustomOverlayDetail(params) {
+      this.$emit("showCustomOverlayDetail", params);
     },
 
     /**

@@ -488,7 +488,7 @@ export default {
     /**
      * 添加自定义覆盖物，并添加点击事件
      * https://lbsyun.baidu.com/index.php?title=jspopularGL/guide/CustomOverlay
-     * @param: createDOM, point, customObj, customOverlayConfig
+     * @param: createDOM, point, customObj, customOverlayConfig, isShowInfo, infoWindowConfig
      * @demo: 创建一个图片覆盖物
      * function createDOM(config) {
      *    const img = document.createElement('img');
@@ -524,6 +524,18 @@ export default {
           enableMassClear: true, // 是否能被统一清除掉覆盖物
           enableDraggingMap: true, // 是否可以在覆盖物位置拖拽地图
         }, // CustomOverlay(createDom, options: Object) 构造函数的参数options配置项
+        isShowInfo = false, // 是否显示信息窗口
+        infoWindowConfig = {
+          html: "",
+          key: "",
+          offsetX: 0, // 覆盖物水平偏移量
+          offsetY: 0,
+          isFloatShadow: false,
+        }, // 信息窗口配置项(鼠标放在覆盖物上出现的window的配置项)
+
+        isResetCenter = true, // 是否重置地图中心点
+        isResetZoom = false, // 是否重置地图缩放级别
+        newZoom = 10, // isResetZoom 为true时，新缩放级别.
       } = params;
       // 创建自定义覆盖物
       const defaultOverlayConfig = {
@@ -541,7 +553,7 @@ export default {
       const customOverlay = new BMapGL.CustomOverlay(createDOM, {
         point: new BMapGL.Point(point.lng, point.lat),
         properties: {
-          ...customObj, // 其他自定义属性
+          customObj, // 其他自定义属性
         }, // 自绑定属性【这里的属性就是createDom(config)中的参数】
         ...overlayConfig, // 自定义覆盖物配置
       });
@@ -549,18 +561,65 @@ export default {
 
       this.$emit("returnCustomOverlay", customOverlay); // 返回自定义覆盖物实例
 
+      const customOverlayClick = (e) => {
+        console.log("点击了自定义覆盖物", e.target.properties);
+        if (isResetCenter) {
+          /* 重置地图中心点 */
+          this.setMapCenter({
+            lng: e.target.point.lng,
+            lat: e.target.point.lat,
+          });
+        }
+        if (isResetZoom) {
+          /* 重置地图缩放级别 */
+          this.setMapZoom({ zoom: newZoom });
+        }
+        // if (isResetMakeIcon) {
+        //   /* 给点击的marker设置选中的图标 */
+        //   let chooseMarker = new BMapGL.Marker(point, {
+        //     icon: myChooseIcon ? myChooseIcon : null,
+        //   }); // 创建选中的点位的图标
+        //   chooseMarker.customObj = {
+        //     ...customObj,
+        //     isChoose: true, // 用于标识该标注是否被选中
+        //   }; // 其实只是需要 customObj 中的某个属性值【key】就是用来判断删除的那个【key】
+        //
+        //   // this.bdMap.removeOverlay(marker); // 移除当前点击的marker
+        //   this.removeOverlay({
+        //     callback: (e) => e.customObj?.isChoose,
+        //   }); // 移除上一个选中的marker
+        //   chooseMarker.setZIndex(2); // 设置点位层级
+        //   this.bdMap.addOverlay(chooseMarker);
+        //
+        //   chooseMarker.addEventListener("click", (e) => {
+        //     /* 给选中的marker添加点击事件 */
+        //     this.$emit("showMarkerDetail", e.target.customObj); // 接收父组件传来的showMarkerDetail事件（打开详情弹窗）
+        //   });
+        // }
+        this.$emit("showCustomOverlayDetail", e.target); // 接收父组件传来的showMarkerDetail事件（打开详情弹窗）
+      };
       // 鼠标点击事件
-      customOverlay.addEventListener("click", function (e) {
-        console.log("自定义覆盖物鼠标点击事件", e);
-      });
-      // 鼠标悬浮事件
-      // customOverlay.addEventListener('mouseover', function (e) {
-      //   console.log('鼠标悬浮事件', e);
-      // });
-      // 鼠标移出事件
-      // customOverlay.addEventListener('mouseout', function (e) {
-      //   console.log('鼠标移出事件', e);
-      // });
+      customOverlay.addEventListener("click", customOverlayClick);
+      if (isShowInfo) {
+        // 鼠标悬浮事件
+        customOverlay.addEventListener("mouseover", (e) => {
+          let marker = new BMapGL.Point(point.lng, point.lat); // 创建点
+          this.isOpenInfoWindow({
+            flag: true,
+            html: infoWindowConfig.html
+              ? infoWindowConfig.html
+              : e.target.properties[infoWindowConfig.key],
+            offsetX: infoWindowConfig.offsetX,
+            offsetY: infoWindowConfig.offsetY,
+            marker: marker,
+            isFloatShadow: infoWindowConfig.isFloatShadow,
+          });
+        });
+        // 鼠标移出事件
+        customOverlay.addEventListener("mouseout", () => {
+          this.isOpenInfoWindow({ flag: false });
+        });
+      }
     },
 
     /**
