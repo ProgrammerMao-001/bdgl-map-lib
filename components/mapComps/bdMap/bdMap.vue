@@ -390,6 +390,7 @@ export default {
           strokeColor: "#5298fe",
           strokeWeight: 9,
           strokeOpacity: 1,
+          zIndex: 1000,
         },
         isRightDelete = false,
         isViewport = true,
@@ -685,6 +686,10 @@ export default {
         this.viewport = this.getMapViewport();
         this.$emit("mapChange", this.viewport); // 将更新的数据传给父组件
         // console.log(this.viewport, "地图拖拽事件");
+      });
+
+      this.bdMap.addEventListener("click", (e) => {
+        this.$emit("mapClick", e);
       });
     },
 
