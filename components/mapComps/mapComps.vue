@@ -24,6 +24,8 @@
       @showPolygonDetail="showPolygonDetail"
       @return-sectionObj="getSectionObj"
       @mapChange="mapChange"
+      @mapClick="mapClick"
+      @returnCustomOverlay="getCustomOverlay"
     />
     <tdMap v-if="mapType === 'tdMap'" />
     <leafletMap v-if="mapType === 'leafletMap'" />
@@ -148,6 +150,28 @@ export default {
     },
 
     /**
+     * 添加自定义覆盖物，并实现点击事件
+     * @param:
+     * @return:
+     * @author: mhf
+     * @time: 2024-03-06 13:17:02
+     **/
+    drawCustomOverlay(obj) {
+      this.$refs[this.mapType].drawCustomOverlay(obj);
+    },
+
+    /**
+     * 将自定义覆盖物传给父页面
+     * @param:
+     * @return:
+     * @author: mhf
+     * @time: 2024-03-06 13:17:02
+     **/
+    getCustomOverlay(customOverlay) {
+      this.$emit("returnCustomOverlay", customOverlay); // 返回自定义覆盖物实例
+    },
+
+    /**
      * 获取点位的自定义图标
      * @param: obj
      * @return:
@@ -260,6 +284,17 @@ export default {
      **/
     initShapeLayer(params = {}) {
       this.$refs[this.mapType].initShapeLayer(params);
+    },
+
+    /**
+     * 地图点击事件
+     * @param:
+     * @return:
+     * @author: mhf
+     * @time: 2024-04-24 17:56:59
+     **/
+    mapClick(e) {
+      this.$emit("mapClick", e);
     },
   },
   created() {},

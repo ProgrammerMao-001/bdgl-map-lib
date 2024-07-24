@@ -141,7 +141,7 @@ export default {
           var searchComplete = (results) => {
             if (transit.getStatus() == BMAP_STATUS_SUCCESS) {
               var plan = results.getPlan(0);
-              pointsArr = that.makePointsArr(plan._lines); // 路段中所有的点位数组
+              pointsArr = that.flattenArr(plan._lines); // 路段中所有的点位数组
               this.sectionObj = {
                 duration: plan.getDuration(true),
                 distance: plan.getDistance(true),
@@ -215,7 +215,7 @@ export default {
      * @author: mhf
      * @time: 2024-02-01 13:57:20
      **/
-    makePointsArr(arr) {
+    flattenArr(arr) {
       return arr.flatMap((item) => item.points);
     },
 
@@ -483,6 +483,84 @@ export default {
           this.addRightMenu(txtMenuItem);
         });
       }
+    },
+
+    /**
+     * 添加自定义覆盖物，并添加点击事件
+     * https://lbsyun.baidu.com/index.php?title=jspopularGL/guide/CustomOverlay
+     * @param: createDOM, point, customObj, customOverlayConfig
+     * @demo: 创建一个图片覆盖物
+     * function createDOM(config) {
+     *    const img = document.createElement('img');
+     *    img.style.width = '300px';
+     *    img.style.height = '171px';
+     *    img.src = config.url;
+     *    img.draggable = false;
+     *    return img;
+     * }
+     * @Event: customOverlay.getProperties() // 获取自定义覆盖物的属性
+     * @Event: customOverlay.getPoint()  // 获取自定义覆盖物的坐标
+     * @Event: customOverlay.setPoint(new BMapGL.Point(120, 30)) // 设置覆盖物新坐标
+     * @Event: customOverlay.hide() // 隐藏自定义覆盖物【show() 显示】
+     * @return: customOverlay：自定义覆盖物
+     * @author: mhf
+     * @time: 2024-07-24 14:00:52
+     **/
+    drawCustomOverlay(params = {}) {
+      let {
+        createDOM = () => {
+          return "dom";
+        }, // 创建一个文档元素,且必须有返回值【demo看注释】
+        point = {
+          lng: undefined, // 112.18
+          lat: undefined, // 41.15
+        }, // 点位经纬度
+        customObj, // 自绑定属性的其他自定义参数（即元素自身的properties参数）
+        customOverlayConfig = {
+          offsetX: -10, // 覆盖物水平偏移量
+          offsetY: -10, // 覆盖物垂直偏移量
+          MinZoom: 4, // 最小显示层级
+          MaxZoom: 12, // 最大显示层级
+          enableMassClear: true, // 是否能被统一清除掉覆盖物
+          enableDraggingMap: true, // 是否可以在覆盖物位置拖拽地图
+        }, // CustomOverlay(createDom, options: Object) 构造函数的参数options配置项
+      } = params;
+      // 创建自定义覆盖物
+      const defaultOverlayConfig = {
+        offsetX: 0, // 覆盖物水平偏移量
+        offsetY: 0, // 覆盖物垂直偏移量
+        // MinZoom: 4, // 最小显示层级
+        // MaxZoom: 12, // 最大显示层级
+        enableMassClear: true, // 是否能被统一清除掉覆盖物
+        enableDraggingMap: true, // 是否可以在覆盖物位置拖拽地图
+      }; // 默认的覆盖物配置
+      const overlayConfig =
+        Object.keys(customOverlayConfig).length > 0
+          ? customOverlayConfig
+          : defaultOverlayConfig;
+      const customOverlay = new BMapGL.CustomOverlay(createDOM, {
+        point: new BMapGL.Point(point.lng, point.lat),
+        properties: {
+          ...customObj, // 其他自定义属性
+        }, // 自绑定属性【这里的属性就是createDom(config)中的参数】
+        ...overlayConfig, // 自定义覆盖物配置
+      });
+      this.bdMap.addOverlay(customOverlay);
+
+      this.$emit("returnCustomOverlay", customOverlay); // 返回自定义覆盖物实例
+
+      // 鼠标点击事件
+      customOverlay.addEventListener("click", function (e) {
+        console.log("自定义覆盖物鼠标点击事件", e);
+      });
+      // 鼠标悬浮事件
+      // customOverlay.addEventListener('mouseover', function (e) {
+      //   console.log('鼠标悬浮事件', e);
+      // });
+      // 鼠标移出事件
+      // customOverlay.addEventListener('mouseout', function (e) {
+      //   console.log('鼠标移出事件', e);
+      // });
     },
 
     /**
