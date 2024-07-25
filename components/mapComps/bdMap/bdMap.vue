@@ -256,7 +256,20 @@ export default {
      * @param: offsetY: 偏移量Y 垂直
      * @param: html: 信息窗体内容，如：`<span style="line-height: 60px;margin-left: 10px;color: #ff6b00">${item.name}</span>`
      * @param: newZoom: 点击点位后地图更改的缩放级别
-     * @param: className: 给生成的marker添加的类名【样式可以在自己的组件中定义】
+     * @param: className: 给生成的marker添加的类名【样式可以在自己的组件中定义， 可以多个类名需用逗号隔开】
+     * @param:  isLabelShow: true,
+     *           labelText: "label标题",
+     *           labelsetX: 10,
+     *           labelsetY: -60,
+     *           labelStyle: {
+     *             color: "#fff", // 文字颜色
+     *             backgroundColor: "#0e335b", // 背景颜色，可以使用rgba设置透明度
+     *             border: "none", // 边框样式
+     *             borderRadius: "5px", // 边框圆角
+     *             padding: "5px 10px", // 文本内边距
+     *             fontSize: "10px", // 字体大小
+     *             fontWeight: "bold", // 字体粗细
+     *           },
      * @return: isReturn === true ? marker对象 : null
      * @author: mhf
      * @time: 2024-03-04 10:05:59
@@ -360,10 +373,12 @@ export default {
           this.isOpenInfoWindow({ flag: false });
         });
         if (className) {
+          /* 可以添加多个类名 需用 , 隔开【如：markerClass,bridge】 */
           setTimeout(() => {
-            // todo 测试异步的问题
-            marker.domElement.classList.add(className);
+            let classArr = className.split(",");
+            classArr.forEach((name) => marker.domElement.classList.add(name));
           }, 500);
+          this.$forceUpdate();
           // marker.domElement.classList.add(className);
         }
       }
