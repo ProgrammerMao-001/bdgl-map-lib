@@ -1,28 +1,26 @@
 <!--
- * @Description: 使用百度地图GL版组件 页面
+ * @Description: 使用百度地图GL版【bdMap】组件 页面
  * @Author: mhf
  * @Date: 2024/6/29 19:43
 -->
 <template>
   <div class="app-container">
-    <mapComps
-      id="map"
-      ref="mapComps"
-      mapType="bdMap"
-      :bdMapConfig="bdMapConfig"
-      :bdInfoWindowStyle="bdInfoWindowStyle"
+    <bdMap
+      ref="bdMap"
+      :mapConfig="bdMapConfig"
+      :infoWindowStyle="bdInfoWindowStyle"
       @showMarkerDetail="showMarkerDetail"
       @showPolylineDetail="showPolylineDetail"
-    ></mapComps>
+    />
   </div>
 </template>
 
 <script>
-import mapComps from "../../../components/mapComps/mapComps.vue";
+import bdMap from "../../../components/bdMap/bdMap.vue";
 
 export default {
   name: "useBdMap",
-  components: { mapComps },
+  components: { bdMap },
   mixins: [],
   props: {},
   computed: {},
@@ -31,6 +29,7 @@ export default {
   data() {
     return {
       bdMapConfig: {
+        ak: "OKHgYpCQmWTblbFlRCzYJWvk0HCuXsHU",
         center: {
           lng: 120.3083403138811,
           lat: 30.27631859319542,
@@ -75,12 +74,12 @@ export default {
 
     drawDemoMarker() {
       this.markerList.forEach((item) => {
-        this.$refs.mapComps.drawMarker({
+        this.$refs.bdMap.drawMarker({
           obj: {
             lng: item.longitude,
             lat: item.latitude,
           },
-          myIcon: this.$refs.mapComps.getIcon({
+          myIcon: this.$refs.bdMap.getIcon({
             url: "/useBdMap/marker.png",
             width: 33,
             height: 33,
@@ -92,7 +91,7 @@ export default {
           isShowInfo: true,
           isFloatShadow: false,
           isResetMakeIcon: true,
-          myChooseIcon: this.$refs.mapComps.getIcon({
+          myChooseIcon: this.$refs.bdMap.getIcon({
             url: "/useBdMap/chooseMarker.png",
             width: 33,
             height: 33,
@@ -116,6 +115,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.app-container {
+  width: 100vw;
+  height: 100vh;
+}
+
 ::v-deep .markerClass {
   width: 30px;
   height: 30px;

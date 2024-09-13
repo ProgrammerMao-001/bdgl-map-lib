@@ -11,12 +11,33 @@
 </template>
 
 <script>
+import { loadBaiDuMap } from "../utils/asynchronousLoading";
 import bdMapVGl from "./bdMapVGl.vue";
+
 export default {
   name: "bdMap",
   components: { bdMapVGl },
   mixins: [],
   props: {
+    mapConfig: {
+      type: Object,
+      default: () => {
+        return {
+          ak: "your ak",
+          center: {
+            lng: 116.404,
+            lat: 39.915,
+          },
+          zoom: 12,
+          style: {
+            custom: "", // styleId 或 styleJson
+            styleId: undefined, // 发布的styleID需要与ak为同一个用户
+            styleJson: undefined, // styleJson与ak无关联
+          }, // 是否需要自定义地图样式
+        };
+      },
+    },
+
     infoWindowStyle: {
       type: Object,
       default: () => {
@@ -30,9 +51,6 @@ export default {
     },
   },
   computed: {
-    mapConfig() {
-      return this.$attrs.mapConfig;
-    }, // 获取所有的mapComps传来的props
     mapStyle() {
       return this.infoWindowStyle;
     },
@@ -41,7 +59,8 @@ export default {
   filters: {},
   data() {
     return {
-      bdMap: null, //  百度地图实例
+      bdMap: null, // 百度地图实例
+      BMapGL: null, // 百度地图GL
       sectionObj: {
         duration: undefined, // 获取路线耗时
         distance: undefined, // 路段距离
@@ -65,30 +84,37 @@ export default {
      * @time: 2024-03-04 10:05:19
      **/
     initMap() {
-      console.log(BMapGL, "BMapGL");
-      this.bdMap = new BMapGL.Map("map-container"); // 创建Map实例
-      this.bdMap.centerAndZoom(
-        new BMapGL.Point(this.mapConfig.center.lng, this.mapConfig.center.lat),
-        this.mapConfig.zoom
-      ); // 初始化地图,设置中心点坐标和地图级别
-      this.bdMap.enableScrollWheelZoom(true); // 开启鼠标滚轮缩放
+      this.$nextTick(() => {
+        loadBaiDuMap(this.mapConfig.ak).then(() => {
+          console.log(BMapGL, "BMapGL");
+          this.bdMap = new BMapGL.Map("map-container"); // 创建Map实例
+          this.bdMap.centerAndZoom(
+            new BMapGL.Point(
+              this.mapConfig.center.lng,
+              this.mapConfig.center.lat
+            ),
+            this.mapConfig.zoom
+          ); // 初始化地图,设置中心点坐标和地图级别
+          this.bdMap.enableScrollWheelZoom(true); // 开启鼠标滚轮缩放
 
-      if (this.mapConfig.style?.custom) {
-        const { custom, styleJson, styleId } = this.mapConfig.style;
-        let config;
-        if (custom === "styleJson") {
-          config = { styleJson }; // styleJson与ak无关联
-        } else if (custom === "styleId") {
-          config = { styleId }; // 发布的styleID需要与ak为同一个用户
-        }
-        this.$nextTick(() => {
-          this.bdMap.setMapStyleV2(config);
+          if (this.mapConfig.style?.custom) {
+            const { custom, styleJson, styleId } = this.mapConfig.style;
+            let config;
+            if (custom === "styleJson") {
+              config = { styleJson }; // styleJson与ak无关联
+            } else if (custom === "styleId") {
+              config = { styleId }; // 发布的styleID需要与ak为同一个用户
+            }
+            this.$nextTick(() => {
+              this.bdMap.setMapStyleV2(config);
+            });
+          }
+          // 确保地图完全加载后再添加事件监听器
+          this.bdMap.addEventListener("tilesloaded", () => {
+            // console.log("地图加载完成");
+            // this.mapChange();
+          });
         });
-      }
-      // 确保地图完全加载后再添加事件监听器
-      this.bdMap.addEventListener("tilesloaded", () => {
-        // console.log("地图加载完成");
-        // this.mapChange();
       });
     },
 
@@ -239,6 +265,7 @@ export default {
       if (shouldClear("roadCondition", type)) {
         roadCondition.forEach((condition) => condition.clearResults());
       }
+
       function shouldClear(layerType, requestedType) {
         return requestedType === layerType || requestedType === "";
       }
@@ -867,7 +894,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../mapStyles.css";
+@import "./../assets/styles/mapStyles.scss";
 
 #map-container {
 }
