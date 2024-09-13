@@ -5,15 +5,6 @@
 -->
 <template>
   <div class="map-comps">
-    <aMap
-      v-if="mapType === 'aMap'"
-      ref="aMap"
-      :mapConfig="aMapConfig"
-      @showMarkerDetail="showMarkerDetail"
-      @showPolylineDetail="showPolylineDetail"
-      @showPolygonDetail="showPolygonDetail"
-      @return-sectionObj="getSectionObj"
-    />
     <bdMap
       v-if="mapType === 'bdMap'"
       ref="bdMap"
@@ -28,20 +19,15 @@
       @mapClick="mapClick"
       @returnCustomOverlay="getCustomOverlay"
     />
-    <tdMap v-if="mapType === 'tdMap'" />
-    <leafletMap v-if="mapType === 'leafletMap'" />
   </div>
 </template>
 
 <script>
-import aMap from "./aMap/aMap.vue";
 import bdMap from "./bdMap/bdMap.vue";
-import tdMap from "./tdMap/tdMap.vue";
-import leafletMap from "./leafletMap/leafletMap.vue";
 
 export default {
   name: "mapComps",
-  components: { aMap, bdMap, tdMap, leafletMap },
+  components: { bdMap },
   mixins: [],
   props: {
     mapType: {
@@ -116,7 +102,16 @@ export default {
     setMapCenterAndZoom(obj) {
       this.$refs[this.mapType].setMapCenterAndZoom(obj);
     },
-
+    /**
+     * 重置地图的中心点
+     * @param:
+     * @return:
+     * @author: xxb
+     * @time: 2024-09-06 17:51:49
+     **/
+    setMapCenter(obj) {
+      this.$refs[this.mapType].setMapCenter(obj);
+    },
     /**
      * 添加点标记,实现悬浮信息窗体和点击事件
      * @param: obj

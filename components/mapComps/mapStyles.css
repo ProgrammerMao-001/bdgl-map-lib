@@ -17,12 +17,3 @@
   display: none !important;
 }
 
-/* 清除高德地图logo */
-.amap-logo {
-  display: none !important;
-}
-
-.amap-copyright {
-  display: none !important;
-}
-
