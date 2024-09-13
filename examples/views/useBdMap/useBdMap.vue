@@ -4,11 +4,30 @@
  * @Date: 2024/6/29 19:43
 -->
 <template>
-  <div class="app-container">
+  <div class="use-bd-map">
+    <div class="btn">
+      <el-button size="small" type="primary" @click="drawDefaultMarker"
+        >绘制默认点位</el-button
+      >
+      <el-button size="small" type="danger" @click="removeDefaultMarker"
+        >移除默认点位</el-button
+      >
+      <el-button size="small" type="primary" @click="drawWarningMarker"
+        >绘制预警点位</el-button
+      >
+      <el-button size="small" type="danger" @click="removeWarningMarker"
+        >移除预警点位</el-button
+      >
+    </div>
+
     <bdMap
       ref="bdMap"
+      listenOnce
       :mapConfig="bdMapConfig"
       :infoWindowStyle="bdInfoWindowStyle"
+      @map-loaded="mapLoaded"
+      @map-change="handleMapChange"
+      @map-click="handleMapClick"
       @showMarkerDetail="showMarkerDetail"
       @showPolylineDetail="showPolylineDetail"
     />
@@ -17,6 +36,7 @@
 
 <script>
 import bdMap from "../../../components/bdMap/bdMap.vue";
+import useBdMapData from "./useBdMapData";
 
 export default {
   name: "useBdMap",
@@ -36,8 +56,9 @@ export default {
         },
         zoom: 12,
         style: {
-          custom: "styleId",
-          styleId: "c0b50646917c55ad9a85f9e67d333570",
+          custom: "styleId", // styleId
+          styleId: "616efba0a2fe5826442ba384dc5b285c",
+          // styleJson: require("/public/json/custom_map_style.json")
         },
       },
 
@@ -47,19 +68,6 @@ export default {
         "--closeBtnColor": "#fff", // 气泡关闭按钮的颜色
         "--titleHeight": "8px", // 气泡顶部标题高度
       },
-
-      markerList: [
-        {
-          longitude: 120.11083403138811,
-          latitude: 30.17631859319542,
-          title: "标题1",
-        },
-        {
-          longitude: 120.3083403138811,
-          latitude: 30.27631859319542,
-          title: "标题2",
-        },
-      ],
     };
   },
   methods: {
@@ -68,31 +76,45 @@ export default {
       this.$message.success(`你点击了${data.title}`);
     },
 
+    handleMapChange(config) {
+      console.log(config, "config");
+    },
+
+    handleMapClick(e) {
+      console.log(e, "移除当前选中的点位");
+      /* 移除当前选中的点位 */
+      this.$refs.bdMap.removeOverlay({
+        callback: (e) => e.customObj?.isChoose,
+      });
+    },
+
     showPolylineDetail(e, autoViewport = false) {
       console.log(e, "e");
     },
 
-    drawDemoMarker() {
-      this.markerList.forEach((item) => {
+    drawWarningMarker() {
+      useBdMapData.markerList.forEach((item) => {
         this.$refs.bdMap.drawMarker({
           obj: {
             lng: item.longitude,
             lat: item.latitude,
           },
           myIcon: this.$refs.bdMap.getIcon({
-            url: "/useBdMap/marker.png",
+            url: "/marker/warning_marker.png",
             width: 33,
             height: 33,
           }),
           customObj: {
             ...item,
+            customType: "draw-warning-marker",
             remark: "百度地图绘制点位示例",
           },
           isShowInfo: true,
           isFloatShadow: false,
+          resetCenter: false,
           isResetMakeIcon: true,
           myChooseIcon: this.$refs.bdMap.getIcon({
-            url: "/useBdMap/chooseMarker.png",
+            url: "/marker/warning_marker_choose.png",
             width: 33,
             height: 33,
           }),
@@ -100,24 +122,89 @@ export default {
           html: `<div style="color: #fff">${item.title}</div>`,
           offsetX: 10,
           offsetY: 30,
-          newZoom: 14,
           className: "markerClass",
         });
       });
     },
+
+    drawDefaultMarker() {
+      useBdMapData.defaultMarkerList.forEach((item) => {
+        this.$refs.bdMap.drawMarker({
+          obj: {
+            lng: item.longitude,
+            lat: item.latitude,
+          },
+          myIcon: this.$refs.bdMap.getIcon({
+            url: "/marker/checkpoint.png",
+            width: 33,
+            height: 33,
+          }),
+          customObj: {
+            ...item,
+            customType: "draw-default-marker",
+            remark: "百度地图绘制点位示例",
+          },
+          isShowInfo: true,
+          isFloatShadow: false,
+          isResetMakeIcon: true,
+          myChooseIcon: this.$refs.bdMap.getIcon({
+            url: "/marker/checkpoint_choose.png",
+            width: 33,
+            height: 33,
+          }),
+          key: "title",
+          html: `<div style="color: #fff">${item.title}</div>`,
+          offsetX: 10,
+          offsetY: 30,
+          newZoom: 17,
+          resetType: "centerAndZoom",
+        });
+      });
+    },
+
+    removeDefaultMarker() {
+      this.$refs.bdMap.removeOverlay({
+        callback: (e) => e.customObj?.customType === "draw-default-marker",
+      });
+    },
+
+    removeWarningMarker() {
+      this.$refs.bdMap.removeOverlay({
+        callback: (e) => e.customObj?.customType === "draw-warning-marker",
+      });
+    },
+
+    mapLoaded(a) {
+      console.log("mapLoaded", a);
+      this.drawDefaultMarker();
+    },
   },
   created() {},
-  mounted() {
-    this.drawDemoMarker();
-  },
+  mounted() {},
   destroyed() {},
 };
 </script>
 
 <style lang="scss" scoped>
-.app-container {
+.use-bd-map {
   width: 100vw;
   height: 100vh;
+  position: relative;
+
+  .btn {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 999;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .el-button {
+      margin: 10px 0 0 10px;
+    }
+  }
 }
 
 ::v-deep .markerClass {

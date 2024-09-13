@@ -19,11 +19,16 @@ export default {
   components: { bdMapVGl },
   mixins: [],
   props: {
+    listenOnce: {
+      type: Boolean,
+      default: false,
+    }, // 是否只监听一次地图加载完成事件【默认为false】
+
     mapConfig: {
       type: Object,
       default: () => {
         return {
-          ak: "your ak",
+          ak: undefined, // your ak
           center: {
             lng: 116.404,
             lat: 39.915,
@@ -86,10 +91,11 @@ export default {
     initMap() {
       this.$nextTick(() => {
         loadBaiDuMap(this.mapConfig.ak).then(() => {
-          console.log(BMapGL, "BMapGL");
-          this.bdMap = new BMapGL.Map("map-container"); // 创建Map实例
+          console.log(BMapGL, "this.BMapGL");
+          this.BMapGL = BMapGL;
+          this.bdMap = new this.BMapGL.Map("map-container"); // 创建Map实例
           this.bdMap.centerAndZoom(
-            new BMapGL.Point(
+            new this.BMapGL.Point(
               this.mapConfig.center.lng,
               this.mapConfig.center.lat
             ),
@@ -109,11 +115,19 @@ export default {
               this.bdMap.setMapStyleV2(config);
             });
           }
-          // 确保地图完全加载后再添加事件监听器
-          this.bdMap.addEventListener("tilesloaded", () => {
-            // console.log("地图加载完成");
-            // this.mapChange();
-          });
+
+          //
+          const listen_tilesloaded = () => {
+            this.$emit("map-loaded", {
+              map: this.bdMap,
+              BMapGL: this.BMapGL,
+            });
+            this.mapChange();
+            if (this.listenOnce) {
+              this.bdMap.removeEventListener("tilesloaded", listen_tilesloaded);
+            }
+          };
+          this.bdMap.addEventListener("tilesloaded", listen_tilesloaded);
         });
       });
     },
@@ -166,8 +180,11 @@ export default {
       if (isShowRoadCondition) {
         if (isShowMyRoad) {
           // 将起点和终点转换为经纬度点对象
-          const startMarker = new BMapGL.Point(startPoint.lng, startPoint.lat);
-          const endMarker = new BMapGL.Point(endPoint.lng, endPoint.lat);
+          const startMarker = new this.BMapGL.Point(
+            startPoint.lng,
+            startPoint.lat
+          );
+          const endMarker = new this.BMapGL.Point(endPoint.lng, endPoint.lat);
 
           var searchComplete = (results) => {
             if (transit.getStatus() == BMAP_STATUS_SUCCESS) {
@@ -202,7 +219,7 @@ export default {
               });
             }
           };
-          var transit = new BMapGL.DrivingRouteLine(this.bdMap, {
+          var transit = new this.BMapGL.DrivingRouteLine(this.bdMap, {
             renderOptions: {
               map: this.bdMap,
               autoViewport: false,
@@ -230,7 +247,7 @@ export default {
           this.$nextTick(() => {
             this.bdMap.setTrafficOn(); // 开启交通路况图层 方法1
           });
-          // this.bdMap.addTileLayer(new BMapGL.TrafficLayer()); // 加载交通图层 方法2
+          // this.bdMap.addTileLayer(new this.BMapGL.TrafficLayer()); // 加载交通图层 方法2
           // this.bdMap.setTrafficOff(); // 移除交通流量图层
         }
       } else {
@@ -279,9 +296,7 @@ export default {
      * @param: isReturn 是否返回marker对象
      * @param: isShowInfo 是否显示信息窗口
      * @param: isFloatShadow 是否需要添加气泡阴影，默认为true
-     * @param: isShowInfo值为 true 时使用， key 显示信息窗口的key,即绘制点位时自定义对象customObj里面的key,
-     * @param: isResetCenter 是否在点击点位时重置地图中心点
-     * @param: isResetZoom 是否在点击点位时重置地图缩放级别
+     * @param: isShowInfo 值为 true 时使用， key 显示信息窗口的key,即绘制点位时自定义对象customObj里面的key,
      * @param: isResetMakeIcon 是否给点击的marker设置选中的图标
      * @param: myChooseIcon 自定义选中的图标（点击点位时，替换的图标，isResetMakeIcon为true时使用）,
      * @param: offsetX: 偏移量X 水平
@@ -307,6 +322,7 @@ export default {
      * @time: 2024-03-04 10:05:59
      **/
     drawMarker(params = {}) {
+      console.log(this.bdMap, "this.bdMap.getCenterAndZoom()");
       // console.log(params, "百度地图DrawMarker");
       let {
         obj,
@@ -316,8 +332,6 @@ export default {
         isShowInfo = false,
         isFloatShadow = true,
         key,
-        isResetCenter = true,
-        isResetZoom = false,
         isResetMakeIcon = false,
         myChooseIcon,
         offsetX = 0,
@@ -328,19 +342,20 @@ export default {
         labelText = undefined,
         labelStyle = undefined,
         html = undefined,
-        newZoom = 17,
+        resetCenter = true, // 是否重置地图中心点
+        newZoom = false, // 如果newZoom为false或0，则不设置地图中心点和缩放级别(resetCenter为true时可用)
         className = undefined,
       } = params;
-      let point = new BMapGL.Point(obj.lng, obj.lat); // 创建点
-      let marker = new BMapGL.Marker(point, {
+      let point = new this.BMapGL.Point(obj.lng, obj.lat); // 创建点
+      let marker = new this.BMapGL.Marker(point, {
         icon: myIcon ? myIcon : null,
         enableDragging: false, // 实现可拖拽
       }); // 创建标注
       marker.setZIndex(1); // 设置点位层级
       if (isLabelShow) {
         // 创建文本标注
-        let label = new BMapGL.Label(labelText, {
-          offset: new BMapGL.Size(labelsetX, labelsetY), // 设置文本偏移量，使文本显示在标注点的上方
+        let label = new this.BMapGL.Label(labelText, {
+          offset: new this.BMapGL.Size(labelsetX, labelsetY), // 设置文本偏移量，使文本显示在标注点的上方
         });
         if (labelStyle) {
           label.setStyle(labelStyle);
@@ -351,20 +366,18 @@ export default {
       this.bdMap.addOverlay(marker);
       const markerClick = (e) => {
         // console.log("点击了标注", e, e.target.customObj);
-        if (isResetCenter) {
-          /* 重置地图中心点 */
-          this.setMapCenter({
+        if (resetCenter) {
+          /* 重置地图中心点和缩放级别 */
+          let nowZoom = this.bdMap.getZoom();
+          this.setMapCenterAndZoom({
             lng: e.target.customObj.longitude,
             lat: e.target.customObj.latitude,
+            zoom: newZoom || nowZoom,
           });
-        }
-        if (isResetZoom) {
-          /* 重置地图缩放级别 */
-          this.setMapZoom({ zoom: newZoom });
         }
         if (isResetMakeIcon) {
           /* 给点击的marker设置选中的图标 */
-          let chooseMarker = new BMapGL.Marker(point, {
+          let chooseMarker = new this.BMapGL.Marker(point, {
             icon: myChooseIcon ? myChooseIcon : null,
           }); // 创建选中的点位的图标
           chooseMarker.customObj = {
@@ -444,9 +457,9 @@ export default {
       } = params;
 
       let pointsGlArr = pointsArr.map(
-        (item) => new BMapGL.Point(item.lng, item.lat)
+        (item) => new this.BMapGL.Point(item.lng, item.lat)
       );
-      let polyline = new BMapGL.Polyline(pointsGlArr, stroke);
+      let polyline = new this.BMapGL.Polyline(pointsGlArr, stroke);
       polyline.customObj = customObj; // 添加自定义参数
       this.bdMap.addOverlay(polyline); // 绘制折线
       if (isViewport) {
@@ -502,9 +515,9 @@ export default {
         isRightDelete = false, // 是否右键删除
       } = params;
       let pointGlArr = pointArr.map(
-        (item) => new BMapGL.Point(item.lng, item.lat)
+        (item) => new this.BMapGL.Point(item.lng, item.lat)
       );
-      var polygon = new BMapGL.Polygon(pointGlArr, config);
+      var polygon = new this.BMapGL.Polygon(pointGlArr, config);
       polygon.customObj = customObj;
       this.bdMap.addOverlay(polygon);
       this.bdMap.setViewport(pointArr);
@@ -547,7 +560,7 @@ export default {
      * }
      * @Event: customOverlay.getProperties() // 获取自定义覆盖物的属性
      * @Event: customOverlay.getPoint()  // 获取自定义覆盖物的坐标
-     * @Event: customOverlay.setPoint(new BMapGL.Point(120, 30)) // 设置覆盖物新坐标
+     * @Event: customOverlay.setPoint(new this.BMapGL.Point(120, 30)) // 设置覆盖物新坐标
      * @Event: customOverlay.hide() // 隐藏自定义覆盖物【show() 显示】
      * @return: customOverlay：自定义覆盖物
      * @author: mhf
@@ -597,8 +610,8 @@ export default {
         Object.keys(customOverlayConfig).length > 0
           ? customOverlayConfig
           : defaultOverlayConfig;
-      const customOverlay = new BMapGL.CustomOverlay(createDOM, {
-        point: new BMapGL.Point(point.lng, point.lat),
+      const customOverlay = new this.BMapGL.CustomOverlay(createDOM, {
+        point: new this.BMapGL.Point(point.lng, point.lat),
         properties: {
           customObj, // 其他自定义属性
         }, // 自绑定属性【这里的属性就是createDom(config)中的参数】
@@ -623,7 +636,7 @@ export default {
         }
         // if (isResetMakeIcon) {
         //   /* 给点击的marker设置选中的图标 */
-        //   let chooseMarker = new BMapGL.Marker(point, {
+        //   let chooseMarker = new this.BMapGL.Marker(point, {
         //     icon: myChooseIcon ? myChooseIcon : null,
         //   }); // 创建选中的点位的图标
         //   chooseMarker.customObj = {
@@ -650,7 +663,7 @@ export default {
       if (isShowInfo) {
         // 鼠标悬浮事件
         customOverlay.addEventListener("mouseover", (e) => {
-          let marker = new BMapGL.Point(point.lng, point.lat); // 创建点
+          let marker = new this.BMapGL.Point(point.lng, point.lat); // 创建点
           this.isOpenInfoWindow({
             flag: true,
             html: infoWindowConfig.html
@@ -675,7 +688,7 @@ export default {
      * @param: html: 信息窗口内容
      * @param: offsetX: 偏移量X 水平
      * @param: offsetY: 偏移量Y 垂直
-     * @param: marker: 点位对象,如：new BMapGL.Point(lng, lat);
+     * @param: marker: 点位对象,如：new this.BMapGL.Point(lng, lat);
      * @param: isFloatShadow: 是否需要气泡阴影，默认是；
      * @return:
      * @author: mhf
@@ -691,8 +704,8 @@ export default {
         isFloatShadow = true,
       } = params;
       if (flag) {
-        var infoWindow = new BMapGL.InfoWindow(html, {
-          offset: new BMapGL.Size(offsetX, offsetY), // 偏移量
+        var infoWindow = new this.BMapGL.InfoWindow(html, {
+          offset: new this.BMapGL.Size(offsetX, offsetY), // 偏移量
         });
         if (!isFloatShadow)
           this.bdMap.getPanes().floatShadow.style.display = "none"; // 移除气泡阴影
@@ -722,9 +735,9 @@ export default {
         offsetW = 0,
         offsetH = 0,
       } = params;
-      return new BMapGL.Icon(url, new BMapGL.Size(width, height), {
-        anchor: new BMapGL.Size(width / 2, height + 2), // 图标中央下端的尖角位置。（左右、上下）[底部居对齐]
-        imageOffset: new BMapGL.Size(offsetW, offsetH), // 设置图片偏移
+      return new this.BMapGL.Icon(url, new this.BMapGL.Size(width, height), {
+        anchor: new this.BMapGL.Size(width / 2, height + 2), // 图标中央下端的尖角位置。（左右、上下）[底部居对齐]
+        imageOffset: new this.BMapGL.Size(offsetW, offsetH), // 设置图片偏移
       });
     },
 
@@ -774,7 +787,7 @@ export default {
      **/
     setMapCenterAndZoom(params = {}) {
       let { lat, lng, zoom = 16 } = params;
-      this.bdMap.centerAndZoom(new BMapGL.Point(lng, lat), zoom);
+      this.bdMap.centerAndZoom(new this.BMapGL.Point(lng, lat), zoom);
     },
 
     /**
@@ -787,7 +800,7 @@ export default {
      **/
     setMapCenter(params = {}) {
       let { lat, lng } = params;
-      this.bdMap.setCenter(new BMapGL.Point(lng, lat));
+      this.bdMap.setCenter(new this.BMapGL.Point(lng, lat));
     },
 
     /**
@@ -822,10 +835,14 @@ export default {
      * @time: 2024-03-07 15:34:10
      **/
     addRightMenu(txtMenuItem = []) {
-      this.rightMenu = new BMapGL.ContextMenu();
+      this.rightMenu = new this.BMapGL.ContextMenu();
       for (var i = 0; i < txtMenuItem.length; i++) {
         this.rightMenu.addItem(
-          new BMapGL.MenuItem(txtMenuItem[i].text, txtMenuItem[i].callback, 100)
+          new this.BMapGL.MenuItem(
+            txtMenuItem[i].text,
+            txtMenuItem[i].callback,
+            100
+          )
         );
       }
       this.bdMap.addContextMenu(this.rightMenu);
@@ -845,9 +862,9 @@ export default {
       let EN = bounds.getNorthEast();
       return {
         WS, // 获取西南角的经纬度(左下角)
-        WN: new BMapGL.Point(WS.lng, EN.lat), // 获取西北角的经纬度(左上角)
+        WN: new this.BMapGL.Point(WS.lng, EN.lat), // 获取西北角的经纬度(左上角)
         EN, // 获取东北角的经纬度(右上角)
-        ES: new BMapGL.Point(EN.lng, WS.lat), // 获取东南角的经纬度(右下角)
+        ES: new this.BMapGL.Point(EN.lng, WS.lat), // 获取东南角的经纬度(右下角)
         zoom,
       };
     },
@@ -862,19 +879,20 @@ export default {
     mapChange() {
       this.bdMap.addEventListener("zoomend", (e) => {
         this.viewport = this.getMapViewport();
-        this.$emit("mapChange", this.viewport); // 将更新的数据传给父组件
+        this.$emit("map-change", this.viewport); // 将更新的数据传给父组件
         // console.log(this.viewport, "地图缩放事件");
       });
 
       this.bdMap.addEventListener("dragend", (e) => {
         this.viewport = this.getMapViewport();
-        this.$emit("mapChange", this.viewport); // 将更新的数据传给父组件
+        this.$emit("map-change", this.viewport); // 将更新的数据传给父组件
         // console.log(this.viewport, "地图拖拽事件");
       });
 
       this.bdMap.addEventListener("click", (e) => {
+        console.error("地图点击了", e);
         this.bdMap.closeInfoWindow();
-        this.$emit("mapClick", e);
+        this.$emit("map-click", e);
       });
     },
 
@@ -885,7 +903,6 @@ export default {
   created() {},
   mounted() {
     this.initMap();
-    this.mapChange();
   },
   destroyed() {
     // this.bdMap.removeEventListener('click', handleClick);
