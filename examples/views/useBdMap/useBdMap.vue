@@ -107,7 +107,7 @@ export default {
           customObj: {
             ...item,
             customType: "draw-warning-marker",
-            remark: "百度地图绘制点位示例",
+            remark: "百度地图绘制预警点位",
           },
           isShowInfo: true,
           isFloatShadow: false,
@@ -142,9 +142,9 @@ export default {
           customObj: {
             ...item,
             customType: "draw-default-marker",
-            remark: "百度地图绘制点位示例",
+            remark: "百度地图绘制默认点位",
           },
-          isShowInfo: true,
+          isShowInfo: false,
           isFloatShadow: false,
           isResetMakeIcon: true,
           myChooseIcon: this.$refs.bdMap.getIcon({
@@ -153,10 +153,20 @@ export default {
             height: 33,
           }),
           key: "title",
-          html: `<div style="color: #fff">${item.title}</div>`,
-          offsetX: 10,
-          offsetY: 30,
-          newZoom: 17,
+          isLabelShow: true,
+          labelText: item.title,
+          labelsetX: -30,
+          labelsetY: -66,
+          labelStyle: {
+            color: "#fff", // 文字颜色
+            backgroundColor: "#cf5dda", // 背景颜色，可以使用rgba设置透明度
+            border: "none", // 边框样式
+            borderRadius: "5px", // 边框圆角
+            padding: "5px 10px", // 文本内边距
+            fontSize: "10px", // 字体大小
+            fontWeight: "bold", // 字体粗细
+          },
+          // newZoom: 17,
           resetType: "centerAndZoom",
         });
       });
