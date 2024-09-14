@@ -142,7 +142,7 @@ export default {
      * @time: 2024-09-14 16:01:17
      **/
     handleMapClick(e) {
-      console.log(e, "移除当前选中的点位");
+      console.log(e, "移除当前选中的点位和路段");
       /* 移除当前选中的点位 */
       this.$refs.bdMap.removeOverlay({
         callback: (e) => e.customObj?.isChoose,
@@ -293,6 +293,7 @@ export default {
           },
           isRightDelete: true,
           isViewport: false,
+          resetViewport: true,
         });
       });
     },

@@ -334,6 +334,7 @@ export default {
      * @time: 2024-03-04 10:05:59
      **/
     drawMarker(params = {}) {
+      // todo 解决事件冒泡
       console.log(this.bdMap, "this.bdMap.getCenterAndZoom()");
       // console.log(params, "百度地图DrawMarker");
       let {
@@ -462,28 +463,60 @@ export default {
           strokeColor: "#5298fe",
           strokeWeight: 9,
           strokeOpacity: 1,
-          zIndex: 1000,
+          zIndex: 3,
+        },
+        myChooseStroke = {
+          strokeStyle: "solid",
+          strokeColor: "#FFFFFF",
+          strokeWeight: 9,
+          strokeOpacity: 1,
+          zIndex: 4,
         },
         isRightDelete = false,
-        isViewport = true,
+        isViewport = true, // 调整地图视野【注意：一次性绘制多条线段时不建议使用】
+        resetViewport = false, // 是否在点击线段的时候重置地图视野
+        isResetPolyline = true, // 点击线段后重置线段样式
       } = params;
 
       let pointsGlArr = pointsArr.map(
         (item) => new this.BMapGL.Point(item.lng, item.lat)
       );
       let polyline = new this.BMapGL.Polyline(pointsGlArr, stroke);
+      polyline.setZIndex(stroke.zIndex || 3);
       polyline.customObj = customObj; // 添加自定义参数
       this.bdMap.addOverlay(polyline); // 绘制折线
       if (isViewport) {
         this.bdMap.setViewport(pointsArr); // 调整地图视野
       }
 
-      polyline.addEventListener("click", (e) => {
+      const polylineClick = (e) => {
+        if (resetViewport) {
+          /* 重置地图视野 */
+          this.setViewport(pointsArr);
+        }
+        if (isResetPolyline) {
+          /* 点击线段后重置线段样式 */
+          let myChoosePolyline = new this.BMapGL.Polyline(
+            pointsGlArr,
+            myChooseStroke
+          );
+          myChoosePolyline.customObj = {
+            ...customObj,
+            isChoose: true, // 用于标识该标注是否被选中
+          };
+          this.removeOverlay({
+            callback: (e) => e.customObj?.isChoose,
+          });
+          myChoosePolyline.setZIndex(myChooseStroke.zIndex || 4);
+          this.bdMap.addOverlay(myChoosePolyline);
+        }
         console.error("点击了线段 - drawPolyline", e);
         this.$emit("showPolylineDetail", e.target.customObj); // 通过showPolylineDetail自定义事件，将数据传到父组件
         // todo 解决报错
         // e.stopPropagation() || e.domEvent.stopPropagation(); // 解决 如果zoom层级很小的情况下 点击 紧挨着的线段 会连续触发多次点击事件
-      });
+      };
+
+      polyline.addEventListener("click", polylineClick);
 
       if (isRightDelete) {
         polyline.addEventListener("rightclick", (e) => {
