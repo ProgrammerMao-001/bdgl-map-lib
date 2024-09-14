@@ -103,20 +103,44 @@ export default {
     };
   },
   methods: {
+    /**
+     * @Event 点击点位展示详情
+     * @description:
+     * @author: mhf
+     * @time: 2024-09-14 16:00:24
+     **/
     showMarkerDetail(data) {
       console.log(data, "data");
       this.$message.success(`你点击了${data.title}`);
     },
 
+    /**
+     * @Event 点击线展示详情
+     * @description:
+     * @author: mhf
+     * @time: 2024-09-14 16:00:38
+     **/
     showPolylineDetail(data) {
       console.log(data, "data");
       this.$message.success(`你点击了${data.title}`);
     },
 
+    /**
+     * @Event 地图变化时做的操作【缩放 移动 拖拽】
+     * @description:
+     * @author: mhf
+     * @time: 2024-09-14 16:00:49
+     **/
     handleMapChange(config) {
       console.log(config, "config");
     },
 
+    /**
+     * @Event 地图点击
+     * @description:
+     * @author: mhf
+     * @time: 2024-09-14 16:01:17
+     **/
     handleMapClick(e) {
       console.log(e, "移除当前选中的点位");
       /* 移除当前选中的点位 */
@@ -125,6 +149,12 @@ export default {
       });
     },
 
+    /**
+     * @Event 绘制预警点位
+     * @description:
+     * @author: mhf
+     * @time: 2024-09-14 16:01:31
+     **/
     drawWarningMarker() {
       useBdMapData.markerList.forEach((item) => {
         this.$refs.bdMap.drawMarker({
@@ -160,6 +190,12 @@ export default {
       });
     },
 
+    /**
+     * @Event 绘制默认点位
+     * @description:
+     * @author: mhf
+     * @time: 2024-09-14 16:01:32
+     **/
     drawDefaultMarker() {
       useBdMapData.defaultMarkerList.forEach((item) => {
         this.$refs.bdMap.drawMarker({
@@ -205,6 +241,12 @@ export default {
       });
     },
 
+    /**
+     * @Event 绘制默认线
+     * @description:
+     * @author: mhf
+     * @time: 2024-09-14 16:01:55
+     **/
     drawDefaultLine() {
       useBdMapData.defaultLineList.forEach((road) => {
         this.$refs.bdMap.drawPolyline({
@@ -227,6 +269,12 @@ export default {
       });
     },
 
+    /**
+     * @Event 绘制自定义线
+     * @description:
+     * @author: mhf
+     * @time: 2024-09-14 16:01:55
+     **/
     drawCustomLine() {
       useBdMapData.lineList.forEach((road) => {
         this.$refs.bdMap.drawPolyline({
@@ -249,30 +297,60 @@ export default {
       });
     },
 
+    /**
+     * @Event 移除默认点位
+     * @description:
+     * @author: mhf
+     * @time: 2024-09-14 16:02:15
+     **/
     removeDefaultMarker() {
       this.$refs.bdMap.removeOverlay({
         callback: (e) => e.customObj?.customType === "draw-default-marker",
       });
     },
 
+    /**
+     * @Event 移除预警点位
+     * @description:
+     * @author: mhf
+     * @time: 2024-09-14 16:02:15
+     **/
     removeWarningMarker() {
       this.$refs.bdMap.removeOverlay({
         callback: (e) => e.customObj?.customType === "draw-warning-marker",
       });
     },
 
+    /**
+     * @Event 移除默认线
+     * @description:
+     * @author: mhf
+     * @time: 2024-09-14 16:02:39
+     **/
     removeDefaultLine() {
       this.$refs.bdMap.removeOverlay({
         callback: (e) => e.customObj?.customType === "draw-default-line",
       });
     },
 
+    /**
+     * @Event 移除自定义线
+     * @description:
+     * @author: mhf
+     * @time: 2024-09-14 16:02:39
+     **/
     removeCustomLine() {
       this.$refs.bdMap.removeOverlay({
         callback: (e) => e.customObj?.customType === "draw-custom-line",
       });
     },
 
+    /**
+     * @Event 开启/关闭 路况
+     * @description:
+     * @author: mhf
+     * @time: 2024-09-14 16:03:06
+     **/
     roadCondition(flag) {
       if (flag) {
         this.$refs.bdMap.showRoadCondition({
