@@ -6,27 +6,50 @@
 <template>
   <div class="use-bd-map">
     <div class="btn">
-      <el-button size="small" type="primary" @click="drawDefaultMarker"
-        >绘制默认点位</el-button
-      >
-      <el-button size="small" type="danger" @click="removeDefaultMarker"
-        >移除默认点位</el-button
-      >
-      <el-button size="small" type="primary" @click="drawWarningMarker"
-        >绘制预警点位</el-button
-      >
-      <el-button size="small" type="danger" @click="removeWarningMarker"
-        >移除预警点位</el-button
-      >
-      <el-button size="small" type="primary" @click="roadCondition(true)"
-        >开启路况</el-button
-      >
-      <el-button size="small" type="danger" @click="roadCondition(false)"
-        >关闭路况</el-button
-      >
-      <el-button size="small" type="warning" @click="screenshot"
-        >截图
-      </el-button>
+      <div>
+        <el-button size="small" type="primary" @click="drawDefaultMarker"
+          >绘制默认点位</el-button
+        >
+        <el-button size="small" type="danger" @click="removeDefaultMarker"
+          >移除默认点位</el-button
+        >
+        <el-button size="small" type="primary" @click="drawWarningMarker"
+          >绘制预警点位</el-button
+        >
+        <el-button size="small" type="danger" @click="removeWarningMarker"
+          >移除预警点位</el-button
+        >
+      </div>
+
+      <div>
+        <el-button size="small" type="primary" @click="drawDefaultLine"
+          >绘制默认路线</el-button
+        >
+        <el-button size="small" type="danger" @click="removeDefaultLine"
+          >移除默认路线</el-button
+        >
+        <el-button size="small" type="primary" @click="drawCustomLine"
+          >绘制自定义路线</el-button
+        >
+        <el-button size="small" type="danger" @click="removeCustomLine"
+          >移除自定义路线</el-button
+        >
+      </div>
+
+      <div>
+        <el-button size="small" type="primary" @click="roadCondition(true)"
+          >开启路况</el-button
+        >
+        <el-button size="small" type="danger" @click="roadCondition(false)"
+          >关闭路况</el-button
+        >
+      </div>
+
+      <div>
+        <el-button size="small" type="warning" @click="screenshot"
+          >截图</el-button
+        >
+      </div>
     </div>
 
     <bdMap
@@ -85,6 +108,11 @@ export default {
       this.$message.success(`你点击了${data.title}`);
     },
 
+    showPolylineDetail(data) {
+      console.log(data, "data");
+      this.$message.success(`你点击了${data.title}`);
+    },
+
     handleMapChange(config) {
       console.log(config, "config");
     },
@@ -95,10 +123,6 @@ export default {
       this.$refs.bdMap.removeOverlay({
         callback: (e) => e.customObj?.isChoose,
       });
-    },
-
-    showPolylineDetail(e, autoViewport = false) {
-      console.log(e, "e");
     },
 
     drawWarningMarker() {
@@ -181,6 +205,50 @@ export default {
       });
     },
 
+    drawDefaultLine() {
+      useBdMapData.defaultLineList.forEach((road) => {
+        this.$refs.bdMap.drawPolyline({
+          pointsArr: road.pointsArr,
+          customObj: {
+            ...road,
+            pointsArr: road.pointsArr,
+            customType: "draw-default-line",
+            type: "百度地图绘制默认线路",
+          },
+          stroke: {
+            strokeStyle: "solid",
+            strokeColor: "#0063ff",
+            strokeWeight: 8,
+            strokeOpacity: 1,
+          },
+          isRightDelete: true,
+          isViewport: false,
+        });
+      });
+    },
+
+    drawCustomLine() {
+      useBdMapData.lineList.forEach((road) => {
+        this.$refs.bdMap.drawPolyline({
+          pointsArr: road.pointsArr,
+          customObj: {
+            ...road,
+            pointsArr: road.pointsArr,
+            customType: "draw-custom-line",
+            type: "百度地图绘制自定义线路",
+          },
+          stroke: {
+            strokeStyle: "solid",
+            strokeColor: "#8acdf1",
+            strokeWeight: 8,
+            strokeOpacity: 1,
+          },
+          isRightDelete: true,
+          isViewport: false,
+        });
+      });
+    },
+
     removeDefaultMarker() {
       this.$refs.bdMap.removeOverlay({
         callback: (e) => e.customObj?.customType === "draw-default-marker",
@@ -190,6 +258,18 @@ export default {
     removeWarningMarker() {
       this.$refs.bdMap.removeOverlay({
         callback: (e) => e.customObj?.customType === "draw-warning-marker",
+      });
+    },
+
+    removeDefaultLine() {
+      this.$refs.bdMap.removeOverlay({
+        callback: (e) => e.customObj?.customType === "draw-default-line",
+      });
+    },
+
+    removeCustomLine() {
+      this.$refs.bdMap.removeOverlay({
+        callback: (e) => e.customObj?.customType === "draw-custom-line",
       });
     },
 
@@ -209,6 +289,7 @@ export default {
     mapLoaded(a) {
       console.log("mapLoaded", a);
       this.drawDefaultMarker();
+      this.drawDefaultLine();
     },
 
     screenshot() {
@@ -258,7 +339,6 @@ export default {
     height: auto;
     display: flex;
     flex-direction: column;
-    align-items: center;
 
     .el-button {
       margin: 10px 0 0 10px;

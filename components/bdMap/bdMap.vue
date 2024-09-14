@@ -477,11 +477,14 @@ export default {
       if (isViewport) {
         this.bdMap.setViewport(pointsArr); // 调整地图视野
       }
+
       polyline.addEventListener("click", (e) => {
-        console.log("点击了", e);
-        this.$emit("showPolylineDetail", e.target.customObj); // 接收父组件传来的showPolylineDetail事件（打开详情弹窗）
-        e.domEvent.stopPropagation();
+        console.error("点击了线段 - drawPolyline", e);
+        this.$emit("showPolylineDetail", e.target.customObj); // 通过showPolylineDetail自定义事件，将数据传到父组件
+        // todo 解决报错
+        // e.stopPropagation() || e.domEvent.stopPropagation(); // 解决 如果zoom层级很小的情况下 点击 紧挨着的线段 会连续触发多次点击事件
       });
+
       if (isRightDelete) {
         polyline.addEventListener("rightclick", (e) => {
           let txtMenuItem = [
