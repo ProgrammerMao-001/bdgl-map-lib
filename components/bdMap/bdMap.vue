@@ -904,6 +904,13 @@ export default {
   mounted() {
     this.initMap();
   },
+  beforeDestroy() {
+    // 重要：在组件销毁时移除事件监听器，防止内存泄漏
+    // this.bdMap.removeEventListener("tilesloaded", this.listen_tilesloaded);
+    // this.bdMap.removeEventListener("zoomend", this.mapZoomEnd);
+    // this.bdMap.removeEventListener("dragend", this.mapDragEnd);
+    // this.bdMap.removeEventListener("click", this.mapClick);
+  },
   destroyed() {
     // this.bdMap.removeEventListener('click', handleClick);
   },

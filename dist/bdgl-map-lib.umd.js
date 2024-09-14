@@ -12,12 +12,12 @@ return /******/ (function() { // webpackBootstrap
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 9306:
+/***/ 419:
 /***/ (function(module, __unused_webpack_exports, __webpack_require__) {
 
 
-var isCallable = __webpack_require__(4901);
-var tryToString = __webpack_require__(6823);
+var isCallable = __webpack_require__(6822);
+var tryToString = __webpack_require__(7716);
 
 var $TypeError = TypeError;
 
@@ -30,11 +30,11 @@ module.exports = function (argument) {
 
 /***/ }),
 
-/***/ 8551:
+/***/ 5852:
 /***/ (function(module, __unused_webpack_exports, __webpack_require__) {
 
 
-var isObject = __webpack_require__(34);
+var isObject = __webpack_require__(3489);
 
 var $String = String;
 var $TypeError = TypeError;
@@ -48,13 +48,13 @@ module.exports = function (argument) {
 
 /***/ }),
 
-/***/ 9617:
+/***/ 2672:
 /***/ (function(module, __unused_webpack_exports, __webpack_require__) {
 
 
-var toIndexedObject = __webpack_require__(5397);
-var toAbsoluteIndex = __webpack_require__(5610);
-var lengthOfArrayLike = __webpack_require__(6198);
+var toIndexedObject = __webpack_require__(7282);
+var toAbsoluteIndex = __webpack_require__(3429);
+var lengthOfArrayLike = __webpack_require__(2843);
 
 // `Array.prototype.{ indexOf, includes }` methods implementation
 var createMethod = function (IS_INCLUDES) {
@@ -89,12 +89,12 @@ module.exports = {
 
 /***/ }),
 
-/***/ 4527:
+/***/ 5950:
 /***/ (function(module, __unused_webpack_exports, __webpack_require__) {
 
 
-var DESCRIPTORS = __webpack_require__(3724);
-var isArray = __webpack_require__(4376);
+var DESCRIPTORS = __webpack_require__(2667);
+var isArray = __webpack_require__(7829);
 
 var $TypeError = TypeError;
 // eslint-disable-next-line es/no-object-getownpropertydescriptor -- safe
@@ -123,11 +123,11 @@ module.exports = SILENT_ON_NON_WRITABLE_LENGTH_SET ? function (O, length) {
 
 /***/ }),
 
-/***/ 4576:
+/***/ 3515:
 /***/ (function(module, __unused_webpack_exports, __webpack_require__) {
 
 
-var uncurryThis = __webpack_require__(9504);
+var uncurryThis = __webpack_require__(1671);
 
 var toString = uncurryThis({}.toString);
 var stringSlice = uncurryThis(''.slice);
@@ -139,14 +139,14 @@ module.exports = function (it) {
 
 /***/ }),
 
-/***/ 7740:
+/***/ 6055:
 /***/ (function(module, __unused_webpack_exports, __webpack_require__) {
 
 
-var hasOwn = __webpack_require__(9297);
-var ownKeys = __webpack_require__(5031);
-var getOwnPropertyDescriptorModule = __webpack_require__(7347);
-var definePropertyModule = __webpack_require__(4913);
+var hasOwn = __webpack_require__(6072);
+var ownKeys = __webpack_require__(9814);
+var getOwnPropertyDescriptorModule = __webpack_require__(3570);
+var definePropertyModule = __webpack_require__(1152);
 
 module.exports = function (target, source, exceptions) {
   var keys = ownKeys(source);
@@ -163,13 +163,13 @@ module.exports = function (target, source, exceptions) {
 
 /***/ }),
 
-/***/ 6699:
+/***/ 2398:
 /***/ (function(module, __unused_webpack_exports, __webpack_require__) {
 
 
-var DESCRIPTORS = __webpack_require__(3724);
-var definePropertyModule = __webpack_require__(4913);
-var createPropertyDescriptor = __webpack_require__(6980);
+var DESCRIPTORS = __webpack_require__(2667);
+var definePropertyModule = __webpack_require__(1152);
+var createPropertyDescriptor = __webpack_require__(7477);
 
 module.exports = DESCRIPTORS ? function (object, key, value) {
   return definePropertyModule.f(object, key, createPropertyDescriptor(1, value));
@@ -181,7 +181,7 @@ module.exports = DESCRIPTORS ? function (object, key, value) {
 
 /***/ }),
 
-/***/ 6980:
+/***/ 7477:
 /***/ (function(module) {
 
 
@@ -197,14 +197,14 @@ module.exports = function (bitmap, value) {
 
 /***/ }),
 
-/***/ 6840:
+/***/ 579:
 /***/ (function(module, __unused_webpack_exports, __webpack_require__) {
 
 
-var isCallable = __webpack_require__(4901);
-var definePropertyModule = __webpack_require__(4913);
-var makeBuiltIn = __webpack_require__(283);
-var defineGlobalProperty = __webpack_require__(9433);
+var isCallable = __webpack_require__(6822);
+var definePropertyModule = __webpack_require__(1152);
+var makeBuiltIn = __webpack_require__(3660);
+var defineGlobalProperty = __webpack_require__(1328);
 
 module.exports = function (O, key, value, options) {
   if (!options) options = {};
@@ -232,11 +232,11 @@ module.exports = function (O, key, value, options) {
 
 /***/ }),
 
-/***/ 9433:
+/***/ 1328:
 /***/ (function(module, __unused_webpack_exports, __webpack_require__) {
 
 
-var global = __webpack_require__(4475);
+var global = __webpack_require__(2750);
 
 // eslint-disable-next-line es/no-object-defineproperty -- safe
 var defineProperty = Object.defineProperty;
@@ -252,11 +252,11 @@ module.exports = function (key, value) {
 
 /***/ }),
 
-/***/ 3724:
+/***/ 2667:
 /***/ (function(module, __unused_webpack_exports, __webpack_require__) {
 
 
-var fails = __webpack_require__(9039);
+var fails = __webpack_require__(560);
 
 // Detect IE8's incomplete defineProperty implementation
 module.exports = !fails(function () {
@@ -267,12 +267,12 @@ module.exports = !fails(function () {
 
 /***/ }),
 
-/***/ 4055:
+/***/ 8956:
 /***/ (function(module, __unused_webpack_exports, __webpack_require__) {
 
 
-var global = __webpack_require__(4475);
-var isObject = __webpack_require__(34);
+var global = __webpack_require__(2750);
+var isObject = __webpack_require__(3489);
 
 var document = global.document;
 // typeof document.createElement is 'object' in old IE
@@ -285,7 +285,7 @@ module.exports = function (it) {
 
 /***/ }),
 
-/***/ 6837:
+/***/ 1756:
 /***/ (function(module) {
 
 
@@ -300,7 +300,7 @@ module.exports = function (it) {
 
 /***/ }),
 
-/***/ 9392:
+/***/ 7055:
 /***/ (function(module) {
 
 
@@ -309,12 +309,12 @@ module.exports = typeof navigator != 'undefined' && String(navigator.userAgent) 
 
 /***/ }),
 
-/***/ 7388:
+/***/ 4567:
 /***/ (function(module, __unused_webpack_exports, __webpack_require__) {
 
 
-var global = __webpack_require__(4475);
-var userAgent = __webpack_require__(9392);
+var global = __webpack_require__(2750);
+var userAgent = __webpack_require__(7055);
 
 var process = global.process;
 var Deno = global.Deno;
@@ -344,7 +344,7 @@ module.exports = version;
 
 /***/ }),
 
-/***/ 8727:
+/***/ 3108:
 /***/ (function(module) {
 
 
@@ -362,17 +362,17 @@ module.exports = [
 
 /***/ }),
 
-/***/ 6518:
+/***/ 6071:
 /***/ (function(module, __unused_webpack_exports, __webpack_require__) {
 
 
-var global = __webpack_require__(4475);
-var getOwnPropertyDescriptor = (__webpack_require__(7347).f);
-var createNonEnumerableProperty = __webpack_require__(6699);
-var defineBuiltIn = __webpack_require__(6840);
-var defineGlobalProperty = __webpack_require__(9433);
-var copyConstructorProperties = __webpack_require__(7740);
-var isForced = __webpack_require__(2796);
+var global = __webpack_require__(2750);
+var getOwnPropertyDescriptor = (__webpack_require__(3570).f);
+var createNonEnumerableProperty = __webpack_require__(2398);
+var defineBuiltIn = __webpack_require__(579);
+var defineGlobalProperty = __webpack_require__(1328);
+var copyConstructorProperties = __webpack_require__(6055);
+var isForced = __webpack_require__(3859);
 
 /*
   options.target         - name of the target object
@@ -424,7 +424,7 @@ module.exports = function (options, source) {
 
 /***/ }),
 
-/***/ 9039:
+/***/ 560:
 /***/ (function(module) {
 
 
@@ -439,11 +439,11 @@ module.exports = function (exec) {
 
 /***/ }),
 
-/***/ 616:
+/***/ 1693:
 /***/ (function(module, __unused_webpack_exports, __webpack_require__) {
 
 
-var fails = __webpack_require__(9039);
+var fails = __webpack_require__(560);
 
 module.exports = !fails(function () {
   // eslint-disable-next-line es/no-function-prototype-bind -- safe
@@ -455,11 +455,11 @@ module.exports = !fails(function () {
 
 /***/ }),
 
-/***/ 9565:
+/***/ 2486:
 /***/ (function(module, __unused_webpack_exports, __webpack_require__) {
 
 
-var NATIVE_BIND = __webpack_require__(616);
+var NATIVE_BIND = __webpack_require__(1693);
 
 var call = Function.prototype.call;
 
@@ -470,12 +470,12 @@ module.exports = NATIVE_BIND ? call.bind(call) : function () {
 
 /***/ }),
 
-/***/ 350:
+/***/ 2565:
 /***/ (function(module, __unused_webpack_exports, __webpack_require__) {
 
 
-var DESCRIPTORS = __webpack_require__(3724);
-var hasOwn = __webpack_require__(9297);
+var DESCRIPTORS = __webpack_require__(2667);
+var hasOwn = __webpack_require__(6072);
 
 var FunctionPrototype = Function.prototype;
 // eslint-disable-next-line es/no-object-getownpropertydescriptor -- safe
@@ -495,11 +495,11 @@ module.exports = {
 
 /***/ }),
 
-/***/ 9504:
+/***/ 1671:
 /***/ (function(module, __unused_webpack_exports, __webpack_require__) {
 
 
-var NATIVE_BIND = __webpack_require__(616);
+var NATIVE_BIND = __webpack_require__(1693);
 
 var FunctionPrototype = Function.prototype;
 var call = FunctionPrototype.call;
@@ -514,12 +514,12 @@ module.exports = NATIVE_BIND ? uncurryThisWithBind : function (fn) {
 
 /***/ }),
 
-/***/ 7751:
+/***/ 7522:
 /***/ (function(module, __unused_webpack_exports, __webpack_require__) {
 
 
-var global = __webpack_require__(4475);
-var isCallable = __webpack_require__(4901);
+var global = __webpack_require__(2750);
+var isCallable = __webpack_require__(6822);
 
 var aFunction = function (argument) {
   return isCallable(argument) ? argument : undefined;
@@ -532,12 +532,12 @@ module.exports = function (namespace, method) {
 
 /***/ }),
 
-/***/ 5966:
+/***/ 7147:
 /***/ (function(module, __unused_webpack_exports, __webpack_require__) {
 
 
-var aCallable = __webpack_require__(9306);
-var isNullOrUndefined = __webpack_require__(4117);
+var aCallable = __webpack_require__(419);
+var isNullOrUndefined = __webpack_require__(636);
 
 // `GetMethod` abstract operation
 // https://tc39.es/ecma262/#sec-getmethod
@@ -549,7 +549,7 @@ module.exports = function (V, P) {
 
 /***/ }),
 
-/***/ 4475:
+/***/ 2750:
 /***/ (function(module, __unused_webpack_exports, __webpack_require__) {
 
 
@@ -572,12 +572,12 @@ module.exports =
 
 /***/ }),
 
-/***/ 9297:
+/***/ 6072:
 /***/ (function(module, __unused_webpack_exports, __webpack_require__) {
 
 
-var uncurryThis = __webpack_require__(9504);
-var toObject = __webpack_require__(8981);
+var uncurryThis = __webpack_require__(1671);
+var toObject = __webpack_require__(310);
 
 var hasOwnProperty = uncurryThis({}.hasOwnProperty);
 
@@ -591,7 +591,7 @@ module.exports = Object.hasOwn || function hasOwn(it, key) {
 
 /***/ }),
 
-/***/ 421:
+/***/ 8646:
 /***/ (function(module) {
 
 
@@ -600,13 +600,13 @@ module.exports = {};
 
 /***/ }),
 
-/***/ 5917:
+/***/ 4468:
 /***/ (function(module, __unused_webpack_exports, __webpack_require__) {
 
 
-var DESCRIPTORS = __webpack_require__(3724);
-var fails = __webpack_require__(9039);
-var createElement = __webpack_require__(4055);
+var DESCRIPTORS = __webpack_require__(2667);
+var fails = __webpack_require__(560);
+var createElement = __webpack_require__(8956);
 
 // Thanks to IE8 for its funny defineProperty
 module.exports = !DESCRIPTORS && !fails(function () {
@@ -619,13 +619,13 @@ module.exports = !DESCRIPTORS && !fails(function () {
 
 /***/ }),
 
-/***/ 7055:
+/***/ 1286:
 /***/ (function(module, __unused_webpack_exports, __webpack_require__) {
 
 
-var uncurryThis = __webpack_require__(9504);
-var fails = __webpack_require__(9039);
-var classof = __webpack_require__(4576);
+var uncurryThis = __webpack_require__(1671);
+var fails = __webpack_require__(560);
+var classof = __webpack_require__(3515);
 
 var $Object = Object;
 var split = uncurryThis(''.split);
@@ -642,13 +642,13 @@ module.exports = fails(function () {
 
 /***/ }),
 
-/***/ 3706:
+/***/ 4459:
 /***/ (function(module, __unused_webpack_exports, __webpack_require__) {
 
 
-var uncurryThis = __webpack_require__(9504);
-var isCallable = __webpack_require__(4901);
-var store = __webpack_require__(7629);
+var uncurryThis = __webpack_require__(1671);
+var isCallable = __webpack_require__(6822);
+var store = __webpack_require__(5404);
 
 var functionToString = uncurryThis(Function.toString);
 
@@ -664,18 +664,18 @@ module.exports = store.inspectSource;
 
 /***/ }),
 
-/***/ 1181:
+/***/ 1528:
 /***/ (function(module, __unused_webpack_exports, __webpack_require__) {
 
 
-var NATIVE_WEAK_MAP = __webpack_require__(8622);
-var global = __webpack_require__(4475);
-var isObject = __webpack_require__(34);
-var createNonEnumerableProperty = __webpack_require__(6699);
-var hasOwn = __webpack_require__(9297);
-var shared = __webpack_require__(7629);
-var sharedKey = __webpack_require__(6119);
-var hiddenKeys = __webpack_require__(421);
+var NATIVE_WEAK_MAP = __webpack_require__(2891);
+var global = __webpack_require__(2750);
+var isObject = __webpack_require__(3489);
+var createNonEnumerableProperty = __webpack_require__(2398);
+var hasOwn = __webpack_require__(6072);
+var shared = __webpack_require__(5404);
+var sharedKey = __webpack_require__(8310);
+var hiddenKeys = __webpack_require__(8646);
 
 var OBJECT_ALREADY_INITIALIZED = 'Object already initialized';
 var TypeError = global.TypeError;
@@ -742,11 +742,11 @@ module.exports = {
 
 /***/ }),
 
-/***/ 4376:
+/***/ 7829:
 /***/ (function(module, __unused_webpack_exports, __webpack_require__) {
 
 
-var classof = __webpack_require__(4576);
+var classof = __webpack_require__(3515);
 
 // `IsArray` abstract operation
 // https://tc39.es/ecma262/#sec-isarray
@@ -758,7 +758,7 @@ module.exports = Array.isArray || function isArray(argument) {
 
 /***/ }),
 
-/***/ 4901:
+/***/ 6822:
 /***/ (function(module) {
 
 
@@ -777,12 +777,12 @@ module.exports = typeof documentAll == 'undefined' && documentAll !== undefined 
 
 /***/ }),
 
-/***/ 2796:
+/***/ 3859:
 /***/ (function(module, __unused_webpack_exports, __webpack_require__) {
 
 
-var fails = __webpack_require__(9039);
-var isCallable = __webpack_require__(4901);
+var fails = __webpack_require__(560);
+var isCallable = __webpack_require__(6822);
 
 var replacement = /#|\.prototype\./;
 
@@ -807,7 +807,7 @@ module.exports = isForced;
 
 /***/ }),
 
-/***/ 4117:
+/***/ 636:
 /***/ (function(module) {
 
 
@@ -820,11 +820,11 @@ module.exports = function (it) {
 
 /***/ }),
 
-/***/ 34:
+/***/ 3489:
 /***/ (function(module, __unused_webpack_exports, __webpack_require__) {
 
 
-var isCallable = __webpack_require__(4901);
+var isCallable = __webpack_require__(6822);
 
 module.exports = function (it) {
   return typeof it == 'object' ? it !== null : isCallable(it);
@@ -833,7 +833,7 @@ module.exports = function (it) {
 
 /***/ }),
 
-/***/ 6395:
+/***/ 252:
 /***/ (function(module) {
 
 
@@ -842,14 +842,14 @@ module.exports = false;
 
 /***/ }),
 
-/***/ 757:
+/***/ 7646:
 /***/ (function(module, __unused_webpack_exports, __webpack_require__) {
 
 
-var getBuiltIn = __webpack_require__(7751);
-var isCallable = __webpack_require__(4901);
-var isPrototypeOf = __webpack_require__(1625);
-var USE_SYMBOL_AS_UID = __webpack_require__(7040);
+var getBuiltIn = __webpack_require__(7522);
+var isCallable = __webpack_require__(6822);
+var isPrototypeOf = __webpack_require__(7948);
+var USE_SYMBOL_AS_UID = __webpack_require__(6043);
 
 var $Object = Object;
 
@@ -863,11 +863,11 @@ module.exports = USE_SYMBOL_AS_UID ? function (it) {
 
 /***/ }),
 
-/***/ 6198:
+/***/ 2843:
 /***/ (function(module, __unused_webpack_exports, __webpack_require__) {
 
 
-var toLength = __webpack_require__(8014);
+var toLength = __webpack_require__(7157);
 
 // `LengthOfArrayLike` abstract operation
 // https://tc39.es/ecma262/#sec-lengthofarraylike
@@ -878,18 +878,18 @@ module.exports = function (obj) {
 
 /***/ }),
 
-/***/ 283:
+/***/ 3660:
 /***/ (function(module, __unused_webpack_exports, __webpack_require__) {
 
 
-var uncurryThis = __webpack_require__(9504);
-var fails = __webpack_require__(9039);
-var isCallable = __webpack_require__(4901);
-var hasOwn = __webpack_require__(9297);
-var DESCRIPTORS = __webpack_require__(3724);
-var CONFIGURABLE_FUNCTION_NAME = (__webpack_require__(350).CONFIGURABLE);
-var inspectSource = __webpack_require__(3706);
-var InternalStateModule = __webpack_require__(1181);
+var uncurryThis = __webpack_require__(1671);
+var fails = __webpack_require__(560);
+var isCallable = __webpack_require__(6822);
+var hasOwn = __webpack_require__(6072);
+var DESCRIPTORS = __webpack_require__(2667);
+var CONFIGURABLE_FUNCTION_NAME = (__webpack_require__(2565).CONFIGURABLE);
+var inspectSource = __webpack_require__(4459);
+var InternalStateModule = __webpack_require__(1528);
 
 var enforceInternalState = InternalStateModule.enforce;
 var getInternalState = InternalStateModule.get;
@@ -940,7 +940,7 @@ Function.prototype.toString = makeBuiltIn(function toString() {
 
 /***/ }),
 
-/***/ 741:
+/***/ 868:
 /***/ (function(module) {
 
 
@@ -958,15 +958,15 @@ module.exports = Math.trunc || function trunc(x) {
 
 /***/ }),
 
-/***/ 4913:
+/***/ 1152:
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
-var DESCRIPTORS = __webpack_require__(3724);
-var IE8_DOM_DEFINE = __webpack_require__(5917);
-var V8_PROTOTYPE_DEFINE_BUG = __webpack_require__(8686);
-var anObject = __webpack_require__(8551);
-var toPropertyKey = __webpack_require__(6969);
+var DESCRIPTORS = __webpack_require__(2667);
+var IE8_DOM_DEFINE = __webpack_require__(4468);
+var V8_PROTOTYPE_DEFINE_BUG = __webpack_require__(3145);
+var anObject = __webpack_require__(5852);
+var toPropertyKey = __webpack_require__(9242);
 
 var $TypeError = TypeError;
 // eslint-disable-next-line es/no-object-defineproperty -- safe
@@ -1009,18 +1009,18 @@ exports.f = DESCRIPTORS ? V8_PROTOTYPE_DEFINE_BUG ? function defineProperty(O, P
 
 /***/ }),
 
-/***/ 7347:
+/***/ 3570:
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
-var DESCRIPTORS = __webpack_require__(3724);
-var call = __webpack_require__(9565);
-var propertyIsEnumerableModule = __webpack_require__(8773);
-var createPropertyDescriptor = __webpack_require__(6980);
-var toIndexedObject = __webpack_require__(5397);
-var toPropertyKey = __webpack_require__(6969);
-var hasOwn = __webpack_require__(9297);
-var IE8_DOM_DEFINE = __webpack_require__(5917);
+var DESCRIPTORS = __webpack_require__(2667);
+var call = __webpack_require__(2486);
+var propertyIsEnumerableModule = __webpack_require__(8658);
+var createPropertyDescriptor = __webpack_require__(7477);
+var toIndexedObject = __webpack_require__(7282);
+var toPropertyKey = __webpack_require__(9242);
+var hasOwn = __webpack_require__(6072);
+var IE8_DOM_DEFINE = __webpack_require__(4468);
 
 // eslint-disable-next-line es/no-object-getownpropertydescriptor -- safe
 var $getOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
@@ -1039,12 +1039,12 @@ exports.f = DESCRIPTORS ? $getOwnPropertyDescriptor : function getOwnPropertyDes
 
 /***/ }),
 
-/***/ 8480:
+/***/ 5719:
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
-var internalObjectKeys = __webpack_require__(1828);
-var enumBugKeys = __webpack_require__(8727);
+var internalObjectKeys = __webpack_require__(7401);
+var enumBugKeys = __webpack_require__(3108);
 
 var hiddenKeys = enumBugKeys.concat('length', 'prototype');
 
@@ -1058,7 +1058,7 @@ exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
 
 /***/ }),
 
-/***/ 3717:
+/***/ 3694:
 /***/ (function(__unused_webpack_module, exports) {
 
 
@@ -1068,26 +1068,26 @@ exports.f = Object.getOwnPropertySymbols;
 
 /***/ }),
 
-/***/ 1625:
+/***/ 7948:
 /***/ (function(module, __unused_webpack_exports, __webpack_require__) {
 
 
-var uncurryThis = __webpack_require__(9504);
+var uncurryThis = __webpack_require__(1671);
 
 module.exports = uncurryThis({}.isPrototypeOf);
 
 
 /***/ }),
 
-/***/ 1828:
+/***/ 7401:
 /***/ (function(module, __unused_webpack_exports, __webpack_require__) {
 
 
-var uncurryThis = __webpack_require__(9504);
-var hasOwn = __webpack_require__(9297);
-var toIndexedObject = __webpack_require__(5397);
-var indexOf = (__webpack_require__(9617).indexOf);
-var hiddenKeys = __webpack_require__(421);
+var uncurryThis = __webpack_require__(1671);
+var hasOwn = __webpack_require__(6072);
+var toIndexedObject = __webpack_require__(7282);
+var indexOf = (__webpack_require__(2672).indexOf);
+var hiddenKeys = __webpack_require__(8646);
 
 var push = uncurryThis([].push);
 
@@ -1107,7 +1107,7 @@ module.exports = function (object, names) {
 
 /***/ }),
 
-/***/ 8773:
+/***/ 8658:
 /***/ (function(__unused_webpack_module, exports) {
 
 
@@ -1128,13 +1128,13 @@ exports.f = NASHORN_BUG ? function propertyIsEnumerable(V) {
 
 /***/ }),
 
-/***/ 4270:
+/***/ 4481:
 /***/ (function(module, __unused_webpack_exports, __webpack_require__) {
 
 
-var call = __webpack_require__(9565);
-var isCallable = __webpack_require__(4901);
-var isObject = __webpack_require__(34);
+var call = __webpack_require__(2486);
+var isCallable = __webpack_require__(6822);
+var isObject = __webpack_require__(3489);
 
 var $TypeError = TypeError;
 
@@ -1151,15 +1151,15 @@ module.exports = function (input, pref) {
 
 /***/ }),
 
-/***/ 5031:
+/***/ 9814:
 /***/ (function(module, __unused_webpack_exports, __webpack_require__) {
 
 
-var getBuiltIn = __webpack_require__(7751);
-var uncurryThis = __webpack_require__(9504);
-var getOwnPropertyNamesModule = __webpack_require__(8480);
-var getOwnPropertySymbolsModule = __webpack_require__(3717);
-var anObject = __webpack_require__(8551);
+var getBuiltIn = __webpack_require__(7522);
+var uncurryThis = __webpack_require__(1671);
+var getOwnPropertyNamesModule = __webpack_require__(5719);
+var getOwnPropertySymbolsModule = __webpack_require__(3694);
+var anObject = __webpack_require__(5852);
 
 var concat = uncurryThis([].concat);
 
@@ -1173,11 +1173,11 @@ module.exports = getBuiltIn('Reflect', 'ownKeys') || function ownKeys(it) {
 
 /***/ }),
 
-/***/ 7750:
+/***/ 8939:
 /***/ (function(module, __unused_webpack_exports, __webpack_require__) {
 
 
-var isNullOrUndefined = __webpack_require__(4117);
+var isNullOrUndefined = __webpack_require__(636);
 
 var $TypeError = TypeError;
 
@@ -1191,12 +1191,12 @@ module.exports = function (it) {
 
 /***/ }),
 
-/***/ 6119:
+/***/ 8310:
 /***/ (function(module, __unused_webpack_exports, __webpack_require__) {
 
 
-var shared = __webpack_require__(5745);
-var uid = __webpack_require__(3392);
+var shared = __webpack_require__(1300);
+var uid = __webpack_require__(2599);
 
 var keys = shared('keys');
 
@@ -1207,13 +1207,13 @@ module.exports = function (key) {
 
 /***/ }),
 
-/***/ 7629:
+/***/ 5404:
 /***/ (function(module, __unused_webpack_exports, __webpack_require__) {
 
 
-var IS_PURE = __webpack_require__(6395);
-var globalThis = __webpack_require__(4475);
-var defineGlobalProperty = __webpack_require__(9433);
+var IS_PURE = __webpack_require__(252);
+var globalThis = __webpack_require__(2750);
+var defineGlobalProperty = __webpack_require__(1328);
 
 var SHARED = '__core-js_shared__';
 var store = module.exports = globalThis[SHARED] || defineGlobalProperty(SHARED, {});
@@ -1229,11 +1229,11 @@ var store = module.exports = globalThis[SHARED] || defineGlobalProperty(SHARED, 
 
 /***/ }),
 
-/***/ 5745:
+/***/ 1300:
 /***/ (function(module, __unused_webpack_exports, __webpack_require__) {
 
 
-var store = __webpack_require__(7629);
+var store = __webpack_require__(5404);
 
 module.exports = function (key, value) {
   return store[key] || (store[key] = value || {});
@@ -1242,14 +1242,14 @@ module.exports = function (key, value) {
 
 /***/ }),
 
-/***/ 4495:
+/***/ 9474:
 /***/ (function(module, __unused_webpack_exports, __webpack_require__) {
 
 
 /* eslint-disable es/no-symbol -- required for testing */
-var V8_VERSION = __webpack_require__(7388);
-var fails = __webpack_require__(9039);
-var global = __webpack_require__(4475);
+var V8_VERSION = __webpack_require__(4567);
+var fails = __webpack_require__(560);
+var global = __webpack_require__(2750);
 
 var $String = global.String;
 
@@ -1268,11 +1268,11 @@ module.exports = !!Object.getOwnPropertySymbols && !fails(function () {
 
 /***/ }),
 
-/***/ 5610:
+/***/ 3429:
 /***/ (function(module, __unused_webpack_exports, __webpack_require__) {
 
 
-var toIntegerOrInfinity = __webpack_require__(1291);
+var toIntegerOrInfinity = __webpack_require__(3790);
 
 var max = Math.max;
 var min = Math.min;
@@ -1288,13 +1288,13 @@ module.exports = function (index, length) {
 
 /***/ }),
 
-/***/ 5397:
+/***/ 7282:
 /***/ (function(module, __unused_webpack_exports, __webpack_require__) {
 
 
 // toObject with fallback for non-array-like ES3 strings
-var IndexedObject = __webpack_require__(7055);
-var requireObjectCoercible = __webpack_require__(7750);
+var IndexedObject = __webpack_require__(1286);
+var requireObjectCoercible = __webpack_require__(8939);
 
 module.exports = function (it) {
   return IndexedObject(requireObjectCoercible(it));
@@ -1303,11 +1303,11 @@ module.exports = function (it) {
 
 /***/ }),
 
-/***/ 1291:
+/***/ 3790:
 /***/ (function(module, __unused_webpack_exports, __webpack_require__) {
 
 
-var trunc = __webpack_require__(741);
+var trunc = __webpack_require__(868);
 
 // `ToIntegerOrInfinity` abstract operation
 // https://tc39.es/ecma262/#sec-tointegerorinfinity
@@ -1320,11 +1320,11 @@ module.exports = function (argument) {
 
 /***/ }),
 
-/***/ 8014:
+/***/ 7157:
 /***/ (function(module, __unused_webpack_exports, __webpack_require__) {
 
 
-var toIntegerOrInfinity = __webpack_require__(1291);
+var toIntegerOrInfinity = __webpack_require__(3790);
 
 var min = Math.min;
 
@@ -1338,11 +1338,11 @@ module.exports = function (argument) {
 
 /***/ }),
 
-/***/ 8981:
+/***/ 310:
 /***/ (function(module, __unused_webpack_exports, __webpack_require__) {
 
 
-var requireObjectCoercible = __webpack_require__(7750);
+var requireObjectCoercible = __webpack_require__(8939);
 
 var $Object = Object;
 
@@ -1355,16 +1355,16 @@ module.exports = function (argument) {
 
 /***/ }),
 
-/***/ 2777:
+/***/ 8864:
 /***/ (function(module, __unused_webpack_exports, __webpack_require__) {
 
 
-var call = __webpack_require__(9565);
-var isObject = __webpack_require__(34);
-var isSymbol = __webpack_require__(757);
-var getMethod = __webpack_require__(5966);
-var ordinaryToPrimitive = __webpack_require__(4270);
-var wellKnownSymbol = __webpack_require__(8227);
+var call = __webpack_require__(2486);
+var isObject = __webpack_require__(3489);
+var isSymbol = __webpack_require__(7646);
+var getMethod = __webpack_require__(7147);
+var ordinaryToPrimitive = __webpack_require__(4481);
+var wellKnownSymbol = __webpack_require__(6772);
 
 var $TypeError = TypeError;
 var TO_PRIMITIVE = wellKnownSymbol('toPrimitive');
@@ -1388,12 +1388,12 @@ module.exports = function (input, pref) {
 
 /***/ }),
 
-/***/ 6969:
+/***/ 9242:
 /***/ (function(module, __unused_webpack_exports, __webpack_require__) {
 
 
-var toPrimitive = __webpack_require__(2777);
-var isSymbol = __webpack_require__(757);
+var toPrimitive = __webpack_require__(8864);
+var isSymbol = __webpack_require__(7646);
 
 // `ToPropertyKey` abstract operation
 // https://tc39.es/ecma262/#sec-topropertykey
@@ -1405,7 +1405,7 @@ module.exports = function (argument) {
 
 /***/ }),
 
-/***/ 6823:
+/***/ 7716:
 /***/ (function(module) {
 
 
@@ -1422,11 +1422,11 @@ module.exports = function (argument) {
 
 /***/ }),
 
-/***/ 3392:
+/***/ 2599:
 /***/ (function(module, __unused_webpack_exports, __webpack_require__) {
 
 
-var uncurryThis = __webpack_require__(9504);
+var uncurryThis = __webpack_require__(1671);
 
 var id = 0;
 var postfix = Math.random();
@@ -1439,12 +1439,12 @@ module.exports = function (key) {
 
 /***/ }),
 
-/***/ 7040:
+/***/ 6043:
 /***/ (function(module, __unused_webpack_exports, __webpack_require__) {
 
 
 /* eslint-disable es/no-symbol -- required for testing */
-var NATIVE_SYMBOL = __webpack_require__(4495);
+var NATIVE_SYMBOL = __webpack_require__(9474);
 
 module.exports = NATIVE_SYMBOL
   && !Symbol.sham
@@ -1453,12 +1453,12 @@ module.exports = NATIVE_SYMBOL
 
 /***/ }),
 
-/***/ 8686:
+/***/ 3145:
 /***/ (function(module, __unused_webpack_exports, __webpack_require__) {
 
 
-var DESCRIPTORS = __webpack_require__(3724);
-var fails = __webpack_require__(9039);
+var DESCRIPTORS = __webpack_require__(2667);
+var fails = __webpack_require__(560);
 
 // V8 ~ Chrome 36-
 // https://bugs.chromium.org/p/v8/issues/detail?id=3334
@@ -1473,12 +1473,12 @@ module.exports = DESCRIPTORS && fails(function () {
 
 /***/ }),
 
-/***/ 8622:
+/***/ 2891:
 /***/ (function(module, __unused_webpack_exports, __webpack_require__) {
 
 
-var global = __webpack_require__(4475);
-var isCallable = __webpack_require__(4901);
+var global = __webpack_require__(2750);
+var isCallable = __webpack_require__(6822);
 
 var WeakMap = global.WeakMap;
 
@@ -1487,16 +1487,16 @@ module.exports = isCallable(WeakMap) && /native code/.test(String(WeakMap));
 
 /***/ }),
 
-/***/ 8227:
+/***/ 6772:
 /***/ (function(module, __unused_webpack_exports, __webpack_require__) {
 
 
-var global = __webpack_require__(4475);
-var shared = __webpack_require__(5745);
-var hasOwn = __webpack_require__(9297);
-var uid = __webpack_require__(3392);
-var NATIVE_SYMBOL = __webpack_require__(4495);
-var USE_SYMBOL_AS_UID = __webpack_require__(7040);
+var global = __webpack_require__(2750);
+var shared = __webpack_require__(1300);
+var hasOwn = __webpack_require__(6072);
+var uid = __webpack_require__(2599);
+var NATIVE_SYMBOL = __webpack_require__(9474);
+var USE_SYMBOL_AS_UID = __webpack_require__(6043);
 
 var Symbol = global.Symbol;
 var WellKnownSymbolsStore = shared('wks');
@@ -1513,16 +1513,16 @@ module.exports = function (name) {
 
 /***/ }),
 
-/***/ 4114:
+/***/ 381:
 /***/ (function(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
 
 
-var $ = __webpack_require__(6518);
-var toObject = __webpack_require__(8981);
-var lengthOfArrayLike = __webpack_require__(6198);
-var setArrayLength = __webpack_require__(4527);
-var doesNotExceedSafeInteger = __webpack_require__(6837);
-var fails = __webpack_require__(9039);
+var $ = __webpack_require__(6071);
+var toObject = __webpack_require__(310);
+var lengthOfArrayLike = __webpack_require__(2843);
+var setArrayLength = __webpack_require__(5950);
+var doesNotExceedSafeInteger = __webpack_require__(1756);
+var fails = __webpack_require__(560);
 
 var INCORRECT_TO_LENGTH = fails(function () {
   return [].push.call({ length: 0x100000000 }, 1) !== 4294967297;
@@ -1811,7 +1811,7 @@ $({ target: 'Array', proto: true, arity: 1, forced: FORCED }, {
 /******/ 		};
 /******/ 		
 /******/ 		__webpack_require__.f.miniCss = function(chunkId, promises) {
-/******/ 			var cssChunks = {"714":1};
+/******/ 			var cssChunks = {"963":1};
 /******/ 			if(installedCssChunks[chunkId]) promises.push(installedCssChunks[chunkId]);
 /******/ 			else if(installedCssChunks[chunkId] !== 0 && cssChunks[chunkId]) {
 /******/ 				promises.push(installedCssChunks[chunkId] = loadStylesheet(chunkId).then(function() {
@@ -1924,8 +1924,6 @@ $({ target: 'Array', proto: true, arity: 1, forced: FORCED }, {
 /******/ 	
 /************************************************************************/
 var __webpack_exports__ = {};
-// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
-!function() {
 // ESM COMPAT FLAG
 __webpack_require__.r(__webpack_exports__);
 
@@ -1934,7 +1932,7 @@ __webpack_require__.d(__webpack_exports__, {
   "default": function() { return /* binding */ entry_lib; }
 });
 
-;// CONCATENATED MODULE: ./node_modules/@vue/cli-service/lib/commands/build/setPublicPath.js
+;// CONCATENATED MODULE: ./node_modules/.pnpm/@vue+cli-service@5.0.8_vgqb3v6m2ynwvuzumqmye2vzna/node_modules/@vue/cli-service/lib/commands/build/setPublicPath.js
 /* eslint-disable no-var */
 // This file is imported into lib/wc client bundles.
 
@@ -1951,7 +1949,7 @@ if (typeof window !== 'undefined') {
 // Indicate to webpack that this file can be concatenated
 /* harmony default export */ var setPublicPath = (null);
 
-;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-82.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[3]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./components/demo/src/main.vue?vue&type=template&id=05ab3702&scoped=true
+;// CONCATENATED MODULE: ./node_modules/.pnpm/thread-loader@3.0.4_webpack@5.93.0/node_modules/thread-loader/dist/cjs.js!./node_modules/.pnpm/babel-loader@8.3.0_ce2ekrksu4bikkggd5ymmdtq6i/node_modules/babel-loader/lib/index.js??clonedRuleSet-82.use[1]!./node_modules/.pnpm/vue-loader@15.11.1_d3fwwjlxcdz26pihteszkgpun4/node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[3]!./node_modules/.pnpm/vue-loader@15.11.1_d3fwwjlxcdz26pihteszkgpun4/node_modules/vue-loader/lib/index.js??vue-loader-options!./components/demo/src/main.vue?vue&type=template&id=05ab3702&scoped=true
 var render = function render() {
   var _vm = this,
     _c = _vm._self._c;
@@ -1969,7 +1967,7 @@ var staticRenderFns = [function () {
 
 ;// CONCATENATED MODULE: ./components/demo/src/main.vue?vue&type=template&id=05ab3702&scoped=true
 
-;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-82.use[1]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./components/demo/src/main.vue?vue&type=script&lang=js
+;// CONCATENATED MODULE: ./node_modules/.pnpm/thread-loader@3.0.4_webpack@5.93.0/node_modules/thread-loader/dist/cjs.js!./node_modules/.pnpm/babel-loader@8.3.0_ce2ekrksu4bikkggd5ymmdtq6i/node_modules/babel-loader/lib/index.js??clonedRuleSet-82.use[1]!./node_modules/.pnpm/vue-loader@15.11.1_d3fwwjlxcdz26pihteszkgpun4/node_modules/vue-loader/lib/index.js??vue-loader-options!./components/demo/src/main.vue?vue&type=script&lang=js
 /* harmony default export */ var mainvue_type_script_lang_js = ({
   name: "demo-main",
   components: {},
@@ -1988,12 +1986,12 @@ var staticRenderFns = [function () {
 });
 ;// CONCATENATED MODULE: ./components/demo/src/main.vue?vue&type=script&lang=js
  /* harmony default export */ var src_mainvue_type_script_lang_js = (mainvue_type_script_lang_js); 
-;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-64.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-64.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-64.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-64.use[3]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./components/demo/src/main.vue?vue&type=style&index=0&id=05ab3702&prod&lang=scss&scoped=true
+;// CONCATENATED MODULE: ./node_modules/.pnpm/mini-css-extract-plugin@2.9.0_webpack@5.93.0/node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-64.use[0]!./node_modules/.pnpm/css-loader@6.11.0_webpack@5.93.0/node_modules/css-loader/dist/cjs.js??clonedRuleSet-64.use[1]!./node_modules/.pnpm/vue-loader@15.11.1_d3fwwjlxcdz26pihteszkgpun4/node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/.pnpm/postcss-loader@6.2.1_zs77g4opexpjlazxpbaplvsl5m/node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-64.use[2]!./node_modules/.pnpm/sass-loader@8.0.2_i4l4nmociu5xhprmi6hdovwxki/node_modules/sass-loader/dist/cjs.js??clonedRuleSet-64.use[3]!./node_modules/.pnpm/vue-loader@15.11.1_d3fwwjlxcdz26pihteszkgpun4/node_modules/vue-loader/lib/index.js??vue-loader-options!./components/demo/src/main.vue?vue&type=style&index=0&id=05ab3702&prod&lang=scss&scoped=true
 // extracted by mini-css-extract-plugin
 
 ;// CONCATENATED MODULE: ./components/demo/src/main.vue?vue&type=style&index=0&id=05ab3702&prod&lang=scss&scoped=true
 
-;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/runtime/componentNormalizer.js
+;// CONCATENATED MODULE: ./node_modules/.pnpm/vue-loader@15.11.1_d3fwwjlxcdz26pihteszkgpun4/node_modules/vue-loader/lib/runtime/componentNormalizer.js
 /* globals __VUE_SSR_CONTEXT__ */
 
 // IMPORTANT: Do NOT use ES2015 features in this file (except for modules).
@@ -2118,24 +2116,13 @@ main.install = Vue => {
   Vue.component(main.name, main);
 };
 /* harmony default export */ var demo = (main);
-;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-82.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[3]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./components/mapComps/mapComps.vue?vue&type=template&id=9c28377c&scoped=true
-var mapCompsvue_type_template_id_9c28377c_scoped_true_render = function render() {
+;// CONCATENATED MODULE: ./node_modules/.pnpm/thread-loader@3.0.4_webpack@5.93.0/node_modules/thread-loader/dist/cjs.js!./node_modules/.pnpm/babel-loader@8.3.0_ce2ekrksu4bikkggd5ymmdtq6i/node_modules/babel-loader/lib/index.js??clonedRuleSet-82.use[1]!./node_modules/.pnpm/vue-loader@15.11.1_d3fwwjlxcdz26pihteszkgpun4/node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[3]!./node_modules/.pnpm/vue-loader@15.11.1_d3fwwjlxcdz26pihteszkgpun4/node_modules/vue-loader/lib/index.js??vue-loader-options!./components/mapComps/mapComps.vue?vue&type=template&id=80bd0c90&scoped=true
+var mapCompsvue_type_template_id_80bd0c90_scoped_true_render = function render() {
   var _vm = this,
     _c = _vm._self._c;
   return _c('div', {
     staticClass: "map-comps"
-  }, [_vm.mapType === 'aMap' ? _c('aMap', {
-    ref: "aMap",
-    attrs: {
-      "mapConfig": _vm.aMapConfig
-    },
-    on: {
-      "showMarkerDetail": _vm.showMarkerDetail,
-      "showPolylineDetail": _vm.showPolylineDetail,
-      "showPolygonDetail": _vm.showPolygonDetail,
-      "return-sectionObj": _vm.getSectionObj
-    }
-  }) : _vm._e(), _vm.mapType === 'bdMap' ? _c('bdMap', {
+  }, [_vm.mapType === 'bdMap' ? _c('bdMap', {
     ref: "bdMap",
     attrs: {
       "mapConfig": _vm.bdMapConfig,
@@ -2145,208 +2132,18 @@ var mapCompsvue_type_template_id_9c28377c_scoped_true_render = function render()
       "showMarkerDetail": _vm.showMarkerDetail,
       "showPolylineDetail": _vm.showPolylineDetail,
       "showPolygonDetail": _vm.showPolygonDetail,
+      "showCustomOverlayDetail": _vm.showCustomOverlayDetail,
       "return-sectionObj": _vm.getSectionObj,
-      "mapChange": _vm.mapChange
+      "mapChange": _vm.mapChange,
+      "mapClick": _vm.mapClick,
+      "returnCustomOverlay": _vm.getCustomOverlay
     }
-  }) : _vm._e(), _vm.mapType === 'tdMap' ? _c('tdMap') : _vm._e(), _vm.mapType === 'leafletMap' ? _c('leafletMap') : _vm._e()], 1);
+  }) : _vm._e()], 1);
 };
-var mapCompsvue_type_template_id_9c28377c_scoped_true_staticRenderFns = [];
+var mapCompsvue_type_template_id_80bd0c90_scoped_true_staticRenderFns = [];
 
-;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-82.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[3]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./components/mapComps/aMap/aMap.vue?vue&type=template&id=bdeda10e&scoped=true
-var aMapvue_type_template_id_bdeda10e_scoped_true_render = function render() {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c('div', {
-    attrs: {
-      "id": "map-container"
-    }
-  });
-};
-var aMapvue_type_template_id_bdeda10e_scoped_true_staticRenderFns = [];
-
-;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-82.use[1]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./components/mapComps/aMap/aMap.vue?vue&type=script&lang=js
-/* harmony default export */ var aMapvue_type_script_lang_js = ({
-  name: "aMap",
-  components: {},
-  mixins: [],
-  props: {},
-  computed: {
-    mapConfig() {
-      return this.$attrs.mapConfig;
-    } // 获取所有的mapComps传来的props
-  },
-  watch: {},
-  filters: {},
-  data() {
-    return {};
-  },
-  methods: {
-    initMap() {
-      var map = new AMap.Map("map-container", {
-        rotateEnable: false,
-        //是否开启地图旋转交互 鼠标右键 + 鼠标画圈移动 或 键盘Ctrl + 鼠标画圈移动
-        pitchEnable: true,
-        // 是否开启地图倾斜交互 鼠标右键 + 鼠标上下移动或键盘Ctrl + 鼠标上下移动
-        zoom: this.mapConfig.zoom,
-        //初始化地图层级
-        pitch: this.mapConfig.pitch,
-        // 地图俯仰角度，有效范围 0 度- 83 度
-        rotation: this.mapConfig.rotation,
-        //初始地图顺时针旋转的角度
-        viewMode: "3D",
-        //开启3D视图,默认为关闭
-        zooms: [2, 20],
-        //地图显示的缩放级别范围
-        center: [this.mapConfig.center.lng, this.mapConfig.center.lat],
-        //初始地图中心经纬度
-        terrain: true // 开启地形图
-      });
-      AMap.plugin(["AMap.ControlBar", "AMap.ToolBar"], function () {
-        //异步加载插件
-        var controlBar = new AMap.ControlBar({
-          //控制地图旋转插件
-          position: {
-            right: "20px",
-            bottom: "100px"
-          }
-        });
-        map.addControl(controlBar);
-        var toolBar = new AMap.ToolBar({
-          //地图缩放插件
-          position: {
-            right: "20px",
-            bottom: "20px"
-          }
-        });
-        map.addControl(toolBar);
-      });
-    },
-    /**
-     * 添加点标记,实现悬浮信息窗体和点击事件 this.drawMarker({obj: {lng: 116.404, lat: 39.119}})
-     * @param:
-     * @return:
-     * @author: mhf
-     * @time: 2024-03-04 10:05:59
-     **/
-    drawMarker(params) {
-      console.log(params, "高德地图DrawMarker");
-      this.setMapCenterAndZoom();
-      this.$emit("showMarkerDetail", {}); // 展示点位详情
-    },
-    /**
-     * 添加线，并实现点击事件
-     * @param:
-     * @return:
-     * @author: mhf
-     * @time: 2024-03-06 13:11:14
-     **/
-    drawPolyline(params) {
-      console.log(params, "高德地图DrawPolyline");
-      this.$emit("showPolylineDetail", {}); // 接收父组件传来的showPolylineDetail事件（打开详情弹窗）
-    },
-    /**
-     * 添加面，并实现点击事件
-     * @param:
-     * @return:
-     * @author: mhf
-     * @time: 2024-03-06 13:11:14
-     **/
-    drawPolygon(params) {
-      console.log(params, "高德地图drawPolygon");
-      this.$emit("showPolygonDetail", {}); // 接收父组件传来的showPolygonDetail事件（打开详情弹窗）
-    },
-    /**
-     * 获取点位的自定义图标
-     * @param:
-     * @return:
-     * @author: mhf
-     * @time: 2024-03-04 10:20:50
-     **/
-    getIcon(params) {
-      console.log(params, "高德地图GetIcon");
-    },
-    /**
-     * 设置地图中心点和缩放层级
-     * @param: params：{lat: 纬度, lng: 经度, zoom: 缩放层级}
-     * @param:
-     * @return:
-     * @author: mhf
-     * @time: 2024-03-04 16:22:17
-     **/
-    setMapCenterAndZoom(params = {}) {
-      console.log(params, "高德地图SetMapCenterAndZoom");
-    },
-    /**
-     * 移除对应的 点位/线段
-     * @param:
-     * @return:
-     * @author: mhf
-     * @time: 2024-03-04 14:07:27
-     **/
-    removeOverlay(params) {
-      console.log(params, "高德地图RemoveOverlay");
-    },
-    /**
-     * 实现指定路段的实时路况图层
-     * @param:
-     * @return: sectionObj: 路段的信息
-     * @author: mhf
-     * @time: 2024-03-05 17:12:48
-     **/
-    showRoadCondition(params) {
-      console.log(params, "高德地图ShowRoadCondition");
-      let sectionObj = {
-        a: 1
-      };
-      this.$emit("return-sectionObj", sectionObj); // 将路段信息传递给父组件
-    },
-    /**
-     * 自适应地图里面的图层，如：绘制线段、面或者多个点的时候，使用此方法可自动将绘制的图层调整到合适的区域和层级
-     * @param:
-     * @return:
-     * @author: mhf
-     * @time: 2024-03-07 14:48:53
-     **/
-    setViewport(pointsArr) {
-      console.log(pointsArr, "高德地图SetViewport");
-    }
-  },
-  created() {},
-  mounted() {
-    this.initMap();
-  },
-  destroyed() {}
-});
-;// CONCATENATED MODULE: ./components/mapComps/aMap/aMap.vue?vue&type=script&lang=js
- /* harmony default export */ var aMap_aMapvue_type_script_lang_js = (aMapvue_type_script_lang_js); 
-;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-64.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-64.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-64.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-64.use[3]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./components/mapComps/aMap/aMap.vue?vue&type=style&index=0&id=bdeda10e&prod&lang=scss&scoped=true
-// extracted by mini-css-extract-plugin
-
-;// CONCATENATED MODULE: ./components/mapComps/aMap/aMap.vue?vue&type=style&index=0&id=bdeda10e&prod&lang=scss&scoped=true
-
-;// CONCATENATED MODULE: ./components/mapComps/aMap/aMap.vue
-
-
-
-;
-
-
-/* normalize component */
-
-var aMap_component = normalizeComponent(
-  aMap_aMapvue_type_script_lang_js,
-  aMapvue_type_template_id_bdeda10e_scoped_true_render,
-  aMapvue_type_template_id_bdeda10e_scoped_true_staticRenderFns,
-  false,
-  null,
-  "bdeda10e",
-  null
-  
-)
-
-/* harmony default export */ var aMap = (aMap_component.exports);
-;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-82.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[3]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./components/mapComps/bdMap/bdMap.vue?vue&type=template&id=5a2fc331&scoped=true
-var bdMapvue_type_template_id_5a2fc331_scoped_true_render = function render() {
+;// CONCATENATED MODULE: ./node_modules/.pnpm/thread-loader@3.0.4_webpack@5.93.0/node_modules/thread-loader/dist/cjs.js!./node_modules/.pnpm/babel-loader@8.3.0_ce2ekrksu4bikkggd5ymmdtq6i/node_modules/babel-loader/lib/index.js??clonedRuleSet-82.use[1]!./node_modules/.pnpm/vue-loader@15.11.1_d3fwwjlxcdz26pihteszkgpun4/node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[3]!./node_modules/.pnpm/vue-loader@15.11.1_d3fwwjlxcdz26pihteszkgpun4/node_modules/vue-loader/lib/index.js??vue-loader-options!./components/mapComps/bdMap/bdMap.vue?vue&type=template&id=9d7de886&scoped=true
+var bdMapvue_type_template_id_9d7de886_scoped_true_render = function render() {
   var _vm = this,
     _c = _vm._self._c;
   return _c('div', {
@@ -2361,11 +2158,11 @@ var bdMapvue_type_template_id_5a2fc331_scoped_true_render = function render() {
     }
   })], 1);
 };
-var bdMapvue_type_template_id_5a2fc331_scoped_true_staticRenderFns = [];
+var bdMapvue_type_template_id_9d7de886_scoped_true_staticRenderFns = [];
 
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.push.js
-var es_array_push = __webpack_require__(4114);
-;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-82.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[3]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./components/mapComps/bdMap/bdMapVGl.vue?vue&type=template&id=51c898b5
+// EXTERNAL MODULE: ./node_modules/.pnpm/core-js@3.37.1/node_modules/core-js/modules/es.array.push.js
+var es_array_push = __webpack_require__(381);
+;// CONCATENATED MODULE: ./node_modules/.pnpm/thread-loader@3.0.4_webpack@5.93.0/node_modules/thread-loader/dist/cjs.js!./node_modules/.pnpm/babel-loader@8.3.0_ce2ekrksu4bikkggd5ymmdtq6i/node_modules/babel-loader/lib/index.js??clonedRuleSet-82.use[1]!./node_modules/.pnpm/vue-loader@15.11.1_d3fwwjlxcdz26pihteszkgpun4/node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[3]!./node_modules/.pnpm/vue-loader@15.11.1_d3fwwjlxcdz26pihteszkgpun4/node_modules/vue-loader/lib/index.js??vue-loader-options!./components/mapComps/bdMap/bdMapVGl.vue?vue&type=template&id=51c898b5
 var bdMapVGlvue_type_template_id_51c898b5_render = function render() {
   var _vm = this,
     _c = _vm._self._c;
@@ -2373,7 +2170,7 @@ var bdMapVGlvue_type_template_id_51c898b5_render = function render() {
 };
 var bdMapVGlvue_type_template_id_51c898b5_staticRenderFns = [];
 
-;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-82.use[1]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./components/mapComps/bdMap/bdMapVGl.vue?vue&type=script&lang=js
+;// CONCATENATED MODULE: ./node_modules/.pnpm/thread-loader@3.0.4_webpack@5.93.0/node_modules/thread-loader/dist/cjs.js!./node_modules/.pnpm/babel-loader@8.3.0_ce2ekrksu4bikkggd5ymmdtq6i/node_modules/babel-loader/lib/index.js??clonedRuleSet-82.use[1]!./node_modules/.pnpm/vue-loader@15.11.1_d3fwwjlxcdz26pihteszkgpun4/node_modules/vue-loader/lib/index.js??vue-loader-options!./components/mapComps/bdMap/bdMapVGl.vue?vue&type=script&lang=js
 /* harmony default export */ var bdMapVGlvue_type_script_lang_js = ({
   name: "bdMapVGl",
   components: {},
@@ -2457,7 +2254,7 @@ var bdMapVGl_component = normalizeComponent(
 )
 
 /* harmony default export */ var bdMapVGl = (bdMapVGl_component.exports);
-;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-82.use[1]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./components/mapComps/bdMap/bdMap.vue?vue&type=script&lang=js
+;// CONCATENATED MODULE: ./node_modules/.pnpm/thread-loader@3.0.4_webpack@5.93.0/node_modules/thread-loader/dist/cjs.js!./node_modules/.pnpm/babel-loader@8.3.0_ce2ekrksu4bikkggd5ymmdtq6i/node_modules/babel-loader/lib/index.js??clonedRuleSet-82.use[1]!./node_modules/.pnpm/vue-loader@15.11.1_d3fwwjlxcdz26pihteszkgpun4/node_modules/vue-loader/lib/index.js??vue-loader-options!./components/mapComps/bdMap/bdMap.vue?vue&type=script&lang=js
 
 
 /* harmony default export */ var bdMapvue_type_script_lang_js = ({
@@ -2549,6 +2346,11 @@ var bdMapVGl_component = normalizeComponent(
           this.bdMap.setMapStyleV2(config);
         });
       }
+      // 确保地图完全加载后再添加事件监听器
+      this.bdMap.addEventListener("tilesloaded", () => {
+        // console.log("地图加载完成");
+        // this.mapChange();
+      });
     },
     /**
      * 实现指定路段的实时路况图层并添加点击事件
@@ -2604,7 +2406,7 @@ var bdMapVGl_component = normalizeComponent(
           var searchComplete = results => {
             if (transit.getStatus() == BMAP_STATUS_SUCCESS) {
               var plan = results.getPlan(0);
-              pointsArr = that.makePointsArr(plan._lines); // 路段中所有的点位数组
+              pointsArr = that.flattenArr(plan._lines); // 路段中所有的点位数组
               this.sectionObj = {
                 duration: plan.getDuration(true),
                 distance: plan.getDistance(true),
@@ -2677,7 +2479,7 @@ var bdMapVGl_component = normalizeComponent(
      * @author: mhf
      * @time: 2024-02-01 13:57:20
      **/
-    makePointsArr(arr) {
+    flattenArr(arr) {
       return arr.flatMap(item => item.points);
     },
     /**
@@ -2711,14 +2513,28 @@ var bdMapVGl_component = normalizeComponent(
      * @param: isShowInfo 是否显示信息窗口
      * @param: isFloatShadow 是否需要添加气泡阴影，默认为true
      * @param: isShowInfo值为 true 时使用， key 显示信息窗口的key,即绘制点位时自定义对象customObj里面的key,
-     * @param: isResetCenterZoom 是否在点击点位时重置地图中心点和缩放级别
+     * @param: isResetCenter 是否在点击点位时重置地图中心点
+     * @param: isResetZoom 是否在点击点位时重置地图缩放级别
      * @param: isResetMakeIcon 是否给点击的marker设置选中的图标
      * @param: myChooseIcon 自定义选中的图标（点击点位时，替换的图标，isResetMakeIcon为true时使用）,
      * @param: offsetX: 偏移量X 水平
      * @param: offsetY: 偏移量Y 垂直
      * @param: html: 信息窗体内容，如：`<span style="line-height: 60px;margin-left: 10px;color: #ff6b00">${item.name}</span>`
      * @param: newZoom: 点击点位后地图更改的缩放级别
-     * @param: className: 给生成的marker添加的类名【样式可以在自己的组件中定义】
+     * @param: className: 给生成的marker添加的类名【样式可以在自己的组件中定义， 可以多个类名需用逗号隔开】
+     * @param:  isLabelShow: true,
+     *           labelText: "label标题",
+     *           labelsetX: 10,
+     *           labelsetY: -60,
+     *           labelStyle: {
+     *             color: "#fff", // 文字颜色
+     *             backgroundColor: "#0e335b", // 背景颜色，可以使用rgba设置透明度
+     *             border: "none", // 边框样式
+     *             borderRadius: "5px", // 边框圆角
+     *             padding: "5px 10px", // 文本内边距
+     *             fontSize: "10px", // 字体大小
+     *             fontWeight: "bold", // 字体粗细
+     *           },
      * @return: isReturn === true ? marker对象 : null
      * @author: mhf
      * @time: 2024-03-04 10:05:59
@@ -2733,7 +2549,8 @@ var bdMapVGl_component = normalizeComponent(
         isShowInfo = false,
         isFloatShadow = true,
         key,
-        isResetCenterZoom = true,
+        isResetCenter = true,
+        isResetZoom = false,
         isResetMakeIcon = false,
         myChooseIcon,
         offsetX = 0,
@@ -2767,11 +2584,16 @@ var bdMapVGl_component = normalizeComponent(
       this.bdMap.addOverlay(marker);
       const markerClick = e => {
         // console.log("点击了标注", e, e.target.customObj);
-        if (isResetCenterZoom) {
-          /* 重置地图中心点和缩放级别 */
-          this.setMapCenterAndZoom({
+        if (isResetCenter) {
+          /* 重置地图中心点 */
+          this.setMapCenter({
             lng: e.target.customObj.longitude,
-            lat: e.target.customObj.latitude,
+            lat: e.target.customObj.latitude
+          });
+        }
+        if (isResetZoom) {
+          /* 重置地图缩放级别 */
+          this.setMapZoom({
             zoom: newZoom
           });
         }
@@ -2817,10 +2639,13 @@ var bdMapVGl_component = normalizeComponent(
           });
         });
         if (className) {
+          /* 可以添加多个类名 需用 , 隔开【如：markerClass,bridge】 */
           setTimeout(() => {
-            // todo 测试异步的问题
-            marker.domElement.classList.add(className);
-          }, 100);
+            let classArr = className.split(",");
+            classArr.forEach(name => marker.domElement.classList.add(name));
+          }, 500);
+          this.$forceUpdate();
+          // marker.domElement.classList.add(className);
         }
       }
       return isReturn ? marker : null;
@@ -2844,7 +2669,8 @@ var bdMapVGl_component = normalizeComponent(
           strokeStyle: "solid",
           strokeColor: "#5298fe",
           strokeWeight: 9,
-          strokeOpacity: 1
+          strokeOpacity: 1,
+          zIndex: 1000
         },
         isRightDelete = false,
         isViewport = true
@@ -2930,6 +2756,159 @@ var bdMapVGl_component = normalizeComponent(
             }
           }];
           this.addRightMenu(txtMenuItem);
+        });
+      }
+    },
+    /**
+     * 添加自定义覆盖物，并添加点击事件
+     * https://lbsyun.baidu.com/index.php?title=jspopularGL/guide/CustomOverlay
+     * @param: createDOM, point, customObj, customOverlayConfig, isShowInfo, infoWindowConfig
+     * @demo: 创建一个图片覆盖物
+     * function createDOM(config) {
+     *    const img = document.createElement('img');
+     *    img.style.width = '300px';
+     *    img.style.height = '171px';
+     *    img.src = config.url;
+     *    img.draggable = false;
+     *    return img;
+     * }
+     * @Event: customOverlay.getProperties() // 获取自定义覆盖物的属性
+     * @Event: customOverlay.getPoint()  // 获取自定义覆盖物的坐标
+     * @Event: customOverlay.setPoint(new BMapGL.Point(120, 30)) // 设置覆盖物新坐标
+     * @Event: customOverlay.hide() // 隐藏自定义覆盖物【show() 显示】
+     * @return: customOverlay：自定义覆盖物
+     * @author: mhf
+     * @time: 2024-07-24 14:00:52
+     **/
+    drawCustomOverlay(params = {}) {
+      let {
+        createDOM = () => {
+          return "dom";
+        },
+        // 创建一个文档元素,且必须有返回值【demo看注释】
+        point = {
+          lng: undefined,
+          // 112.18
+          lat: undefined // 41.15
+        },
+        // 点位经纬度
+        customObj,
+        // 自绑定属性的其他自定义参数（即元素自身的properties参数）
+        customOverlayConfig = {
+          offsetX: -10,
+          // 覆盖物水平偏移量
+          offsetY: -10,
+          // 覆盖物垂直偏移量
+          MinZoom: 4,
+          // 最小显示层级
+          MaxZoom: 12,
+          // 最大显示层级
+          enableMassClear: true,
+          // 是否能被统一清除掉覆盖物
+          enableDraggingMap: true // 是否可以在覆盖物位置拖拽地图
+        },
+        // CustomOverlay(createDom, options: Object) 构造函数的参数options配置项
+        isShowInfo = false,
+        // 是否显示信息窗口
+        infoWindowConfig = {
+          html: "",
+          key: "",
+          offsetX: 0,
+          // 覆盖物水平偏移量
+          offsetY: 0,
+          isFloatShadow: false
+        },
+        // 信息窗口配置项(鼠标放在覆盖物上出现的window的配置项)
+
+        isResetCenter = true,
+        // 是否重置地图中心点
+        isResetZoom = false,
+        // 是否重置地图缩放级别
+        newZoom = 10 // isResetZoom 为true时，新缩放级别.
+      } = params;
+      // 创建自定义覆盖物
+      const defaultOverlayConfig = {
+        offsetX: 0,
+        // 覆盖物水平偏移量
+        offsetY: 0,
+        // 覆盖物垂直偏移量
+        // MinZoom: 4, // 最小显示层级
+        // MaxZoom: 12, // 最大显示层级
+        enableMassClear: true,
+        // 是否能被统一清除掉覆盖物
+        enableDraggingMap: true // 是否可以在覆盖物位置拖拽地图
+      }; // 默认的覆盖物配置
+      const overlayConfig = Object.keys(customOverlayConfig).length > 0 ? customOverlayConfig : defaultOverlayConfig;
+      const customOverlay = new BMapGL.CustomOverlay(createDOM, {
+        point: new BMapGL.Point(point.lng, point.lat),
+        properties: {
+          customObj // 其他自定义属性
+        },
+        // 自绑定属性【这里的属性就是createDom(config)中的参数】
+        ...overlayConfig // 自定义覆盖物配置
+      });
+      this.bdMap.addOverlay(customOverlay);
+      this.$emit("returnCustomOverlay", customOverlay); // 返回自定义覆盖物实例
+
+      const customOverlayClick = e => {
+        console.log("点击了自定义覆盖物", e.target.properties);
+        if (isResetCenter) {
+          /* 重置地图中心点 */
+          this.setMapCenter({
+            lng: e.target.point.lng,
+            lat: e.target.point.lat
+          });
+        }
+        if (isResetZoom) {
+          /* 重置地图缩放级别 */
+          this.setMapZoom({
+            zoom: newZoom
+          });
+        }
+        // if (isResetMakeIcon) {
+        //   /* 给点击的marker设置选中的图标 */
+        //   let chooseMarker = new BMapGL.Marker(point, {
+        //     icon: myChooseIcon ? myChooseIcon : null,
+        //   }); // 创建选中的点位的图标
+        //   chooseMarker.customObj = {
+        //     ...customObj,
+        //     isChoose: true, // 用于标识该标注是否被选中
+        //   }; // 其实只是需要 customObj 中的某个属性值【key】就是用来判断删除的那个【key】
+        //
+        //   // this.bdMap.removeOverlay(marker); // 移除当前点击的marker
+        //   this.removeOverlay({
+        //     callback: (e) => e.customObj?.isChoose,
+        //   }); // 移除上一个选中的marker
+        //   chooseMarker.setZIndex(2); // 设置点位层级
+        //   this.bdMap.addOverlay(chooseMarker);
+        //
+        //   chooseMarker.addEventListener("click", (e) => {
+        //     /* 给选中的marker添加点击事件 */
+        //     this.$emit("showMarkerDetail", e.target.customObj); // 接收父组件传来的showMarkerDetail事件（打开详情弹窗）
+        //   });
+        // }
+        this.$emit("showCustomOverlayDetail", e.target); // 接收父组件传来的showMarkerDetail事件（打开详情弹窗）
+      };
+      // 鼠标点击事件
+      customOverlay.addEventListener("click", customOverlayClick);
+      if (isShowInfo) {
+        // 鼠标悬浮事件
+        customOverlay.addEventListener("mouseover", e => {
+          let marker = new BMapGL.Point(point.lng, point.lat); // 创建点
+          this.isOpenInfoWindow({
+            flag: true,
+            html: infoWindowConfig.html ? infoWindowConfig.html : e.target.properties[infoWindowConfig.key],
+            offsetX: infoWindowConfig.offsetX,
+            offsetY: infoWindowConfig.offsetY,
+            marker: marker,
+            isFloatShadow: infoWindowConfig.isFloatShadow
+          });
+        });
+        // 鼠标移出事件
+        customOverlay.addEventListener("mouseout", () => {
+          this.isOpenInfoWindow({
+            flag: false
+          });
         });
       }
     },
@@ -3046,6 +3025,35 @@ var bdMapVGl_component = normalizeComponent(
       this.bdMap.centerAndZoom(new BMapGL.Point(lng, lat), zoom);
     },
     /**
+     * 设置地图中心点
+     * @param: params：{lat: 纬度, lng: 经度}
+     * @param:
+     * @return:
+     * @author: mhf
+     * @time: 2024-03-04 16:22:17
+     **/
+    setMapCenter(params = {}) {
+      let {
+        lat,
+        lng
+      } = params;
+      this.bdMap.setCenter(new BMapGL.Point(lng, lat));
+    },
+    /**
+     * 设置地图缩放层级
+     * @param: params：{zoom: 缩放层级}
+     * @param:
+     * @return:
+     * @author: mhf
+     * @time: 2024-03-04 16:22:17
+     **/
+    setMapZoom(params = {}) {
+      let {
+        zoom
+      } = params;
+      this.bdMap.setZoom(zoom);
+    },
+    /**
      * 自适应地图里面的图层，如：绘制线段、面或者多个点的时候，使用此方法可自动将绘制的图层调整到合适的区域和层级
      * @param: pointsArr：点位数组 [{lng: 116.387112, lat: 39.920977}, ...]
      * @return:
@@ -3111,6 +3119,10 @@ var bdMapVGl_component = normalizeComponent(
         this.$emit("mapChange", this.viewport); // 将更新的数据传给父组件
         // console.log(this.viewport, "地图拖拽事件");
       });
+      this.bdMap.addEventListener("click", e => {
+        this.bdMap.closeInfoWindow();
+        this.$emit("mapClick", e);
+      });
     },
     initShapeLayer(params = {}) {
       this.$refs.bdMapVGl.initShapeLayer(params);
@@ -3127,10 +3139,10 @@ var bdMapVGl_component = normalizeComponent(
 });
 ;// CONCATENATED MODULE: ./components/mapComps/bdMap/bdMap.vue?vue&type=script&lang=js
  /* harmony default export */ var bdMap_bdMapvue_type_script_lang_js = (bdMapvue_type_script_lang_js); 
-;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-64.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-64.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-64.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-64.use[3]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./components/mapComps/bdMap/bdMap.vue?vue&type=style&index=0&id=5a2fc331&prod&lang=scss&scoped=true
+;// CONCATENATED MODULE: ./node_modules/.pnpm/mini-css-extract-plugin@2.9.0_webpack@5.93.0/node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-64.use[0]!./node_modules/.pnpm/css-loader@6.11.0_webpack@5.93.0/node_modules/css-loader/dist/cjs.js??clonedRuleSet-64.use[1]!./node_modules/.pnpm/vue-loader@15.11.1_d3fwwjlxcdz26pihteszkgpun4/node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/.pnpm/postcss-loader@6.2.1_zs77g4opexpjlazxpbaplvsl5m/node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-64.use[2]!./node_modules/.pnpm/sass-loader@8.0.2_i4l4nmociu5xhprmi6hdovwxki/node_modules/sass-loader/dist/cjs.js??clonedRuleSet-64.use[3]!./node_modules/.pnpm/vue-loader@15.11.1_d3fwwjlxcdz26pihteszkgpun4/node_modules/vue-loader/lib/index.js??vue-loader-options!./components/mapComps/bdMap/bdMap.vue?vue&type=style&index=0&id=9d7de886&prod&lang=scss&scoped=true
 // extracted by mini-css-extract-plugin
 
-;// CONCATENATED MODULE: ./components/mapComps/bdMap/bdMap.vue?vue&type=style&index=0&id=5a2fc331&prod&lang=scss&scoped=true
+;// CONCATENATED MODULE: ./components/mapComps/bdMap/bdMap.vue?vue&type=style&index=0&id=9d7de886&prod&lang=scss&scoped=true
 
 ;// CONCATENATED MODULE: ./components/mapComps/bdMap/bdMap.vue
 
@@ -3143,505 +3155,22 @@ var bdMapVGl_component = normalizeComponent(
 
 var bdMap_component = normalizeComponent(
   bdMap_bdMapvue_type_script_lang_js,
-  bdMapvue_type_template_id_5a2fc331_scoped_true_render,
-  bdMapvue_type_template_id_5a2fc331_scoped_true_staticRenderFns,
+  bdMapvue_type_template_id_9d7de886_scoped_true_render,
+  bdMapvue_type_template_id_9d7de886_scoped_true_staticRenderFns,
   false,
   null,
-  "5a2fc331",
+  "9d7de886",
   null
   
 )
 
 /* harmony default export */ var bdMap = (bdMap_component.exports);
-;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-82.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[3]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./components/mapComps/tdMap/tdMap.vue?vue&type=template&id=697f4992&scoped=true
-var tdMapvue_type_template_id_697f4992_scoped_true_render = function render() {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c('div', {
-    attrs: {
-      "id": "map-container"
-    }
-  });
-};
-var tdMapvue_type_template_id_697f4992_scoped_true_staticRenderFns = [];
-
-;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-82.use[1]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./components/mapComps/tdMap/tdMap.vue?vue&type=script&lang=js
-
-/* harmony default export */ var tdMapvue_type_script_lang_js = ({
-  name: "tdMap",
-  components: {},
-  mixins: [],
-  props: {},
-  computed: {},
-  watch: {},
-  filters: {},
-  data() {
-    return {};
-  },
-  methods: {
-    initMap() {
-      var token = "30409d5a7eac777300f6af8fad68fcf7";
-      // 服务域名
-      var tdtUrl = "https://t{s}.tianditu.gov.cn/";
-      // 服务负载子域
-      var subdomains = ["0", "1", "2", "3", "4", "5", "6", "7"];
-
-      // cesium 初始化
-      var viewer = new Cesium.Map("map-container", {
-        shouldAnimate: true,
-        //是否允许动画
-        selectionIndicator: false,
-        baseLayerPicker: false,
-        fullscreenButton: false,
-        geocoder: false,
-        homeButton: false,
-        infoBox: false,
-        sceneModePicker: false,
-        timeline: false,
-        navigationHelpButton: false,
-        navigationInstructionsInitiallyVisible: false,
-        showRenderLoopErrors: false,
-        shadows: false
-      });
-
-      // 抗锯齿
-      viewer.scene.fxaa = true;
-      viewer.scene.postProcessStages.fxaa.enabled = false;
-      // 水雾特效
-      viewer.scene.globe.showGroundAtmosphere = true;
-      // 设置最大俯仰角，[-90,0]区间内，默认为-30，单位弧度
-      viewer.scene.screenSpaceCameraController.constrainedPitch = Cesium.Math.toRadians(-20);
-      viewer.scene.screenSpaceCameraController.autoResetHeadingPitch = false;
-      viewer.scene.screenSpaceCameraController.inertiaZoom = 0.5;
-      viewer.scene.screenSpaceCameraController.minimumZoomDistance = 50;
-      viewer.scene.screenSpaceCameraController.maximumZoomDistance = 20000000;
-      viewer.scene.screenSpaceCameraController.zoomEventTypes = [Cesium.CameraEventType.RIGHT_DRAG, Cesium.CameraEventType.WHEEL, Cesium.CameraEventType.PINCH];
-      viewer.scene.screenSpaceCameraController.tiltEventTypes = [Cesium.CameraEventType.MIDDLE_DRAG, Cesium.CameraEventType.PINCH, {
-        eventType: Cesium.CameraEventType.LEFT_DRAG,
-        modifier: Cesium.KeyboardEventModifier.CTRL
-      }, {
-        eventType: Cesium.CameraEventType.RIGHT_DRAG,
-        modifier: Cesium.KeyboardEventModifier.CTRL
-      }];
-      // 取消默认的双击事件
-      viewer.cesiumWidget.screenSpaceEventHandler.removeInputAction(Cesium.ScreenSpaceEventType.LEFT_DOUBLE_CLICK);
-
-      // 叠加影像服务
-      var imgMap = new Cesium.UrlTemplateImageryProvider({
-        url: tdtUrl + "DataServer?T=img_w&x={x}&y={y}&l={z}&tk=" + token,
-        subdomains: subdomains,
-        tilingScheme: new Cesium.WebMercatorTilingScheme(),
-        maximumLevel: 18
-      });
-      viewer.imageryLayers.addImageryProvider(imgMap);
-
-      // 叠加国界服务
-      var iboMap = new Cesium.UrlTemplateImageryProvider({
-        url: tdtUrl + "DataServer?T=ibo_w&x={x}&y={y}&l={z}&tk=" + token,
-        subdomains: subdomains,
-        tilingScheme: new Cesium.WebMercatorTilingScheme(),
-        maximumLevel: 10
-      });
-      viewer.imageryLayers.addImageryProvider(iboMap);
-
-      // 叠加地形服务
-      var terrainUrls = new Array();
-      for (var i = 0; i < subdomains.length; i++) {
-        var url = tdtUrl.replace("{s}", subdomains[i]) + "mapservice/swdx?T=elv_c&tk=" + token;
-        terrainUrls.push(url);
-      }
-      var provider = new Cesium.GeoTerrainProvider({
-        urls: terrainUrls
-      });
-      viewer.terrainProvider = provider;
-
-      // 将三维球定位到中国
-      viewer.camera.flyTo({
-        destination: Cesium.Cartesian3.fromDegrees(103.84, 31.15, 17850000),
-        orientation: {
-          heading: Cesium.Math.toRadians(348.4202942851978),
-          pitch: Cesium.Math.toRadians(-89.74026687972041),
-          roll: Cesium.Math.toRadians(0)
-        },
-        complete: function callback() {
-          // 定位完成之后的回调函数
-        }
-      });
-
-      // 叠加三维地名服务
-      var wtfs = new Cesium.GeoWTFS({
-        viewer,
-        //三维地名服务，使用wtfs服务
-        subdomains: subdomains,
-        metadata: {
-          boundBox: {
-            minX: -180,
-            minY: -90,
-            maxX: 180,
-            maxY: 90
-          },
-          minLevel: 1,
-          maxLevel: 20
-        },
-        depthTestOptimization: true,
-        dTOElevation: 15000,
-        dTOPitch: Cesium.Math.toRadians(-70),
-        aotuCollide: true,
-        //是否开启避让
-        collisionPadding: [5, 10, 8, 5],
-        //开启避让时，标注碰撞增加内边距，上、右、下、左
-        serverFirstStyle: true,
-        //服务端样式优先
-        labelGraphics: {
-          font: "28px sans-serif",
-          fontSize: 28,
-          fillColor: Cesium.Color.WHITE,
-          scale: 0.5,
-          outlineColor: Cesium.Color.BLACK,
-          outlineWidth: 2,
-          style: Cesium.LabelStyle.FILL_AND_OUTLINE,
-          showBackground: false,
-          backgroundColor: Cesium.Color.RED,
-          backgroundPadding: new Cesium.Cartesian2(10, 10),
-          horizontalOrigin: Cesium.HorizontalOrigin.LEFT,
-          verticalOrigin: Cesium.VerticalOrigin.TOP,
-          eyeOffset: Cesium.Cartesian3.ZERO,
-          pixelOffset: new Cesium.Cartesian2(5, 5),
-          disableDepthTestDistance: undefined
-        },
-        billboardGraphics: {
-          horizontalOrigin: Cesium.HorizontalOrigin.CENTER,
-          verticalOrigin: Cesium.VerticalOrigin.CENTER,
-          eyeOffset: Cesium.Cartesian3.ZERO,
-          pixelOffset: Cesium.Cartesian2.ZERO,
-          alignedAxis: Cesium.Cartesian3.ZERO,
-          color: Cesium.Color.WHITE,
-          rotation: 0,
-          scale: 1,
-          width: 18,
-          height: 18,
-          disableDepthTestDistance: undefined
-        }
-      });
-
-      //三维地名服务，使用wtfs服务
-      wtfs.getTileUrl = function () {
-        return tdtUrl + "mapservice/GetTiles?lxys={z},{x},{y}&tk=" + token;
-      };
-
-      // 三维图标服务
-      wtfs.getIcoUrl = function () {
-        return tdtUrl + "mapservice/GetIcon?id={id}&tk=" + token;
-      };
-      wtfs.initTDT([{
-        x: 6,
-        y: 1,
-        level: 2,
-        boundBox: {
-          minX: 90,
-          minY: 0,
-          maxX: 135,
-          maxY: 45
-        }
-      }, {
-        x: 7,
-        y: 1,
-        level: 2,
-        boundBox: {
-          minX: 135,
-          minY: 0,
-          maxX: 180,
-          maxY: 45
-        }
-      }, {
-        x: 6,
-        y: 0,
-        level: 2,
-        boundBox: {
-          minX: 90,
-          minY: 45,
-          maxX: 135,
-          maxY: 90
-        }
-      }, {
-        x: 7,
-        y: 0,
-        level: 2,
-        boundBox: {
-          minX: 135,
-          minY: 45,
-          maxX: 180,
-          maxY: 90
-        }
-      }, {
-        x: 5,
-        y: 1,
-        level: 2,
-        boundBox: {
-          minX: 45,
-          minY: 0,
-          maxX: 90,
-          maxY: 45
-        }
-      }, {
-        x: 4,
-        y: 1,
-        level: 2,
-        boundBox: {
-          minX: 0,
-          minY: 0,
-          maxX: 45,
-          maxY: 45
-        }
-      }, {
-        x: 5,
-        y: 0,
-        level: 2,
-        boundBox: {
-          minX: 45,
-          minY: 45,
-          maxX: 90,
-          maxY: 90
-        }
-      }, {
-        x: 4,
-        y: 0,
-        level: 2,
-        boundBox: {
-          minX: 0,
-          minY: 45,
-          maxX: 45,
-          maxY: 90
-        }
-      }, {
-        x: 6,
-        y: 2,
-        level: 2,
-        boundBox: {
-          minX: 90,
-          minY: -45,
-          maxX: 135,
-          maxY: 0
-        }
-      }, {
-        x: 6,
-        y: 3,
-        level: 2,
-        boundBox: {
-          minX: 90,
-          minY: -90,
-          maxX: 135,
-          maxY: -45
-        }
-      }, {
-        x: 7,
-        y: 2,
-        level: 2,
-        boundBox: {
-          minX: 135,
-          minY: -45,
-          maxX: 180,
-          maxY: 0
-        }
-      }, {
-        x: 5,
-        y: 2,
-        level: 2,
-        boundBox: {
-          minX: 45,
-          minY: -45,
-          maxX: 90,
-          maxY: 0
-        }
-      }, {
-        x: 4,
-        y: 2,
-        level: 2,
-        boundBox: {
-          minX: 0,
-          minY: -45,
-          maxX: 45,
-          maxY: 0
-        }
-      }, {
-        x: 3,
-        y: 1,
-        level: 2,
-        boundBox: {
-          minX: -45,
-          minY: 0,
-          maxX: 0,
-          maxY: 45
-        }
-      }, {
-        x: 3,
-        y: 0,
-        level: 2,
-        boundBox: {
-          minX: -45,
-          minY: 45,
-          maxX: 0,
-          maxY: 90
-        }
-      }, {
-        x: 2,
-        y: 0,
-        level: 2,
-        boundBox: {
-          minX: -90,
-          minY: 45,
-          maxX: -45,
-          maxY: 90
-        }
-      }, {
-        x: 0,
-        y: 1,
-        level: 2,
-        boundBox: {
-          minX: -180,
-          minY: 0,
-          maxX: -135,
-          maxY: 45
-        }
-      }, {
-        x: 1,
-        y: 0,
-        level: 2,
-        boundBox: {
-          minX: -135,
-          minY: 45,
-          maxX: -90,
-          maxY: 90
-        }
-      }, {
-        x: 0,
-        y: 0,
-        level: 2,
-        boundBox: {
-          minX: -180,
-          minY: 45,
-          maxX: -135,
-          maxY: 90
-        }
-      }]);
-    }
-  },
-  created() {},
-  mounted() {
-    this.initMap();
-  },
-  destroyed() {}
-});
-;// CONCATENATED MODULE: ./components/mapComps/tdMap/tdMap.vue?vue&type=script&lang=js
- /* harmony default export */ var tdMap_tdMapvue_type_script_lang_js = (tdMapvue_type_script_lang_js); 
-;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-64.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-64.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-64.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-64.use[3]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./components/mapComps/tdMap/tdMap.vue?vue&type=style&index=0&id=697f4992&prod&lang=scss&scoped=true
-// extracted by mini-css-extract-plugin
-
-;// CONCATENATED MODULE: ./components/mapComps/tdMap/tdMap.vue?vue&type=style&index=0&id=697f4992&prod&lang=scss&scoped=true
-
-;// CONCATENATED MODULE: ./components/mapComps/tdMap/tdMap.vue
-
-
-
-;
-
-
-/* normalize component */
-
-var tdMap_component = normalizeComponent(
-  tdMap_tdMapvue_type_script_lang_js,
-  tdMapvue_type_template_id_697f4992_scoped_true_render,
-  tdMapvue_type_template_id_697f4992_scoped_true_staticRenderFns,
-  false,
-  null,
-  "697f4992",
-  null
-  
-)
-
-/* harmony default export */ var tdMap = (tdMap_component.exports);
-;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-82.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[3]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./components/mapComps/leafletMap/leafletMap.vue?vue&type=template&id=d739c7ec&scoped=true
-var leafletMapvue_type_template_id_d739c7ec_scoped_true_render = function render() {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c('div', {
-    attrs: {
-      "id": "map-container"
-    }
-  });
-};
-var leafletMapvue_type_template_id_d739c7ec_scoped_true_staticRenderFns = [];
-
-;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-82.use[1]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./components/mapComps/leafletMap/leafletMap.vue?vue&type=script&lang=js
-/* harmony default export */ var leafletMapvue_type_script_lang_js = ({
-  name: "leafletMap",
-  components: {},
-  mixins: [],
-  props: {},
-  computed: {},
-  watch: {},
-  filters: {},
-  data() {
-    return {};
-  },
-  methods: {
-    initMap() {
-      var map = L.map("map-container").setView([83.53420759615909, 246.38058554922884], 13);
-      L.tileLayer("http://api0.map.bdimg.com/customimage/tile?&x={x}&y={y}&z={z}&udt=20231205&scale=1&ak=iTu42KR8ex0LKLEE7hilYsczAHKX2rKc", {
-        maxZoom: 19,
-        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-      }).addTo(map);
-      map.on("click", function (e) {
-        console.log(e.latlng);
-      });
-    }
-  },
-  created() {},
-  mounted() {
-    this.initMap();
-  },
-  destroyed() {}
-});
-;// CONCATENATED MODULE: ./components/mapComps/leafletMap/leafletMap.vue?vue&type=script&lang=js
- /* harmony default export */ var leafletMap_leafletMapvue_type_script_lang_js = (leafletMapvue_type_script_lang_js); 
-;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-64.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-64.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-64.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-64.use[3]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./components/mapComps/leafletMap/leafletMap.vue?vue&type=style&index=0&id=d739c7ec&prod&lang=scss&scoped=true
-// extracted by mini-css-extract-plugin
-
-;// CONCATENATED MODULE: ./components/mapComps/leafletMap/leafletMap.vue?vue&type=style&index=0&id=d739c7ec&prod&lang=scss&scoped=true
-
-;// CONCATENATED MODULE: ./components/mapComps/leafletMap/leafletMap.vue
-
-
-
-;
-
-
-/* normalize component */
-
-var leafletMap_component = normalizeComponent(
-  leafletMap_leafletMapvue_type_script_lang_js,
-  leafletMapvue_type_template_id_d739c7ec_scoped_true_render,
-  leafletMapvue_type_template_id_d739c7ec_scoped_true_staticRenderFns,
-  false,
-  null,
-  "d739c7ec",
-  null
-  
-)
-
-/* harmony default export */ var leafletMap = (leafletMap_component.exports);
-;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-82.use[1]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./components/mapComps/mapComps.vue?vue&type=script&lang=js
-
-
-
+;// CONCATENATED MODULE: ./node_modules/.pnpm/thread-loader@3.0.4_webpack@5.93.0/node_modules/thread-loader/dist/cjs.js!./node_modules/.pnpm/babel-loader@8.3.0_ce2ekrksu4bikkggd5ymmdtq6i/node_modules/babel-loader/lib/index.js??clonedRuleSet-82.use[1]!./node_modules/.pnpm/vue-loader@15.11.1_d3fwwjlxcdz26pihteszkgpun4/node_modules/vue-loader/lib/index.js??vue-loader-options!./components/mapComps/mapComps.vue?vue&type=script&lang=js
 
 /* harmony default export */ var mapCompsvue_type_script_lang_js = ({
   name: "mapComps",
   components: {
-    aMap: aMap,
-    bdMap: bdMap,
-    tdMap: tdMap,
-    leafletMap: leafletMap
+    bdMap: bdMap
   },
   mixins: [],
   props: {
@@ -3729,6 +3258,16 @@ var leafletMap_component = normalizeComponent(
       this.$refs[this.mapType].setMapCenterAndZoom(obj);
     },
     /**
+     * 重置地图的中心点
+     * @param:
+     * @return:
+     * @author: xxb
+     * @time: 2024-09-06 17:51:49
+     **/
+    setMapCenter(obj) {
+      this.$refs[this.mapType].setMapCenter(obj);
+    },
+    /**
      * 添加点标记,实现悬浮信息窗体和点击事件
      * @param: obj
      * @return:
@@ -3757,6 +3296,26 @@ var leafletMap_component = normalizeComponent(
      **/
     drawPolygon(obj) {
       this.$refs[this.mapType].drawPolygon(obj);
+    },
+    /**
+     * 添加自定义覆盖物，并实现点击事件
+     * @param:
+     * @return:
+     * @author: mhf
+     * @time: 2024-03-06 13:17:02
+     **/
+    drawCustomOverlay(obj) {
+      this.$refs[this.mapType].drawCustomOverlay(obj);
+    },
+    /**
+     * 将自定义覆盖物传给父页面
+     * @param:
+     * @return:
+     * @author: mhf
+     * @time: 2024-03-06 13:17:02
+     **/
+    getCustomOverlay(customOverlay) {
+      this.$emit("returnCustomOverlay", customOverlay); // 返回自定义覆盖物实例
     },
     /**
      * 获取点位的自定义图标
@@ -3797,6 +3356,16 @@ var leafletMap_component = normalizeComponent(
      **/
     showPolygonDetail(params) {
       this.$emit("showPolygonDetail", params);
+    },
+    /**
+     * 展示自定义覆盖物详情
+     * @param:
+     * @return:
+     * @author: mhf
+     * @time: 2024-03-04 16:12:05
+     **/
+    showCustomOverlayDetail(params) {
+      this.$emit("showCustomOverlayDetail", params);
     },
     /**
      * 移除符合特定条件的 点位标记/线段
@@ -3861,6 +3430,16 @@ var leafletMap_component = normalizeComponent(
      **/
     initShapeLayer(params = {}) {
       this.$refs[this.mapType].initShapeLayer(params);
+    },
+    /**
+     * 地图点击事件
+     * @param:
+     * @return:
+     * @author: mhf
+     * @time: 2024-04-24 17:56:59
+     **/
+    mapClick(e) {
+      this.$emit("mapClick", e);
     }
   },
   created() {},
@@ -3869,10 +3448,10 @@ var leafletMap_component = normalizeComponent(
 });
 ;// CONCATENATED MODULE: ./components/mapComps/mapComps.vue?vue&type=script&lang=js
  /* harmony default export */ var mapComps_mapCompsvue_type_script_lang_js = (mapCompsvue_type_script_lang_js); 
-;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-64.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-64.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-64.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-64.use[3]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./components/mapComps/mapComps.vue?vue&type=style&index=0&id=9c28377c&prod&lang=scss&scoped=true
+;// CONCATENATED MODULE: ./node_modules/.pnpm/mini-css-extract-plugin@2.9.0_webpack@5.93.0/node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-64.use[0]!./node_modules/.pnpm/css-loader@6.11.0_webpack@5.93.0/node_modules/css-loader/dist/cjs.js??clonedRuleSet-64.use[1]!./node_modules/.pnpm/vue-loader@15.11.1_d3fwwjlxcdz26pihteszkgpun4/node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/.pnpm/postcss-loader@6.2.1_zs77g4opexpjlazxpbaplvsl5m/node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-64.use[2]!./node_modules/.pnpm/sass-loader@8.0.2_i4l4nmociu5xhprmi6hdovwxki/node_modules/sass-loader/dist/cjs.js??clonedRuleSet-64.use[3]!./node_modules/.pnpm/vue-loader@15.11.1_d3fwwjlxcdz26pihteszkgpun4/node_modules/vue-loader/lib/index.js??vue-loader-options!./components/mapComps/mapComps.vue?vue&type=style&index=0&id=80bd0c90&prod&lang=scss&scoped=true
 // extracted by mini-css-extract-plugin
 
-;// CONCATENATED MODULE: ./components/mapComps/mapComps.vue?vue&type=style&index=0&id=9c28377c&prod&lang=scss&scoped=true
+;// CONCATENATED MODULE: ./components/mapComps/mapComps.vue?vue&type=style&index=0&id=80bd0c90&prod&lang=scss&scoped=true
 
 ;// CONCATENATED MODULE: ./components/mapComps/mapComps.vue
 
@@ -3885,17 +3464,17 @@ var leafletMap_component = normalizeComponent(
 
 var mapComps_component = normalizeComponent(
   mapComps_mapCompsvue_type_script_lang_js,
-  mapCompsvue_type_template_id_9c28377c_scoped_true_render,
-  mapCompsvue_type_template_id_9c28377c_scoped_true_staticRenderFns,
+  mapCompsvue_type_template_id_80bd0c90_scoped_true_render,
+  mapCompsvue_type_template_id_80bd0c90_scoped_true_staticRenderFns,
   false,
   null,
-  "9c28377c",
+  "80bd0c90",
   null
   
 )
 
 /* harmony default export */ var mapComps = (mapComps_component.exports);
-;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-82.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[3]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./components/bdLib/bdLib.vue?vue&type=template&id=fe8dd0fe&scoped=true
+;// CONCATENATED MODULE: ./node_modules/.pnpm/thread-loader@3.0.4_webpack@5.93.0/node_modules/thread-loader/dist/cjs.js!./node_modules/.pnpm/babel-loader@8.3.0_ce2ekrksu4bikkggd5ymmdtq6i/node_modules/babel-loader/lib/index.js??clonedRuleSet-82.use[1]!./node_modules/.pnpm/vue-loader@15.11.1_d3fwwjlxcdz26pihteszkgpun4/node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[3]!./node_modules/.pnpm/vue-loader@15.11.1_d3fwwjlxcdz26pihteszkgpun4/node_modules/vue-loader/lib/index.js??vue-loader-options!./components/bdLib/bdLib.vue?vue&type=template&id=fe8dd0fe&scoped=true
 var bdLibvue_type_template_id_fe8dd0fe_scoped_true_render = function render() {
   var _vm = this,
     _c = _vm._self._c;
@@ -4008,12 +3587,12 @@ function loadBaiDuDrawMap(ak) {
       let script = document.createElement("script");
       script.type = "text/javascript";
       // script.src = "http://mapopen.cdn.bcebos.com/github/BMapGLLib/DrawingManager/src/DrawingManager.min.js";
-      script.src = __webpack_require__.e(/* import() */ 744).then(__webpack_require__.t.bind(__webpack_require__, 744, 23));
+      script.src = __webpack_require__.e(/* import() */ 726).then(__webpack_require__.t.bind(__webpack_require__, 8726, 23));
       document.body.appendChild(script);
       let link = document.createElement("link");
       link.rel = "stylesheet";
       // link.href = "http://mapopen.cdn.bcebos.com/github/BMapGLLib/DrawingManager/src/DrawingManager.min.css";
-      link.href = __webpack_require__.e(/* import() */ 714).then(__webpack_require__.bind(__webpack_require__, 6714));
+      link.href = __webpack_require__.e(/* import() */ 963).then(__webpack_require__.bind(__webpack_require__, 3963));
       document.body.appendChild(link);
     } else {
       console.log("BMapLib.DrawingManager is loaded!");
@@ -4022,7 +3601,7 @@ function loadBaiDuDrawMap(ak) {
   });
 }
 
-;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-82.use[1]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./components/bdLib/bdLib.vue?vue&type=script&lang=js
+;// CONCATENATED MODULE: ./node_modules/.pnpm/thread-loader@3.0.4_webpack@5.93.0/node_modules/thread-loader/dist/cjs.js!./node_modules/.pnpm/babel-loader@8.3.0_ce2ekrksu4bikkggd5ymmdtq6i/node_modules/babel-loader/lib/index.js??clonedRuleSet-82.use[1]!./node_modules/.pnpm/vue-loader@15.11.1_d3fwwjlxcdz26pihteszkgpun4/node_modules/vue-loader/lib/index.js??vue-loader-options!./components/bdLib/bdLib.vue?vue&type=script&lang=js
 
 /* harmony default export */ var bdLibvue_type_script_lang_js = ({
   name: "bdGlDrawAreaDialog",
@@ -4401,7 +3980,7 @@ function loadBaiDuDrawMap(ak) {
 });
 ;// CONCATENATED MODULE: ./components/bdLib/bdLib.vue?vue&type=script&lang=js
  /* harmony default export */ var bdLib_bdLibvue_type_script_lang_js = (bdLibvue_type_script_lang_js); 
-;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-64.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-64.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-64.use[2]!./node_modules/sass-loader/dist/cjs.js??clonedRuleSet-64.use[3]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./components/bdLib/bdLib.vue?vue&type=style&index=0&id=fe8dd0fe&prod&lang=scss&scoped=true
+;// CONCATENATED MODULE: ./node_modules/.pnpm/mini-css-extract-plugin@2.9.0_webpack@5.93.0/node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-64.use[0]!./node_modules/.pnpm/css-loader@6.11.0_webpack@5.93.0/node_modules/css-loader/dist/cjs.js??clonedRuleSet-64.use[1]!./node_modules/.pnpm/vue-loader@15.11.1_d3fwwjlxcdz26pihteszkgpun4/node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/.pnpm/postcss-loader@6.2.1_zs77g4opexpjlazxpbaplvsl5m/node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-64.use[2]!./node_modules/.pnpm/sass-loader@8.0.2_i4l4nmociu5xhprmi6hdovwxki/node_modules/sass-loader/dist/cjs.js??clonedRuleSet-64.use[3]!./node_modules/.pnpm/vue-loader@15.11.1_d3fwwjlxcdz26pihteszkgpun4/node_modules/vue-loader/lib/index.js??vue-loader-options!./components/bdLib/bdLib.vue?vue&type=style&index=0&id=fe8dd0fe&prod&lang=scss&scoped=true
 // extracted by mini-css-extract-plugin
 
 ;// CONCATENATED MODULE: ./components/bdLib/bdLib.vue?vue&type=style&index=0&id=fe8dd0fe&prod&lang=scss&scoped=true
@@ -4446,13 +4025,12 @@ if (typeof window !== "undefined" && window.Vue) {
   install,
   ...components
 });
-;// CONCATENATED MODULE: ./node_modules/@vue/cli-service/lib/commands/build/entry-lib.js
+;// CONCATENATED MODULE: ./node_modules/.pnpm/@vue+cli-service@5.0.8_vgqb3v6m2ynwvuzumqmye2vzna/node_modules/@vue/cli-service/lib/commands/build/entry-lib.js
 
 
 /* harmony default export */ var entry_lib = (components_0);
 
 
-}();
 /******/ 	return __webpack_exports__;
 /******/ })()
 ;

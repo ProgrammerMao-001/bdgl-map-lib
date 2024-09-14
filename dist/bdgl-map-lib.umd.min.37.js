@@ -1,0 +1,1 @@
+"use strict";(("undefined"!==typeof self?self:this)["webpackChunkbdgl_map_lib"]=("undefined"!==typeof self?self:this)["webpackChunkbdgl_map_lib"]||[]).push([[37],{37:function(e,f,s){s.r(f)}}]);
