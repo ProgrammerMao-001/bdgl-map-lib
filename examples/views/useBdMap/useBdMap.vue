@@ -43,6 +43,12 @@
         <el-button size="small" type="danger" @click="roadCondition(false)"
           >关闭路况</el-button
         >
+        <el-button size="small" type="primary" @click="drawRoadCondition(true)"
+          >驾车规划</el-button
+        >
+        <el-button size="small" type="danger" @click="removeRoadCondition(true)"
+          >移除驾车规划</el-button
+        >
       </div>
 
       <div>
@@ -60,6 +66,7 @@
       @map-loaded="mapLoaded"
       @map-change="handleMapChange"
       @map-click="handleMapClick"
+      @return-sectionObj="getRoadSection"
       @showMarkerDetail="showMarkerDetail"
       @showPolylineDetail="showPolylineDetail"
     />
@@ -147,6 +154,17 @@ export default {
       this.$refs.bdMap.removeOverlay({
         callback: (e) => e.customObj?.isChoose,
       });
+    },
+
+    /**
+     * @Event 获取驾车规划完成后的路段信息
+     * @description:
+     * @author: mhf
+     * @time: 2024-09-14 17:20:06
+     **/
+    getRoadSection(data) {
+      console.log(data, "data");
+      this.$message.success(`总路程为${data.distance}，耗时为${data.duration}`);
     },
 
     /**
@@ -361,8 +379,46 @@ export default {
       } else {
         this.$refs.bdMap.showRoadCondition({
           isShowRoadCondition: false,
+          clearRoadSectionType: "traffic",
         });
       }
+    },
+
+    /**
+     * @Event 驾车规划
+     * @description:
+     * @author: mhf
+     * @time: 2024-09-14 16:58:47
+     **/
+    drawRoadCondition() {
+      this.$refs.bdMap.showRoadCondition({
+        isShowRoadCondition: true,
+        isShowMyRoad: true,
+        traffic_widthIcon: true,
+        traffic_autoViewport: true,
+        traffic_enableDragging: false,
+        startPoint: {
+          lng: 120.59453385817872,
+          lat: 30.249204520249357,
+        },
+        endPoint: {
+          lng: 120.1470765087298,
+          lat: 30.315234617627876,
+        },
+      });
+    },
+
+    /**
+     * @Event 移除驾车规划
+     * @description:
+     * @author: mhf
+     * @time: 2024-09-14 16:58:47
+     **/
+    removeRoadCondition() {
+      this.$refs.bdMap.showRoadCondition({
+        isShowRoadCondition: false,
+        clearRoadSectionType: "roadCondition",
+      });
     },
 
     mapLoaded(a) {

@@ -174,6 +174,10 @@ export default {
         },
         customObj = {},
         clearRoadSectionType = "",
+        traffic_autoViewport = false, // 驾车规划完成后是否自动调整地图视野
+        traffic_showTraffic = true, // 驾车规划的线是否展示路况
+        traffic_widthIcon = false, // 驾车规划出来的路段是否展示图标(默认false)
+        traffic_enableDragging = false, // 起点和终点是否支持拖拽(默认false)
       } = params;
 
       let pointsArr = [];
@@ -193,16 +197,18 @@ export default {
               var plan = results.getPlan(0);
               pointsArr = that.flattenArr(plan._lines); // 路段中所有的点位数组
               this.sectionObj = {
-                duration: plan.getDuration(true),
-                distance: plan.getDistance(true),
-                pointsArr,
-                params,
+                duration: plan.getDuration(true), // 获取路线耗时
+                distance: plan.getDistance(true), // 路段距离
+                pointsArr, // 路段上的点位
+                params, // 路段详情
               };
               /* 删除起点和终点的Marker图标 */
-              this.$nextTick(() => {
-                this.bdMap.removeOverlay(results._end.marker);
-                this.bdMap.removeOverlay(results._start.marker);
-              });
+              if (!traffic_widthIcon) {
+                this.$nextTick(() => {
+                  this.bdMap.removeOverlay(results._end.marker);
+                  this.bdMap.removeOverlay(results._start.marker);
+                });
+              }
               /* 绘制一条透明路段实现点击事件 */
               that.drawPolyline({
                 pointsArr,
@@ -224,11 +230,11 @@ export default {
           var transit = new this.BMapGL.DrivingRouteLine(this.bdMap, {
             renderOptions: {
               map: this.bdMap,
-              autoViewport: false,
-              enableDragging: false,
+              autoViewport: traffic_autoViewport,
+              enableDragging: traffic_enableDragging,
               lineLayerStyle: {
                 strokeTextureUrl: null,
-                showTraffic: true,
+                showTraffic: traffic_showTraffic,
                 // lineLayerColor: {
                 //     color: '#ffffff',
                 //     opacity: 1,
