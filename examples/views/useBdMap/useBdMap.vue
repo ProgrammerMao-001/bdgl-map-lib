@@ -18,6 +18,15 @@
       <el-button size="small" type="danger" @click="removeWarningMarker"
         >移除预警点位</el-button
       >
+      <el-button size="small" type="primary" @click="roadCondition(true)"
+        >开启路况</el-button
+      >
+      <el-button size="small" type="danger" @click="roadCondition(false)"
+        >关闭路况</el-button
+      >
+      <el-button size="small" type="warning" @click="screenshot"
+        >截图
+      </el-button>
     </div>
 
     <bdMap
@@ -184,9 +193,49 @@ export default {
       });
     },
 
+    roadCondition(flag) {
+      if (flag) {
+        this.$refs.bdMap.showRoadCondition({
+          isShowRoadCondition: true,
+          isShowMyRoad: false,
+        });
+      } else {
+        this.$refs.bdMap.showRoadCondition({
+          isShowRoadCondition: false,
+        });
+      }
+    },
+
     mapLoaded(a) {
       console.log("mapLoaded", a);
       this.drawDefaultMarker();
+    },
+
+    screenshot() {
+      let url = this.$refs.bdMap.screenshot();
+
+      // 检查 URL 是否为空
+      if (!url) {
+        console.error("Failed to get screenshot URL");
+        return;
+      }
+
+      // 打印 URL 进行检查
+      console.log("Screenshot URL:", url);
+
+      // 创建一个隐藏的 <a> 元素
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = "screenshot.png"; // 设置文件名
+
+      // 添加到 DOM 中
+      document.body.appendChild(link);
+
+      // 触发点击事件
+      link.click();
+
+      // 清理临时元素
+      document.body.removeChild(link);
     },
   },
   created() {},

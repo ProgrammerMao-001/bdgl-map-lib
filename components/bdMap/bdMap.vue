@@ -93,7 +93,9 @@ export default {
         loadBaiDuMap(this.mapConfig.ak).then(() => {
           console.log(BMapGL, "this.BMapGL");
           this.BMapGL = BMapGL;
-          this.bdMap = new this.BMapGL.Map("map-container"); // 创建Map实例
+          this.bdMap = new this.BMapGL.Map("map-container", {
+            preserveDrawingBuffer: true,
+          }); // 创建Map实例
           this.bdMap.centerAndZoom(
             new this.BMapGL.Point(
               this.mapConfig.center.lng,
@@ -265,6 +267,16 @@ export default {
      **/
     flattenArr(arr) {
       return arr.flatMap((item) => item.points);
+    },
+
+    /**
+     * @Event 截图
+     * @description: 返回当前地图组件上的图层截图base64地址
+     * @author: mhf
+     * @time: 2024-09-14 14:09:28
+     **/
+    screenshot() {
+      return this.bdMap.getMapScreenshot();
     },
 
     /**
