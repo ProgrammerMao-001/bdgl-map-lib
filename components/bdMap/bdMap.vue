@@ -12,6 +12,7 @@
 
 <script>
 import { loadBaiDuMap } from "../utils/asynchronousLoading";
+import { flattenArr } from "../utils";
 import bdMapVGl from "./bdMapVGl.vue";
 
 export default {
@@ -195,12 +196,13 @@ export default {
           var searchComplete = (results) => {
             if (transit.getStatus() == BMAP_STATUS_SUCCESS) {
               var plan = results.getPlan(0);
-              pointsArr = that.flattenArr(plan._lines); // 路段中所有的点位数组
+              pointsArr = flattenArr(plan._lines, "points"); // 路段中所有的点位数组
               this.sectionObj = {
                 duration: plan.getDuration(true), // 获取路线耗时
                 distance: plan.getDistance(true), // 路段距离
                 pointsArr, // 路段上的点位
                 params, // 路段详情
+                plan,
               };
               /* 删除起点和终点的Marker图标 */
               if (!traffic_widthIcon) {
@@ -266,16 +268,6 @@ export default {
     },
 
     /**
-     * @Event 将指定数组嵌套的数据转成扁平化的点位数据
-     * @description:
-     * @author: mhf
-     * @time: 2024-02-01 13:57:20
-     **/
-    flattenArr(arr) {
-      return arr.flatMap((item) => item.points);
-    },
-
-    /**
      * @Event 截图
      * @description: 返回当前地图组件上的图层截图base64地址
      * @author: mhf
@@ -294,15 +286,14 @@ export default {
      **/
     clearRoadSection(type = "") {
       const { bdMap, roadCondition } = this;
+      function shouldClear(layerType, requestedType) {
+        return requestedType === layerType || requestedType === "";
+      }
       if (shouldClear("traffic", type)) {
         bdMap.setTrafficOff();
       }
       if (shouldClear("roadCondition", type)) {
         roadCondition.forEach((condition) => condition.clearResults());
-      }
-
-      function shouldClear(layerType, requestedType) {
-        return requestedType === layerType || requestedType === "";
       }
     },
 
@@ -911,7 +902,7 @@ export default {
      * @time: 2024-04-24 16:55:21
      **/
     getMapViewport() {
-      let bounds = this.bdMap.getBounds(); //获取地图可视区域
+      let bounds = this.bdMap.getBounds(); // 获取地图可视区域
       let zoom = this.bdMap.getZoom();
       let WS = bounds.getSouthWest();
       let EN = bounds.getNorthEast();

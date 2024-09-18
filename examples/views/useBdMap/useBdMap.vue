@@ -55,14 +55,17 @@
         <el-button size="small" type="warning" @click="screenshot"
           >截图</el-button
         >
-        <el-button size="small" type="warning" @click="changeMapCenter"
+        <el-button size="small" type="warning" @click="setMapCenter"
           >改变中心点</el-button
         >
-        <el-button size="small" type="warning" @click="changeMapZoom"
+        <el-button size="small" type="warning" @click="setMapZoom"
           >改变层级</el-button
         >
-        <el-button size="small" type="warning" @click="changeMapView"
+        <el-button size="small" type="warning" @click="setMapView"
           >改变中心点和层级</el-button
+        >
+        <el-button size="small" type="warning" @click="getMapView"
+          >获取地图边界和层级</el-button
         >
       </div>
     </div>
@@ -172,7 +175,7 @@ export default {
      * @time: 2024-09-14 17:20:06
      **/
     getRoadSection(data) {
-      console.log(data, "data");
+      console.log(data, "路径规划的详细参数");
       this.$message.success(`总路程为${data.distance}，耗时为${data.duration}`);
     },
 
@@ -476,25 +479,38 @@ export default {
       document.body.removeChild(link);
     },
 
-    changeMapCenter() {
+    setMapCenter() {
       this.$refs.bdMap.setMapCenter({
         lng: 120.16249203811518,
         lat: 30.21226404708224,
       });
     },
 
-    changeMapZoom() {
+    setMapZoom() {
       this.$refs.bdMap.setMapZoom({
         zoom: 18,
       });
     },
 
-    changeMapView() {
+    setMapView() {
       this.$refs.bdMap.setMapCenterAndZoom({
         lng: 121.16249203811518,
         lat: 31.21226404708224,
         zoom: 10,
       });
+    },
+
+    getMapView() {
+      let viewport = this.$refs.bdMap.getMapViewport();
+      let { EN, ES, WN, WS, zoom } = viewport;
+      this.$message.success(
+        `左上角：${JSON.stringify(WN)},左下角：${JSON.stringify(
+          WS
+        )},右上角：${JSON.stringify(EN)},右下角：${JSON.stringify(
+          ES
+        )},缩放层级：${zoom}`
+      );
+      console.log(viewport, "viewport");
     },
   },
   created() {},

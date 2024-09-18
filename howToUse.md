@@ -32,6 +32,27 @@
 #### computed
 
 ##### methods
+initMap
+showRoadCondition
+screenshot
+clearRoadSection
+drawMarker
+drawPolyline
+// todo
+drawPolygon
+drawCustomOverlay
+addRightMenu
+initShapeLayer
+// todo
+isOpenInfoWindow[内置]
+getIcon[配合drawMarker使用]
+removeOverlay
+setMapCenterAndZoom
+setMapCenter
+setMapZoom
+setViewport
+getMapViewport
+mapChange
 
 ##### slots
 
