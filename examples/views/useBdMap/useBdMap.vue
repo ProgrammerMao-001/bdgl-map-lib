@@ -82,9 +82,6 @@
       </div>
 
       <div>
-        <el-button size="small" type="warning" @click="screenshot"
-          >截图</el-button
-        >
         <el-button size="small" type="warning" @click="setMapCenter"
           >改变中心点</el-button
         >
@@ -96,6 +93,15 @@
         >
         <el-button size="small" type="warning" @click="getMapView"
           >获取边界和层级</el-button
+        >
+      </div>
+
+      <div>
+        <el-button size="small" type="warning" @click="screenshot"
+          >截图</el-button
+        >
+        <el-button size="small" type="info" @click="rightContent"
+          >右键菜单【不推荐使用】</el-button
         >
       </div>
     </div>
@@ -612,6 +618,17 @@ export default {
 
       // 清理临时元素
       document.body.removeChild(link);
+    },
+
+    rightContent() {
+      this.$refs.bdMap.addRightMenu([
+        {
+          text: "刷新",
+          callback: () => {
+            location.reload();
+          },
+        },
+      ]);
     },
 
     setMapCenter() {

@@ -38,10 +38,10 @@ screenshot
 clearRoadSection
 drawMarker
 drawPolyline
-// todo
 drawPolygon
+addRightMenu[内置，不推荐使用]
+// todo
 drawCustomOverlay
-addRightMenu
 initShapeLayer
 // todo
 isOpenInfoWindow[内置]
