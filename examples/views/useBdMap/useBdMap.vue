@@ -97,6 +97,15 @@
       </div>
 
       <div>
+        <el-button size="small" type="primary" @click="drawDefaultShapeLayer"
+          >绘制默认建筑</el-button
+        >
+        <el-button size="small" type="danger" @click="removeDefaultShapeLayer"
+          >移除默认建筑</el-button
+        >
+      </div>
+
+      <div>
         <el-button size="small" type="warning" @click="setMapCenter"
           >改变中心点</el-button
         >
@@ -551,6 +560,8 @@ export default {
 
     drawCustomCircle() {},
 
+    drawDefaultShapeLayer() {},
+
     /**
      * @Event 移除默认点位
      * @description:
@@ -617,6 +628,8 @@ export default {
     removeDefaultCircle() {},
 
     removeCustomCircle() {},
+
+    removeDefaultShapeLayer() {},
 
     removeDefaultOverlay() {
       console.log("移除默认自定义图层");

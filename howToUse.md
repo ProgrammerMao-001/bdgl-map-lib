@@ -40,9 +40,10 @@ drawMarker
 drawPolyline
 drawPolygon
 addRightMenu[内置，不推荐使用]
-// todo
 drawCustomOverlay
 initShapeLayer
+// todo
+drawCircle
 // todo
 isOpenInfoWindow[内置]
 getIcon[配合drawMarker使用]
