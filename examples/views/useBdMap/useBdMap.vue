@@ -78,9 +78,9 @@
       @map-loaded="mapLoaded"
       @map-change="handleMapChange"
       @map-click="handleMapClick"
-      @return-sectionObj="getRoadSection"
-      @showMarkerDetail="showMarkerDetail"
-      @showPolylineDetail="showPolylineDetail"
+      @return-section="getRoadSection"
+      @return-marker="showMarkerDetail"
+      @return-polyline="showPolylineDetail"
     />
   </div>
 </template>
@@ -439,6 +439,7 @@ export default {
       });
 
       /* 移除选中驾车规划的那段线路 */
+      // todo 未完全移除
       this.$refs.bdMap.removeOverlay({
         callback: (e) =>
           e.customObj?.customType === "draw-road-condition" &&

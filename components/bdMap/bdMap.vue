@@ -137,7 +137,7 @@ export default {
 
     /**
      * 实现指定路段的实时路况图层并添加点击事件
-     * 注意：点击事件需结合 drawPolyline的showPolylineDetail 使用【全局搜索 showPolylineDetail 就懂了】
+     * 注意：驾车规划生成的路线点击事件 需结合 drawPolyline的 return-polyline 使用
      * @param: isShowMyRoad: 是否显示系统中配置的路线的实时路况
      * @param: isShowRoadCondition: 是否显示路况图层
      * @param: startPoint: {lat: '', lng: ''} 起点坐标
@@ -245,7 +245,7 @@ export default {
             },
             onSearchComplete: searchComplete,
             onPolylinesSet: () => {
-              this.$emit("return-sectionObj", this.sectionObj); // 将路段信息传递给父组件
+              this.$emit("return-section", this.sectionObj); // 将路段信息传递给父组件
             },
           });
 
@@ -404,10 +404,10 @@ export default {
 
           chooseMarker.addEventListener("click", (e) => {
             /* 给选中的marker添加点击事件 */
-            this.$emit("showMarkerDetail", e.target.customObj); // 接收父组件传来的showMarkerDetail事件（打开详情弹窗）
+            this.$emit("return-marker", e.target.customObj); // 将点位详情传给父组件
           });
         }
-        this.$emit("showMarkerDetail", e.target.customObj); // 接收父组件传来的showMarkerDetail事件（打开详情弹窗）
+        this.$emit("return-marker", e.target.customObj); // 将点位详情传给父组件
       };
       marker.addEventListener("click", markerClick);
 
@@ -508,7 +508,7 @@ export default {
           this.bdMap.addOverlay(myChoosePolyline);
         }
         console.error("点击了线段 - drawPolyline", e);
-        this.$emit("showPolylineDetail", e.target.customObj); // 通过showPolylineDetail自定义事件，将数据传到父组件
+        this.$emit("return-polyline", e.target.customObj); // 将数据传给父组件
         // todo 解决报错
         // e.stopPropagation() || e.domEvent.stopPropagation(); // 解决 如果zoom层级很小的情况下 点击 紧挨着的线段 会连续触发多次点击事件
       };
@@ -698,10 +698,10 @@ export default {
         //
         //   chooseMarker.addEventListener("click", (e) => {
         //     /* 给选中的marker添加点击事件 */
-        //     this.$emit("showMarkerDetail", e.target.customObj); // 接收父组件传来的showMarkerDetail事件（打开详情弹窗）
+        //     this.$emit("return-marker", e.target.customObj); // 将点位详情传给父组件
         //   });
         // }
-        this.$emit("showCustomOverlayDetail", e.target); // 接收父组件传来的showMarkerDetail事件（打开详情弹窗）
+        this.$emit("showCustomOverlayDetail", e.target); // 将点位详情传给父组件
       };
       // 鼠标点击事件
       customOverlay.addEventListener("click", customOverlayClick);
