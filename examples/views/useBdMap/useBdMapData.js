@@ -29,6 +29,38 @@ const useBdMapData = {
             title: "预警点位2",
         },
     ], // 预警点位
+    defaultOverlayList: [
+        {
+            id: 51,
+            longitude: 120.23331383768767,
+            latitude: 30.38527243709554,
+            src: "/marker/weather.gif",
+            title: "默认图层点位1",
+        },
+        {
+            id: 52,
+            longitude: 120.20284331478922,
+            latitude: 30.178710736210352,
+            src: "/marker/weather.gif",
+            title: "默认图层点位2",
+        },
+    ], // 默认图层点位
+    customOverlayList: [
+        {
+            id: 61,
+            longitude: 120.0298229706817,
+            latitude: 30.268410569237187,
+            src: "/marker/event.gif",
+            title: "自定义图层点位1",
+        },
+        {
+            id: 62,
+            longitude: 120.46672954140034,
+            latitude: 30.19369528613377,
+            src: "/marker/event.gif",
+            title: "自定义图层点位2",
+        },
+    ], // 自定义图层点位
     defaultLineList: [
         {
             id: 1,

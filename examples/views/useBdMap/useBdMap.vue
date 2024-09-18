@@ -22,6 +22,21 @@
       </div>
 
       <div>
+        <el-button size="small" type="primary" @click="drawDefaultOverlay"
+          >绘制默认自定义图层</el-button
+        >
+        <el-button size="small" type="danger" @click="removeDefaultOverlay"
+          >移除默认自定义图层</el-button
+        >
+        <el-button size="small" type="primary" @click="drawCustomOverlay"
+          >绘制自定义自定义图层</el-button
+        >
+        <el-button size="small" type="danger" @click="removeCustomOverlay"
+          >移除自定义自定义图层</el-button
+        >
+      </div>
+
+      <div>
         <el-button size="small" type="primary" @click="drawDefaultLine"
           >绘制默认路线</el-button
         >
@@ -118,6 +133,8 @@
       @return-marker="showMarkerDetail"
       @return-polyline="showPolylineDetail"
       @return-polygon="showPolygonDetail"
+      @return-overlay="showCustomOverlayDetail"
+      @return-overlay-instantiated="getOverlayInstantiated"
     />
   </div>
 </template>
@@ -156,6 +173,8 @@ export default {
         "--closeBtnColor": "#fff", // 气泡关闭按钮的颜色
         "--titleHeight": "8px", // 气泡顶部标题高度
       },
+      defaultOverlayArr: [], // 默认自定义图层 (drawCustomOverlay)
+      customOverlayArr: [], // 自定义自定义图层 (drawCustomOverlay)
     };
   },
   methods: {
@@ -190,6 +209,21 @@ export default {
     showPolygonDetail(data) {
       console.log(data, "data");
       this.$message.success(`你点击了${data.title}`);
+    },
+
+    showCustomOverlayDetail(data) {
+      console.log(data, "data");
+      this.$message.success(`你点击了${data.properties.customObj.title}`);
+    },
+
+    getOverlayInstantiated(data) {
+      console.log(data, "自定义图层的实例");
+      if (data.properties.customObj.customType === "draw-default-overlay") {
+        this.defaultOverlayArr.push(data);
+      }
+      if (data.properties.customObj.customType === "draw-custom-overlay") {
+        this.customOverlayArr.push(data);
+      }
     },
 
     /**
@@ -443,6 +477,76 @@ export default {
       });
     },
 
+    drawDefaultOverlay() {
+      useBdMapData.defaultOverlayList.forEach((item, index) => {
+        this.$refs.bdMap.drawCustomOverlay({
+          createDOM: function () {
+            const img = document.createElement("img");
+            img.style.width = "29px";
+            img.style.height = "40px";
+            img.src = item.src;
+            img.draggable = false;
+            return img;
+          },
+          point: {
+            lng: item.longitude,
+            lat: item.latitude,
+          },
+          customObj: {
+            ...item,
+            customType: "draw-default-overlay",
+            type: "百度地图绘制默认的自定义覆盖物",
+          },
+          customOverlayConfig: {
+            enableMassClear: true, // 是否能被统一清除掉覆盖物
+            enableDraggingMap: true, // 是否可以在覆盖物位置拖拽地图
+          },
+          isShowInfo: true,
+          infoWindowConfig: {
+            html: `<div style="color: #fff">${item.title}</div>`,
+            offsetX: -14, // 覆盖物水平偏移量
+            offsetY: 50,
+            isFloatShadow: false,
+          },
+        });
+      });
+    },
+
+    drawCustomOverlay() {
+      useBdMapData.customOverlayList.forEach((item, index) => {
+        this.$refs.bdMap.drawCustomOverlay({
+          createDOM: function () {
+            const img = document.createElement("img");
+            img.style.width = "29px";
+            img.style.height = "40px";
+            img.src = item.src;
+            img.draggable = false;
+            return img;
+          },
+          point: {
+            lng: item.longitude,
+            lat: item.latitude,
+          },
+          customObj: {
+            ...item,
+            customType: "draw-custom-overlay",
+            type: "百度地图绘制自定义的自定义覆盖物",
+          },
+          customOverlayConfig: {
+            enableMassClear: true, // 是否能被统一清除掉覆盖物
+            enableDraggingMap: true, // 是否可以在覆盖物位置拖拽地图
+          },
+          isShowInfo: true,
+          infoWindowConfig: {
+            html: `<div style="color: #fff">${item.title}</div>`,
+            offsetX: -14, // 覆盖物水平偏移量
+            offsetY: 50,
+            isFloatShadow: false,
+          },
+        });
+      });
+    },
+
     drawDefaultCircle() {},
 
     drawCustomCircle() {},
@@ -503,13 +607,30 @@ export default {
 
     removeCustomPolygon() {
       this.$refs.bdMap.removeOverlay({
-        callback: (e) => e.customObj?.customType === "draw-custom-polygon",
+        callback: (e) => {
+          console.log(e);
+          // return e.properties.customObj?.customType === "draw-custom-polygon"
+        },
       });
     },
 
     removeDefaultCircle() {},
 
     removeCustomCircle() {},
+
+    removeDefaultOverlay() {
+      console.log("移除默认自定义图层");
+      this.defaultOverlayArr.forEach((item) => {
+        item.hide();
+      });
+    },
+
+    removeCustomOverlay() {
+      console.log("移除默认自定义图层");
+      this.customOverlayArr.forEach((item) => {
+        item.hide();
+      });
+    },
 
     /**
      * @Event 开启/关闭 路况
@@ -591,6 +712,7 @@ export default {
       this.drawDefaultMarker();
       this.drawDefaultLine();
       this.drawDefaultPolygon();
+      this.drawDefaultOverlay();
     },
 
     screenshot() {

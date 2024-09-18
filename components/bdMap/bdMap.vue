@@ -704,10 +704,10 @@ export default {
       });
       this.bdMap.addOverlay(customOverlay);
 
-      this.$emit("returnCustomOverlay", customOverlay); // 返回自定义覆盖物实例
+      this.$emit("return-overlay-instantiated", customOverlay); // 返回自定义覆盖物实例
 
       const customOverlayClick = (e) => {
-        console.log("点击了自定义覆盖物", e.target.properties);
+        console.error("点击了自定义覆盖物", e.target.properties);
         if (isResetCenter) {
           /* 重置地图中心点 */
           this.setMapCenter({
@@ -741,7 +741,7 @@ export default {
         //     this.$emit("return-marker", e.target.customObj); // 将点位详情传给父组件
         //   });
         // }
-        this.$emit("showCustomOverlayDetail", e.target); // 将点位详情传给父组件
+        this.$emit("return-overlay", e.target); // 将点位详情传给父组件
       };
       // 鼠标点击事件
       customOverlay.addEventListener("click", customOverlayClick);
