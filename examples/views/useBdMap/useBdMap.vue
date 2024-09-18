@@ -37,6 +37,36 @@
       </div>
 
       <div>
+        <el-button size="small" type="primary" @click="drawDefaultPolygon"
+          >绘制默认多边形</el-button
+        >
+        <el-button size="small" type="danger" @click="removeDefaultPolygon"
+          >移除默认多边形</el-button
+        >
+        <el-button size="small" type="primary" @click="drawCustomPolygon"
+          >绘制自定义多边形</el-button
+        >
+        <el-button size="small" type="danger" @click="removeCustomPolygon"
+          >移除自定义多边形</el-button
+        >
+      </div>
+
+      <div>
+        <el-button size="small" type="primary" @click="drawDefaultCircle"
+          >绘制默认圆</el-button
+        >
+        <el-button size="small" type="danger" @click="removeDefaultCircle"
+          >移除默认圆</el-button
+        >
+        <el-button size="small" type="primary" @click="drawCustomCircle"
+          >绘制自定义圆</el-button
+        >
+        <el-button size="small" type="danger" @click="removeCustomCircle"
+          >移除自定义圆</el-button
+        >
+      </div>
+
+      <div>
         <el-button size="small" type="primary" @click="roadCondition(true)"
           >开启路况</el-button
         >
@@ -65,7 +95,7 @@
           >改变中心点和层级</el-button
         >
         <el-button size="small" type="warning" @click="getMapView"
-          >获取地图边界和层级</el-button
+          >获取边界和层级</el-button
         >
       </div>
     </div>
@@ -81,6 +111,7 @@
       @return-section="getRoadSection"
       @return-marker="showMarkerDetail"
       @return-polyline="showPolylineDetail"
+      @return-polygon="showPolygonDetail"
     />
   </div>
 </template>
@@ -145,6 +176,17 @@ export default {
     },
 
     /**
+     * @Event 点击多边形展示详情
+     * @description:
+     * @author: mhf
+     * @time: 2024-09-14 16:00:38
+     **/
+    showPolygonDetail(data) {
+      console.log(data, "data");
+      this.$message.success(`你点击了${data.title}`);
+    },
+
+    /**
      * @Event 地图变化时做的操作【缩放 移动 拖拽】
      * @description:
      * @author: mhf
@@ -163,9 +205,9 @@ export default {
     handleMapClick(e) {
       console.log(e, "移除当前选中的点位和路段");
       /* 移除当前选中的点位 */
-      this.$refs.bdMap.removeOverlay({
-        callback: (e) => e.customObj?.isChoose,
-      });
+      // this.$refs.bdMap.removeOverlay({
+      //   callback: (e) => e.customObj?.isChoose,
+      // });
     },
 
     /**
@@ -328,6 +370,77 @@ export default {
       });
     },
 
+    drawDefaultPolygon() {
+      useBdMapData.defaultPolygonList.forEach((item, index) => {
+        this.$refs.bdMap.drawPolygon({
+          pointArr: item.pointArr,
+          config: {
+            zIndex: 10, // 层级
+            fillOpacity: 0.5, // 面的不透明度
+            strokeStyle: "solid", // dashed虚线、solid实线、dotted点线
+            fillColor: "#5298fe", // 边框颜色
+            strokeColor: "#5298fe", // 边框颜色
+            strokeWeight: 5, // 边框粗细
+            strokeOpacity: 1, // 边框不透明度
+          },
+          customObj: {
+            ...item,
+            customType: "draw-default-polygon",
+            type: "百度地图绘制默认多边形",
+          },
+          isRightDelete: true, // 是否右键删除
+          isResetPolygon: true,
+          myChooseConfig: {
+            zIndex: 11, // 层级
+            fillOpacity: 0.5, // 面的不透明度
+            strokeStyle: "solid", // dashed虚线、solid实线、dotted点线
+            fillColor: "#FF0000", // 边框颜色
+            strokeColor: "#FF0000", // 边框颜色
+            strokeWeight: 5, // 边框粗细
+            strokeOpacity: 1, // 边框不透明度
+          },
+        });
+      });
+    },
+
+    drawCustomPolygon() {
+      useBdMapData.polygonList.forEach((item, index) => {
+        this.$refs.bdMap.drawPolygon({
+          pointArr: item.pointArr,
+          config: {
+            zIndex: 10, // 层级
+            fillOpacity: 0.5, // 面的不透明度
+            strokeStyle: "solid", // dashed虚线、solid实线、dotted点线
+            fillColor: "#FFF000", // 边框颜色
+            strokeColor: "#FFF000", // 边框颜色
+            strokeWeight: 5, // 边框粗细
+            strokeOpacity: 1, // 边框不透明度
+          },
+          customObj: {
+            ...item,
+            customType: "draw-custom-polygon",
+            type: "百度地图绘制自定义多边形",
+          },
+          isRightDelete: false, // 是否右键删除
+          isResetPolygon: true,
+          resetViewport: false,
+          myChooseConfig: {
+            zIndex: 11, // 层级
+            fillOpacity: 0.5, // 面的不透明度
+            strokeStyle: "solid", // dashed虚线、solid实线、dotted点线
+            fillColor: "#00FFFF", // 填充颜色
+            strokeColor: "#00FFFF", // 边框颜色
+            strokeWeight: 5, // 边框粗细
+            strokeOpacity: 1, // 边框不透明度
+          },
+        });
+      });
+    },
+
+    drawDefaultCircle() {},
+
+    drawCustomCircle() {},
+
     /**
      * @Event 移除默认点位
      * @description:
@@ -375,6 +488,22 @@ export default {
         callback: (e) => e.customObj?.customType === "draw-custom-line",
       });
     },
+
+    removeDefaultPolygon() {
+      this.$refs.bdMap.removeOverlay({
+        callback: (e) => e.customObj?.customType === "draw-default-polygon",
+      });
+    },
+
+    removeCustomPolygon() {
+      this.$refs.bdMap.removeOverlay({
+        callback: (e) => e.customObj?.customType === "draw-custom-polygon",
+      });
+    },
+
+    removeDefaultCircle() {},
+
+    removeCustomCircle() {},
 
     /**
      * @Event 开启/关闭 路况
@@ -455,6 +584,7 @@ export default {
       console.log("mapLoaded", a);
       this.drawDefaultMarker();
       this.drawDefaultLine();
+      this.drawDefaultPolygon();
     },
 
     screenshot() {

@@ -546,19 +546,32 @@ export default {
      * @time: 2024-03-07 13:31:56
      **/
     drawPolygon(params = {}) {
-      console.log(params, "百度地图DrawPolygon");
+      console.error(params, "百度地图DrawPolygon");
       let {
         pointArr = [],
         config = {
           zIndex: 10, // 层级
+          fillOpacity: 0.5, // 面的不透明度
+          strokeStyle: "solid", // dashed虚线、solid实线、dotted点线
+          fillColor: "#5298fe", // 边框颜色
+          strokeColor: "#5298fe", // 边框颜色
+          strokeWeight: 6, // 边框粗细
+          strokeOpacity: 1, // 边框不透明度
+        },
+        myChooseConfig = {
+          zIndex: 11, // 层级
           fillOpacity: 0.8, // 面的不透明度
           strokeStyle: "solid", // dashed虚线、solid实线、dotted点线
-          strokeColor: "#5298fe", // 边框颜色
+          fillColor: "#FF0000", // 边框颜色
+          strokeColor: "#FF0000", // 边框颜色
           strokeWeight: 6, // 边框粗细
           strokeOpacity: 1, // 边框不透明度
         },
         customObj,
         isRightDelete = false, // 是否右键删除
+        isViewport = false, // 调整地图视野【注意：一次性绘制多个不规则面时不建议使用】
+        resetViewport = true, // 是否在点击多边形的时候重置地图视野
+        isResetPolygon = true, // 点击多边形后重置多边形样式
       } = params;
       let pointGlArr = pointArr.map(
         (item) => new this.BMapGL.Point(item.lng, item.lat)
@@ -566,11 +579,37 @@ export default {
       var polygon = new this.BMapGL.Polygon(pointGlArr, config);
       polygon.customObj = customObj;
       this.bdMap.addOverlay(polygon);
-      this.bdMap.setViewport(pointArr);
-      polygon.addEventListener("click", (e) => {
-        console.log("点击了面", e);
-        this.$emit("showPolygonDetail", e.target.customObj); // 接收父组件传来的showPolygonDetail事件（打开详情弹窗）
-      });
+      if (isViewport) {
+        this.bdMap.setViewport(pointArr);
+      }
+
+      const polygonClick = (e) => {
+        console.error("点击了多边形", e);
+        if (resetViewport) {
+          /* 重置地图视野 */
+          this.setViewport(pointArr);
+        }
+        if (isResetPolygon) {
+          /* 点击多边形后重置多边形样式 */
+          let myChoosePolygon = new this.BMapGL.Polygon(
+            pointGlArr,
+            myChooseConfig
+          );
+          myChoosePolygon.customObj = {
+            ...customObj,
+            isChoose: true, // 用于标识该标注是否被选中
+          };
+          console.log(myChoosePolygon, "myChoosePolygon");
+          this.removeOverlay({
+            callback: (e) => e.customObj?.isChoose,
+          });
+          myChoosePolygon.setZIndex(myChooseConfig.zIndex || 11);
+          this.bdMap.addOverlay(myChoosePolygon);
+        }
+        this.$emit("return-polygon", e.target.customObj);
+      };
+
+      polygon.addEventListener("click", polygonClick);
       if (isRightDelete) {
         polygon.addEventListener("rightclick", (e) => {
           let txtMenuItem = [
