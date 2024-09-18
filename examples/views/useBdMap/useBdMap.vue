@@ -439,11 +439,15 @@ export default {
       });
 
       /* 移除选中驾车规划的那段线路 */
-      // todo 未完全移除
       this.$refs.bdMap.removeOverlay({
         callback: (e) =>
           e.customObj?.customType === "draw-road-condition" &&
           e.customObj?.isChoose,
+      });
+      /* 移除透明的辅助点击的线 */
+      this.$refs.bdMap.removeOverlay({
+        callback: (e) =>
+          e.customObj?.traffic_customType === "traffic_transparent",
       });
     },
 

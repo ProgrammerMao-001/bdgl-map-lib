@@ -217,6 +217,7 @@ export default {
                 customObj: {
                   ...customObj,
                   pointsArr,
+                  traffic_customType: "traffic_transparent", // 绘制一条透明路段图层，以实现驾车规划线路的点击事件
                 },
                 stroke: {
                   strokeStyle: "solid",
