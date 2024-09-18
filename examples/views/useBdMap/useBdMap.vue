@@ -618,10 +618,7 @@ export default {
 
     removeCustomPolygon() {
       this.$refs.bdMap.removeOverlay({
-        callback: (e) => {
-          console.log(e);
-          // return e.properties.customObj?.customType === "draw-custom-polygon"
-        },
+        callback: (e) => e.customObj?.customType === "draw-custom-polygon"
       });
     },
 
