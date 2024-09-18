@@ -55,6 +55,15 @@
         <el-button size="small" type="warning" @click="screenshot"
           >截图</el-button
         >
+        <el-button size="small" type="warning" @click="changeMapCenter"
+          >改变中心点</el-button
+        >
+        <el-button size="small" type="warning" @click="changeMapZoom"
+          >改变层级</el-button
+        >
+        <el-button size="small" type="warning" @click="changeMapView"
+          >改变中心点和层级</el-button
+        >
       </div>
     </div>
 
@@ -405,6 +414,11 @@ export default {
           lng: 120.1470765087298,
           lat: 30.315234617627876,
         },
+        customObj: {
+          title: "百度地图驾车规划路线",
+          customType: "draw-road-condition",
+          type: "百度地图驾车规划",
+        },
       });
     },
 
@@ -415,9 +429,17 @@ export default {
      * @time: 2024-09-14 16:58:47
      **/
     removeRoadCondition() {
+      /* 移除驾车规划的图层 */
       this.$refs.bdMap.showRoadCondition({
         isShowRoadCondition: false,
         clearRoadSectionType: "roadCondition",
+      });
+
+      /* 移除选中驾车规划的那段线路 */
+      this.$refs.bdMap.removeOverlay({
+        callback: (e) =>
+          e.customObj?.customType === "draw-road-condition" &&
+          e.customObj?.isChoose,
       });
     },
 
@@ -452,6 +474,27 @@ export default {
 
       // 清理临时元素
       document.body.removeChild(link);
+    },
+
+    changeMapCenter() {
+      this.$refs.bdMap.setMapCenter({
+        lng: 120.16249203811518,
+        lat: 30.21226404708224,
+      });
+    },
+
+    changeMapZoom() {
+      this.$refs.bdMap.setMapZoom({
+        zoom: 18,
+      });
+    },
+
+    changeMapView() {
+      this.$refs.bdMap.setMapCenterAndZoom({
+        lng: 121.16249203811518,
+        lat: 31.21226404708224,
+        zoom: 10,
+      });
     },
   },
   created() {},

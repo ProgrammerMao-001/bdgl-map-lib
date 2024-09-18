@@ -833,14 +833,15 @@ export default {
 
     /**
      * 设置地图中心点和缩放层级
-     * @param: params：{lat: 纬度, lng: 经度, zoom: 缩放层级}
+     * @param: params：{lat: 纬度, lng: 经度, zoom: 缩放层级(可不传，默认为当前缩放层级)}
      * @param:
      * @return:
      * @author: mhf
      * @time: 2024-03-04 16:22:17
      **/
     setMapCenterAndZoom(params = {}) {
-      let { lat, lng, zoom = 16 } = params;
+      let nowZoom = this.bdMap.getZoom();
+      let { lat, lng, zoom = nowZoom } = params;
       this.bdMap.centerAndZoom(new this.BMapGL.Point(lng, lat), zoom);
     },
 
