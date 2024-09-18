@@ -3474,8 +3474,8 @@ var mapComps_component = normalizeComponent(
 )
 
 /* harmony default export */ var mapComps = (mapComps_component.exports);
-;// CONCATENATED MODULE: ./node_modules/.pnpm/thread-loader@3.0.4_webpack@5.93.0/node_modules/thread-loader/dist/cjs.js!./node_modules/.pnpm/babel-loader@8.3.0_ce2ekrksu4bikkggd5ymmdtq6i/node_modules/babel-loader/lib/index.js??clonedRuleSet-82.use[1]!./node_modules/.pnpm/vue-loader@15.11.1_d3fwwjlxcdz26pihteszkgpun4/node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[3]!./node_modules/.pnpm/vue-loader@15.11.1_d3fwwjlxcdz26pihteszkgpun4/node_modules/vue-loader/lib/index.js??vue-loader-options!./components/bdLib/bdLib.vue?vue&type=template&id=fe8dd0fe&scoped=true
-var bdLibvue_type_template_id_fe8dd0fe_scoped_true_render = function render() {
+;// CONCATENATED MODULE: ./node_modules/.pnpm/thread-loader@3.0.4_webpack@5.93.0/node_modules/thread-loader/dist/cjs.js!./node_modules/.pnpm/babel-loader@8.3.0_ce2ekrksu4bikkggd5ymmdtq6i/node_modules/babel-loader/lib/index.js??clonedRuleSet-82.use[1]!./node_modules/.pnpm/vue-loader@15.11.1_d3fwwjlxcdz26pihteszkgpun4/node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[3]!./node_modules/.pnpm/vue-loader@15.11.1_d3fwwjlxcdz26pihteszkgpun4/node_modules/vue-loader/lib/index.js??vue-loader-options!./components/bdLib/bdLib.vue?vue&type=template&id=3e3aac34&scoped=true
+var bdLibvue_type_template_id_3e3aac34_scoped_true_render = function render() {
   var _vm = this,
     _c = _vm._self._c;
   return _vm.dialogVisible ? _c('el-dialog', {
@@ -3540,11 +3540,9 @@ var bdLibvue_type_template_id_fe8dd0fe_scoped_true_render = function render() {
     }
   }, [_vm._v("保存")])], 1)]) : _vm._e();
 };
-var bdLibvue_type_template_id_fe8dd0fe_scoped_true_staticRenderFns = [];
+var bdLibvue_type_template_id_3e3aac34_scoped_true_staticRenderFns = [];
 
 ;// CONCATENATED MODULE: ./components/bdLib/bmpgl_lib.js
-// const ak = "LnP4INwY2AY2VSZFwcRMbNhPxUeBB7sA";
-// const ak = "zUX8euZSyCodQ1jFaZRZxNgWo4uzLZw1";
 /**
  * 异步加载百度地图
  * @returns {Promise}
@@ -3607,6 +3605,11 @@ function loadBaiDuDrawMap(ak) {
   name: "bdGlDrawAreaDialog",
   components: {},
   props: {
+    ak: {
+      required: true,
+      type: String,
+      default: ""
+    },
     btnList: {
       type: Array,
       default: () => {
@@ -3749,7 +3752,7 @@ function loadBaiDuDrawMap(ak) {
      **/
     initMap() {
       this.$nextTick(() => {
-        loadBaiDuDrawMap("zUX8euZSyCodQ1jFaZRZxNgWo4uzLZw1").then(() => {
+        loadBaiDuDrawMap(this.ak).then(() => {
           this.BMapGL = BMapGL;
           this.map = new this.BMapGL.Map("map-container");
           let latLng = this.getMyPosition();
@@ -3980,10 +3983,10 @@ function loadBaiDuDrawMap(ak) {
 });
 ;// CONCATENATED MODULE: ./components/bdLib/bdLib.vue?vue&type=script&lang=js
  /* harmony default export */ var bdLib_bdLibvue_type_script_lang_js = (bdLibvue_type_script_lang_js); 
-;// CONCATENATED MODULE: ./node_modules/.pnpm/mini-css-extract-plugin@2.9.0_webpack@5.93.0/node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-64.use[0]!./node_modules/.pnpm/css-loader@6.11.0_webpack@5.93.0/node_modules/css-loader/dist/cjs.js??clonedRuleSet-64.use[1]!./node_modules/.pnpm/vue-loader@15.11.1_d3fwwjlxcdz26pihteszkgpun4/node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/.pnpm/postcss-loader@6.2.1_zs77g4opexpjlazxpbaplvsl5m/node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-64.use[2]!./node_modules/.pnpm/sass-loader@8.0.2_i4l4nmociu5xhprmi6hdovwxki/node_modules/sass-loader/dist/cjs.js??clonedRuleSet-64.use[3]!./node_modules/.pnpm/vue-loader@15.11.1_d3fwwjlxcdz26pihteszkgpun4/node_modules/vue-loader/lib/index.js??vue-loader-options!./components/bdLib/bdLib.vue?vue&type=style&index=0&id=fe8dd0fe&prod&lang=scss&scoped=true
+;// CONCATENATED MODULE: ./node_modules/.pnpm/mini-css-extract-plugin@2.9.0_webpack@5.93.0/node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-64.use[0]!./node_modules/.pnpm/css-loader@6.11.0_webpack@5.93.0/node_modules/css-loader/dist/cjs.js??clonedRuleSet-64.use[1]!./node_modules/.pnpm/vue-loader@15.11.1_d3fwwjlxcdz26pihteszkgpun4/node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/.pnpm/postcss-loader@6.2.1_zs77g4opexpjlazxpbaplvsl5m/node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-64.use[2]!./node_modules/.pnpm/sass-loader@8.0.2_i4l4nmociu5xhprmi6hdovwxki/node_modules/sass-loader/dist/cjs.js??clonedRuleSet-64.use[3]!./node_modules/.pnpm/vue-loader@15.11.1_d3fwwjlxcdz26pihteszkgpun4/node_modules/vue-loader/lib/index.js??vue-loader-options!./components/bdLib/bdLib.vue?vue&type=style&index=0&id=3e3aac34&prod&lang=scss&scoped=true
 // extracted by mini-css-extract-plugin
 
-;// CONCATENATED MODULE: ./components/bdLib/bdLib.vue?vue&type=style&index=0&id=fe8dd0fe&prod&lang=scss&scoped=true
+;// CONCATENATED MODULE: ./components/bdLib/bdLib.vue?vue&type=style&index=0&id=3e3aac34&prod&lang=scss&scoped=true
 
 ;// CONCATENATED MODULE: ./components/bdLib/bdLib.vue
 
@@ -3996,11 +3999,11 @@ function loadBaiDuDrawMap(ak) {
 
 var bdLib_component = normalizeComponent(
   bdLib_bdLibvue_type_script_lang_js,
-  bdLibvue_type_template_id_fe8dd0fe_scoped_true_render,
-  bdLibvue_type_template_id_fe8dd0fe_scoped_true_staticRenderFns,
+  bdLibvue_type_template_id_3e3aac34_scoped_true_render,
+  bdLibvue_type_template_id_3e3aac34_scoped_true_staticRenderFns,
   false,
   null,
-  "fe8dd0fe",
+  "3e3aac34",
   null
   
 )
