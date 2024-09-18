@@ -1,5 +1,3 @@
-// const ak = "LnP4INwY2AY2VSZFwcRMbNhPxUeBB7sA";
-// const ak = "zUX8euZSyCodQ1jFaZRZxNgWo4uzLZw1";
 /**
  * 异步加载百度地图
  * @returns {Promise}

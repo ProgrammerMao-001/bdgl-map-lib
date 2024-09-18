@@ -20,6 +20,11 @@ export default {
   components: { bdMapVGl },
   mixins: [],
   props: {
+    ak: {
+      required: true,
+      type: String,
+      default: "",
+    },
     listenOnce: {
       type: Boolean,
       default: false,
@@ -29,7 +34,6 @@ export default {
       type: Object,
       default: () => {
         return {
-          ak: undefined, // your ak
           center: {
             lng: 116.404,
             lat: 39.915,
@@ -91,7 +95,7 @@ export default {
      **/
     initMap() {
       this.$nextTick(() => {
-        loadBaiDuMap(this.mapConfig.ak).then(() => {
+        loadBaiDuMap(this.ak).then(() => {
           console.log(BMapGL, "this.BMapGL");
           this.BMapGL = BMapGL;
           this.bdMap = new this.BMapGL.Map("map-container", {

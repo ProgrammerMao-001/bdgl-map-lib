@@ -45,6 +45,11 @@ export default {
   name: "bdGlDrawAreaDialog",
   components: {},
   props: {
+    ak: {
+      required: true,
+      type: String,
+      default: "",
+    },
     btnList: {
       type: Array,
       default: () => {
@@ -170,7 +175,7 @@ export default {
      **/
     initMap() {
       this.$nextTick(() => {
-        loadBaiDuDrawMap("zUX8euZSyCodQ1jFaZRZxNgWo4uzLZw1").then(() => {
+        loadBaiDuDrawMap(this.ak).then(() => {
           this.BMapGL = BMapGL;
           this.map = new this.BMapGL.Map("map-container");
           let latLng = this.getMyPosition();

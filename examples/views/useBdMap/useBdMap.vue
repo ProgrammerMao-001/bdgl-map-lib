@@ -132,6 +132,7 @@
 
     <bdMap
       ref="bdMap"
+      ak="OKHgYpCQmWTblbFlRCzYJWvk0HCuXsHU"
       listenOnce
       :mapConfig="bdMapConfig"
       :infoWindowStyle="bdInfoWindowStyle"
@@ -163,7 +164,6 @@ export default {
   data() {
     return {
       bdMapConfig: {
-        ak: "OKHgYpCQmWTblbFlRCzYJWvk0HCuXsHU",
         center: {
           lng: 120.3083403138811,
           lat: 30.27631859319542,

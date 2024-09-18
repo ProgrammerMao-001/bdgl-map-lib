@@ -17,7 +17,12 @@
       </el-form-item>
     </el-form>
 
-    <bdLib ref="bdLib" :btnList="btnList" @on-response="getOverlay" />
+    <bdLib
+      ref="bdLib"
+      ak="OKHgYpCQmWTblbFlRCzYJWvk0HCuXsHU"
+      :btnList="btnList"
+      @on-response="getOverlay"
+    />
   </div>
 </template>
 
