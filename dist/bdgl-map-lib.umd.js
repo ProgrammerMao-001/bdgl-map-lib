@@ -1661,7 +1661,7 @@ $({ target: 'Array', proto: true, arity: 1, forced: FORCED }, {
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.miniCssF = function(chunkId) {
 /******/ 			// return url for filenames based on template
-/******/ 			return "css/" + chunkId + "." + "48d08d29" + ".css";
+/******/ 			return "css/" + chunkId + "." + {"517":"48d08d29","963":"48d08d29"}[chunkId] + ".css";
 /******/ 		};
 /******/ 	}();
 /******/ 	
@@ -1811,7 +1811,7 @@ $({ target: 'Array', proto: true, arity: 1, forced: FORCED }, {
 /******/ 		};
 /******/ 		
 /******/ 		__webpack_require__.f.miniCss = function(chunkId, promises) {
-/******/ 			var cssChunks = {"963":1};
+/******/ 			var cssChunks = {"517":1,"963":1};
 /******/ 			if(installedCssChunks[chunkId]) promises.push(installedCssChunks[chunkId]);
 /******/ 			else if(installedCssChunks[chunkId] !== 0 && cssChunks[chunkId]) {
 /******/ 				promises.push(installedCssChunks[chunkId] = loadStylesheet(chunkId).then(function() {
@@ -1949,1533 +1949,8 @@ if (typeof window !== 'undefined') {
 // Indicate to webpack that this file can be concatenated
 /* harmony default export */ var setPublicPath = (null);
 
-;// CONCATENATED MODULE: ./node_modules/.pnpm/thread-loader@3.0.4_webpack@5.93.0/node_modules/thread-loader/dist/cjs.js!./node_modules/.pnpm/babel-loader@8.3.0_ce2ekrksu4bikkggd5ymmdtq6i/node_modules/babel-loader/lib/index.js??clonedRuleSet-82.use[1]!./node_modules/.pnpm/vue-loader@15.11.1_d3fwwjlxcdz26pihteszkgpun4/node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[3]!./node_modules/.pnpm/vue-loader@15.11.1_d3fwwjlxcdz26pihteszkgpun4/node_modules/vue-loader/lib/index.js??vue-loader-options!./components/demo/src/main.vue?vue&type=template&id=05ab3702&scoped=true
-var render = function render() {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _vm._m(0);
-};
-var staticRenderFns = [function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c('div', {
-    staticClass: "a"
-  }, [_vm._v(" main "), _c('div', {
-    staticClass: "b"
-  }, [_vm._v("demo")])]);
-}];
-
-;// CONCATENATED MODULE: ./components/demo/src/main.vue?vue&type=template&id=05ab3702&scoped=true
-
-;// CONCATENATED MODULE: ./node_modules/.pnpm/thread-loader@3.0.4_webpack@5.93.0/node_modules/thread-loader/dist/cjs.js!./node_modules/.pnpm/babel-loader@8.3.0_ce2ekrksu4bikkggd5ymmdtq6i/node_modules/babel-loader/lib/index.js??clonedRuleSet-82.use[1]!./node_modules/.pnpm/vue-loader@15.11.1_d3fwwjlxcdz26pihteszkgpun4/node_modules/vue-loader/lib/index.js??vue-loader-options!./components/demo/src/main.vue?vue&type=script&lang=js
-/* harmony default export */ var mainvue_type_script_lang_js = ({
-  name: "demo-main",
-  components: {},
-  mixins: [],
-  props: {},
-  computed: {},
-  watch: {},
-  filters: {},
-  data() {
-    return {};
-  },
-  methods: {},
-  created() {},
-  mounted() {},
-  destroyed() {}
-});
-;// CONCATENATED MODULE: ./components/demo/src/main.vue?vue&type=script&lang=js
- /* harmony default export */ var src_mainvue_type_script_lang_js = (mainvue_type_script_lang_js); 
-;// CONCATENATED MODULE: ./node_modules/.pnpm/mini-css-extract-plugin@2.9.0_webpack@5.93.0/node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-64.use[0]!./node_modules/.pnpm/css-loader@6.11.0_webpack@5.93.0/node_modules/css-loader/dist/cjs.js??clonedRuleSet-64.use[1]!./node_modules/.pnpm/vue-loader@15.11.1_d3fwwjlxcdz26pihteszkgpun4/node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/.pnpm/postcss-loader@6.2.1_zs77g4opexpjlazxpbaplvsl5m/node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-64.use[2]!./node_modules/.pnpm/sass-loader@8.0.2_i4l4nmociu5xhprmi6hdovwxki/node_modules/sass-loader/dist/cjs.js??clonedRuleSet-64.use[3]!./node_modules/.pnpm/vue-loader@15.11.1_d3fwwjlxcdz26pihteszkgpun4/node_modules/vue-loader/lib/index.js??vue-loader-options!./components/demo/src/main.vue?vue&type=style&index=0&id=05ab3702&prod&lang=scss&scoped=true
-// extracted by mini-css-extract-plugin
-
-;// CONCATENATED MODULE: ./components/demo/src/main.vue?vue&type=style&index=0&id=05ab3702&prod&lang=scss&scoped=true
-
-;// CONCATENATED MODULE: ./node_modules/.pnpm/vue-loader@15.11.1_d3fwwjlxcdz26pihteszkgpun4/node_modules/vue-loader/lib/runtime/componentNormalizer.js
-/* globals __VUE_SSR_CONTEXT__ */
-
-// IMPORTANT: Do NOT use ES2015 features in this file (except for modules).
-// This module is a runtime utility for cleaner component module output and will
-// be included in the final webpack user bundle.
-
-function normalizeComponent(
-  scriptExports,
-  render,
-  staticRenderFns,
-  functionalTemplate,
-  injectStyles,
-  scopeId,
-  moduleIdentifier /* server only */,
-  shadowMode /* vue-cli only */
-) {
-  // Vue.extend constructor export interop
-  var options =
-    typeof scriptExports === 'function' ? scriptExports.options : scriptExports
-
-  // render functions
-  if (render) {
-    options.render = render
-    options.staticRenderFns = staticRenderFns
-    options._compiled = true
-  }
-
-  // functional template
-  if (functionalTemplate) {
-    options.functional = true
-  }
-
-  // scopedId
-  if (scopeId) {
-    options._scopeId = 'data-v-' + scopeId
-  }
-
-  var hook
-  if (moduleIdentifier) {
-    // server build
-    hook = function (context) {
-      // 2.3 injection
-      context =
-        context || // cached call
-        (this.$vnode && this.$vnode.ssrContext) || // stateful
-        (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext) // functional
-      // 2.2 with runInNewContext: true
-      if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
-        context = __VUE_SSR_CONTEXT__
-      }
-      // inject component styles
-      if (injectStyles) {
-        injectStyles.call(this, context)
-      }
-      // register component module identifier for async chunk inferrence
-      if (context && context._registeredComponents) {
-        context._registeredComponents.add(moduleIdentifier)
-      }
-    }
-    // used by ssr in case component is cached and beforeCreate
-    // never gets called
-    options._ssrRegister = hook
-  } else if (injectStyles) {
-    hook = shadowMode
-      ? function () {
-          injectStyles.call(
-            this,
-            (options.functional ? this.parent : this).$root.$options.shadowRoot
-          )
-        }
-      : injectStyles
-  }
-
-  if (hook) {
-    if (options.functional) {
-      // for template-only hot-reload because in that case the render fn doesn't
-      // go through the normalizer
-      options._injectStyles = hook
-      // register for functional component in vue file
-      var originalRender = options.render
-      options.render = function renderWithStyleInjection(h, context) {
-        hook.call(context)
-        return originalRender(h, context)
-      }
-    } else {
-      // inject component registration as beforeCreate hook
-      var existing = options.beforeCreate
-      options.beforeCreate = existing ? [].concat(existing, hook) : [hook]
-    }
-  }
-
-  return {
-    exports: scriptExports,
-    options: options
-  }
-}
-
-;// CONCATENATED MODULE: ./components/demo/src/main.vue
-
-
-
-;
-
-
-/* normalize component */
-
-var component = normalizeComponent(
-  src_mainvue_type_script_lang_js,
-  render,
-  staticRenderFns,
-  false,
-  null,
-  "05ab3702",
-  null
-  
-)
-
-/* harmony default export */ var main = (component.exports);
-;// CONCATENATED MODULE: ./components/demo/index.js
-
-main.install = Vue => {
-  Vue.component(main.name, main);
-};
-/* harmony default export */ var demo = (main);
-;// CONCATENATED MODULE: ./node_modules/.pnpm/thread-loader@3.0.4_webpack@5.93.0/node_modules/thread-loader/dist/cjs.js!./node_modules/.pnpm/babel-loader@8.3.0_ce2ekrksu4bikkggd5ymmdtq6i/node_modules/babel-loader/lib/index.js??clonedRuleSet-82.use[1]!./node_modules/.pnpm/vue-loader@15.11.1_d3fwwjlxcdz26pihteszkgpun4/node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[3]!./node_modules/.pnpm/vue-loader@15.11.1_d3fwwjlxcdz26pihteszkgpun4/node_modules/vue-loader/lib/index.js??vue-loader-options!./components/mapComps/mapComps.vue?vue&type=template&id=80bd0c90&scoped=true
-var mapCompsvue_type_template_id_80bd0c90_scoped_true_render = function render() {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c('div', {
-    staticClass: "map-comps"
-  }, [_vm.mapType === 'bdMap' ? _c('bdMap', {
-    ref: "bdMap",
-    attrs: {
-      "mapConfig": _vm.bdMapConfig,
-      "infoWindowStyle": _vm.bdInfoWindowStyle
-    },
-    on: {
-      "showMarkerDetail": _vm.showMarkerDetail,
-      "showPolylineDetail": _vm.showPolylineDetail,
-      "showPolygonDetail": _vm.showPolygonDetail,
-      "showCustomOverlayDetail": _vm.showCustomOverlayDetail,
-      "return-sectionObj": _vm.getSectionObj,
-      "mapChange": _vm.mapChange,
-      "mapClick": _vm.mapClick,
-      "returnCustomOverlay": _vm.getCustomOverlay
-    }
-  }) : _vm._e()], 1);
-};
-var mapCompsvue_type_template_id_80bd0c90_scoped_true_staticRenderFns = [];
-
-;// CONCATENATED MODULE: ./node_modules/.pnpm/thread-loader@3.0.4_webpack@5.93.0/node_modules/thread-loader/dist/cjs.js!./node_modules/.pnpm/babel-loader@8.3.0_ce2ekrksu4bikkggd5ymmdtq6i/node_modules/babel-loader/lib/index.js??clonedRuleSet-82.use[1]!./node_modules/.pnpm/vue-loader@15.11.1_d3fwwjlxcdz26pihteszkgpun4/node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[3]!./node_modules/.pnpm/vue-loader@15.11.1_d3fwwjlxcdz26pihteszkgpun4/node_modules/vue-loader/lib/index.js??vue-loader-options!./components/mapComps/bdMap/bdMap.vue?vue&type=template&id=9d7de886&scoped=true
-var bdMapvue_type_template_id_9d7de886_scoped_true_render = function render() {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c('div', {
-    style: _vm.mapStyle,
-    attrs: {
-      "id": "map-container"
-    }
-  }, [_c('bdMapVGl', {
-    ref: "bdMapVGl",
-    attrs: {
-      "bdMap": _vm.bdMap
-    }
-  })], 1);
-};
-var bdMapvue_type_template_id_9d7de886_scoped_true_staticRenderFns = [];
-
-// EXTERNAL MODULE: ./node_modules/.pnpm/core-js@3.37.1/node_modules/core-js/modules/es.array.push.js
-var es_array_push = __webpack_require__(381);
-;// CONCATENATED MODULE: ./node_modules/.pnpm/thread-loader@3.0.4_webpack@5.93.0/node_modules/thread-loader/dist/cjs.js!./node_modules/.pnpm/babel-loader@8.3.0_ce2ekrksu4bikkggd5ymmdtq6i/node_modules/babel-loader/lib/index.js??clonedRuleSet-82.use[1]!./node_modules/.pnpm/vue-loader@15.11.1_d3fwwjlxcdz26pihteszkgpun4/node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[3]!./node_modules/.pnpm/vue-loader@15.11.1_d3fwwjlxcdz26pihteszkgpun4/node_modules/vue-loader/lib/index.js??vue-loader-options!./components/mapComps/bdMap/bdMapVGl.vue?vue&type=template&id=51c898b5
-var bdMapVGlvue_type_template_id_51c898b5_render = function render() {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div");
-};
-var bdMapVGlvue_type_template_id_51c898b5_staticRenderFns = [];
-
-;// CONCATENATED MODULE: ./node_modules/.pnpm/thread-loader@3.0.4_webpack@5.93.0/node_modules/thread-loader/dist/cjs.js!./node_modules/.pnpm/babel-loader@8.3.0_ce2ekrksu4bikkggd5ymmdtq6i/node_modules/babel-loader/lib/index.js??clonedRuleSet-82.use[1]!./node_modules/.pnpm/vue-loader@15.11.1_d3fwwjlxcdz26pihteszkgpun4/node_modules/vue-loader/lib/index.js??vue-loader-options!./components/mapComps/bdMap/bdMapVGl.vue?vue&type=script&lang=js
-/* harmony default export */ var bdMapVGlvue_type_script_lang_js = ({
-  name: "bdMapVGl",
-  components: {},
-  mixins: [],
-  props: {
-    bdMap: {
-      type: Object,
-      default() {
-        return {};
-      }
-    }
-  },
-  computed: {},
-  watch: {},
-  filters: {},
-  data() {
-    return {};
-  },
-  methods: {
-    /**
-     * 初始化用于展示大数据的立体多边形ShapeLayer。
-     * 参考文档: [ShapeLayer](https://mapv.baidu.com/gl/docs/ShapeLayer.html)
-     *
-     * @param {Object} [params={}] - 配置对象，包含ShapeLayer所需参数及事件处理。
-     * @property {string} [params.color='rgba(0, 214, 236, 0.8)'] - 立体多边形颜色。
-     * @property {boolean} [params.enablePicked=true] - 是否允许拾取交互。
-     * @property {number} [params.selectedIndex=-1] - 初始选中项索引。
-     * @property {string} [params.selectedColor='#ee1111'] - 选中项颜色。
-     * @property {boolean} [params.autoSelect=true] - 是否根据鼠标位置自动选择。
-     * @property {Array} [params.data=[]] - 数据源。
-     * @property {Function} [params.onclick=() => {}] - 点击事件处理函数。
-     *
-     * @author: mhf
-     * @time: 2024-06-29 14:54:48
-     */
-    initShapeLayer(params = {}) {
-      let {
-        color = "rgba(0, 214, 236, 0.8)",
-        // 柱状图颜色
-        enablePicked = true,
-        // 是否可以拾取
-        selectedIndex = -1,
-        // 选中项
-        selectedColor = "#ee1111",
-        // 选中项颜色
-        autoSelect = true,
-        // 根据鼠标位置来自动设置选中项
-        data = [],
-        // 第一种：随参数带入这个数据
-        onclick = () => {}
-      } = params;
-      var view = new mapvgl.View({
-        map: this.bdMap
-      });
-      var shapeLayer = new mapvgl.ShapeLayer(params);
-      view.addLayer(shapeLayer);
-      // shapeLayer.setData(jsonData); // 第二种设置数据的方式【jsonData是外部传来的json数据】
-      this.bdMap.setDefaultCursor("default"); // 设置地图默认光标
-    }
-  }
-});
-;// CONCATENATED MODULE: ./components/mapComps/bdMap/bdMapVGl.vue?vue&type=script&lang=js
- /* harmony default export */ var bdMap_bdMapVGlvue_type_script_lang_js = (bdMapVGlvue_type_script_lang_js); 
-;// CONCATENATED MODULE: ./components/mapComps/bdMap/bdMapVGl.vue
-
-
-
-
-
-/* normalize component */
-;
-var bdMapVGl_component = normalizeComponent(
-  bdMap_bdMapVGlvue_type_script_lang_js,
-  bdMapVGlvue_type_template_id_51c898b5_render,
-  bdMapVGlvue_type_template_id_51c898b5_staticRenderFns,
-  false,
-  null,
-  null,
-  null
-  
-)
-
-/* harmony default export */ var bdMapVGl = (bdMapVGl_component.exports);
-;// CONCATENATED MODULE: ./node_modules/.pnpm/thread-loader@3.0.4_webpack@5.93.0/node_modules/thread-loader/dist/cjs.js!./node_modules/.pnpm/babel-loader@8.3.0_ce2ekrksu4bikkggd5ymmdtq6i/node_modules/babel-loader/lib/index.js??clonedRuleSet-82.use[1]!./node_modules/.pnpm/vue-loader@15.11.1_d3fwwjlxcdz26pihteszkgpun4/node_modules/vue-loader/lib/index.js??vue-loader-options!./components/mapComps/bdMap/bdMap.vue?vue&type=script&lang=js
-
-
-/* harmony default export */ var bdMapvue_type_script_lang_js = ({
-  name: "bdMap",
-  components: {
-    bdMapVGl: bdMapVGl
-  },
-  mixins: [],
-  props: {
-    infoWindowStyle: {
-      type: Object,
-      default: () => {
-        return {
-          "--popBg": "#ffffff",
-          // 气泡体的背景色
-          "--imgDisplay": "block",
-          // 气泡体的图片 (可选值：block、none)
-          "--closeBtnColor": "#cccccc",
-          // 气泡关闭按钮的颜色
-          "--titleHeight": "auto" // 气泡顶部标题高度
-        };
-      }
-    }
-  },
-  computed: {
-    mapConfig() {
-      return this.$attrs.mapConfig;
-    },
-    // 获取所有的mapComps传来的props
-    mapStyle() {
-      return this.infoWindowStyle;
-    }
-  },
-  watch: {},
-  filters: {},
-  data() {
-    return {
-      bdMap: null,
-      //  百度地图实例
-      sectionObj: {
-        duration: undefined,
-        // 获取路线耗时
-        distance: undefined,
-        // 路段距离
-        pointsArr: [] // 路段上的点位
-      },
-      // 路段详情
-      rightMenu: undefined,
-      // 地图右键菜单实例
-      viewport: {
-        WS: undefined,
-        WN: undefined,
-        EN: undefined,
-        ES: undefined,
-        zoom: undefined
-      },
-      roadCondition: [] // 自定义起点和终点绘制的路况信息
-    };
-  },
-  methods: {
-    /**
-     * 初始化地图
-     * @author: mhf
-     * @time: 2024-03-04 10:05:19
-     **/
-    initMap() {
-      console.log(BMapGL, "BMapGL");
-      this.bdMap = new BMapGL.Map("map-container"); // 创建Map实例
-      this.bdMap.centerAndZoom(new BMapGL.Point(this.mapConfig.center.lng, this.mapConfig.center.lat), this.mapConfig.zoom); // 初始化地图,设置中心点坐标和地图级别
-      this.bdMap.enableScrollWheelZoom(true); // 开启鼠标滚轮缩放
-
-      if (this.mapConfig.style?.custom) {
-        const {
-          custom,
-          styleJson,
-          styleId
-        } = this.mapConfig.style;
-        let config;
-        if (custom === "styleJson") {
-          config = {
-            styleJson
-          }; // styleJson与ak无关联
-        } else if (custom === "styleId") {
-          config = {
-            styleId
-          }; // 发布的styleID需要与ak为同一个用户
-        }
-        this.$nextTick(() => {
-          this.bdMap.setMapStyleV2(config);
-        });
-      }
-      // 确保地图完全加载后再添加事件监听器
-      this.bdMap.addEventListener("tilesloaded", () => {
-        // console.log("地图加载完成");
-        // this.mapChange();
-      });
-    },
-    /**
-     * 实现指定路段的实时路况图层并添加点击事件
-     * 注意：点击事件需结合 drawPolyline的showPolylineDetail 使用【全局搜索 showPolylineDetail 就懂了】
-     * @param: isShowMyRoad: 是否显示系统中配置的路线的实时路况
-     * @param: isShowRoadCondition: 是否显示路况图层
-     * @param: startPoint: {lat: '', lng: ''} 起点坐标
-     * @param: endPoint: {lat: '', lng: ''} 终点坐标
-     * @param: customObj: 自定义信息
-     * @param: clearRoadSectionType: 移除图层类型(""：所有；traffic：交通流量图层；roadCondition：路径规划路层)
-     * @return: sectionObj: 路段的信息(isShowMyRoad为true时可用)
-     * @Demo:    this.showRoadCondition({
-     *              isShowRoadCondition: true,
-     *              isShowMyRoad: true,
-     *              startPoint: {
-     *                lng: 120.741951,
-     *                lat: 30.742613,
-     *              },
-     *              endPoint: {
-     *                lng: 120.741951,
-     *                lat: 31.742613,
-     *              },
-     *          })
-     * @author: mhf
-     * @time: 2024-03-05 14:29:01
-     **/
-    showRoadCondition(params = {}) {
-      // console.log(params, "百度地图ShowRoadCondition");
-      let {
-        isShowRoadCondition = true,
-        // 是否显示路况图层
-        isShowMyRoad = false,
-        // 是否显示系统中配置的路线
-        startPoint = {
-          lng: undefined,
-          // 120.741951
-          lat: undefined // 30.742613
-        },
-        endPoint = {
-          lng: undefined,
-          lat: undefined
-        },
-        customObj = {},
-        clearRoadSectionType = ""
-      } = params;
-      let pointsArr = [];
-      let that = this;
-      if (isShowRoadCondition) {
-        if (isShowMyRoad) {
-          // 将起点和终点转换为经纬度点对象
-          const startMarker = new BMapGL.Point(startPoint.lng, startPoint.lat);
-          const endMarker = new BMapGL.Point(endPoint.lng, endPoint.lat);
-          var searchComplete = results => {
-            if (transit.getStatus() == BMAP_STATUS_SUCCESS) {
-              var plan = results.getPlan(0);
-              pointsArr = that.flattenArr(plan._lines); // 路段中所有的点位数组
-              this.sectionObj = {
-                duration: plan.getDuration(true),
-                distance: plan.getDistance(true),
-                pointsArr,
-                params
-              };
-              /* 删除起点和终点的Marker图标 */
-              this.$nextTick(() => {
-                this.bdMap.removeOverlay(results._end.marker);
-                this.bdMap.removeOverlay(results._start.marker);
-              });
-              /* 绘制一条透明路段实现点击事件 */
-              that.drawPolyline({
-                pointsArr,
-                customObj: {
-                  ...customObj,
-                  pointsArr
-                },
-                stroke: {
-                  strokeStyle: "solid",
-                  strokeColor: "#fff",
-                  strokeWeight: 9,
-                  strokeOpacity: 0
-                },
-                isRightDelete: false,
-                isViewport: false
-              });
-            }
-          };
-          var transit = new BMapGL.DrivingRouteLine(this.bdMap, {
-            renderOptions: {
-              map: this.bdMap,
-              autoViewport: false,
-              enableDragging: false,
-              lineLayerStyle: {
-                strokeTextureUrl: null,
-                showTraffic: true
-                // lineLayerColor: {
-                //     color: '#ffffff',
-                //     opacity: 1,
-                // }
-              }
-            },
-            onSearchComplete: searchComplete,
-            onPolylinesSet: () => {
-              this.$emit("return-sectionObj", this.sectionObj); // 将路段信息传递给父组件
-            }
-          });
-
-          // this.bdMap.setViewport([startMarker, endMarker])
-          transit.search(startMarker, endMarker);
-          this.roadCondition.push(transit);
-        } else {
-          this.bdMap.setTrafficOff(); // 移除交通流量图层
-          this.$nextTick(() => {
-            this.bdMap.setTrafficOn(); // 开启交通路况图层 方法1
-          });
-          // this.bdMap.addTileLayer(new BMapGL.TrafficLayer()); // 加载交通图层 方法2
-          // this.bdMap.setTrafficOff(); // 移除交通流量图层
-        }
-      } else {
-        this.$nextTick(() => {
-          this.clearRoadSection(clearRoadSectionType);
-        });
-      }
-    },
-    /**
-     * @Event 将指定数组嵌套的数据转成扁平化的点位数据
-     * @description:
-     * @author: mhf
-     * @time: 2024-02-01 13:57:20
-     **/
-    flattenArr(arr) {
-      return arr.flatMap(item => item.points);
-    },
-    /**
-     * 移除交通流量图层 和 路径规划路层
-     * @param: type: ""：移除所有；traffic：交通流量图层；roadCondition：路径规划路层
-     * @return:
-     * @author: mhf
-     * @time: 2024-05-22 13:35:55
-     **/
-    clearRoadSection(type = "") {
-      const {
-        bdMap,
-        roadCondition
-      } = this;
-      if (shouldClear("traffic", type)) {
-        bdMap.setTrafficOff();
-      }
-      if (shouldClear("roadCondition", type)) {
-        roadCondition.forEach(condition => condition.clearResults());
-      }
-      function shouldClear(layerType, requestedType) {
-        return requestedType === layerType || requestedType === "";
-      }
-    },
-    /**
-     * 添加点标记,实现悬浮信息窗体和点击事件 this.drawMarker({obj: {lng: 116.404, lat: 39.119}})
-     * @param: obj 点位对象
-     * @param: myIcon 自定义图标,
-     * @param: customObj 自定义参数,
-     * @param: isReturn 是否返回marker对象
-     * @param: isShowInfo 是否显示信息窗口
-     * @param: isFloatShadow 是否需要添加气泡阴影，默认为true
-     * @param: isShowInfo值为 true 时使用， key 显示信息窗口的key,即绘制点位时自定义对象customObj里面的key,
-     * @param: isResetCenter 是否在点击点位时重置地图中心点
-     * @param: isResetZoom 是否在点击点位时重置地图缩放级别
-     * @param: isResetMakeIcon 是否给点击的marker设置选中的图标
-     * @param: myChooseIcon 自定义选中的图标（点击点位时，替换的图标，isResetMakeIcon为true时使用）,
-     * @param: offsetX: 偏移量X 水平
-     * @param: offsetY: 偏移量Y 垂直
-     * @param: html: 信息窗体内容，如：`<span style="line-height: 60px;margin-left: 10px;color: #ff6b00">${item.name}</span>`
-     * @param: newZoom: 点击点位后地图更改的缩放级别
-     * @param: className: 给生成的marker添加的类名【样式可以在自己的组件中定义， 可以多个类名需用逗号隔开】
-     * @param:  isLabelShow: true,
-     *           labelText: "label标题",
-     *           labelsetX: 10,
-     *           labelsetY: -60,
-     *           labelStyle: {
-     *             color: "#fff", // 文字颜色
-     *             backgroundColor: "#0e335b", // 背景颜色，可以使用rgba设置透明度
-     *             border: "none", // 边框样式
-     *             borderRadius: "5px", // 边框圆角
-     *             padding: "5px 10px", // 文本内边距
-     *             fontSize: "10px", // 字体大小
-     *             fontWeight: "bold", // 字体粗细
-     *           },
-     * @return: isReturn === true ? marker对象 : null
-     * @author: mhf
-     * @time: 2024-03-04 10:05:59
-     **/
-    drawMarker(params = {}) {
-      // console.log(params, "百度地图DrawMarker");
-      let {
-        obj,
-        myIcon,
-        customObj,
-        isReturn = false,
-        isShowInfo = false,
-        isFloatShadow = true,
-        key,
-        isResetCenter = true,
-        isResetZoom = false,
-        isResetMakeIcon = false,
-        myChooseIcon,
-        offsetX = 0,
-        offsetY = 0,
-        isLabelShow = false,
-        labelsetX = 0,
-        labelsetY = 0,
-        labelText = undefined,
-        labelStyle = undefined,
-        html = undefined,
-        newZoom = 17,
-        className = undefined
-      } = params;
-      let point = new BMapGL.Point(obj.lng, obj.lat); // 创建点
-      let marker = new BMapGL.Marker(point, {
-        icon: myIcon ? myIcon : null,
-        enableDragging: false // 实现可拖拽
-      }); // 创建标注
-      marker.setZIndex(1); // 设置点位层级
-      if (isLabelShow) {
-        // 创建文本标注
-        let label = new BMapGL.Label(labelText, {
-          offset: new BMapGL.Size(labelsetX, labelsetY) // 设置文本偏移量，使文本显示在标注点的上方
-        });
-        if (labelStyle) {
-          label.setStyle(labelStyle);
-        }
-        marker.setLabel(label);
-      }
-      marker.customObj = customObj;
-      this.bdMap.addOverlay(marker);
-      const markerClick = e => {
-        // console.log("点击了标注", e, e.target.customObj);
-        if (isResetCenter) {
-          /* 重置地图中心点 */
-          this.setMapCenter({
-            lng: e.target.customObj.longitude,
-            lat: e.target.customObj.latitude
-          });
-        }
-        if (isResetZoom) {
-          /* 重置地图缩放级别 */
-          this.setMapZoom({
-            zoom: newZoom
-          });
-        }
-        if (isResetMakeIcon) {
-          /* 给点击的marker设置选中的图标 */
-          let chooseMarker = new BMapGL.Marker(point, {
-            icon: myChooseIcon ? myChooseIcon : null
-          }); // 创建选中的点位的图标
-          chooseMarker.customObj = {
-            ...customObj,
-            isChoose: true // 用于标识该标注是否被选中
-          }; // 其实只是需要 customObj 中的某个属性值【key】就是用来判断删除的那个【key】
-
-          // this.bdMap.removeOverlay(marker); // 移除当前点击的marker
-          this.removeOverlay({
-            callback: e => e.customObj?.isChoose
-          }); // 移除上一个选中的marker
-          chooseMarker.setZIndex(2); // 设置点位层级
-          this.bdMap.addOverlay(chooseMarker);
-          chooseMarker.addEventListener("click", e => {
-            /* 给选中的marker添加点击事件 */
-            this.$emit("showMarkerDetail", e.target.customObj); // 接收父组件传来的showMarkerDetail事件（打开详情弹窗）
-          });
-        }
-        this.$emit("showMarkerDetail", e.target.customObj); // 接收父组件传来的showMarkerDetail事件（打开详情弹窗）
-      };
-      marker.addEventListener("click", markerClick);
-      if (isShowInfo) {
-        marker.addEventListener("mouseover", e => {
-          console.log(e, "e");
-          this.isOpenInfoWindow({
-            flag: true,
-            html: html ? html : e.target.customObj[key],
-            offsetX: offsetX,
-            offsetY: offsetY,
-            marker: point,
-            isFloatShadow
-          });
-        });
-        marker.addEventListener("mouseout", () => {
-          this.isOpenInfoWindow({
-            flag: false
-          });
-        });
-        if (className) {
-          /* 可以添加多个类名 需用 , 隔开【如：markerClass,bridge】 */
-          setTimeout(() => {
-            let classArr = className.split(",");
-            classArr.forEach(name => marker.domElement.classList.add(name));
-          }, 500);
-          this.$forceUpdate();
-          // marker.domElement.classList.add(className);
-        }
-      }
-      return isReturn ? marker : null;
-    },
-    /**
-     * 添加线，并实现点击事件
-     * @param: pointsArr：点位数组 [{lng: 120.123, lat: 30.123}, ...]
-     * @param: customObj 自定义参数 { key: value, ... }
-     * @param: stroke 线段样式
-     * @param: isRightDelete 是否右键删除
-     * @return:
-     * @author: mhf
-     * @time: 2024-03-06 11:14:28
-     **/
-    drawPolyline(params = {}) {
-      // console.log(params, "百度地图drawPolyline");
-      let {
-        pointsArr = [],
-        customObj = {},
-        stroke = {
-          strokeStyle: "solid",
-          strokeColor: "#5298fe",
-          strokeWeight: 9,
-          strokeOpacity: 1,
-          zIndex: 1000
-        },
-        isRightDelete = false,
-        isViewport = true
-      } = params;
-      let pointsGlArr = pointsArr.map(item => new BMapGL.Point(item.lng, item.lat));
-      let polyline = new BMapGL.Polyline(pointsGlArr, stroke);
-      polyline.customObj = customObj; // 添加自定义参数
-      this.bdMap.addOverlay(polyline); // 绘制折线
-      if (isViewport) {
-        this.bdMap.setViewport(pointsArr); // 调整地图视野
-      }
-      polyline.addEventListener("click", e => {
-        console.log("点击了", e);
-        this.$emit("showPolylineDetail", e.target.customObj); // 接收父组件传来的showPolylineDetail事件（打开详情弹窗）
-        e.domEvent.stopPropagation();
-      });
-      if (isRightDelete) {
-        polyline.addEventListener("rightclick", e => {
-          let txtMenuItem = [{
-            text: "删除",
-            callback: () => {
-              /* 移除当前线段 */
-              this.bdMap.removeOverlay(polyline);
-              /* 移除当前显示的右键菜单 */
-              this.bdMap.removeContextMenu(this.rightMenu);
-              /* 取消线段点击事件监听器，防止再次触发右键菜单 */
-              polyline.removeEventListener("rightclick");
-            }
-          }];
-          this.addRightMenu(txtMenuItem);
-        });
-      }
-    },
-    /**
-     * 添加面，并实现点击事件
-     * @param: pointArr：点位数组 [{lng: 116.387112, lat: 39.920977}, ...]
-     * @param: config: 面的配置
-     * @param: customObj 自定义参数 { key: value, ... }
-     * @return:
-     * @author: mhf
-     * @time: 2024-03-07 13:31:56
-     **/
-    drawPolygon(params = {}) {
-      console.log(params, "百度地图DrawPolygon");
-      let {
-        pointArr = [],
-        config = {
-          zIndex: 10,
-          // 层级
-          fillOpacity: 0.8,
-          // 面的不透明度
-          strokeStyle: "solid",
-          // dashed虚线、solid实线、dotted点线
-          strokeColor: "#5298fe",
-          // 边框颜色
-          strokeWeight: 6,
-          // 边框粗细
-          strokeOpacity: 1 // 边框不透明度
-        },
-        customObj,
-        isRightDelete = false // 是否右键删除
-      } = params;
-      let pointGlArr = pointArr.map(item => new BMapGL.Point(item.lng, item.lat));
-      var polygon = new BMapGL.Polygon(pointGlArr, config);
-      polygon.customObj = customObj;
-      this.bdMap.addOverlay(polygon);
-      this.bdMap.setViewport(pointArr);
-      polygon.addEventListener("click", e => {
-        console.log("点击了面", e);
-        this.$emit("showPolygonDetail", e.target.customObj); // 接收父组件传来的showPolygonDetail事件（打开详情弹窗）
-      });
-      if (isRightDelete) {
-        polygon.addEventListener("rightclick", e => {
-          let txtMenuItem = [{
-            text: "删除",
-            callback: () => {
-              /* 移除当前线段 */
-              this.bdMap.removeOverlay(polygon);
-              /* 移除当前显示的右键菜单 */
-              this.bdMap.removeContextMenu(this.rightMenu);
-              /* 取消线段点击事件监听器，防止再次触发右键菜单 */
-              polygon.removeEventListener("rightclick");
-            }
-          }];
-          this.addRightMenu(txtMenuItem);
-        });
-      }
-    },
-    /**
-     * 添加自定义覆盖物，并添加点击事件
-     * https://lbsyun.baidu.com/index.php?title=jspopularGL/guide/CustomOverlay
-     * @param: createDOM, point, customObj, customOverlayConfig, isShowInfo, infoWindowConfig
-     * @demo: 创建一个图片覆盖物
-     * function createDOM(config) {
-     *    const img = document.createElement('img');
-     *    img.style.width = '300px';
-     *    img.style.height = '171px';
-     *    img.src = config.url;
-     *    img.draggable = false;
-     *    return img;
-     * }
-     * @Event: customOverlay.getProperties() // 获取自定义覆盖物的属性
-     * @Event: customOverlay.getPoint()  // 获取自定义覆盖物的坐标
-     * @Event: customOverlay.setPoint(new BMapGL.Point(120, 30)) // 设置覆盖物新坐标
-     * @Event: customOverlay.hide() // 隐藏自定义覆盖物【show() 显示】
-     * @return: customOverlay：自定义覆盖物
-     * @author: mhf
-     * @time: 2024-07-24 14:00:52
-     **/
-    drawCustomOverlay(params = {}) {
-      let {
-        createDOM = () => {
-          return "dom";
-        },
-        // 创建一个文档元素,且必须有返回值【demo看注释】
-        point = {
-          lng: undefined,
-          // 112.18
-          lat: undefined // 41.15
-        },
-        // 点位经纬度
-        customObj,
-        // 自绑定属性的其他自定义参数（即元素自身的properties参数）
-        customOverlayConfig = {
-          offsetX: -10,
-          // 覆盖物水平偏移量
-          offsetY: -10,
-          // 覆盖物垂直偏移量
-          MinZoom: 4,
-          // 最小显示层级
-          MaxZoom: 12,
-          // 最大显示层级
-          enableMassClear: true,
-          // 是否能被统一清除掉覆盖物
-          enableDraggingMap: true // 是否可以在覆盖物位置拖拽地图
-        },
-        // CustomOverlay(createDom, options: Object) 构造函数的参数options配置项
-        isShowInfo = false,
-        // 是否显示信息窗口
-        infoWindowConfig = {
-          html: "",
-          key: "",
-          offsetX: 0,
-          // 覆盖物水平偏移量
-          offsetY: 0,
-          isFloatShadow: false
-        },
-        // 信息窗口配置项(鼠标放在覆盖物上出现的window的配置项)
-
-        isResetCenter = true,
-        // 是否重置地图中心点
-        isResetZoom = false,
-        // 是否重置地图缩放级别
-        newZoom = 10 // isResetZoom 为true时，新缩放级别.
-      } = params;
-      // 创建自定义覆盖物
-      const defaultOverlayConfig = {
-        offsetX: 0,
-        // 覆盖物水平偏移量
-        offsetY: 0,
-        // 覆盖物垂直偏移量
-        // MinZoom: 4, // 最小显示层级
-        // MaxZoom: 12, // 最大显示层级
-        enableMassClear: true,
-        // 是否能被统一清除掉覆盖物
-        enableDraggingMap: true // 是否可以在覆盖物位置拖拽地图
-      }; // 默认的覆盖物配置
-      const overlayConfig = Object.keys(customOverlayConfig).length > 0 ? customOverlayConfig : defaultOverlayConfig;
-      const customOverlay = new BMapGL.CustomOverlay(createDOM, {
-        point: new BMapGL.Point(point.lng, point.lat),
-        properties: {
-          customObj // 其他自定义属性
-        },
-        // 自绑定属性【这里的属性就是createDom(config)中的参数】
-        ...overlayConfig // 自定义覆盖物配置
-      });
-      this.bdMap.addOverlay(customOverlay);
-      this.$emit("returnCustomOverlay", customOverlay); // 返回自定义覆盖物实例
-
-      const customOverlayClick = e => {
-        console.log("点击了自定义覆盖物", e.target.properties);
-        if (isResetCenter) {
-          /* 重置地图中心点 */
-          this.setMapCenter({
-            lng: e.target.point.lng,
-            lat: e.target.point.lat
-          });
-        }
-        if (isResetZoom) {
-          /* 重置地图缩放级别 */
-          this.setMapZoom({
-            zoom: newZoom
-          });
-        }
-        // if (isResetMakeIcon) {
-        //   /* 给点击的marker设置选中的图标 */
-        //   let chooseMarker = new BMapGL.Marker(point, {
-        //     icon: myChooseIcon ? myChooseIcon : null,
-        //   }); // 创建选中的点位的图标
-        //   chooseMarker.customObj = {
-        //     ...customObj,
-        //     isChoose: true, // 用于标识该标注是否被选中
-        //   }; // 其实只是需要 customObj 中的某个属性值【key】就是用来判断删除的那个【key】
-        //
-        //   // this.bdMap.removeOverlay(marker); // 移除当前点击的marker
-        //   this.removeOverlay({
-        //     callback: (e) => e.customObj?.isChoose,
-        //   }); // 移除上一个选中的marker
-        //   chooseMarker.setZIndex(2); // 设置点位层级
-        //   this.bdMap.addOverlay(chooseMarker);
-        //
-        //   chooseMarker.addEventListener("click", (e) => {
-        //     /* 给选中的marker添加点击事件 */
-        //     this.$emit("showMarkerDetail", e.target.customObj); // 接收父组件传来的showMarkerDetail事件（打开详情弹窗）
-        //   });
-        // }
-        this.$emit("showCustomOverlayDetail", e.target); // 接收父组件传来的showMarkerDetail事件（打开详情弹窗）
-      };
-      // 鼠标点击事件
-      customOverlay.addEventListener("click", customOverlayClick);
-      if (isShowInfo) {
-        // 鼠标悬浮事件
-        customOverlay.addEventListener("mouseover", e => {
-          let marker = new BMapGL.Point(point.lng, point.lat); // 创建点
-          this.isOpenInfoWindow({
-            flag: true,
-            html: infoWindowConfig.html ? infoWindowConfig.html : e.target.properties[infoWindowConfig.key],
-            offsetX: infoWindowConfig.offsetX,
-            offsetY: infoWindowConfig.offsetY,
-            marker: marker,
-            isFloatShadow: infoWindowConfig.isFloatShadow
-          });
-        });
-        // 鼠标移出事件
-        customOverlay.addEventListener("mouseout", () => {
-          this.isOpenInfoWindow({
-            flag: false
-          });
-        });
-      }
-    },
-    /**
-     * 添加或移除信息窗口
-     * @param: flag: true: 添加 false: 移除
-     * @param: html: 信息窗口内容
-     * @param: offsetX: 偏移量X 水平
-     * @param: offsetY: 偏移量Y 垂直
-     * @param: marker: 点位对象,如：new BMapGL.Point(lng, lat);
-     * @param: isFloatShadow: 是否需要气泡阴影，默认是；
-     * @return:
-     * @author: mhf
-     * @time: 2024-03-04 15:43:55
-     **/
-    isOpenInfoWindow(params = {}) {
-      let {
-        flag,
-        html,
-        offsetX = 0,
-        offsetY = 0,
-        marker,
-        isFloatShadow = true
-      } = params;
-      if (flag) {
-        var infoWindow = new BMapGL.InfoWindow(html, {
-          offset: new BMapGL.Size(offsetX, offsetY) // 偏移量
-        });
-        if (!isFloatShadow) this.bdMap.getPanes().floatShadow.style.display = "none"; // 移除气泡阴影
-        this.bdMap.openInfoWindow(infoWindow, marker);
-      } else {
-        this.bdMap.closeInfoWindow();
-      }
-    },
-    /**
-     * 获取点位的自定义图标
-     * @param: url 图标地址
-     * @param: width 图标宽度
-     * @param: height 图标高度
-     * @param: offsetW 图片横向偏移
-     * @param: offsetH 图标高度偏移
-     * @return:
-     * @author: mhf
-     * @time: 2024-03-04 10:20:50
-     **/
-    getIcon(params = {}) {
-      // console.log(params, "百度地图GetIcon");
-      let {
-        url = "/img/endPoint.png",
-        width = 25,
-        height = 40,
-        offsetW = 0,
-        offsetH = 0
-      } = params;
-      return new BMapGL.Icon(url, new BMapGL.Size(width, height), {
-        anchor: new BMapGL.Size(width / 2, height + 2),
-        // 图标中央下端的尖角位置。（左右、上下）[底部居对齐]
-        imageOffset: new BMapGL.Size(offsetW, offsetH) // 设置图片偏移
-      });
-    },
-    /**
-     * 移除符合特定条件的 点位标记/线段
-     * @param: key：customObj的key
-     * @param: value：customObj的value，用来判断是否移除
-     * @param: callback：自定义回调函数，返回true则移除
-     * @return:
-     * @author: mhf
-     * @time: 2024-03-04 14:07:27
-     * @demo1:   this.removeOverlay({
-     *              callback: (e) => e.customObj?.type == type
-     *            })
-     * @demo2:  this.removeOverlay({
-     *              key: "type",
-     *              value: type
-     *           })
-     **/
-    removeOverlay(params = {}) {
-      console.log(params, "百度地图RemoveOverlay");
-      let {
-        key,
-        value,
-        callback = () => false
-      } = params;
-      let overlaysArr = this.bdMap.getOverlays();
-      /* 找到所有需要删除的标记 */
-      const overlaysToRemove = overlaysArr.filter(overlay => {
-        if (key) {
-          return overlay.customObj[key] === value;
-        } else {
-          return callback(overlay);
-        }
-      });
-      /* 移除符合条件的标记 */
-      if (overlaysToRemove.length > 0) {
-        overlaysToRemove.forEach(overlay => {
-          this.bdMap.removeOverlay(overlay);
-        });
-      }
-    },
-    /**
-     * 设置地图中心点和缩放层级
-     * @param: params：{lat: 纬度, lng: 经度, zoom: 缩放层级}
-     * @param:
-     * @return:
-     * @author: mhf
-     * @time: 2024-03-04 16:22:17
-     **/
-    setMapCenterAndZoom(params = {}) {
-      let {
-        lat,
-        lng,
-        zoom = 16
-      } = params;
-      this.bdMap.centerAndZoom(new BMapGL.Point(lng, lat), zoom);
-    },
-    /**
-     * 设置地图中心点
-     * @param: params：{lat: 纬度, lng: 经度}
-     * @param:
-     * @return:
-     * @author: mhf
-     * @time: 2024-03-04 16:22:17
-     **/
-    setMapCenter(params = {}) {
-      let {
-        lat,
-        lng
-      } = params;
-      this.bdMap.setCenter(new BMapGL.Point(lng, lat));
-    },
-    /**
-     * 设置地图缩放层级
-     * @param: params：{zoom: 缩放层级}
-     * @param:
-     * @return:
-     * @author: mhf
-     * @time: 2024-03-04 16:22:17
-     **/
-    setMapZoom(params = {}) {
-      let {
-        zoom
-      } = params;
-      this.bdMap.setZoom(zoom);
-    },
-    /**
-     * 自适应地图里面的图层，如：绘制线段、面或者多个点的时候，使用此方法可自动将绘制的图层调整到合适的区域和层级
-     * @param: pointsArr：点位数组 [{lng: 116.387112, lat: 39.920977}, ...]
-     * @return:
-     * @author: mhf
-     * @time: 2024-03-07 14:48:53
-     **/
-    setViewport(pointsArr) {
-      this.bdMap.setViewport(pointsArr);
-    },
-    /**
-     * 添加右键菜单
-     * @param: txtMenuItem：菜单项数组 [{text: "文字", callback: () => {}}, ...]
-     * @return:
-     * @author: mhf
-     * @time: 2024-03-07 15:34:10
-     **/
-    addRightMenu(txtMenuItem = []) {
-      this.rightMenu = new BMapGL.ContextMenu();
-      for (var i = 0; i < txtMenuItem.length; i++) {
-        this.rightMenu.addItem(new BMapGL.MenuItem(txtMenuItem[i].text, txtMenuItem[i].callback, 100));
-      }
-      this.bdMap.addContextMenu(this.rightMenu);
-    },
-    /**
-     * 获取地图可视区坐标和层级
-     * @param:
-     * @return: 可视区坐标和层级
-     * @author: mhf
-     * @time: 2024-04-24 16:55:21
-     **/
-    getMapViewport() {
-      let bounds = this.bdMap.getBounds(); //获取地图可视区域
-      let zoom = this.bdMap.getZoom();
-      let WS = bounds.getSouthWest();
-      let EN = bounds.getNorthEast();
-      return {
-        WS,
-        // 获取西南角的经纬度(左下角)
-        WN: new BMapGL.Point(WS.lng, EN.lat),
-        // 获取西北角的经纬度(左上角)
-        EN,
-        // 获取东北角的经纬度(右上角)
-        ES: new BMapGL.Point(EN.lng, WS.lat),
-        // 获取东南角的经纬度(右下角)
-        zoom
-      };
-    },
-    /**
-     * 监听地图缩放/拖动事件
-     * @param:
-     * @return:
-     * @author: mhf
-     * @time: 2024-04-24 17:34:05
-     **/
-    mapChange() {
-      this.bdMap.addEventListener("zoomend", e => {
-        this.viewport = this.getMapViewport();
-        this.$emit("mapChange", this.viewport); // 将更新的数据传给父组件
-        // console.log(this.viewport, "地图缩放事件");
-      });
-      this.bdMap.addEventListener("dragend", e => {
-        this.viewport = this.getMapViewport();
-        this.$emit("mapChange", this.viewport); // 将更新的数据传给父组件
-        // console.log(this.viewport, "地图拖拽事件");
-      });
-      this.bdMap.addEventListener("click", e => {
-        this.bdMap.closeInfoWindow();
-        this.$emit("mapClick", e);
-      });
-    },
-    initShapeLayer(params = {}) {
-      this.$refs.bdMapVGl.initShapeLayer(params);
-    }
-  },
-  created() {},
-  mounted() {
-    this.initMap();
-    this.mapChange();
-  },
-  destroyed() {
-    // this.bdMap.removeEventListener('click', handleClick);
-  }
-});
-;// CONCATENATED MODULE: ./components/mapComps/bdMap/bdMap.vue?vue&type=script&lang=js
- /* harmony default export */ var bdMap_bdMapvue_type_script_lang_js = (bdMapvue_type_script_lang_js); 
-;// CONCATENATED MODULE: ./node_modules/.pnpm/mini-css-extract-plugin@2.9.0_webpack@5.93.0/node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-64.use[0]!./node_modules/.pnpm/css-loader@6.11.0_webpack@5.93.0/node_modules/css-loader/dist/cjs.js??clonedRuleSet-64.use[1]!./node_modules/.pnpm/vue-loader@15.11.1_d3fwwjlxcdz26pihteszkgpun4/node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/.pnpm/postcss-loader@6.2.1_zs77g4opexpjlazxpbaplvsl5m/node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-64.use[2]!./node_modules/.pnpm/sass-loader@8.0.2_i4l4nmociu5xhprmi6hdovwxki/node_modules/sass-loader/dist/cjs.js??clonedRuleSet-64.use[3]!./node_modules/.pnpm/vue-loader@15.11.1_d3fwwjlxcdz26pihteszkgpun4/node_modules/vue-loader/lib/index.js??vue-loader-options!./components/mapComps/bdMap/bdMap.vue?vue&type=style&index=0&id=9d7de886&prod&lang=scss&scoped=true
-// extracted by mini-css-extract-plugin
-
-;// CONCATENATED MODULE: ./components/mapComps/bdMap/bdMap.vue?vue&type=style&index=0&id=9d7de886&prod&lang=scss&scoped=true
-
-;// CONCATENATED MODULE: ./components/mapComps/bdMap/bdMap.vue
-
-
-
-;
-
-
-/* normalize component */
-
-var bdMap_component = normalizeComponent(
-  bdMap_bdMapvue_type_script_lang_js,
-  bdMapvue_type_template_id_9d7de886_scoped_true_render,
-  bdMapvue_type_template_id_9d7de886_scoped_true_staticRenderFns,
-  false,
-  null,
-  "9d7de886",
-  null
-  
-)
-
-/* harmony default export */ var bdMap = (bdMap_component.exports);
-;// CONCATENATED MODULE: ./node_modules/.pnpm/thread-loader@3.0.4_webpack@5.93.0/node_modules/thread-loader/dist/cjs.js!./node_modules/.pnpm/babel-loader@8.3.0_ce2ekrksu4bikkggd5ymmdtq6i/node_modules/babel-loader/lib/index.js??clonedRuleSet-82.use[1]!./node_modules/.pnpm/vue-loader@15.11.1_d3fwwjlxcdz26pihteszkgpun4/node_modules/vue-loader/lib/index.js??vue-loader-options!./components/mapComps/mapComps.vue?vue&type=script&lang=js
-
-/* harmony default export */ var mapCompsvue_type_script_lang_js = ({
-  name: "mapComps",
-  components: {
-    bdMap: bdMap
-  },
-  mixins: [],
-  props: {
-    mapType: {
-      type: String,
-      default: "bdMap"
-    },
-    // 选择的地图类型【aMap：高德地图、bdMap：百度地图、tdMap：天地图、leafletMap：leaflet地图】
-
-    bdMapConfig: {
-      type: Object,
-      default: () => {
-        return {
-          center: {
-            lng: 116.404,
-            lat: 39.915
-          },
-          zoom: 12,
-          style: {
-            custom: "",
-            // styleId 或 styleJson
-            styleId: undefined,
-            // 发布的styleID需要与ak为同一个用户
-            styleJson: undefined // styleJson与ak无关联
-          } // 是否需要自定义地图样式
-        };
-      }
-    },
-    // 百度地图基础配置
-    bdInfoWindowStyle: {
-      "--popBg": "#ffffff",
-      // 气泡体的背景色
-      "--imgDisplay": "block",
-      // 气泡体的图片 (可选值：block、none)
-      "--closeBtnColor": "#cccccc",
-      // 气泡关闭按钮的颜色
-      "--titleHeight": "auto" // 气泡顶部标题高度
-    },
-    // 百度地图自定义信息窗体样式
-    aMapConfig: {
-      type: Object,
-      default: () => {
-        return {
-          center: {
-            lng: 116.404,
-            lat: 39.915
-          },
-          zoom: 12,
-          pitch: 5,
-          // 地图俯仰角度，有效范围 0 度- 83 度
-          rotation: 90 // 初始地图顺时针旋转的角度
-        };
-      }
-    },
-    //  高德地图基础配置
-    tdMapConfig: {
-      type: Object,
-      default: () => {
-        return {};
-      }
-    },
-    // 天地图基础配置
-    leafletMapConfig: {
-      type: Object,
-      default: () => {
-        return {};
-      }
-    } //  leaflet地图基础配置
-  },
-  computed: {},
-  watch: {},
-  filters: {},
-  data() {
-    return {};
-  },
-  methods: {
-    /**
-     * 重置地图的中心点和缩放层级
-     * @param:
-     * @return:
-     * @author: mhf
-     * @time: 2024-03-06 15:51:49
-     **/
-    setMapCenterAndZoom(obj) {
-      this.$refs[this.mapType].setMapCenterAndZoom(obj);
-    },
-    /**
-     * 重置地图的中心点
-     * @param:
-     * @return:
-     * @author: xxb
-     * @time: 2024-09-06 17:51:49
-     **/
-    setMapCenter(obj) {
-      this.$refs[this.mapType].setMapCenter(obj);
-    },
-    /**
-     * 添加点标记,实现悬浮信息窗体和点击事件
-     * @param: obj
-     * @return:
-     * @author: mhf
-     * @time: 2024-03-04 11:09:46
-     **/
-    drawMarker(obj) {
-      this.$refs[this.mapType].drawMarker(obj);
-    },
-    /**
-     * 添加线，并实现点击事件
-     * @param:
-     * @return:
-     * @author: mhf
-     * @time: 2024-03-06 13:17:02
-     **/
-    drawPolyline(obj) {
-      this.$refs[this.mapType].drawPolyline(obj);
-    },
-    /**
-     * 添加面，并实现点击事件
-     * @param:
-     * @return:
-     * @author: mhf
-     * @time: 2024-03-06 13:17:02
-     **/
-    drawPolygon(obj) {
-      this.$refs[this.mapType].drawPolygon(obj);
-    },
-    /**
-     * 添加自定义覆盖物，并实现点击事件
-     * @param:
-     * @return:
-     * @author: mhf
-     * @time: 2024-03-06 13:17:02
-     **/
-    drawCustomOverlay(obj) {
-      this.$refs[this.mapType].drawCustomOverlay(obj);
-    },
-    /**
-     * 将自定义覆盖物传给父页面
-     * @param:
-     * @return:
-     * @author: mhf
-     * @time: 2024-03-06 13:17:02
-     **/
-    getCustomOverlay(customOverlay) {
-      this.$emit("returnCustomOverlay", customOverlay); // 返回自定义覆盖物实例
-    },
-    /**
-     * 获取点位的自定义图标
-     * @param: obj
-     * @return:
-     * @author: mhf
-     * @time: 2024-03-04 11:09:46
-     **/
-    getIcon(obj) {
-      return this.$refs[this.mapType].getIcon(obj);
-    },
-    /**
-     * 展示点位详情
-     * @param:
-     * @return:
-     * @author: mhf
-     * @time: 2024-03-04 16:12:05
-     **/
-    showMarkerDetail(params) {
-      this.$emit("showMarkerDetail", params);
-    },
-    /**
-     * 展示线段详情
-     * @param:
-     * @return:
-     * @author: mhf
-     * @time: 2024-03-04 16:12:05
-     **/
-    showPolylineDetail(params) {
-      this.$emit("showPolylineDetail", params);
-    },
-    /**
-     * 展示面详情
-     * @param:
-     * @return:
-     * @author: mhf
-     * @time: 2024-03-04 16:12:05
-     **/
-    showPolygonDetail(params) {
-      this.$emit("showPolygonDetail", params);
-    },
-    /**
-     * 展示自定义覆盖物详情
-     * @param:
-     * @return:
-     * @author: mhf
-     * @time: 2024-03-04 16:12:05
-     **/
-    showCustomOverlayDetail(params) {
-      this.$emit("showCustomOverlayDetail", params);
-    },
-    /**
-     * 移除符合特定条件的 点位标记/线段
-     * @param: obj
-     * @return:
-     * @author: mhf
-     * @time: 2024-03-04 11:09:46
-     **/
-    removeOverlay(obj) {
-      this.$refs[this.mapType].removeOverlay(obj);
-    },
-    /**
-     * [传入起点和终点坐标]实现指定路段的实时路况图层
-     * @param: obj
-     * @return:
-     * @author: mhf
-     * @time: 2024-03-04 11:09:46
-     **/
-    showRoadCondition(obj) {
-      this.$refs[this.mapType].showRoadCondition(obj);
-    },
-    clearRoadSection() {
-      this.$refs[this.mapType].clearRoadSection();
-    },
-    /**
-     * 获取地图中绘制的实时线段的信息
-     * @param: 将地图组件中接收到的路段信息传给父组件，使用时请直接在组件上挂载
-     * @return: obj：路段信息
-     * @author: mhf
-     * @time: 2024-03-05 16:58:56
-     **/
-    getSectionObj(obj) {
-      // console.log(obj, "obj")
-      this.$emit("return-sectionObj", obj);
-    },
-    /**
-     * 获取地图中绘制的实时线段的信息
-     * @param: 将地图组件中接收到的路段信息传给父组件，使用时请直接在组件上挂载
-     * @return: obj：路段信息
-     * @author: mhf
-     * @time: 2024-03-05 16:58:56
-     **/
-    setViewport(arr) {
-      this.$refs[this.mapType].setViewport(arr);
-    },
-    /**
-     * 获取地图缩放、拖拽后的可视区坐标和层级
-     * @param:
-     * @return:
-     * @author: mhf
-     * @time: 2024-04-24 17:56:59
-     **/
-    mapChange(viewport) {
-      // console.log(viewport, "viewport")
-      this.$emit("mapChange", viewport); // 接受子组件的数据，并将子组件收到的数据传给父组件
-    },
-    /**
-     * 初始化用于展示大数据的立体多边形ShapeLayer。
-     * 参考文档: [ShapeLayer](https://mapv.baidu.com/gl/docs/ShapeLayer.html)
-     * @author: mhf
-     * @time: 2024-06-29 15:59:20
-     **/
-    initShapeLayer(params = {}) {
-      this.$refs[this.mapType].initShapeLayer(params);
-    },
-    /**
-     * 地图点击事件
-     * @param:
-     * @return:
-     * @author: mhf
-     * @time: 2024-04-24 17:56:59
-     **/
-    mapClick(e) {
-      this.$emit("mapClick", e);
-    }
-  },
-  created() {},
-  mounted() {},
-  destroyed() {}
-});
-;// CONCATENATED MODULE: ./components/mapComps/mapComps.vue?vue&type=script&lang=js
- /* harmony default export */ var mapComps_mapCompsvue_type_script_lang_js = (mapCompsvue_type_script_lang_js); 
-;// CONCATENATED MODULE: ./node_modules/.pnpm/mini-css-extract-plugin@2.9.0_webpack@5.93.0/node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-64.use[0]!./node_modules/.pnpm/css-loader@6.11.0_webpack@5.93.0/node_modules/css-loader/dist/cjs.js??clonedRuleSet-64.use[1]!./node_modules/.pnpm/vue-loader@15.11.1_d3fwwjlxcdz26pihteszkgpun4/node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/.pnpm/postcss-loader@6.2.1_zs77g4opexpjlazxpbaplvsl5m/node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-64.use[2]!./node_modules/.pnpm/sass-loader@8.0.2_i4l4nmociu5xhprmi6hdovwxki/node_modules/sass-loader/dist/cjs.js??clonedRuleSet-64.use[3]!./node_modules/.pnpm/vue-loader@15.11.1_d3fwwjlxcdz26pihteszkgpun4/node_modules/vue-loader/lib/index.js??vue-loader-options!./components/mapComps/mapComps.vue?vue&type=style&index=0&id=80bd0c90&prod&lang=scss&scoped=true
-// extracted by mini-css-extract-plugin
-
-;// CONCATENATED MODULE: ./components/mapComps/mapComps.vue?vue&type=style&index=0&id=80bd0c90&prod&lang=scss&scoped=true
-
-;// CONCATENATED MODULE: ./components/mapComps/mapComps.vue
-
-
-
-;
-
-
-/* normalize component */
-
-var mapComps_component = normalizeComponent(
-  mapComps_mapCompsvue_type_script_lang_js,
-  mapCompsvue_type_template_id_80bd0c90_scoped_true_render,
-  mapCompsvue_type_template_id_80bd0c90_scoped_true_staticRenderFns,
-  false,
-  null,
-  "80bd0c90",
-  null
-  
-)
-
-/* harmony default export */ var mapComps = (mapComps_component.exports);
 ;// CONCATENATED MODULE: ./node_modules/.pnpm/thread-loader@3.0.4_webpack@5.93.0/node_modules/thread-loader/dist/cjs.js!./node_modules/.pnpm/babel-loader@8.3.0_ce2ekrksu4bikkggd5ymmdtq6i/node_modules/babel-loader/lib/index.js??clonedRuleSet-82.use[1]!./node_modules/.pnpm/vue-loader@15.11.1_d3fwwjlxcdz26pihteszkgpun4/node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[3]!./node_modules/.pnpm/vue-loader@15.11.1_d3fwwjlxcdz26pihteszkgpun4/node_modules/vue-loader/lib/index.js??vue-loader-options!./components/bdLib/bdLib.vue?vue&type=template&id=3e3aac34&scoped=true
-var bdLibvue_type_template_id_3e3aac34_scoped_true_render = function render() {
+var render = function render() {
   var _vm = this,
     _c = _vm._self._c;
   return _vm.dialogVisible ? _c('el-dialog', {
@@ -3540,7 +2015,7 @@ var bdLibvue_type_template_id_3e3aac34_scoped_true_render = function render() {
     }
   }, [_vm._v("保存")])], 1)]) : _vm._e();
 };
-var bdLibvue_type_template_id_3e3aac34_scoped_true_staticRenderFns = [];
+var staticRenderFns = [];
 
 ;// CONCATENATED MODULE: ./components/bdLib/bmpgl_lib.js
 /**
@@ -3988,6 +2463,104 @@ function loadBaiDuDrawMap(ak) {
 
 ;// CONCATENATED MODULE: ./components/bdLib/bdLib.vue?vue&type=style&index=0&id=3e3aac34&prod&lang=scss&scoped=true
 
+;// CONCATENATED MODULE: ./node_modules/.pnpm/vue-loader@15.11.1_d3fwwjlxcdz26pihteszkgpun4/node_modules/vue-loader/lib/runtime/componentNormalizer.js
+/* globals __VUE_SSR_CONTEXT__ */
+
+// IMPORTANT: Do NOT use ES2015 features in this file (except for modules).
+// This module is a runtime utility for cleaner component module output and will
+// be included in the final webpack user bundle.
+
+function normalizeComponent(
+  scriptExports,
+  render,
+  staticRenderFns,
+  functionalTemplate,
+  injectStyles,
+  scopeId,
+  moduleIdentifier /* server only */,
+  shadowMode /* vue-cli only */
+) {
+  // Vue.extend constructor export interop
+  var options =
+    typeof scriptExports === 'function' ? scriptExports.options : scriptExports
+
+  // render functions
+  if (render) {
+    options.render = render
+    options.staticRenderFns = staticRenderFns
+    options._compiled = true
+  }
+
+  // functional template
+  if (functionalTemplate) {
+    options.functional = true
+  }
+
+  // scopedId
+  if (scopeId) {
+    options._scopeId = 'data-v-' + scopeId
+  }
+
+  var hook
+  if (moduleIdentifier) {
+    // server build
+    hook = function (context) {
+      // 2.3 injection
+      context =
+        context || // cached call
+        (this.$vnode && this.$vnode.ssrContext) || // stateful
+        (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext) // functional
+      // 2.2 with runInNewContext: true
+      if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
+        context = __VUE_SSR_CONTEXT__
+      }
+      // inject component styles
+      if (injectStyles) {
+        injectStyles.call(this, context)
+      }
+      // register component module identifier for async chunk inferrence
+      if (context && context._registeredComponents) {
+        context._registeredComponents.add(moduleIdentifier)
+      }
+    }
+    // used by ssr in case component is cached and beforeCreate
+    // never gets called
+    options._ssrRegister = hook
+  } else if (injectStyles) {
+    hook = shadowMode
+      ? function () {
+          injectStyles.call(
+            this,
+            (options.functional ? this.parent : this).$root.$options.shadowRoot
+          )
+        }
+      : injectStyles
+  }
+
+  if (hook) {
+    if (options.functional) {
+      // for template-only hot-reload because in that case the render fn doesn't
+      // go through the normalizer
+      options._injectStyles = hook
+      // register for functional component in vue file
+      var originalRender = options.render
+      options.render = function renderWithStyleInjection(h, context) {
+        hook.call(context)
+        return originalRender(h, context)
+      }
+    } else {
+      // inject component registration as beforeCreate hook
+      var existing = options.beforeCreate
+      options.beforeCreate = existing ? [].concat(existing, hook) : [hook]
+    }
+  }
+
+  return {
+    exports: scriptExports,
+    options: options
+  }
+}
+
 ;// CONCATENATED MODULE: ./components/bdLib/bdLib.vue
 
 
@@ -3997,10 +2570,10 @@ function loadBaiDuDrawMap(ak) {
 
 /* normalize component */
 
-var bdLib_component = normalizeComponent(
+var component = normalizeComponent(
   bdLib_bdLibvue_type_script_lang_js,
-  bdLibvue_type_template_id_3e3aac34_scoped_true_render,
-  bdLibvue_type_template_id_3e3aac34_scoped_true_staticRenderFns,
+  render,
+  staticRenderFns,
   false,
   null,
   "3e3aac34",
@@ -4008,14 +2581,1369 @@ var bdLib_component = normalizeComponent(
   
 )
 
-/* harmony default export */ var bdLib = (bdLib_component.exports);
+/* harmony default export */ var bdLib = (component.exports);
+;// CONCATENATED MODULE: ./node_modules/.pnpm/thread-loader@3.0.4_webpack@5.93.0/node_modules/thread-loader/dist/cjs.js!./node_modules/.pnpm/babel-loader@8.3.0_ce2ekrksu4bikkggd5ymmdtq6i/node_modules/babel-loader/lib/index.js??clonedRuleSet-82.use[1]!./node_modules/.pnpm/vue-loader@15.11.1_d3fwwjlxcdz26pihteszkgpun4/node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[3]!./node_modules/.pnpm/vue-loader@15.11.1_d3fwwjlxcdz26pihteszkgpun4/node_modules/vue-loader/lib/index.js??vue-loader-options!./components/bdMap/bdMap.vue?vue&type=template&id=fa5a75a0&scoped=true
+var bdMapvue_type_template_id_fa5a75a0_scoped_true_render = function render() {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c('div', {
+    style: _vm.mapStyle,
+    attrs: {
+      "id": "map-container"
+    }
+  }, [_c('bdMapVGl', {
+    ref: "bdMapVGl",
+    attrs: {
+      "bdMap": _vm.bdMap
+    }
+  })], 1);
+};
+var bdMapvue_type_template_id_fa5a75a0_scoped_true_staticRenderFns = [];
+
+// EXTERNAL MODULE: ./node_modules/.pnpm/core-js@3.37.1/node_modules/core-js/modules/es.array.push.js
+var es_array_push = __webpack_require__(381);
+;// CONCATENATED MODULE: ./components/utils/asynchronousLoading.js
+/**
+ * 异步加载百度地图
+ * @returns {Promise}
+ * @constructor
+ */
+function asynchronousLoading_loadBaiDuMap(ak) {
+  return new Promise(function (resolve, reject) {
+    try {
+      console.log("BMap is defined:", BMapGL === undefined || BMapGL);
+      resolve(BMapGL);
+    } catch (err) {
+      window.init = function () {
+        resolve(BMapGL);
+      };
+      let script = document.createElement("script");
+      script.type = "text/javascript";
+      script.src = `https://api.map.baidu.com/api?v=1.0&type=webgl&ak=${ak}&callback=init`;
+      script.onerror = reject;
+      document.body.appendChild(script);
+    }
+  });
+}
+
+/**
+ * 异步加载百度地图,以及绘制工具
+ * @returns {Promise}
+ * @constructor
+ */
+function asynchronousLoading_loadBaiDuDrawMap(ak) {
+  return asynchronousLoading_loadBaiDuMap(ak).then(BMapGL => {
+    let loaded = false;
+    try {
+      loaded = BMapGLLib && BMapGLLib.DrawingManager;
+    } catch (err) {
+      loaded = false;
+    }
+    if (!loaded) {
+      console.log("BMapLib.DrawingManager loading!");
+      let script = document.createElement("script");
+      script.type = "text/javascript";
+      // script.src = "http://mapopen.cdn.bcebos.com/github/BMapGLLib/DrawingManager/src/DrawingManager.min.js";
+      script.src = __webpack_require__.e(/* import() */ 580).then(__webpack_require__.t.bind(__webpack_require__, 580, 23));
+      document.body.appendChild(script);
+      let link = document.createElement("link");
+      link.rel = "stylesheet";
+      // link.href = "http://mapopen.cdn.bcebos.com/github/BMapGLLib/DrawingManager/src/DrawingManager.min.css";
+      link.href = __webpack_require__.e(/* import() */ 517).then(__webpack_require__.bind(__webpack_require__, 6517));
+      document.body.appendChild(link);
+    } else {
+      console.log("BMapLib.DrawingManager is loaded!");
+    }
+    return BMapGL;
+  });
+}
+
+;// CONCATENATED MODULE: ./components/utils/index.js
+/**
+ * @Event 将指定数组嵌套的数据转成扁平化的点位数据
+ * @description:
+ * @author: mhf
+ * @time: 2024-02-01 13:57:20
+ **/
+function flattenArr(arr, key) {
+  return arr.flatMap(item => item[key]);
+}
+;// CONCATENATED MODULE: ./node_modules/.pnpm/thread-loader@3.0.4_webpack@5.93.0/node_modules/thread-loader/dist/cjs.js!./node_modules/.pnpm/babel-loader@8.3.0_ce2ekrksu4bikkggd5ymmdtq6i/node_modules/babel-loader/lib/index.js??clonedRuleSet-82.use[1]!./node_modules/.pnpm/vue-loader@15.11.1_d3fwwjlxcdz26pihteszkgpun4/node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[3]!./node_modules/.pnpm/vue-loader@15.11.1_d3fwwjlxcdz26pihteszkgpun4/node_modules/vue-loader/lib/index.js??vue-loader-options!./components/bdMap/bdMapVGl.vue?vue&type=template&id=32969379
+var bdMapVGlvue_type_template_id_32969379_render = function render() {
+  var _vm = this,
+    _c = _vm._self._c;
+  return _c("div");
+};
+var bdMapVGlvue_type_template_id_32969379_staticRenderFns = [];
+
+;// CONCATENATED MODULE: ./node_modules/.pnpm/thread-loader@3.0.4_webpack@5.93.0/node_modules/thread-loader/dist/cjs.js!./node_modules/.pnpm/babel-loader@8.3.0_ce2ekrksu4bikkggd5ymmdtq6i/node_modules/babel-loader/lib/index.js??clonedRuleSet-82.use[1]!./node_modules/.pnpm/vue-loader@15.11.1_d3fwwjlxcdz26pihteszkgpun4/node_modules/vue-loader/lib/index.js??vue-loader-options!./components/bdMap/bdMapVGl.vue?vue&type=script&lang=js
+/* harmony default export */ var bdMapVGlvue_type_script_lang_js = ({
+  name: "bdMapVGl",
+  components: {},
+  mixins: [],
+  props: {
+    bdMap: {
+      type: Object,
+      default() {
+        return {};
+      }
+    }
+  },
+  computed: {},
+  watch: {},
+  filters: {},
+  data() {
+    return {};
+  },
+  methods: {
+    /**
+     * 初始化用于展示大数据的立体多边形ShapeLayer。
+     * 参考文档: [ShapeLayer](https://mapv.baidu.com/gl/docs/ShapeLayer.html)
+     *
+     * @param {Object} [params={}] - 配置对象，包含ShapeLayer所需参数及事件处理。
+     * @property {string} [params.color='rgba(0, 214, 236, 0.8)'] - 立体多边形颜色。
+     * @property {boolean} [params.enablePicked=true] - 是否允许拾取交互。
+     * @property {number} [params.selectedIndex=-1] - 初始选中项索引。
+     * @property {string} [params.selectedColor='#ee1111'] - 选中项颜色。
+     * @property {boolean} [params.autoSelect=true] - 是否根据鼠标位置自动选择。
+     * @property {Array} [params.data=[]] - 数据源。
+     * @property {Function} [params.onclick=() => {}] - 点击事件处理函数。
+     *
+     * @author: mhf
+     * @time: 2024-06-29 14:54:48
+     */
+    initShapeLayer(params = {}) {
+      console.log("initShapeLayer");
+      let {
+        color = "rgba(0, 214, 236, 0.8)",
+        // 柱状图颜色
+        enablePicked = true,
+        // 是否可以拾取
+        selectedIndex = -1,
+        // 选中项
+        selectedColor = "#ee1111",
+        // 选中项颜色
+        autoSelect = true,
+        // 根据鼠标位置来自动设置选中项
+        data = [],
+        // 第一种：随参数带入这个数据
+        onclick = () => {}
+      } = params;
+      var view = new mapvgl.View({
+        map: this.bdMap
+      });
+      var shapeLayer = new mapvgl.ShapeLayer(params);
+      view.addLayer(shapeLayer);
+      // shapeLayer.setData(jsonData); // 第二种设置数据的方式【jsonData是外部传来的json数据】
+      this.bdMap.setDefaultCursor("default"); // 设置地图默认光标
+    }
+  }
+});
+;// CONCATENATED MODULE: ./components/bdMap/bdMapVGl.vue?vue&type=script&lang=js
+ /* harmony default export */ var bdMap_bdMapVGlvue_type_script_lang_js = (bdMapVGlvue_type_script_lang_js); 
+;// CONCATENATED MODULE: ./components/bdMap/bdMapVGl.vue
+
+
+
+
+
+/* normalize component */
+;
+var bdMapVGl_component = normalizeComponent(
+  bdMap_bdMapVGlvue_type_script_lang_js,
+  bdMapVGlvue_type_template_id_32969379_render,
+  bdMapVGlvue_type_template_id_32969379_staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* harmony default export */ var bdMapVGl = (bdMapVGl_component.exports);
+;// CONCATENATED MODULE: ./node_modules/.pnpm/thread-loader@3.0.4_webpack@5.93.0/node_modules/thread-loader/dist/cjs.js!./node_modules/.pnpm/babel-loader@8.3.0_ce2ekrksu4bikkggd5ymmdtq6i/node_modules/babel-loader/lib/index.js??clonedRuleSet-82.use[1]!./node_modules/.pnpm/vue-loader@15.11.1_d3fwwjlxcdz26pihteszkgpun4/node_modules/vue-loader/lib/index.js??vue-loader-options!./components/bdMap/bdMap.vue?vue&type=script&lang=js
+
+
+
+
+/* harmony default export */ var bdMapvue_type_script_lang_js = ({
+  name: "bdMap",
+  components: {
+    bdMapVGl: bdMapVGl
+  },
+  mixins: [],
+  props: {
+    ak: {
+      required: true,
+      type: String,
+      default: ""
+    },
+    listenOnce: {
+      type: Boolean,
+      default: false
+    },
+    // 是否只监听一次地图加载完成事件【默认为false】
+
+    mapConfig: {
+      type: Object,
+      default: () => {
+        return {
+          center: {
+            lng: 116.404,
+            lat: 39.915
+          },
+          zoom: 12,
+          style: {
+            custom: "",
+            // styleId 或 styleJson
+            styleId: undefined,
+            // 发布的styleID需要与ak为同一个用户
+            styleJson: undefined // styleJson与ak无关联
+          } // 是否需要自定义地图样式
+        };
+      }
+    },
+    infoWindowStyle: {
+      type: Object,
+      default: () => {
+        return {
+          "--popBg": "#ffffff",
+          // 气泡体的背景色
+          "--imgDisplay": "block",
+          // 气泡体的图片 (可选值：block、none)
+          "--closeBtnColor": "#cccccc",
+          // 气泡关闭按钮的颜色
+          "--titleHeight": "auto" // 气泡顶部标题高度
+        };
+      }
+    }
+  },
+  computed: {
+    mapStyle() {
+      return this.infoWindowStyle;
+    }
+  },
+  watch: {},
+  filters: {},
+  data() {
+    return {
+      bdMap: null,
+      // 百度地图实例
+      BMapGL: null,
+      // 百度地图GL
+      sectionObj: {
+        duration: undefined,
+        // 获取路线耗时
+        distance: undefined,
+        // 路段距离
+        pointsArr: [] // 路段上的点位
+      },
+      // 路段详情
+      rightMenu: undefined,
+      // 地图右键菜单实例
+      viewport: {
+        WS: undefined,
+        WN: undefined,
+        EN: undefined,
+        ES: undefined,
+        zoom: undefined
+      },
+      roadCondition: [] // 自定义起点和终点绘制的路况信息
+    };
+  },
+  methods: {
+    /**
+     * 初始化地图
+     * @author: mhf
+     * @time: 2024-03-04 10:05:19
+     **/
+    initMap() {
+      this.$nextTick(() => {
+        asynchronousLoading_loadBaiDuMap(this.ak).then(() => {
+          console.log(BMapGL, "this.BMapGL");
+          this.BMapGL = BMapGL;
+          this.bdMap = new this.BMapGL.Map("map-container", {
+            preserveDrawingBuffer: true
+          }); // 创建Map实例
+          this.bdMap.centerAndZoom(new this.BMapGL.Point(this.mapConfig.center.lng, this.mapConfig.center.lat), this.mapConfig.zoom); // 初始化地图,设置中心点坐标和地图级别
+          this.bdMap.enableScrollWheelZoom(true); // 开启鼠标滚轮缩放
+
+          if (this.mapConfig.style?.custom) {
+            const {
+              custom,
+              styleJson,
+              styleId
+            } = this.mapConfig.style;
+            let config;
+            if (custom === "styleJson") {
+              config = {
+                styleJson
+              }; // styleJson与ak无关联
+            } else if (custom === "styleId") {
+              config = {
+                styleId
+              }; // 发布的styleID需要与ak为同一个用户
+            }
+            this.$nextTick(() => {
+              this.bdMap.setMapStyleV2(config);
+            });
+          }
+
+          //
+          const listen_tilesloaded = () => {
+            this.$emit("map-loaded", {
+              map: this.bdMap,
+              BMapGL: this.BMapGL
+            });
+            this.mapChange();
+            if (this.listenOnce) {
+              this.bdMap.removeEventListener("tilesloaded", listen_tilesloaded);
+            }
+          };
+          this.bdMap.addEventListener("tilesloaded", listen_tilesloaded);
+        });
+      });
+    },
+    /**
+     * 实现指定路段的实时路况图层并添加点击事件
+     * 注意：驾车规划生成的路线点击事件 需结合 drawPolyline的 return-polyline 使用
+     * @param: isShowMyRoad: 是否显示系统中配置的路线的实时路况
+     * @param: isShowRoadCondition: 是否显示路况图层
+     * @param: startPoint: {lat: '', lng: ''} 起点坐标
+     * @param: endPoint: {lat: '', lng: ''} 终点坐标
+     * @param: customObj: 自定义信息
+     * @param: clearRoadSectionType: 移除图层类型(""：所有；traffic：交通流量图层；roadCondition：路径规划路层)
+     * @return: sectionObj: 路段的信息(isShowMyRoad为true时可用)
+     * @Demo:    this.showRoadCondition({
+     *              isShowRoadCondition: true,
+     *              isShowMyRoad: true,
+     *              startPoint: {
+     *                lng: 120.741951,
+     *                lat: 30.742613,
+     *              },
+     *              endPoint: {
+     *                lng: 120.741951,
+     *                lat: 31.742613,
+     *              },
+     *          })
+     * @author: mhf
+     * @time: 2024-03-05 14:29:01
+     **/
+    showRoadCondition(params = {}) {
+      // console.log(params, "百度地图ShowRoadCondition");
+      let {
+        isShowRoadCondition = true,
+        // 是否显示路况图层
+        isShowMyRoad = false,
+        // 是否显示系统中配置的路线
+        startPoint = {
+          lng: undefined,
+          // 120.741951
+          lat: undefined // 30.742613
+        },
+        endPoint = {
+          lng: undefined,
+          lat: undefined
+        },
+        customObj = {},
+        clearRoadSectionType = "",
+        traffic_autoViewport = false,
+        // 驾车规划完成后是否自动调整地图视野
+        traffic_showTraffic = true,
+        // 驾车规划的线是否展示路况
+        traffic_widthIcon = false,
+        // 驾车规划出来的路段是否展示图标(默认false)
+        traffic_enableDragging = false // 起点和终点是否支持拖拽(默认false)
+      } = params;
+      let pointsArr = [];
+      let that = this;
+      if (isShowRoadCondition) {
+        if (isShowMyRoad) {
+          // 将起点和终点转换为经纬度点对象
+          const startMarker = new this.BMapGL.Point(startPoint.lng, startPoint.lat);
+          const endMarker = new this.BMapGL.Point(endPoint.lng, endPoint.lat);
+          var searchComplete = results => {
+            if (transit.getStatus() == BMAP_STATUS_SUCCESS) {
+              var plan = results.getPlan(0);
+              pointsArr = flattenArr(plan._lines, "points"); // 路段中所有的点位数组
+              this.sectionObj = {
+                duration: plan.getDuration(true),
+                // 获取路线耗时
+                distance: plan.getDistance(true),
+                // 路段距离
+                pointsArr,
+                // 路段上的点位
+                params,
+                // 路段详情
+                plan
+              };
+              /* 删除起点和终点的Marker图标 */
+              if (!traffic_widthIcon) {
+                this.$nextTick(() => {
+                  this.bdMap.removeOverlay(results._end.marker);
+                  this.bdMap.removeOverlay(results._start.marker);
+                });
+              }
+              /* 绘制一条透明路段实现点击事件 */
+              that.drawPolyline({
+                pointsArr,
+                customObj: {
+                  ...customObj,
+                  pointsArr,
+                  traffic_customType: "traffic_transparent" // 绘制一条透明路段图层，以实现驾车规划线路的点击事件
+                },
+                stroke: {
+                  strokeStyle: "solid",
+                  strokeColor: "#fff",
+                  strokeWeight: 9,
+                  strokeOpacity: 0
+                },
+                isRightDelete: false,
+                isViewport: false
+              });
+            }
+          };
+          var transit = new this.BMapGL.DrivingRouteLine(this.bdMap, {
+            renderOptions: {
+              map: this.bdMap,
+              autoViewport: traffic_autoViewport,
+              enableDragging: traffic_enableDragging,
+              lineLayerStyle: {
+                strokeTextureUrl: null,
+                showTraffic: traffic_showTraffic
+                // lineLayerColor: {
+                //     color: '#ffffff',
+                //     opacity: 1,
+                // }
+              }
+            },
+            onSearchComplete: searchComplete,
+            onPolylinesSet: () => {
+              this.$emit("return-section", this.sectionObj); // 将路段信息传递给父组件
+            }
+          });
+
+          // this.bdMap.setViewport([startMarker, endMarker])
+          transit.search(startMarker, endMarker);
+          this.roadCondition.push(transit);
+        } else {
+          this.bdMap.setTrafficOff(); // 移除交通流量图层
+          this.$nextTick(() => {
+            this.bdMap.setTrafficOn(); // 开启交通路况图层 方法1
+          });
+          // this.bdMap.addTileLayer(new this.BMapGL.TrafficLayer()); // 加载交通图层 方法2
+          // this.bdMap.setTrafficOff(); // 移除交通流量图层
+        }
+      } else {
+        this.$nextTick(() => {
+          this.clearRoadSection(clearRoadSectionType);
+        });
+      }
+    },
+    /**
+     * @Event 截图
+     * @description: 返回当前地图组件上的图层截图base64地址
+     * @author: mhf
+     * @time: 2024-09-14 14:09:28
+     **/
+    screenshot() {
+      return this.bdMap.getMapScreenshot();
+    },
+    /**
+     * 移除交通流量图层 和 路径规划路层
+     * @param: type: ""：移除所有；traffic：交通流量图层；roadCondition：路径规划路层
+     * @return:
+     * @author: mhf
+     * @time: 2024-05-22 13:35:55
+     **/
+    clearRoadSection(type = "") {
+      const {
+        bdMap,
+        roadCondition
+      } = this;
+      function shouldClear(layerType, requestedType) {
+        return requestedType === layerType || requestedType === "";
+      }
+      if (shouldClear("traffic", type)) {
+        bdMap.setTrafficOff();
+      }
+      if (shouldClear("roadCondition", type)) {
+        roadCondition.forEach(condition => condition.clearResults());
+      }
+    },
+    /**
+     * 添加点标记,实现悬浮信息窗体和点击事件 this.drawMarker({obj: {lng: 116.404, lat: 39.119}})
+     * @param: obj 点位对象
+     * @param: myIcon 自定义图标,
+     * @param: customObj 自定义参数,
+     * @param: isReturn 是否返回marker对象
+     * @param: isShowInfo 是否显示信息窗口
+     * @param: isFloatShadow 是否需要添加气泡阴影，默认为true
+     * @param: isShowInfo 值为 true 时使用， key 显示信息窗口的key,即绘制点位时自定义对象customObj里面的key,
+     * @param: isResetMakeIcon 是否给点击的marker设置选中的图标
+     * @param: myChooseIcon 自定义选中的图标（点击点位时，替换的图标，isResetMakeIcon为true时使用）,
+     * @param: offsetX: 偏移量X 水平
+     * @param: offsetY: 偏移量Y 垂直
+     * @param: html: 信息窗体内容，如：`<span style="line-height: 60px;margin-left: 10px;color: #ff6b00">${item.name}</span>`
+     * @param: newZoom: 点击点位后地图更改的缩放级别
+     * @param: className: 给生成的marker添加的类名【样式可以在自己的组件中定义， 可以多个类名需用逗号隔开】
+     * @param:  isLabelShow: true,
+     *           labelText: "label标题",
+     *           labelsetX: 10,
+     *           labelsetY: -60,
+     *           labelStyle: {
+     *             color: "#fff", // 文字颜色
+     *             backgroundColor: "#0e335b", // 背景颜色，可以使用rgba设置透明度
+     *             border: "none", // 边框样式
+     *             borderRadius: "5px", // 边框圆角
+     *             padding: "5px 10px", // 文本内边距
+     *             fontSize: "10px", // 字体大小
+     *             fontWeight: "bold", // 字体粗细
+     *           },
+     * @return: isReturn === true ? marker对象 : null
+     * @author: mhf
+     * @time: 2024-03-04 10:05:59
+     **/
+    drawMarker(params = {}) {
+      // todo 解决事件冒泡
+      console.log(this.bdMap, "this.bdMap.getCenterAndZoom()");
+      // console.log(params, "百度地图DrawMarker");
+      let {
+        obj,
+        myIcon,
+        customObj,
+        isReturn = false,
+        isShowInfo = false,
+        isFloatShadow = true,
+        key,
+        isResetMakeIcon = false,
+        myChooseIcon,
+        offsetX = 0,
+        offsetY = 0,
+        isLabelShow = false,
+        labelsetX = 0,
+        labelsetY = 0,
+        labelText = undefined,
+        labelStyle = undefined,
+        html = undefined,
+        resetCenter = true,
+        // 是否重置地图中心点
+        newZoom = false,
+        // 如果newZoom为false或0，则不设置地图中心点和缩放级别(resetCenter为true时可用)
+        className = undefined
+      } = params;
+      let point = new this.BMapGL.Point(obj.lng, obj.lat); // 创建点
+      let marker = new this.BMapGL.Marker(point, {
+        icon: myIcon ? myIcon : null,
+        enableDragging: false // 实现可拖拽
+      }); // 创建标注
+      marker.setZIndex(1); // 设置点位层级
+      if (isLabelShow) {
+        // 创建文本标注
+        let label = new this.BMapGL.Label(labelText, {
+          offset: new this.BMapGL.Size(labelsetX, labelsetY) // 设置文本偏移量，使文本显示在标注点的上方
+        });
+        if (labelStyle) {
+          label.setStyle(labelStyle);
+        }
+        marker.setLabel(label);
+      }
+      marker.customObj = customObj;
+      this.bdMap.addOverlay(marker);
+      const markerClick = e => {
+        // console.log("点击了标注", e, e.target.customObj);
+        if (resetCenter) {
+          /* 重置地图中心点和缩放级别 */
+          let nowZoom = this.bdMap.getZoom();
+          this.setMapCenterAndZoom({
+            lng: e.target.customObj.longitude,
+            lat: e.target.customObj.latitude,
+            zoom: newZoom || nowZoom
+          });
+        }
+        if (isResetMakeIcon) {
+          /* 给点击的marker设置选中的图标 */
+          let chooseMarker = new this.BMapGL.Marker(point, {
+            icon: myChooseIcon ? myChooseIcon : null
+          }); // 创建选中的点位的图标
+          chooseMarker.customObj = {
+            ...customObj,
+            isChoose: true // 用于标识该标注是否被选中
+          }; // 其实只是需要 customObj 中的某个属性值【key】就是用来判断删除的那个【key】
+
+          // this.bdMap.removeOverlay(marker); // 移除当前点击的marker
+          this.removeOverlay({
+            callback: e => e.customObj?.isChoose
+          }); // 移除上一个选中的marker
+          chooseMarker.setZIndex(2); // 设置点位层级
+          this.bdMap.addOverlay(chooseMarker);
+          chooseMarker.addEventListener("click", e => {
+            /* 给选中的marker添加点击事件 */
+            this.$emit("return-marker", e.target.customObj); // 将点位详情传给父组件
+          });
+        }
+        this.$emit("return-marker", e.target.customObj); // 将点位详情传给父组件
+      };
+      marker.addEventListener("click", markerClick);
+      if (isShowInfo) {
+        marker.addEventListener("mouseover", e => {
+          console.log(e, "e");
+          this.isOpenInfoWindow({
+            flag: true,
+            html: html ? html : e.target.customObj[key],
+            offsetX: offsetX,
+            offsetY: offsetY,
+            marker: point,
+            isFloatShadow
+          });
+        });
+        marker.addEventListener("mouseout", () => {
+          this.isOpenInfoWindow({
+            flag: false
+          });
+        });
+        if (className) {
+          /* 可以添加多个类名 需用 , 隔开【如：markerClass,bridge】 */
+          setTimeout(() => {
+            let classArr = className.split(",");
+            classArr.forEach(name => marker.domElement.classList.add(name));
+          }, 500);
+          this.$forceUpdate();
+          // marker.domElement.classList.add(className);
+        }
+      }
+      return isReturn ? marker : null;
+    },
+    /**
+     * 添加线，并实现点击事件
+     * @param: pointsArr：点位数组 [{lng: 120.123, lat: 30.123}, ...]
+     * @param: customObj 自定义参数 { key: value, ... }
+     * @param: stroke 线段样式
+     * @param: isRightDelete 是否右键删除
+     * @return:
+     * @author: mhf
+     * @time: 2024-03-06 11:14:28
+     **/
+    drawPolyline(params = {}) {
+      // console.log(params, "百度地图drawPolyline");
+      let {
+        pointsArr = [],
+        customObj = {},
+        stroke = {
+          strokeStyle: "solid",
+          strokeColor: "#5298fe",
+          strokeWeight: 9,
+          strokeOpacity: 1,
+          zIndex: 3
+        },
+        myChooseStroke = {
+          strokeStyle: "solid",
+          strokeColor: "#FFFFFF",
+          strokeWeight: 9,
+          strokeOpacity: 1,
+          zIndex: 4
+        },
+        isRightDelete = false,
+        isViewport = true,
+        // 调整地图视野【注意：一次性绘制多条线段时不建议使用】
+        resetViewport = false,
+        // 是否在点击线段的时候重置地图视野
+        isResetPolyline = true // 点击线段后重置线段样式
+      } = params;
+      let pointsGlArr = pointsArr.map(item => new this.BMapGL.Point(item.lng, item.lat));
+      let polyline = new this.BMapGL.Polyline(pointsGlArr, stroke);
+      polyline.setZIndex(stroke.zIndex || 3);
+      polyline.customObj = customObj; // 添加自定义参数
+      this.bdMap.addOverlay(polyline); // 绘制折线
+      if (isViewport) {
+        this.bdMap.setViewport(pointsArr); // 调整地图视野
+      }
+      const polylineClick = e => {
+        if (resetViewport) {
+          /* 重置地图视野 */
+          this.setViewport(pointsArr);
+        }
+        if (isResetPolyline) {
+          /* 点击线段后重置线段样式 */
+          let myChoosePolyline = new this.BMapGL.Polyline(pointsGlArr, myChooseStroke);
+          myChoosePolyline.customObj = {
+            ...customObj,
+            isChoose: true // 用于标识该标注是否被选中
+          };
+          this.removeOverlay({
+            callback: e => e.customObj?.isChoose
+          });
+          myChoosePolyline.setZIndex(myChooseStroke.zIndex || 4);
+          this.bdMap.addOverlay(myChoosePolyline);
+        }
+        console.error("点击了线段 - drawPolyline", e);
+        this.$emit("return-polyline", e.target.customObj); // 将数据传给父组件
+        // todo 解决报错
+        // e.stopPropagation() || e.domEvent.stopPropagation(); // 解决 如果zoom层级很小的情况下 点击 紧挨着的线段 会连续触发多次点击事件
+      };
+      polyline.addEventListener("click", polylineClick);
+      if (isRightDelete) {
+        polyline.addEventListener("rightclick", e => {
+          let txtMenuItem = [{
+            text: "删除",
+            callback: () => {
+              /* 移除当前线段 */
+              this.bdMap.removeOverlay(polyline);
+              /* 移除当前显示的右键菜单 */
+              this.bdMap.removeContextMenu(this.rightMenu);
+              /* 取消线段点击事件监听器，防止再次触发右键菜单 */
+              polyline.removeEventListener("rightclick");
+            }
+          }];
+          this.addRightMenu(txtMenuItem);
+        });
+      }
+    },
+    /**
+     * 添加面，并实现点击事件
+     * @param: pointArr：点位数组 [{lng: 116.387112, lat: 39.920977}, ...]
+     * @param: config: 面的配置
+     * @param: customObj 自定义参数 { key: value, ... }
+     * @return:
+     * @author: mhf
+     * @time: 2024-03-07 13:31:56
+     **/
+    drawPolygon(params = {}) {
+      console.error(params, "百度地图DrawPolygon");
+      let {
+        pointArr = [],
+        config = {
+          zIndex: 10,
+          // 层级
+          fillOpacity: 0.5,
+          // 面的不透明度
+          strokeStyle: "solid",
+          // dashed虚线、solid实线、dotted点线
+          fillColor: "#5298fe",
+          // 边框颜色
+          strokeColor: "#5298fe",
+          // 边框颜色
+          strokeWeight: 6,
+          // 边框粗细
+          strokeOpacity: 1 // 边框不透明度
+        },
+        myChooseConfig = {
+          zIndex: 11,
+          // 层级
+          fillOpacity: 0.8,
+          // 面的不透明度
+          strokeStyle: "solid",
+          // dashed虚线、solid实线、dotted点线
+          fillColor: "#FF0000",
+          // 边框颜色
+          strokeColor: "#FF0000",
+          // 边框颜色
+          strokeWeight: 6,
+          // 边框粗细
+          strokeOpacity: 1 // 边框不透明度
+        },
+        customObj,
+        isRightDelete = false,
+        // 是否右键删除
+        isViewport = false,
+        // 调整地图视野【注意：一次性绘制多个不规则面时不建议使用】
+        resetViewport = true,
+        // 是否在点击多边形的时候重置地图视野
+        isResetPolygon = true // 点击多边形后重置多边形样式
+      } = params;
+      let pointGlArr = pointArr.map(item => new this.BMapGL.Point(item.lng, item.lat));
+      var polygon = new this.BMapGL.Polygon(pointGlArr, config);
+      polygon.customObj = customObj;
+      this.bdMap.addOverlay(polygon);
+      if (isViewport) {
+        this.bdMap.setViewport(pointArr);
+      }
+      const polygonClick = e => {
+        console.error("点击了多边形", e);
+        if (resetViewport) {
+          /* 重置地图视野 */
+          this.setViewport(pointArr);
+        }
+        if (isResetPolygon) {
+          /* 点击多边形后重置多边形样式 */
+          let myChoosePolygon = new this.BMapGL.Polygon(pointGlArr, myChooseConfig);
+          myChoosePolygon.customObj = {
+            ...customObj,
+            isChoose: true // 用于标识该标注是否被选中
+          };
+          console.log(myChoosePolygon, "myChoosePolygon");
+          this.removeOverlay({
+            callback: e => e.customObj?.isChoose
+          });
+          myChoosePolygon.setZIndex(myChooseConfig.zIndex || 11);
+          this.bdMap.addOverlay(myChoosePolygon);
+        }
+        this.$emit("return-polygon", e.target.customObj);
+      };
+      polygon.addEventListener("click", polygonClick);
+      if (isRightDelete) {
+        polygon.addEventListener("rightclick", e => {
+          let txtMenuItem = [{
+            text: "删除",
+            callback: () => {
+              /* 移除当前线段 */
+              this.bdMap.removeOverlay(polygon);
+              /* 移除当前显示的右键菜单 */
+              this.bdMap.removeContextMenu(this.rightMenu);
+              /* 取消线段点击事件监听器，防止再次触发右键菜单 */
+              polygon.removeEventListener("rightclick");
+            }
+          }];
+          this.addRightMenu(txtMenuItem);
+        });
+      }
+    },
+    /**
+     * 添加圆，并实现点击事件
+     * @param: point：{lng: 120.4295, lat: 30.2091}
+     * @param: radius：半径
+     * @param: config: 圆的样式配置
+     * @param: customObj 自定义参数 { key: value, ... }
+     * @return:
+     * @author: mhf
+     * @time: 2024-03-07 13:31:56
+     **/
+    drawCircle(params = {}) {
+      console.error(params, "百度地图drawCircle");
+      let {
+        point = {
+          lng: undefined,
+          lat: undefined
+        },
+        radius,
+        config = {
+          zIndex: 13,
+          // 层级
+          fillOpacity: 0.5,
+          // 面的不透明度
+          strokeStyle: "solid",
+          // dashed虚线、solid实线、dotted点线
+          fillColor: "#5298fe",
+          // 边框颜色
+          strokeColor: "#5298fe",
+          // 边框颜色
+          strokeWeight: 6,
+          // 边框粗细
+          strokeOpacity: 1,
+          // 边框不透明度
+          enableEditing: false // 是否开启编辑
+        },
+        myChooseConfig = {
+          zIndex: 14,
+          // 层级
+          fillOpacity: 0.5,
+          // 面的不透明度
+          strokeStyle: "solid",
+          // dashed虚线、solid实线、dotted点线
+          fillColor: "#FF0000",
+          // 边框颜色
+          strokeColor: "#FF0000",
+          // 边框颜色
+          strokeWeight: 6,
+          // 边框粗细
+          strokeOpacity: 1,
+          // 边框不透明度
+          enableEditing: false // 是否开启编辑
+        },
+        customObj,
+        isRightDelete = false,
+        // 是否右键删除
+        isViewport = false,
+        // 调整地图视野【注意：一次性绘制多个不规则面时不建议使用】
+        resetViewport = true,
+        // 是否在点击多边形的时候重置地图视野
+        isResetCircle = true // 点击多边形后重置多边形样式
+      } = params;
+      let pointGl = new this.BMapGL.Point(point.lng, point.lat);
+      var circleGl = new this.BMapGL.Circle(pointGl, radius, config);
+      circleGl.customObj = customObj;
+      this.bdMap.addOverlay(circleGl);
+      if (isViewport) {
+        this.bdMap.setViewport(point);
+      }
+      const circleGlClick = e => {
+        console.error("点击了圆形", e);
+        if (resetViewport) {
+          /* 重置地图视野 */
+          this.setMapCenterAndZoom({
+            lng: point.lng,
+            lat: point.lat
+          });
+        }
+        if (isResetCircle) {
+          /* 点击多边形后重置多边形样式 */
+          let myChooseCircle = new this.BMapGL.Circle(pointGl, radius, myChooseConfig);
+          myChooseCircle.customObj = {
+            ...customObj,
+            isChoose: true // 用于标识该标注是否被选中
+          };
+          console.log(myChooseCircle, "myChooseCircle");
+          this.removeOverlay({
+            callback: e => e.customObj?.isChoose
+          });
+          myChooseCircle.setZIndex(myChooseConfig.zIndex || 14);
+          this.bdMap.addOverlay(myChooseCircle);
+
+          // circleGl.customObj = {
+          //   ...customObj,
+          //   isChoose: true, // 用于标识该标注是否被选中
+          // }
+          // this.removeOverlay({
+          //   callback: (e) => e.customObj?.isChoose,
+          // });
+          // circleGl.setStrokeColor(myChooseConfig.strokeColor || config.strokeColor)
+          // circleGl.setFillColor(myChooseConfig.fillColor || config.fillColor)
+          // circleGl.setStrokeOpacity(myChooseConfig.strokeOpacity || config.strokeOpacity)
+          // circleGl.setFillOpacity(myChooseConfig.fillOpacity || config.fillOpacity)
+          // circleGl.setStrokeWeight(myChooseConfig.strokeWeight || config.strokeWeight)
+          // circleGl.setStrokeStyle(myChooseConfig.strokeStyle || config.strokeStyle)
+          // myChooseConfig.enableEditing ? circleGl.enableEditing() : circleGl.disableEditing();
+        }
+        this.$emit("return-circle", e.target.customObj);
+      };
+      circleGl.addEventListener("click", circleGlClick);
+      if (isRightDelete) {
+        circleGl.addEventListener("rightclick", e => {
+          let txtMenuItem = [{
+            text: "删除",
+            callback: () => {
+              /* 移除当前线段 */
+              this.bdMap.removeOverlay(circleGl);
+              /* 移除当前显示的右键菜单 */
+              this.bdMap.removeContextMenu(this.rightMenu);
+              /* 取消线段点击事件监听器，防止再次触发右键菜单 */
+              circleGl.removeEventListener("rightclick");
+            }
+          }];
+          this.addRightMenu(txtMenuItem);
+        });
+      }
+    },
+    /**
+     * 添加自定义覆盖物，并添加点击事件
+     * https://lbsyun.baidu.com/index.php?title=jspopularGL/guide/CustomOverlay
+     * @param: createDOM, point, customObj, customOverlayConfig, isShowInfo, infoWindowConfig
+     * @demo: 创建一个图片覆盖物
+     * function createDOM(config) {
+     *    const img = document.createElement('img');
+     *    img.style.width = '300px';
+     *    img.style.height = '171px';
+     *    img.src = config.url;
+     *    img.draggable = false;
+     *    return img;
+     * }
+     * @Event: customOverlay.getProperties() // 获取自定义覆盖物的属性
+     * @Event: customOverlay.getPoint()  // 获取自定义覆盖物的坐标
+     * @Event: customOverlay.setPoint(new this.BMapGL.Point(120, 30)) // 设置覆盖物新坐标
+     * @Event: customOverlay.hide() // 隐藏自定义覆盖物【show() 显示】
+     * @return: customOverlay：自定义覆盖物
+     * @author: mhf
+     * @time: 2024-07-24 14:00:52
+     **/
+    drawCustomOverlay(params = {}) {
+      let {
+        createDOM = () => {
+          return "dom";
+        },
+        // 创建一个文档元素,且必须有返回值【demo看注释】
+        point = {
+          lng: undefined,
+          // 112.18
+          lat: undefined // 41.15
+        },
+        // 点位经纬度
+        customObj,
+        // 自绑定属性的其他自定义参数（即元素自身的properties参数）
+        customOverlayConfig = {
+          offsetX: -10,
+          // 覆盖物水平偏移量
+          offsetY: -10,
+          // 覆盖物垂直偏移量
+          MinZoom: 4,
+          // 最小显示层级
+          MaxZoom: 12,
+          // 最大显示层级
+          enableMassClear: true,
+          // 是否能被统一清除掉覆盖物
+          enableDraggingMap: true // 是否可以在覆盖物位置拖拽地图
+        },
+        // CustomOverlay(createDom, options: Object) 构造函数的参数options配置项
+        isShowInfo = false,
+        // 是否显示信息窗口
+        infoWindowConfig = {
+          html: "",
+          key: "",
+          offsetX: 0,
+          // 覆盖物水平偏移量
+          offsetY: 0,
+          isFloatShadow: false
+        },
+        // 信息窗口配置项(鼠标放在覆盖物上出现的window的配置项)
+
+        isResetCenter = true,
+        // 是否重置地图中心点
+        isResetZoom = false,
+        // 是否重置地图缩放级别
+        newZoom = 10 // isResetZoom 为true时，新缩放级别.
+      } = params;
+      // 创建自定义覆盖物
+      const defaultOverlayConfig = {
+        offsetX: 0,
+        // 覆盖物水平偏移量
+        offsetY: 0,
+        // 覆盖物垂直偏移量
+        // MinZoom: 4, // 最小显示层级
+        // MaxZoom: 12, // 最大显示层级
+        enableMassClear: true,
+        // 是否能被统一清除掉覆盖物
+        enableDraggingMap: true // 是否可以在覆盖物位置拖拽地图
+      }; // 默认的覆盖物配置
+      const overlayConfig = Object.keys(customOverlayConfig).length > 0 ? customOverlayConfig : defaultOverlayConfig;
+      const customOverlay = new this.BMapGL.CustomOverlay(createDOM, {
+        point: new this.BMapGL.Point(point.lng, point.lat),
+        properties: {
+          customObj // 其他自定义属性
+        },
+        // 自绑定属性【这里的属性就是createDom(config)中的参数】
+        ...overlayConfig // 自定义覆盖物配置
+      });
+      this.bdMap.addOverlay(customOverlay);
+      this.$emit("return-overlay-instantiated", customOverlay); // 返回自定义覆盖物实例
+
+      const customOverlayClick = e => {
+        console.error("点击了自定义覆盖物", e.target.properties);
+        if (isResetCenter) {
+          /* 重置地图中心点 */
+          this.setMapCenter({
+            lng: e.target.point.lng,
+            lat: e.target.point.lat
+          });
+        }
+        if (isResetZoom) {
+          /* 重置地图缩放级别 */
+          this.setMapZoom({
+            zoom: newZoom
+          });
+        }
+        // if (isResetMakeIcon) {
+        //   /* 给点击的marker设置选中的图标 */
+        //   let chooseMarker = new this.BMapGL.Marker(point, {
+        //     icon: myChooseIcon ? myChooseIcon : null,
+        //   }); // 创建选中的点位的图标
+        //   chooseMarker.customObj = {
+        //     ...customObj,
+        //     isChoose: true, // 用于标识该标注是否被选中
+        //   }; // 其实只是需要 customObj 中的某个属性值【key】就是用来判断删除的那个【key】
+        //
+        //   // this.bdMap.removeOverlay(marker); // 移除当前点击的marker
+        //   this.removeOverlay({
+        //     callback: (e) => e.customObj?.isChoose,
+        //   }); // 移除上一个选中的marker
+        //   chooseMarker.setZIndex(2); // 设置点位层级
+        //   this.bdMap.addOverlay(chooseMarker);
+        //
+        //   chooseMarker.addEventListener("click", (e) => {
+        //     /* 给选中的marker添加点击事件 */
+        //     this.$emit("return-marker", e.target.customObj); // 将点位详情传给父组件
+        //   });
+        // }
+        this.$emit("return-overlay", e.target); // 将点位详情传给父组件
+      };
+      // 鼠标点击事件
+      customOverlay.addEventListener("click", customOverlayClick);
+      if (isShowInfo) {
+        // 鼠标悬浮事件
+        customOverlay.addEventListener("mouseover", e => {
+          let marker = new this.BMapGL.Point(point.lng, point.lat); // 创建点
+          this.isOpenInfoWindow({
+            flag: true,
+            html: infoWindowConfig.html ? infoWindowConfig.html : e.target.properties[infoWindowConfig.key],
+            offsetX: infoWindowConfig.offsetX,
+            offsetY: infoWindowConfig.offsetY,
+            marker: marker,
+            isFloatShadow: infoWindowConfig.isFloatShadow
+          });
+        });
+        // 鼠标移出事件
+        customOverlay.addEventListener("mouseout", () => {
+          this.isOpenInfoWindow({
+            flag: false
+          });
+        });
+      }
+    },
+    /**
+     * 添加或移除信息窗口
+     * @param: flag: true: 添加 false: 移除
+     * @param: html: 信息窗口内容
+     * @param: offsetX: 偏移量X 水平
+     * @param: offsetY: 偏移量Y 垂直
+     * @param: marker: 点位对象,如：new this.BMapGL.Point(lng, lat);
+     * @param: isFloatShadow: 是否需要气泡阴影，默认是；
+     * @return:
+     * @author: mhf
+     * @time: 2024-03-04 15:43:55
+     **/
+    isOpenInfoWindow(params = {}) {
+      let {
+        flag,
+        html,
+        offsetX = 0,
+        offsetY = 0,
+        marker,
+        isFloatShadow = true
+      } = params;
+      if (flag) {
+        var infoWindow = new this.BMapGL.InfoWindow(html, {
+          offset: new this.BMapGL.Size(offsetX, offsetY) // 偏移量
+        });
+        if (!isFloatShadow) this.bdMap.getPanes().floatShadow.style.display = "none"; // 移除气泡阴影
+        this.bdMap.openInfoWindow(infoWindow, marker);
+      } else {
+        this.bdMap.closeInfoWindow();
+      }
+    },
+    /**
+     * 获取点位的自定义图标
+     * @param: url 图标地址
+     * @param: width 图标宽度
+     * @param: height 图标高度
+     * @param: offsetW 图片横向偏移
+     * @param: offsetH 图标高度偏移
+     * @return:
+     * @author: mhf
+     * @time: 2024-03-04 10:20:50
+     **/
+    getIcon(params = {}) {
+      // console.log(params, "百度地图GetIcon");
+      let {
+        url = "/img/endPoint.png",
+        width = 25,
+        height = 40,
+        offsetW = 0,
+        offsetH = 0
+      } = params;
+      return new this.BMapGL.Icon(url, new this.BMapGL.Size(width, height), {
+        anchor: new this.BMapGL.Size(width / 2, height + 2),
+        // 图标中央下端的尖角位置。（左右、上下）[底部居对齐]
+        imageOffset: new this.BMapGL.Size(offsetW, offsetH) // 设置图片偏移
+      });
+    },
+    /**
+     * 移除符合特定条件的 点位标记/线段
+     * @param: key：customObj的key
+     * @param: value：customObj的value，用来判断是否移除
+     * @param: callback：自定义回调函数，返回true则移除
+     * @return:
+     * @author: mhf
+     * @time: 2024-03-04 14:07:27
+     * @demo1:   this.removeOverlay({
+     *              callback: (e) => e.customObj?.type == type
+     *            })
+     * @demo2:  this.removeOverlay({
+     *              key: "type",
+     *              value: type
+     *           })
+     **/
+    removeOverlay(params = {}) {
+      console.log(params, "百度地图RemoveOverlay");
+      let {
+        key,
+        value,
+        callback = () => false
+      } = params;
+      let overlaysArr = this.bdMap.getOverlays();
+      /* 找到所有需要删除的标记 */
+      const overlaysToRemove = overlaysArr.filter(overlay => {
+        if (key) {
+          return overlay.customObj[key] === value;
+        } else {
+          return callback(overlay);
+        }
+      });
+      /* 移除符合条件的标记 */
+      if (overlaysToRemove.length > 0) {
+        overlaysToRemove.forEach(overlay => {
+          this.bdMap.removeOverlay(overlay);
+        });
+      }
+    },
+    /**
+     * 设置地图中心点和缩放层级
+     * @param: params：{lat: 纬度, lng: 经度, zoom: 缩放层级(可不传，默认为当前缩放层级)}
+     * @param:
+     * @return:
+     * @author: mhf
+     * @time: 2024-03-04 16:22:17
+     **/
+    setMapCenterAndZoom(params = {}) {
+      let nowZoom = this.bdMap.getZoom();
+      let {
+        lat,
+        lng,
+        zoom = nowZoom
+      } = params;
+      this.bdMap.centerAndZoom(new this.BMapGL.Point(lng, lat), zoom);
+    },
+    /**
+     * 设置地图中心点
+     * @param: params：{lat: 纬度, lng: 经度}
+     * @param:
+     * @return:
+     * @author: mhf
+     * @time: 2024-03-04 16:22:17
+     **/
+    setMapCenter(params = {}) {
+      let {
+        lat,
+        lng
+      } = params;
+      this.bdMap.setCenter(new this.BMapGL.Point(lng, lat));
+    },
+    /**
+     * 设置地图缩放层级
+     * @param: params：{zoom: 缩放层级}
+     * @param:
+     * @return:
+     * @author: mhf
+     * @time: 2024-03-04 16:22:17
+     **/
+    setMapZoom(params = {}) {
+      let {
+        zoom
+      } = params;
+      this.bdMap.setZoom(zoom);
+    },
+    /**
+     * 自适应地图里面的图层，如：绘制线段、面或者多个点的时候，使用此方法可自动将绘制的图层调整到合适的区域和层级
+     * @param: pointsArr：点位数组 [{lng: 116.387112, lat: 39.920977}, ...]
+     * @return:
+     * @author: mhf
+     * @time: 2024-03-07 14:48:53
+     **/
+    setViewport(pointsArr) {
+      this.bdMap.setViewport(pointsArr);
+    },
+    /**
+     * 添加右键菜单
+     * @param: txtMenuItem：菜单项数组 [{text: "文字", callback: () => {}}, ...]
+     * @return:
+     * @author: mhf
+     * @time: 2024-03-07 15:34:10
+     **/
+    addRightMenu(txtMenuItem = []) {
+      this.rightMenu = new this.BMapGL.ContextMenu();
+      for (var i = 0; i < txtMenuItem.length; i++) {
+        this.rightMenu.addItem(new this.BMapGL.MenuItem(txtMenuItem[i].text, txtMenuItem[i].callback, 100));
+      }
+      this.bdMap.addContextMenu(this.rightMenu);
+    },
+    /**
+     * 获取地图可视区坐标和层级
+     * @param:
+     * @return: 可视区坐标和层级
+     * @author: mhf
+     * @time: 2024-04-24 16:55:21
+     **/
+    getMapViewport() {
+      let bounds = this.bdMap.getBounds(); // 获取地图可视区域
+      let zoom = this.bdMap.getZoom();
+      let WS = bounds.getSouthWest();
+      let EN = bounds.getNorthEast();
+      return {
+        WS,
+        // 获取西南角的经纬度(左下角)
+        WN: new this.BMapGL.Point(WS.lng, EN.lat),
+        // 获取西北角的经纬度(左上角)
+        EN,
+        // 获取东北角的经纬度(右上角)
+        ES: new this.BMapGL.Point(EN.lng, WS.lat),
+        // 获取东南角的经纬度(右下角)
+        zoom
+      };
+    },
+    /**
+     * 监听地图缩放/拖动事件
+     * @param:
+     * @return:
+     * @author: mhf
+     * @time: 2024-04-24 17:34:05
+     **/
+    mapChange() {
+      this.bdMap.addEventListener("zoomend", e => {
+        this.viewport = this.getMapViewport();
+        this.$emit("map-change", this.viewport); // 将更新的数据传给父组件
+        // console.log(this.viewport, "地图缩放事件");
+      });
+      this.bdMap.addEventListener("dragend", e => {
+        this.viewport = this.getMapViewport();
+        this.$emit("map-change", this.viewport); // 将更新的数据传给父组件
+        // console.log(this.viewport, "地图拖拽事件");
+      });
+      this.bdMap.addEventListener("click", e => {
+        console.error("地图点击了", e);
+        this.bdMap.closeInfoWindow();
+        this.$emit("map-click", e);
+      });
+    },
+    initShapeLayer(params = {}) {
+      this.$refs.bdMapVGl.initShapeLayer(params);
+    }
+  },
+  created() {},
+  mounted() {
+    this.initMap();
+  },
+  beforeDestroy() {
+    // 重要：在组件销毁时移除事件监听器，防止内存泄漏
+    // this.bdMap.removeEventListener("tilesloaded", this.listen_tilesloaded);
+    // this.bdMap.removeEventListener("zoomend", this.mapZoomEnd);
+    // this.bdMap.removeEventListener("dragend", this.mapDragEnd);
+    // this.bdMap.removeEventListener("click", this.mapClick);
+  },
+  destroyed() {
+    // this.bdMap.removeEventListener('click', handleClick);
+  }
+});
+;// CONCATENATED MODULE: ./components/bdMap/bdMap.vue?vue&type=script&lang=js
+ /* harmony default export */ var bdMap_bdMapvue_type_script_lang_js = (bdMapvue_type_script_lang_js); 
+;// CONCATENATED MODULE: ./node_modules/.pnpm/mini-css-extract-plugin@2.9.0_webpack@5.93.0/node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-64.use[0]!./node_modules/.pnpm/css-loader@6.11.0_webpack@5.93.0/node_modules/css-loader/dist/cjs.js??clonedRuleSet-64.use[1]!./node_modules/.pnpm/vue-loader@15.11.1_d3fwwjlxcdz26pihteszkgpun4/node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/.pnpm/postcss-loader@6.2.1_zs77g4opexpjlazxpbaplvsl5m/node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-64.use[2]!./node_modules/.pnpm/sass-loader@8.0.2_i4l4nmociu5xhprmi6hdovwxki/node_modules/sass-loader/dist/cjs.js??clonedRuleSet-64.use[3]!./node_modules/.pnpm/vue-loader@15.11.1_d3fwwjlxcdz26pihteszkgpun4/node_modules/vue-loader/lib/index.js??vue-loader-options!./components/bdMap/bdMap.vue?vue&type=style&index=0&id=fa5a75a0&prod&lang=scss&scoped=true
+// extracted by mini-css-extract-plugin
+
+;// CONCATENATED MODULE: ./components/bdMap/bdMap.vue?vue&type=style&index=0&id=fa5a75a0&prod&lang=scss&scoped=true
+
+;// CONCATENATED MODULE: ./components/bdMap/bdMap.vue
+
+
+
+;
+
+
+/* normalize component */
+
+var bdMap_component = normalizeComponent(
+  bdMap_bdMapvue_type_script_lang_js,
+  bdMapvue_type_template_id_fa5a75a0_scoped_true_render,
+  bdMapvue_type_template_id_fa5a75a0_scoped_true_staticRenderFns,
+  false,
+  null,
+  "fa5a75a0",
+  null
+  
+)
+
+/* harmony default export */ var bdMap = (bdMap_component.exports);
 ;// CONCATENATED MODULE: ./components/index.js
 
 
 
 
-
-const components = [demo, mapComps, bdLib];
+const components = [bdLib, bdMap];
 const install = function (Vue) {
   components.forEach(component => {
     Vue.component(component.name, component);

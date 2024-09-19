@@ -1,11 +1,10 @@
 import "./assets/styles/index.scss";
 import "./utils/index";
 
-import demo from "./demo";
-import mapComps from "./mapComps/mapComps.vue";
 import bdLib from "./bdLib/bdLib.vue";
+import bdMap from "./bdMap/bdMap.vue";
 
-const components = [demo, mapComps, bdLib];
+const components = [bdLib, bdMap];
 const install = function (Vue) {
   components.forEach((component) => {
     Vue.component(component.name, component);
