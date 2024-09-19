@@ -121,8 +121,11 @@
       </div>
 
       <div>
-        <el-button size="small" type="success" @click="manyMarker"
+        <el-button size="small" type="success" @click="drawManyMarker"
           >多个gif点位</el-button
+        >
+        <el-button size="small" type="danger" @click="removeManyMarker"
+          >移除gif点位</el-button
         >
         <el-button size="small" type="warning" @click="screenshot"
           >截图</el-button
@@ -189,6 +192,7 @@ export default {
       },
       defaultOverlayArr: [], // 默认自定义图层 (drawCustomOverlay)
       customOverlayArr: [], // 自定义自定义图层 (drawCustomOverlay)
+      manyMarkerOverlayArr: [], // 多个gif图层 (drawCustomOverlay)
     };
   },
   methods: {
@@ -248,6 +252,9 @@ export default {
       }
       if (data.properties.customObj.customType === "draw-custom-overlay") {
         this.customOverlayArr.push(data);
+      }
+      if (data.properties.customObj.customType === "draw-many-marker") {
+        this.manyMarkerOverlayArr.push(data);
       }
     },
 
@@ -800,7 +807,7 @@ export default {
       this.drawDefaultOverlay();
     },
 
-    manyMarker() {
+    drawManyMarker() {
       let markerList = mockMarkerList(100);
       markerList.forEach((item, index) => {
         this.$refs.bdMap.drawCustomOverlay({
@@ -818,7 +825,7 @@ export default {
           },
           customObj: {
             ...item,
-            customType: "draw-default-overlay",
+            customType: "draw-many-marker",
             type: "百度地图绘制默认的自定义覆盖物",
           },
           customOverlayConfig: {
@@ -833,6 +840,12 @@ export default {
             isFloatShadow: false,
           },
         });
+      });
+    },
+
+    removeManyMarker() {
+      this.manyMarkerOverlayArr.forEach((item) => {
+        item.hide();
       });
     },
 
