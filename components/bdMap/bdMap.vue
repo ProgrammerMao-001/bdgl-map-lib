@@ -694,7 +694,6 @@ export default {
         }
         if (isResetCircle) {
           /* 点击多边形后重置多边形样式 */
-          // todo 使用set来更新样式
           let myChooseCircle = new this.BMapGL.Circle(
             pointGl,
             radius,
@@ -710,6 +709,21 @@ export default {
           });
           myChooseCircle.setZIndex(myChooseConfig.zIndex || 14);
           this.bdMap.addOverlay(myChooseCircle);
+
+          // circleGl.customObj = {
+          //   ...customObj,
+          //   isChoose: true, // 用于标识该标注是否被选中
+          // }
+          // this.removeOverlay({
+          //   callback: (e) => e.customObj?.isChoose,
+          // });
+          // circleGl.setStrokeColor(myChooseConfig.strokeColor || config.strokeColor)
+          // circleGl.setFillColor(myChooseConfig.fillColor || config.fillColor)
+          // circleGl.setStrokeOpacity(myChooseConfig.strokeOpacity || config.strokeOpacity)
+          // circleGl.setFillOpacity(myChooseConfig.fillOpacity || config.fillOpacity)
+          // circleGl.setStrokeWeight(myChooseConfig.strokeWeight || config.strokeWeight)
+          // circleGl.setStrokeStyle(myChooseConfig.strokeStyle || config.strokeStyle)
+          // myChooseConfig.enableEditing ? circleGl.enableEditing() : circleGl.disableEditing();
         }
         this.$emit("return-circle", e.target.customObj);
       };

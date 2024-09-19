@@ -617,7 +617,6 @@ export default {
             strokeColor: "#00FFFF",
             strokeWeight: 5,
             strokeOpacity: 1,
-            enableEditing: true,
           },
         });
       });
