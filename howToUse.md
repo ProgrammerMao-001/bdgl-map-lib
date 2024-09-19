@@ -41,10 +41,9 @@ drawPolyline
 drawPolygon
 addRightMenu[内置，不推荐使用]
 drawCustomOverlay
-initShapeLayer
+initShapeLayer[todo: 异步引入脚本，优化模型加载函数]
 // todo
-drawCircle
-initShapeLayer
+更新图层选中的样式方法：set
 点聚合
 // todo
 isOpenInfoWindow[内置]

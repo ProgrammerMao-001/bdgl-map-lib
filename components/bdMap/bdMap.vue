@@ -635,6 +635,107 @@ export default {
     },
 
     /**
+     * 添加圆，并实现点击事件
+     * @param: point：{lng: 120.4295, lat: 30.2091}
+     * @param: radius：半径
+     * @param: config: 圆的样式配置
+     * @param: customObj 自定义参数 { key: value, ... }
+     * @return:
+     * @author: mhf
+     * @time: 2024-03-07 13:31:56
+     **/
+    drawCircle(params = {}) {
+      console.error(params, "百度地图drawCircle");
+      let {
+        point = { lng: undefined, lat: undefined },
+        radius,
+        config = {
+          zIndex: 13, // 层级
+          fillOpacity: 0.5, // 面的不透明度
+          strokeStyle: "solid", // dashed虚线、solid实线、dotted点线
+          fillColor: "#5298fe", // 边框颜色
+          strokeColor: "#5298fe", // 边框颜色
+          strokeWeight: 6, // 边框粗细
+          strokeOpacity: 1, // 边框不透明度
+          enableEditing: false, // 是否开启编辑
+        },
+        myChooseConfig = {
+          zIndex: 14, // 层级
+          fillOpacity: 0.5, // 面的不透明度
+          strokeStyle: "solid", // dashed虚线、solid实线、dotted点线
+          fillColor: "#FF0000", // 边框颜色
+          strokeColor: "#FF0000", // 边框颜色
+          strokeWeight: 6, // 边框粗细
+          strokeOpacity: 1, // 边框不透明度
+          enableEditing: false, // 是否开启编辑
+        },
+        customObj,
+        isRightDelete = false, // 是否右键删除
+        isViewport = false, // 调整地图视野【注意：一次性绘制多个不规则面时不建议使用】
+        resetViewport = true, // 是否在点击多边形的时候重置地图视野
+        isResetCircle = true, // 点击多边形后重置多边形样式
+      } = params;
+      let pointGl = new this.BMapGL.Point(point.lng, point.lat);
+      var circleGl = new this.BMapGL.Circle(pointGl, radius, config);
+      circleGl.customObj = customObj;
+      this.bdMap.addOverlay(circleGl);
+      if (isViewport) {
+        this.bdMap.setViewport(point);
+      }
+
+      const circleGlClick = (e) => {
+        console.error("点击了圆形", e);
+        if (resetViewport) {
+          /* 重置地图视野 */
+          this.setMapCenterAndZoom({
+            lng: point.lng,
+            lat: point.lat,
+          });
+        }
+        if (isResetCircle) {
+          /* 点击多边形后重置多边形样式 */
+          // todo 使用set来更新样式
+          let myChooseCircle = new this.BMapGL.Circle(
+            pointGl,
+            radius,
+            myChooseConfig
+          );
+          myChooseCircle.customObj = {
+            ...customObj,
+            isChoose: true, // 用于标识该标注是否被选中
+          };
+          console.log(myChooseCircle, "myChooseCircle");
+          this.removeOverlay({
+            callback: (e) => e.customObj?.isChoose,
+          });
+          myChooseCircle.setZIndex(myChooseConfig.zIndex || 14);
+          this.bdMap.addOverlay(myChooseCircle);
+        }
+        this.$emit("return-circle", e.target.customObj);
+      };
+
+      circleGl.addEventListener("click", circleGlClick);
+      if (isRightDelete) {
+        circleGl.addEventListener("rightclick", (e) => {
+          let txtMenuItem = [
+            {
+              text: "删除",
+              callback: () => {
+                /* 移除当前线段 */
+                this.bdMap.removeOverlay(circleGl);
+                /* 移除当前显示的右键菜单 */
+                this.bdMap.removeContextMenu(this.rightMenu);
+                /* 取消线段点击事件监听器，防止再次触发右键菜单 */
+                circleGl.removeEventListener("rightclick");
+              },
+            },
+          ];
+          this.addRightMenu(txtMenuItem);
+        });
+      }
+    },
+
+    /**
      * 添加自定义覆盖物，并添加点击事件
      * https://lbsyun.baidu.com/index.php?title=jspopularGL/guide/CustomOverlay
      * @param: createDOM, point, customObj, customOverlayConfig, isShowInfo, infoWindowConfig

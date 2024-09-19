@@ -143,6 +143,7 @@
       @return-marker="showMarkerDetail"
       @return-polyline="showPolylineDetail"
       @return-polygon="showPolygonDetail"
+      @return-circle="showCircleDetail"
       @return-overlay="showCustomOverlayDetail"
       @return-overlay-instantiated="getOverlayInstantiated"
     />
@@ -216,6 +217,17 @@ export default {
      * @time: 2024-09-14 16:00:38
      **/
     showPolygonDetail(data) {
+      console.log(data, "data");
+      this.$message.success(`你点击了${data.title}`);
+    },
+
+    /**
+     * @Event 点击圆形展示详情
+     * @description:
+     * @author: mhf
+     * @time: 2024-09-14 16:00:38
+     **/
+    showCircleDetail(data) {
       console.log(data, "data");
       this.$message.success(`你点击了${data.title}`);
     },
@@ -556,9 +568,60 @@ export default {
       });
     },
 
-    drawDefaultCircle() {},
+    drawDefaultCircle() {
+      useBdMapData.defaultCircleList.forEach((item, index) => {
+        this.$refs.bdMap.drawCircle({
+          point: item.point,
+          radius: item.radius,
+          customObj: {
+            ...item,
+            customType: "draw-default-circle",
+            type: "百度地图绘制默认圆",
+          },
+          isRightDelete: true,
+          isViewport: false,
+          resetViewport: true,
+          isResetCircle: true,
+        });
+      });
+    },
 
-    drawCustomCircle() {},
+    drawCustomCircle() {
+      useBdMapData.circleList.forEach((item, index) => {
+        this.$refs.bdMap.drawCircle({
+          point: item.point,
+          radius: item.radius,
+          customObj: {
+            ...item,
+            customType: "draw-custom-circle",
+            type: "百度地图绘制自定义圆",
+          },
+          isRightDelete: false,
+          isViewport: false,
+          resetViewport: true,
+          isResetCircle: true,
+          config: {
+            zIndex: 18,
+            fillOpacity: 0.5,
+            strokeStyle: "solid",
+            fillColor: "#ddff05",
+            strokeColor: "#ddff05",
+            strokeWeight: 5,
+            strokeOpacity: 1,
+          },
+          myChooseConfig: {
+            zIndex: 19,
+            fillOpacity: 0.5,
+            strokeStyle: "solid",
+            fillColor: "#00FFFF",
+            strokeColor: "#00FFFF",
+            strokeWeight: 5,
+            strokeOpacity: 1,
+            enableEditing: true,
+          },
+        });
+      });
+    },
 
     drawDefaultShapeLayer() {},
 
@@ -622,9 +685,17 @@ export default {
       });
     },
 
-    removeDefaultCircle() {},
+    removeDefaultCircle() {
+      this.$refs.bdMap.removeOverlay({
+        callback: (e) => e.customObj?.customType === "draw-default-circle",
+      });
+    },
 
-    removeCustomCircle() {},
+    removeCustomCircle() {
+      this.$refs.bdMap.removeOverlay({
+        callback: (e) => e.customObj?.customType === "draw-custom-circle",
+      });
+    },
 
     removeDefaultShapeLayer() {},
 
@@ -722,6 +793,7 @@ export default {
       this.drawDefaultMarker();
       this.drawDefaultLine();
       this.drawDefaultPolygon();
+      this.drawDefaultCircle();
       this.drawDefaultOverlay();
     },
 
