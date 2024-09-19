@@ -42,10 +42,6 @@ drawPolygon
 addRightMenu[内置，不推荐使用]
 drawCustomOverlay
 initShapeLayer[todo: 异步引入脚本，优化模型加载函数]
-// todo
-更新图层(线、多边形、圆...)选中的样式方法：set
-点聚合
-// todo
 isOpenInfoWindow[内置]
 getIcon[配合drawMarker使用]
 removeOverlay
@@ -55,6 +51,13 @@ setMapZoom
 setViewport
 getMapViewport
 mapChange
+
+todo:
+// bdMap组件
+更新图层(线、多边形、圆...)选中的样式方法：set
+点聚合
+// bdMap组件
+// bdDrivingDrawLine,bdHandleDrawLine组件未整理
 
 ##### slots
 
