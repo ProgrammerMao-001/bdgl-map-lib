@@ -8,7 +8,6 @@
   <el-dialog
     width="1300px"
     append-to-body
-    v-dialog-out
     v-if="dialogVisible"
     :title="title"
     :close-on-click-modal="false"

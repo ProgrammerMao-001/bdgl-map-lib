@@ -3,8 +3,9 @@ import "./utils/index";
 
 import bdLib from "./bdLib/bdLib.vue";
 import bdMap from "./bdMap/bdMap.vue";
+import bdHandleDrawLine from "./bdHandleDrawLine/bdHandleDrawLine.vue";
 
-const components = [bdLib, bdMap];
+const components = [bdLib, bdMap, bdHandleDrawLine];
 const install = function (Vue) {
   components.forEach((component) => {
     Vue.component(component.name, component);

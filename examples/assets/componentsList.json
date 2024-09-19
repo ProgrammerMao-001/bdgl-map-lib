@@ -13,5 +13,10 @@
     "name": "bdLib",
     "compName": "useBdLib",
     "remark": "百度地图lib插件使用"
+  },
+  {
+    "name": "bdHandleDrawLine",
+    "compName": "useBdHandleDrawLine",
+    "remark": "百度地图手动绘制线段"
   }
 ]
