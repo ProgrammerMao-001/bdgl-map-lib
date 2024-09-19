@@ -4,21 +4,22 @@
  * @Date: 2024/6/29 14:58
 -->
 <template>
-  <mapComps
-    id="map"
-    ref="mapComps"
-    mapType="bdMap"
-    :bdMapConfig="bdMapConfig"
-    :bdInfoWindowStyle="bdInfoWindowStyle"
-  ></mapComps>
+  <div class="use-bd-map-vgl">
+    <bdMap
+      ref="bdMap"
+      ak="OKHgYpCQmWTblbFlRCzYJWvk0HCuXsHU"
+      :mapConfig="bdMapConfig"
+      :infoWindowStyle="bdInfoWindowStyle"
+    ></bdMap>
+  </div>
 </template>
 
 <script>
-import mapComps from "../../../components/mapComps/mapComps.vue";
+import bdMap from "../../../components/bdMap/bdMap.vue";
 import chongqingPart from "../../assets/chongqing.json";
 
 export default {
-  components: { mapComps },
+  components: { bdMap },
   data() {
     return {
       bdMapConfig: {
@@ -46,7 +47,7 @@ export default {
   methods: {
     drawShapeLayer() {
       let xinjiangPart = require("./../../assets/xinjiangPart.js");
-      this.$refs.mapComps.initShapeLayer({
+      this.$refs.bdMap.initShapeLayer({
         color: "rgba(0, 214, 236, 0.8)", // 柱状图颜色
         enablePicked: true, // 是否可以拾取
         selectedIndex: -1, // 选中项
@@ -83,7 +84,7 @@ export default {
         }
       }
 
-      this.$refs.mapComps.initShapeLayer({
+      this.$refs.bdMap.initShapeLayer({
         color: "rgba(194, 147, 75, 0.8)", // 柱状图颜色
         enablePicked: true, // 是否可以拾取
         selectedIndex: -1, // 选中项
@@ -99,16 +100,17 @@ export default {
     },
   },
   mounted() {
-    this.$nextTick(() => {
+    setTimeout(() => {
       this.drawShapeLayer();
-    });
+    }, 2000);
+    this.$nextTick(() => {});
   },
   created() {},
 };
 </script>
 
 <style lang="scss">
-#map {
+.use-bd-map-vgl {
   width: 100vw;
   height: 100vh;
 }

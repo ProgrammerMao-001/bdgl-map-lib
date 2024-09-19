@@ -1,11 +1,16 @@
+/**
+ * @Event 将GeoJson数据转换为经纬度数组
+ * @description:
+ * @author: mhf
+ * @time: 2024-09-19 11:18:49
+ **/
 const fs = require("fs");
 
 // 原始数组
-// https://datav.aliyun.com/portal/school/atlas/area_selector#&lat=30.332329214580188&lng=106.72278672066881&zoom=3.5
 const originalArray = [
   [119.996338, 30.181541],
   [119.999002, 30.182304],
-];
+]; // GeoJson数据（参考： https://datav.aliyun.com/portal/school/atlas/area_selector#&lat=30.332329214580188&lng=106.72278672066881&zoom=3.5）
 
 // 反转每个子数组
 const reversedArray = originalArray.map((subArr) => {

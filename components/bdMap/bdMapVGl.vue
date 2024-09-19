@@ -43,6 +43,7 @@ export default {
      * @time: 2024-06-29 14:54:48
      */
     initShapeLayer(params = {}) {
+      console.log("initShapeLayer");
       let {
         color = "rgba(0, 214, 236, 0.8)", // 柱状图颜色
         enablePicked = true, // 是否可以拾取

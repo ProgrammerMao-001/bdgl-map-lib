@@ -618,7 +618,7 @@ export default {
 
     removeCustomPolygon() {
       this.$refs.bdMap.removeOverlay({
-        callback: (e) => e.customObj?.customType === "draw-custom-polygon"
+        callback: (e) => e.customObj?.customType === "draw-custom-polygon",
       });
     },
 
@@ -753,6 +753,7 @@ export default {
     },
 
     rightContent() {
+      this.$message.success("现在右击地图空白处");
       this.$refs.bdMap.addRightMenu([
         {
           text: "刷新",

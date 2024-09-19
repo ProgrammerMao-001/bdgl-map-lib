@@ -44,6 +44,8 @@ drawCustomOverlay
 initShapeLayer
 // todo
 drawCircle
+initShapeLayer
+点聚合
 // todo
 isOpenInfoWindow[内置]
 getIcon[配合drawMarker使用]

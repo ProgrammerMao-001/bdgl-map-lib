@@ -1,8 +1,8 @@
 [
   {
-    "name": "mapComp",
-    "compName": "useBdMapOld",
-    "remark": "百度地图GL版本使用"
+    "name": "bdMap",
+    "compName": "useBdMap",
+    "remark": "百度地图Gl版使用"
   },
   {
     "name": "bdMapVGL",
@@ -13,10 +13,5 @@
     "name": "bdLib",
     "compName": "useBdLib",
     "remark": "百度地图lib插件使用"
-  },
-  {
-    "name": "bdMap（new）",
-    "compName": "useBdMap",
-    "remark": "百度地图Gl版使用"
   }
 ]
