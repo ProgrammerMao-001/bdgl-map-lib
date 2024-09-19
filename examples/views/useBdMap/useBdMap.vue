@@ -121,6 +121,9 @@
       </div>
 
       <div>
+        <el-button size="small" type="success" @click="manyMarker"
+          >多个gif点位</el-button
+        >
         <el-button size="small" type="warning" @click="screenshot"
           >截图</el-button
         >
@@ -153,6 +156,7 @@
 <script>
 import bdMap from "../../../components/bdMap/bdMap.vue";
 import useBdMapData from "./useBdMapData";
+import mockMarkerList from "./mockMarkerList";
 
 export default {
   name: "useBdMap",
@@ -794,6 +798,42 @@ export default {
       this.drawDefaultPolygon();
       this.drawDefaultCircle();
       this.drawDefaultOverlay();
+    },
+
+    manyMarker() {
+      let markerList = mockMarkerList(100);
+      markerList.forEach((item, index) => {
+        this.$refs.bdMap.drawCustomOverlay({
+          createDOM: function () {
+            const img = document.createElement("img");
+            img.style.width = "29px";
+            img.style.height = "40px";
+            img.src = item.src;
+            img.draggable = false;
+            return img;
+          },
+          point: {
+            lng: item.longitude,
+            lat: item.latitude,
+          },
+          customObj: {
+            ...item,
+            customType: "draw-default-overlay",
+            type: "百度地图绘制默认的自定义覆盖物",
+          },
+          customOverlayConfig: {
+            enableMassClear: true, // 是否能被统一清除掉覆盖物
+            enableDraggingMap: true, // 是否可以在覆盖物位置拖拽地图
+          },
+          isShowInfo: true,
+          infoWindowConfig: {
+            html: `<div style="color: #fff">${item.title}</div>`,
+            offsetX: -14, // 覆盖物水平偏移量
+            offsetY: 50,
+            isFloatShadow: false,
+          },
+        });
+      });
     },
 
     screenshot() {
