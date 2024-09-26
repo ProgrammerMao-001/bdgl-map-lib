@@ -138,7 +138,7 @@
 
     <bdMap
       ref="bdMap"
-      ak="OKHgYpCQmWTblbFlRCzYJWvk0HCuXsHU"
+      ak="iTu42KR8ex0LKLEE7hilYsczAHKX2rKc"
       listenOnce
       :mapConfig="bdMapConfig"
       :infoWindowStyle="bdInfoWindowStyle"

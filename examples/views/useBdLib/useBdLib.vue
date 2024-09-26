@@ -19,7 +19,7 @@
 
     <bdLib
       ref="bdLib"
-      ak="OKHgYpCQmWTblbFlRCzYJWvk0HCuXsHU"
+      ak="iTu42KR8ex0LKLEE7hilYsczAHKX2rKc"
       :btnList="btnList"
       @on-response="getOverlay"
     />

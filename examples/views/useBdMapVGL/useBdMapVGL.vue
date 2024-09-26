@@ -7,7 +7,7 @@
   <div class="use-bd-map-vgl">
     <bdMap
       ref="bdMap"
-      ak="OKHgYpCQmWTblbFlRCzYJWvk0HCuXsHU"
+      ak="iTu42KR8ex0LKLEE7hilYsczAHKX2rKc"
       :mapConfig="bdMapConfig"
       :infoWindowStyle="bdInfoWindowStyle"
     ></bdMap>
