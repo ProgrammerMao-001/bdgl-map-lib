@@ -18,5 +18,10 @@
     "name": "bdHandleDrawLine",
     "compName": "useBdHandleDrawLine",
     "remark": "百度地图手动绘制线段"
+  },
+  {
+    "name": "bdMarkerCluster",
+    "compName": "useBdMarkerCluster",
+    "remark": "百度地图点聚合"
   }
 ]
