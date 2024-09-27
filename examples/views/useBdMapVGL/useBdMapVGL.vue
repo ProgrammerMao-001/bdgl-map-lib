@@ -7,7 +7,7 @@
   <div class="use-bd-map-vgl">
     <bdMap
       ref="bdMap"
-      ak="iTu42KR8ex0LKLEE7hilYsczAHKX2rKc"
+      :ak="ak"
       :mapConfig="bdMapConfig"
       :infoWindowStyle="bdInfoWindowStyle"
     ></bdMap>
@@ -22,6 +22,7 @@ export default {
   components: { bdMap },
   data() {
     return {
+      ak: require("/public/ak").default,
       bdMapConfig: {
         center: {
           lng: 88.1166800275613,

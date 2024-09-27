@@ -6,13 +6,13 @@
 <template>
   <div class="use-bd-marker-cluster">
     <bdMap
-        ref="bdMap"
-        ak="iTu42KR8ex0LKLEE7hilYsczAHKX2rKc"
-        listenOnce
-        :mapConfig="bdMapConfig"
-        :infoWindowStyle="bdInfoWindowStyle"
-        @map-loaded="mapLoaded"
-        @map-change="handleMapChange"
+      ref="bdMap"
+      listenOnce
+      :ak="ak"
+      :mapConfig="bdMapConfig"
+      :infoWindowStyle="bdInfoWindowStyle"
+      @map-loaded="mapLoaded"
+      @map-change="handleMapChange"
     />
   </div>
 </template>
@@ -22,7 +22,7 @@ import bdMap from "../../../components/bdMap/bdMap.vue";
 
 export default {
   name: "useBdMarkerCluster",
-  components: {bdMap},
+  components: { bdMap },
   mixins: [],
   props: {},
   computed: {},
@@ -30,6 +30,7 @@ export default {
   filters: {},
   data() {
     return {
+      ak: require("/public/ak").default,
       bdMapConfig: {
         center: {
           lng: 120.3083403138811,
@@ -39,7 +40,7 @@ export default {
         style: {
           custom: "styleJson",
           styleId: "616efba0a2fe5826442ba384dc5b285c",
-          styleJson: require("/public/json/custom_map_style.json")
+          styleJson: require("/public/json/custom_map_style.json"),
         },
       },
 
@@ -53,7 +54,7 @@ export default {
   },
   methods: {
     mapLoaded(e) {
-      console.log(e, "e")
+      console.log(e, "e");
     },
 
     handleMapChange(config) {

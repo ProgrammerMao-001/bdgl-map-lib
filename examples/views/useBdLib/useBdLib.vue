@@ -17,12 +17,7 @@
       </el-form-item>
     </el-form>
 
-    <bdLib
-      ref="bdLib"
-      ak="iTu42KR8ex0LKLEE7hilYsczAHKX2rKc"
-      :btnList="btnList"
-      @on-response="getOverlay"
-    />
+    <bdLib ref="bdLib" :ak="ak" :btnList="btnList" @on-response="getOverlay" />
   </div>
 </template>
 
@@ -35,6 +30,7 @@ export default {
   props: {},
   data() {
     return {
+      ak: require("/public/ak").default,
       formData: {},
       lineArr: [],
       btnList: ["marker", "polyline", "rectangle", "polygon", "circle"],

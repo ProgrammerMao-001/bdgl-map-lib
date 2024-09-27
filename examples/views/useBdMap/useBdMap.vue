@@ -138,8 +138,8 @@
 
     <bdMap
       ref="bdMap"
-      ak="iTu42KR8ex0LKLEE7hilYsczAHKX2rKc"
       listenOnce
+      :ak="ak"
       :mapConfig="bdMapConfig"
       :infoWindowStyle="bdInfoWindowStyle"
       @map-loaded="mapLoaded"
@@ -171,6 +171,7 @@ export default {
   filters: {},
   data() {
     return {
+      ak: require("/public/ak").default,
       bdMapConfig: {
         center: {
           lng: 120.3083403138811,
