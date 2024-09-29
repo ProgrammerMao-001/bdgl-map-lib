@@ -68,6 +68,7 @@ export default {
 
       markerClusterParams: {
         isCustomDialog: false, // 是否需要自定义弹窗
+        titleType: [], // 是否需要展示顶部标题 'title'
       },
     };
   },

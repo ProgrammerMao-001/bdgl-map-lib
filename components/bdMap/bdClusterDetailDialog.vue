@@ -81,6 +81,7 @@ export default {
       let index = child.getAttribute("custom-index");
       if (index) {
         console.log(this.pointsArr[index], "点击的那一项");
+        this.$message.success(JSON.stringify(this.pointsArr[index]));
         this.$emit("return-check", this.pointsArr[index]);
       }
     },

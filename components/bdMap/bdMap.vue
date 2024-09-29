@@ -1118,6 +1118,7 @@ export default {
     drawMarkerCluster(params = {}) {
       let {
         isCustomDialog = false, // 是否需要自定义多点列表弹窗【同一个经纬度的聚合点，点击时打开的弹窗】
+        titleType = [], // 顶部标题，可选值 ['title', 'tooltip']
       } = params;
 
       console.log("drawMarkerCluster");
@@ -1171,6 +1172,48 @@ export default {
         return div;
       };
 
+      function getSingleDom(context) {
+        console.log("context", context.img); // 每一项
+        var index = context.belongKey ?? "other"; // 聚合的条件
+        var text = context.belongValue;
+        var count = context.pointCount || 1; // 聚合中点的总数
+        var i = indexs.indexOf(index);
+
+        count === 1 && (i = 3);
+        i < 0 && (i = 3);
+
+        var div = document.createElement("div");
+        // div.className = 'cluster-marker';
+        div.className = "single-marker";
+        var content = "";
+        if (context.isCluster && text) {
+          console.log("111");
+          if (context.type === Cluster.ClusterType.GEO_FENCE) {
+            text = REGION[text].name;
+          }
+          content += '<span class="cluster-marker-title">' + text + "</span>";
+          content +=
+            `<span class="cluster-marker-body bg${i}">` + count + "</span>";
+        }
+        if (context.isCluster && !text) {
+          console.log("aaa");
+          content +=
+            `<span class="cluster-marker-body-content">` + count + "</span>";
+        }
+        if (!context.isCluster) {
+          // console.log("单个点的")
+          content += titleType.includes("title")
+            ? /* 如果 titleType 中 包含title 则 添加顶部标题 */
+              `<div class="single-marker-title">${context.name}</div>
+                   <img class="single-marker-img" src="${context.img}">
+                   `
+            : `<img class="single-marker-img" src="${context.img}">`;
+        }
+
+        div.innerHTML = content;
+        return div;
+      }
+
       /* 判断点是否都在同一个经纬度上 */
       const isSameLatLng = (array, key = "latLng") => {
         if (array.length <= 1) return true;
@@ -1205,35 +1248,35 @@ export default {
         // inject: getHTMLDOM,
         // },
         renderSingleStyle: {
-          // type: Cluster.ClusterRender.DOM,
-          type: Cluster.ClusterRender.WEBGL,
-          style: {
-            width: 20,
-            height: 20,
-            icon:
-              // "/marker/checkpoint.png",
-              // ['match', ['get', 'area'], // match, get 为固定值，area 是自定义字段，可自定义
-              // '老城区', 'https://mapopen-pub-jsapi.cdn.bcebos.com/static/img/food.png',
-              // '西城区', 'https://mapopen-pub-jsapi.cdn.bcebos.com/static/img/play.png',
-              // '东城区', 'https://mapopen-pub-jsapi.cdn.bcebos.com/static/img/place.png',
-              //   'https://mapopen-pub-jsapi.cdn.bcebos.com/static/img/other.png'],
-
-              [
-                "match",
-                ["get", "area"], // match, get 为固定值，area 是自定义字段，可自定义
-                "老城区",
-                icons["老城区"],
-                "西城区",
-                icons["西城区"],
-                "东城区",
-                icons["东城区"],
-                icons["其他"],
-              ],
-            anchors: [0, 1],
-            offsetX: -20,
-            offsetY: -9.5,
-          }, // 参考：PointIconLayer.style
-          // inject: getHTMLDOM
+          type: Cluster.ClusterRender.DOM,
+          // type: Cluster.ClusterRender.WEBGL,
+          // style: {
+          //   width: 20,
+          //   height: 20,
+          //   icon:
+          //     // "/marker/checkpoint.png",
+          //     // ['match', ['get', 'area'], // match, get 为固定值，area 是自定义字段，可自定义
+          //     // '老城区', 'https://mapopen-pub-jsapi.cdn.bcebos.com/static/img/food.png',
+          //     // '西城区', 'https://mapopen-pub-jsapi.cdn.bcebos.com/static/img/play.png',
+          //     // '东城区', 'https://mapopen-pub-jsapi.cdn.bcebos.com/static/img/place.png',
+          //     //   'https://mapopen-pub-jsapi.cdn.bcebos.com/static/img/other.png'],
+          //   // todo icon 设置
+          //     [
+          //       "match",
+          //       ["get", "area"], // match, get 为固定值，area 是自定义字段，可自定义
+          //       "老城区",
+          //       icons["老城区"],
+          //       "西城区",
+          //       icons["西城区"],
+          //       "东城区",
+          //       icons["东城区"],
+          //       icons["其他"],
+          //     ],
+          //   anchors: [0, 1],
+          //   offsetX: -20,
+          //   offsetY: -9.5,
+          // }, // 参考：PointIconLayer.style
+          inject: getSingleDom,
         }, // 非聚合点样式个性化设置
       });
       this.clusterGL.on(Cluster.ClusterEvent.CLICK, (e) => {
@@ -1263,14 +1306,17 @@ export default {
           }
         } else {
           console.error("点击的是点位", e.properties);
+          this.$message.success(JSON.stringify(e.properties));
           this.$emit("return-point", e.properties);
         }
       });
       this.clusterGL.on(Cluster.ClusterEvent.MOUSE_OVER, (e) => {
         // console.log('ClusterEvent.MOUSEOVER', e);
+        // todo 鼠标移入添加 new BMapGL.InfoWindow
       });
       this.clusterGL.on(Cluster.ClusterEvent.MOUSE_OUT, (e) => {
         // console.log('ClusterEvent.MOUSEOUT', e);
+        // todo 鼠标移出移出 new BMapGL.InfoWindow
       });
       var points = Cluster.pointTransformer(bjpoi.MYPOIS, (data) => {
         return {
@@ -1431,5 +1477,40 @@ export default {
 
 .cluster-marker-body .bg3 {
   background-color: #d47;
+}
+</style>
+
+<style lang="scss">
+$m_width: 34px;
+$m_height: 34px;
+$title_size: 14px;
+
+/* 单个点位的样式 */
+.single-marker {
+  position: relative;
+  left: 0;
+  top: 0;
+  width: $m_width;
+  height: $m_width;
+  font-size: 12px;
+  text-align: center;
+
+  &-img {
+    width: 100%;
+  }
+
+  &-title {
+    font-size: $title_size;
+    color: #5b5959;
+    background: #fff;
+    height: auto;
+    position: absolute;
+    top: -$m_height;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    border-radius: 4px;
+    padding: 2px 4px;
+  }
 }
 </style>
