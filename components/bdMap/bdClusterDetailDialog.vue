@@ -2,6 +2,9 @@
  * @Description: 百度地图点聚合点位详情弹窗 页面
  * @Author: mhf
  * @Date: 2024/9/29 13:37
+ * @todo: 点击那一行的时候打开点位详情弹窗事件完善；
+ * @todo: bd-cluster-item-public-type 背景色和文字颜色可通过传参配置
+ * @todo: 弹窗关闭事件完善
 -->
 <template>
   <div
@@ -22,14 +25,21 @@
       :custom-index="i"
       @click="eventDelegation"
     >
-      <el-tooltip
-        placement="left"
-        effect="light"
-        overflow
-        :content="p.properties[itemKey]"
-      >
-        <div class="bd-cluster-item-public">{{ p.properties[itemKey] }}</div>
-      </el-tooltip>
+      <div class="bd-cluster-item-public">
+        <el-tooltip
+          placement="left"
+          effect="light"
+          overflow
+          :content="p.properties[itemKey]"
+        >
+          <div class="bd-cluster-item-public-title">
+            {{ p.properties[itemKey] }}
+          </div>
+        </el-tooltip>
+        <div class="bd-cluster-item-public-type">
+          {{ p.properties[itemType] }}
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -43,6 +53,10 @@ export default {
       type: String,
       default: "name",
     }, // 每一行展示的内容 key
+    itemType: {
+      type: String,
+      default: "area",
+    }, // 每一行展示的类型 key
   },
   data() {
     return {
@@ -102,10 +116,20 @@ export default {
     border-bottom: 1px solid #ccc;
 
     &-public {
-      /* 溢出隐藏 */
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+      &-title {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      &-type {
+        margin-top: 4px;
+        color: #909399;
+        background-color: #f4f4f5;
+        width: fit-content;
+        padding: 2px 4px;
+        border-radius: 4px;
+      }
     }
 
     &:last-child {

@@ -1195,15 +1195,15 @@ export default {
         waitTime: 500, // 间隔时间进行渲染数据，防止频繁操作
         fitViewOnClick: true, // 点击聚合簇放大展开
 
-        renderClusterStyle: {
-          type: Cluster.ClusterRender.DOM,
-          style: {
-            anchors: [0, 1],
-            offsetX: -20,
-            offsetY: -9.5,
-          },
-          inject: getHTMLDOM,
-        },
+        // renderClusterStyle: {
+        // type: Cluster.ClusterRender.DOM,
+        // style: {
+        //   anchors: [0, 1],
+        //   offsetX: -20,
+        //   offsetY: -9.5,
+        // },
+        // inject: getHTMLDOM,
+        // },
         renderSingleStyle: {
           // type: Cluster.ClusterRender.DOM,
           type: Cluster.ClusterRender.WEBGL,
@@ -1263,6 +1263,7 @@ export default {
           }
         } else {
           console.error("点击的是点位", e.properties);
+          this.$emit("return-point", e.properties);
         }
       });
       this.clusterGL.on(Cluster.ClusterEvent.MOUSE_OVER, (e) => {
