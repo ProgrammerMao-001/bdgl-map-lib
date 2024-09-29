@@ -1,12 +1,14 @@
 <!--
  * @Description: 百度地图基础操作API 页面
  * @Author: mhf
- * @Documents: https://lbsyun.baidu.com/index.php?title=jspopularGL
+ * @Demo: https://lbsyun.baidu.com/index.php?title=jspopularGL
+ * @API: https://mapopen-pub-jsapi.bj.bcebos.com/jsapi/reference/jsapi_webgl_1_0.html
  * @Date: 2024/2/29 15:28
 -->
 <template>
   <div id="map-container" :style="mapStyle">
     <bdMapVGl ref="bdMapVGl" :bdMap="bdMap" />
+    <bdClusterDetailDialog ref="bdClusterDetailDialog" />
   </div>
 </template>
 
@@ -14,10 +16,11 @@
 import { loadBaiDuMap } from "../utils/asynchronousLoading";
 import { flattenArr } from "../utils";
 import bdMapVGl from "./bdMapVGl.vue";
+import bdClusterDetailDialog from "./bdClusterDetailDialog.vue";
 
 export default {
   name: "bdMap",
-  components: { bdMapVGl },
+  components: { bdMapVGl, bdClusterDetailDialog },
   mixins: [],
   props: {
     ak: {
@@ -85,6 +88,7 @@ export default {
         zoom: undefined,
       },
       roadCondition: [], // 自定义起点和终点绘制的路况信息
+      clusterGL: null, // 点聚合的实例
     };
   },
   methods: {
@@ -1104,6 +1108,191 @@ export default {
     initShapeLayer(params = {}) {
       this.$refs.bdMapVGl.initShapeLayer(params);
     },
+
+    /**
+     * @Event 百度地图点聚合
+     * @description: todo 需要对 params 完善
+     * @author: mhf
+     * @time: 2024-09-29 13:45:25
+     **/
+    drawMarkerCluster(params = {}) {
+      let {
+        isCustomDialog = false, // 是否需要自定义多点列表弹窗【同一个经纬度的聚合点，点击时打开的弹窗】
+      } = params;
+
+      console.log("drawMarkerCluster");
+      let bjpoi = require("/public/markerCluster/bjpoi");
+      console.log(bjpoi, "bjpoi");
+
+      const icons = {
+        东城区: "https://mapopen-pub-jsapi.cdn.bcebos.com/static/img/place.png",
+        老城区: "https://mapopen-pub-jsapi.cdn.bcebos.com/static/img/food.png",
+        西城区: "https://mapopen-pub-jsapi.cdn.bcebos.com/static/img/play.png",
+        其他: "https://mapopen-pub-jsapi.cdn.bcebos.com/static/img/other.png",
+      };
+      var indexs = ["province", "city", "area"];
+      const getHTMLDOM = (context) => {
+        console.log(context, "context");
+        /* context: 原始数据的每一项 */
+        // console.log(context, "context")
+        var index = context.belongKey ?? "other"; // 聚合的条件
+        var text = context.belongValue;
+        var count = context.pointCount || 1; // 聚合中点的总数
+        var i = indexs.indexOf(index);
+
+        count === 1 && (i = 3);
+        i < 0 && (i = 3);
+
+        // console.log(context.belongValue, "context.belongValue")
+        var div = document.createElement("div");
+        div.className = "cluster-marker";
+        var content = "";
+        if (context.isCluster && text) {
+          /* 聚合 且 聚合分类名称 存在 */
+          if (context.type === Cluster.ClusterType.GEO_FENCE) {
+            text = REGION[text].name;
+          }
+          content += '<span class="cluster-marker-title">' + text + "</span>";
+          content +=
+            `<span class="cluster-marker-body bg${i}">` + count + "</span>";
+        }
+        if (context.isCluster && !text) {
+          /* 聚合 且 分类名称 不存在 */
+          content +=
+            `<span class="cluster-marker-body-content">` + count + "</span>";
+        }
+        if (!context.isCluster) {
+          /* 单个点 */
+          content +=
+            '<span class="cluster-marker-title">' + context.name + "</span>";
+        }
+
+        div.innerHTML = content;
+        return div;
+      };
+
+      /* 判断点是否都在同一个经纬度上 */
+      const isSameLatLng = (array, key = "latLng") => {
+        if (array.length <= 1) return true;
+        const baseLatLng = array[0][key];
+        return array.every(
+          (item) =>
+            item[key][0] === baseLatLng[0] && item[key][1] === baseLatLng[1]
+        );
+      };
+
+      // 添加聚合数据
+      if (this.clusterGL) {
+        return;
+      }
+      this.clusterGL = new Cluster.View(this.bdMap, {
+        minZoom: 3, // 3-23
+        maxZoom: 23, // 3-23
+        clusterRadius: 10, // 距离小于该值的点会聚合至一起，默认为60，以像素为单位
+        clusterMinPoints: 2, // 最小聚合点数
+        clusterMaxZoom: 22, // 若地图缩放级别大于该值，则不进行聚合，标点将全部被展开
+        updateRealTime: false, // 是否操作地图过程中实时进行聚合数据更新，还是操作完地图后进行更新
+        waitTime: 500, // 间隔时间进行渲染数据，防止频繁操作
+        fitViewOnClick: true, // 点击聚合簇放大展开
+
+        renderClusterStyle: {
+          type: Cluster.ClusterRender.DOM,
+          style: {
+            anchors: [0, 1],
+            offsetX: -20,
+            offsetY: -9.5,
+          },
+          inject: getHTMLDOM,
+        },
+        renderSingleStyle: {
+          // type: Cluster.ClusterRender.DOM,
+          type: Cluster.ClusterRender.WEBGL,
+          style: {
+            width: 20,
+            height: 20,
+            icon:
+              // "/marker/checkpoint.png",
+              // ['match', ['get', 'area'], // match, get 为固定值，area 是自定义字段，可自定义
+              // '老城区', 'https://mapopen-pub-jsapi.cdn.bcebos.com/static/img/food.png',
+              // '西城区', 'https://mapopen-pub-jsapi.cdn.bcebos.com/static/img/play.png',
+              // '东城区', 'https://mapopen-pub-jsapi.cdn.bcebos.com/static/img/place.png',
+              //   'https://mapopen-pub-jsapi.cdn.bcebos.com/static/img/other.png'],
+
+              [
+                "match",
+                ["get", "area"], // match, get 为固定值，area 是自定义字段，可自定义
+                "老城区",
+                icons["老城区"],
+                "西城区",
+                icons["西城区"],
+                "东城区",
+                icons["东城区"],
+                icons["其他"],
+              ],
+            anchors: [0, 1],
+            offsetX: -20,
+            offsetY: -9.5,
+          }, // 参考：PointIconLayer.style
+          // inject: getHTMLDOM
+        }, // 非聚合点样式个性化设置
+      });
+      this.clusterGL.on(Cluster.ClusterEvent.CLICK, (e) => {
+        console.log("ClusterEvent.CLICK", e);
+        let { isCluster } = e;
+        if (isCluster) {
+          console.warn("聚合数量", e.target.properties.pointCount);
+          console.error("点击的是点聚合的字", e.target.properties);
+
+          let childrenPoints = this.clusterGL.getLeaves(e.id);
+          console.warn(childrenPoints, "当前点击的点位列表");
+          /* 判断点是否都在同一个经纬度上 */
+          let isSame = isSameLatLng(childrenPoints, "latLng");
+          if (isSame) {
+            console.log(isCustomDialog, "isCustomDialog");
+            if (isCustomDialog) {
+              /* 需要自定义打开的弹窗样式 */
+              console.log("需要自定义打开的弹窗样式");
+              this.$emit("return-children", childrenPoints);
+            } else {
+              console.log("打开内置的弹窗");
+              this.$refs.bdClusterDetailDialog.showDialog(childrenPoints);
+            }
+            console.log("没有可以展开的点位了，showDialog");
+          } else {
+            console.log("还能再展开");
+          }
+        } else {
+          console.error("点击的是点位", e.properties);
+        }
+      });
+      this.clusterGL.on(Cluster.ClusterEvent.MOUSE_OVER, (e) => {
+        // console.log('ClusterEvent.MOUSEOVER', e);
+      });
+      this.clusterGL.on(Cluster.ClusterEvent.MOUSE_OUT, (e) => {
+        // console.log('ClusterEvent.MOUSEOUT', e);
+      });
+      var points = Cluster.pointTransformer(bjpoi.MYPOIS, (data) => {
+        return {
+          point: [data.location.lng, data.location.lat],
+          properties: { ...data }, // 类 customObj
+        };
+      });
+      console.log(points);
+      this.clusterGL.setData(points);
+
+      // console.log("标记点对象", this.clusterGL.getOptions())
+    },
+
+    /**
+     * @Event 移除点聚合图层
+     * @description:
+     * @author: mhf
+     * @time: 2024-09-27 13:35:58
+     **/
+    removeMarkerCluster() {
+      this.clusterGL && this.clusterGL.destroy();
+      this.clusterGL = null;
+    },
   },
   created() {},
   mounted() {
@@ -1126,6 +1315,7 @@ export default {
 @import "./../assets/styles/mapStyles.scss";
 
 #map-container {
+  position: relative;
 }
 
 /* 百度地图InfoWindow个性化配置 */
@@ -1155,5 +1345,90 @@ export default {
 ::v-deep .BMap_bubble_center,
 ::v-deep .BMap_bubble_content {
   height: auto !important;
+}
+</style>
+
+<style lang="scss">
+// todo 自定义 点聚合的点位样式
+.cluster-marker {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: auto;
+  height: 22px;
+  color: #555;
+  font-size: 12px;
+  white-space: nowrap;
+  border: 1px solid #8e8e8e;
+  border-radius: 5px 5px 5px 0;
+  background-color: #fffeef;
+}
+
+.cluster-marker::before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 13px;
+  bottom: -13px;
+  width: 0;
+  height: 0;
+  border: solid rgba(0, 0, 0, 0);
+  border-top-color: #8e8e8e;
+  border-width: 6px;
+}
+
+.cluster-marker::after {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 13px;
+  bottom: -12px;
+  width: 0;
+  height: 0;
+  border: solid rgba(0, 0, 0, 0);
+  border-width: 6px;
+  border-top-color: #fffeef;
+}
+
+.cluster-marker span {
+  display: inline-block;
+  vertical-align: middle;
+  padding: 3px 5px;
+  height: 16px;
+  line-height: 16px;
+}
+
+.cluster-marker-title {
+  border-radius: 5px 0 0 0;
+}
+
+.cluster-marker-body {
+  color: #fff;
+  border-radius: 0 4px 4px 0;
+  background-color: #dc3912;
+}
+
+.cluster-marker-body-content {
+  min-width: 26px;
+  text-align: center;
+  color: #dc3912;
+  background-color: #fffeef;
+  border-radius: 4px 4px 4px 0;
+}
+
+.cluster-marker-body .bg0 {
+  background-color: #dc3912;
+}
+
+.cluster-marker-body .bg1 {
+  background-color: #36c;
+}
+
+.cluster-marker-body .bg2 {
+  background-color: #909;
+}
+
+.cluster-marker-body .bg3 {
+  background-color: #d47;
 }
 </style>

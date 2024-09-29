@@ -56,6 +56,13 @@ todo:
 // bdMap组件
 更新图层(线、多边形、圆...)选中的样式方法：set
 点聚合
+```html
+1. cluster脚本的动态引入 （X）
+2. 实例化点（X） =》 只能通过自定义dom修改单个点和聚合点的样式
+3. 点标记的title（X）
+4. 最终聚合点获取children（√）
+```
+
 // bdMap组件
 // bdDrivingDrawLine,bdHandleDrawLine组件未整理
 

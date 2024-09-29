@@ -5,24 +5,39 @@
 -->
 <template>
   <div class="use-bd-marker-cluster">
+    <div class="btn">
+      <div>
+        <el-button size="small" type="success" @click="drawMarkerCluster"
+          >绘制点聚合图层</el-button
+        >
+        <el-button size="small" type="danger" @click="removeMarkerCluster"
+          >移除点聚合图层</el-button
+        >
+      </div>
+    </div>
+
     <bdMap
       ref="bdMap"
       listenOnce
       :ak="ak"
       :mapConfig="bdMapConfig"
       :infoWindowStyle="bdInfoWindowStyle"
+      @return-children="getMarkerChildren"
       @map-loaded="mapLoaded"
       @map-change="handleMapChange"
     />
+
+    <bdClusterDetailDialog ref="bdClusterDetailDialog"></bdClusterDetailDialog>
   </div>
 </template>
 
 <script>
 import bdMap from "../../../components/bdMap/bdMap.vue";
+import bdClusterDetailDialog from "../../../components/bdMap/bdClusterDetailDialog.vue";
 
 export default {
   name: "useBdMarkerCluster",
-  components: { bdMap },
+  components: { bdMap, bdClusterDetailDialog },
   mixins: [],
   props: {},
   computed: {},
@@ -33,12 +48,12 @@ export default {
       ak: require("/public/ak").default,
       bdMapConfig: {
         center: {
-          lng: 120.3083403138811,
-          lat: 30.27631859319542,
+          lng: 116.414,
+          lat: 39.915,
         },
         zoom: 12,
         style: {
-          custom: "styleJson",
+          custom: "",
           styleId: "616efba0a2fe5826442ba384dc5b285c",
           styleJson: require("/public/json/custom_map_style.json"),
         },
@@ -50,15 +65,34 @@ export default {
         "--closeBtnColor": "#fff", // 气泡关闭按钮的颜色
         "--titleHeight": "8px", // 气泡顶部标题高度
       },
+
+      markerClusterParams: {
+        isCustomDialog: false, // 是否需要自定义弹窗
+      },
     };
   },
   methods: {
     mapLoaded(e) {
-      console.log(e, "e");
+      this.$refs.bdMap.drawMarkerCluster(this.markerClusterParams);
     },
 
     handleMapChange(config) {
       console.log(config, "config");
+    },
+
+    drawMarkerCluster() {
+      this.$refs.bdMap.drawMarkerCluster(this.markerClusterParams);
+    },
+
+    removeMarkerCluster() {
+      this.$refs.bdMap.removeMarkerCluster();
+    },
+
+    getMarkerChildren(data) {
+      console.log(data, "getMarkerChildren");
+      this.$refs.bdClusterDetailDialog.showDialog({
+        data,
+      });
     },
   },
   created() {},
@@ -72,5 +106,19 @@ export default {
   width: 100vw;
   height: 100vh;
   position: relative;
+
+  .btn {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 999;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+
+    .el-button {
+      margin: 10px 0 0 10px;
+    }
+  }
 }
 </style>

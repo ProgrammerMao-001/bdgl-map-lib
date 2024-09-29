@@ -10,8 +10,8 @@ const useBdMapData = {
         },
         {
             id: 2,
-            longitude: 120.1989960963929,
-            latitude: 30.32188532430855,
+            longitude: 120.19855730967218,
+            latitude: 30.322160428702734,
             title: "默认点位2",
         },
     ], // 默认点位
