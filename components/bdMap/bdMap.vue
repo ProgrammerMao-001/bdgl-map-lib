@@ -8,7 +8,10 @@
 <template>
   <div id="map-container" :style="mapStyle">
     <bdMapVGl ref="bdMapVGl" :bdMap="bdMap" />
-    <bdClusterDetailDialog ref="bdClusterDetailDialog" />
+    <bdClusterDetailDialog
+      ref="bdClusterDetailDialog"
+      :keys="clusterDetailDialogProps"
+    />
   </div>
 </template>
 
@@ -93,6 +96,10 @@ export default {
         id: undefined,
         img: undefined,
       }, // 非点聚合点位点击选中的图标
+      clusterDetailDialogProps: {
+        contextType: "contextType",
+        contextTitle: "contextTitle",
+      },
     };
   },
   methods: {
@@ -1118,25 +1125,37 @@ export default {
      * @description: todo 需要对 params 完善
      * @author: mhf
      * @time: 2024-09-29 13:45:25
+     * @Demo: clusterArr: [{
+     * id: 1,
+     * contextTitle: "提示文字", // 字段名称可自定义
+     * contextType: "学校", // 字段名称可自定义
+     * location: {lat: 30, lng: 120},
+     * area: "自定义类型",
+     * "img": "/marker/point_png",
+     * "chooseImg": "/marker/choose_point.png",
+     * }], // 确保对象中每个字段必须一模一样
      **/
     drawMarkerCluster(params = {}) {
       let {
+        clusterArr = [], // 数据源 【必传】
         isCustomDialog = false, // 是否需要自定义多点列表弹窗【同一个经纬度的聚合点，点击时打开的弹窗】
         titleType = [], // 顶部标题，可选值 ['title', 'tooltip']
         setNewIcon = true, // 是否需要设置选中的图标（数据源中必须包含 chooseImg 字段）
         setNewCenterAndZoom = ["center"], // 需要设置的地图类型，可选值 ['center', 'zoom']
         zoom = this.bdMap.getZoom(), // 新的缩放层级
+        contextTitle = "contextTitle", // 展示在点位上方的标题
+        contextType = "contextType", // 用来区分点位类型 【如： 学校、医院...】
       } = params;
       console.log("drawMarkerCluster");
-      let bjpoi = require("/public/markerCluster/bjpoi");
-      console.log(bjpoi, "bjpoi");
 
+      this.$set(this.clusterDetailDialogProps, "contextTitle", contextTitle);
+      this.$set(this.clusterDetailDialogProps, "contextType", contextType);
       const icons = {
         东城区: "https://mapopen-pub-jsapi.cdn.bcebos.com/static/img/place.png",
         老城区: "https://mapopen-pub-jsapi.cdn.bcebos.com/static/img/food.png",
         西城区: "https://mapopen-pub-jsapi.cdn.bcebos.com/static/img/play.png",
         其他: "https://mapopen-pub-jsapi.cdn.bcebos.com/static/img/other.png",
-      };
+      }; // 不同类型展示不同的图标 【非聚合点的图标设置（无法实现点击事件）】
       const indexs = ["province", "city", "area"];
       const getHTMLDOM = (context) => {
         console.log(context, "context");
@@ -1155,7 +1174,7 @@ export default {
         div.className = "cluster-marker";
         var content = "";
         if (context.isCluster && text) {
-          /* 聚合 且 聚合分类名称 存在 */
+          /* todo 聚合 且 聚合分类名称 存在 */
           if (context.type === Cluster.ClusterType.GEO_FENCE) {
             text = REGION[text].name;
           }
@@ -1171,7 +1190,9 @@ export default {
         if (!context.isCluster) {
           /* 单个点 */
           content +=
-            '<span class="cluster-marker-title">' + context.name + "</span>";
+            '<span class="cluster-marker-title">' +
+            context[contextTitle] +
+            "</span>";
         }
 
         div.innerHTML = content;
@@ -1186,7 +1207,7 @@ export default {
         if (!context.isCluster) {
           content += titleType.includes("title")
             ? /* 如果 titleType 中 包含title 则 添加顶部标题 */
-              `<div class="single-marker-title">${context.name}</div>
+              `<div class="single-marker-title">${context[contextTitle]}</div>
                    <img class="single-marker-img" src="${context.img}">
                    `
             : `<img class="single-marker-img" src="${context.img}">`;
@@ -1275,15 +1296,15 @@ export default {
         // inject: getHTMLDOM,
         // }, // 聚合点样式
         renderSingleStyle: {
-          type: Cluster.ClusterRender.DOM,
+          type: Cluster.ClusterRender.DOM, // 如果需要用div自定义非聚合点位样式请使用这个
           /* ↓↓↓ 非聚合点的图标设置（无法实现点击事件）↓↓↓ */
-          // type: Cluster.ClusterRender.WEBGL,
+          // type: Cluster.ClusterRender.WEBGL, // 以canvas的形式展示图标，点击之后的图标不可替换
           // style: {
           //   width: 20,
           //   height: 20,
           //   icon:
           //     // "/marker/checkpoint.png",
-          //     // ['match', ['get', 'area'], // match, get 为固定值，area 是自定义字段，可自定义
+          //     // ['match', ['get', contextType], // match, get 为固定值，contextType 是自定义字段，可自定义
           //     // '老城区', 'https://mapopen-pub-jsapi.cdn.bcebos.com/static/img/food.png',
           //     // '西城区', 'https://mapopen-pub-jsapi.cdn.bcebos.com/static/img/play.png',
           //     // '东城区', 'https://mapopen-pub-jsapi.cdn.bcebos.com/static/img/place.png',
@@ -1291,7 +1312,7 @@ export default {
           //   // todo icon 设置
           //     [
           //       "match",
-          //       ["get", "area"], // match, get 为固定值，area 是自定义字段，可自定义
+          //       ["get", contextType], // match, get 为固定值，contextType 是自定义字段，可自定义
           //       "老城区",
           //       icons["老城区"],
           //       "西城区",
@@ -1365,15 +1386,14 @@ export default {
         // console.log('ClusterEvent.MOUSEOUT', e);
         // todo 鼠标移出移出 new BMapGL.InfoWindow
       });
-      var points = Cluster.pointTransformer(bjpoi.MYPOIS, (data) => {
+      const points = Cluster.pointTransformer(clusterArr, (data) => {
         return {
           point: [data.location.lng, data.location.lat],
-          properties: { ...data }, // 类 customObj
+          properties: { ...data },
         };
       });
-      console.log(points);
+      console.log(points, "聚合数据初始化成功！points");
       this.clusterGL.setData(points);
-
       // console.log("标记点对象", this.clusterGL.getOptions())
     },
 

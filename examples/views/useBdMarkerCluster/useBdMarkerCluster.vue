@@ -68,10 +68,13 @@ export default {
       },
 
       markerClusterParams: {
+        clusterArr: require("/public/markerCluster/poiData").default,
         isCustomDialog: false, // 是否需要自定义弹窗
-        titleType: [], // ['title', 'tooltip']
+        titleType: ["title"], // ['title', 'tooltip']
         setNewIcon: true,
         setNewCenterAndZoom: ["center"], // ['center', 'zoom']
+        contextTitle: "name", // 设置点位上方的标题文字的字段
+        contextType: "area", // 区分点位类型的字段 【学校、医院...】
       },
     };
   },

@@ -49,14 +49,23 @@ export default {
   name: "bdClusterDetailDialog",
   components: {},
   props: {
-    itemKey: {
-      type: String,
-      default: "name",
-    }, // 每一行展示的内容 key
-    itemType: {
-      type: String,
-      default: "area",
-    }, // 每一行展示的类型 key
+    keys: {
+      type: Object,
+      default: () => {
+        return {
+          contextTitle: "contextTitle",
+          contextType: "contextType",
+        };
+      },
+    },
+  },
+  computed: {
+    itemKey() {
+      return this.keys.contextTitle;
+    },
+    itemType() {
+      return this.keys.contextType;
+    },
   },
   data() {
     return {

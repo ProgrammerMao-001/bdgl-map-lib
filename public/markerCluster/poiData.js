@@ -381,3 +381,5 @@ const MYPOIS = [
         "chooseImg": "/marker/start_point.png",
     }
 ];
+
+export default MYPOIS
