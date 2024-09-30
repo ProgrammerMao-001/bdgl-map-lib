@@ -22,9 +22,10 @@
       :ak="ak"
       :mapConfig="bdMapConfig"
       :infoWindowStyle="bdInfoWindowStyle"
-      @return-children="getMarkerChildren"
       @map-loaded="mapLoaded"
       @map-change="handleMapChange"
+      @return-cluster-children="getMarkerChildren"
+      @return-cluster-point="getMarkerSelf"
     />
 
     <bdClusterDetailDialog ref="bdClusterDetailDialog"></bdClusterDetailDialog>
@@ -68,7 +69,9 @@ export default {
 
       markerClusterParams: {
         isCustomDialog: false, // 是否需要自定义弹窗
-        titleType: [], // 是否需要展示顶部标题 'title'
+        titleType: [], // ['title', 'tooltip']
+        setNewIcon: true,
+        setNewCenterAndZoom: ["center"], // ['center', 'zoom']
       },
     };
   },
@@ -90,10 +93,14 @@ export default {
     },
 
     getMarkerChildren(data) {
-      console.log(data, "getMarkerChildren");
+      console.log(data, "需要自定义弹窗");
       this.$refs.bdClusterDetailDialog.showDialog({
         data,
       });
+    },
+
+    getMarkerSelf(data) {
+      console.log("点位详情", data);
     },
   },
   created() {},

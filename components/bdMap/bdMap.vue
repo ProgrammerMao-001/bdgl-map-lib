@@ -89,6 +89,10 @@ export default {
       },
       roadCondition: [], // 自定义起点和终点绘制的路况信息
       clusterGL: null, // 点聚合的实例
+      clusterClickPoint: {
+        id: undefined,
+        img: undefined,
+      }, // 非点聚合点位点击选中的图标
     };
   },
   methods: {
@@ -1119,8 +1123,10 @@ export default {
       let {
         isCustomDialog = false, // 是否需要自定义多点列表弹窗【同一个经纬度的聚合点，点击时打开的弹窗】
         titleType = [], // 顶部标题，可选值 ['title', 'tooltip']
+        setNewIcon = true, // 是否需要设置选中的图标（数据源中必须包含 chooseImg 字段）
+        setNewCenterAndZoom = ["center"], // 需要设置的地图类型，可选值 ['center', 'zoom']
+        zoom = this.bdMap.getZoom(), // 新的缩放层级
       } = params;
-
       console.log("drawMarkerCluster");
       let bjpoi = require("/public/markerCluster/bjpoi");
       console.log(bjpoi, "bjpoi");
@@ -1131,7 +1137,7 @@ export default {
         西城区: "https://mapopen-pub-jsapi.cdn.bcebos.com/static/img/play.png",
         其他: "https://mapopen-pub-jsapi.cdn.bcebos.com/static/img/other.png",
       };
-      var indexs = ["province", "city", "area"];
+      const indexs = ["province", "city", "area"];
       const getHTMLDOM = (context) => {
         console.log(context, "context");
         /* context: 原始数据的每一项 */
@@ -1172,36 +1178,12 @@ export default {
         return div;
       };
 
+      /* 设置非聚合点的样式 */
       function getSingleDom(context) {
-        console.log("context", context.img); // 每一项
-        var index = context.belongKey ?? "other"; // 聚合的条件
-        var text = context.belongValue;
-        var count = context.pointCount || 1; // 聚合中点的总数
-        var i = indexs.indexOf(index);
-
-        count === 1 && (i = 3);
-        i < 0 && (i = 3);
-
-        var div = document.createElement("div");
-        // div.className = 'cluster-marker';
-        div.className = "single-marker";
-        var content = "";
-        if (context.isCluster && text) {
-          console.log("111");
-          if (context.type === Cluster.ClusterType.GEO_FENCE) {
-            text = REGION[text].name;
-          }
-          content += '<span class="cluster-marker-title">' + text + "</span>";
-          content +=
-            `<span class="cluster-marker-body bg${i}">` + count + "</span>";
-        }
-        if (context.isCluster && !text) {
-          console.log("aaa");
-          content +=
-            `<span class="cluster-marker-body-content">` + count + "</span>";
-        }
+        let div = document.createElement("div");
+        let content = "";
+        div.className = `single-marker single-marker-${context.id}`;
         if (!context.isCluster) {
-          // console.log("单个点的")
           content += titleType.includes("title")
             ? /* 如果 titleType 中 包含title 则 添加顶部标题 */
               `<div class="single-marker-title">${context.name}</div>
@@ -1213,6 +1195,51 @@ export default {
         div.innerHTML = content;
         return div;
       }
+
+      const getSingleCheckDom = (dom) => {
+        if (!dom.properties?.id) {
+          console.error(
+            "The currently selected dom does not have an id attribute：当前选中的dom没有id属性！"
+          );
+          return;
+        }
+
+        /* 更新图标, className最外层div类名，imgSrc替换的图片路径 */
+        const updateImg = (className, imgSrc) => {
+          let divIcon = document.querySelector(className);
+          if (divIcon) {
+            let imgElement = divIcon.querySelector(".single-marker-img");
+            if (imgElement) {
+              imgElement.src = imgSrc;
+            } else {
+              console.error(
+                "No img element found：未找到当前点击图标下的img！"
+              );
+            }
+          } else {
+            console.error(
+              "The clicked icon element was not found：未找到点击的图标！"
+            );
+          }
+        };
+
+        // 还原上一个点击的图标
+        if (this.clusterClickPoint.id) {
+          updateImg(
+            `.single-marker-${this.clusterClickPoint.id}`,
+            this.clusterClickPoint.img
+          );
+        }
+        // 更新当前点击的图标
+        this.clusterClickPoint = {
+          id: dom.properties.id,
+          img: dom.properties.img,
+        };
+        updateImg(
+          `.single-marker-${dom.properties?.id}`,
+          dom.properties?.chooseImg
+        );
+      };
 
       /* 判断点是否都在同一个经纬度上 */
       const isSameLatLng = (array, key = "latLng") => {
@@ -1246,9 +1273,10 @@ export default {
         //   offsetY: -9.5,
         // },
         // inject: getHTMLDOM,
-        // },
+        // }, // 聚合点样式
         renderSingleStyle: {
           type: Cluster.ClusterRender.DOM,
+          /* ↓↓↓ 非聚合点的图标设置（无法实现点击事件）↓↓↓ */
           // type: Cluster.ClusterRender.WEBGL,
           // style: {
           //   width: 20,
@@ -1276,9 +1304,11 @@ export default {
           //   offsetX: -20,
           //   offsetY: -9.5,
           // }, // 参考：PointIconLayer.style
+          /* ↑↑↑ 非聚合点的图标设置（无法实现点击事件）↑↑↑ */
           inject: getSingleDom,
         }, // 非聚合点样式个性化设置
       });
+
       this.clusterGL.on(Cluster.ClusterEvent.CLICK, (e) => {
         console.log("ClusterEvent.CLICK", e);
         let { isCluster } = e;
@@ -1295,7 +1325,7 @@ export default {
             if (isCustomDialog) {
               /* 需要自定义打开的弹窗样式 */
               console.log("需要自定义打开的弹窗样式");
-              this.$emit("return-children", childrenPoints);
+              this.$emit("return-cluster-children", childrenPoints);
             } else {
               console.log("打开内置的弹窗");
               this.$refs.bdClusterDetailDialog.showDialog(childrenPoints);
@@ -1305,9 +1335,26 @@ export default {
             console.log("还能再展开");
           }
         } else {
-          console.error("点击的是点位", e.properties);
+          console.error("点击的是点位", e);
           this.$message.success(JSON.stringify(e.properties));
-          this.$emit("return-point", e.properties);
+          this.$emit("return-cluster-point", e.properties);
+
+          /* 设置当前点击的图标 */
+          if (setNewIcon) {
+            getSingleCheckDom(e);
+          }
+          /* 设置地图中心点 */
+          if (setNewCenterAndZoom.includes("center")) {
+            console.log(e.properties.location, "properties");
+            this.setMapCenter({
+              lat: e.properties.location.lat,
+              lng: e.properties.location.lng,
+            });
+          }
+          /* 设置缩放层级 */
+          if (setNewCenterAndZoom.includes("zoom")) {
+            this.setMapZoom({ zoom });
+          }
         }
       });
       this.clusterGL.on(Cluster.ClusterEvent.MOUSE_OVER, (e) => {

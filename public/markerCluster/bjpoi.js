@@ -10381,22 +10381,22 @@ const REGION2 = {
     "C区":[116.37927800871893,39.91116256112852],
     "D区":[116.40260640778828,39.916132914732614]
 };
-
 const MYPOIS = [
     {
-        "name": "梦圆宾馆(北京簋街店)",
+        "name": "梦圆宾馆(北京簋街店)", //
         "location": {
             "lat": 39.946689,
             "lng": 116.43709
-        },
+        }, // // 必选（格式固定）
         "address": "北京市东城区东直门内大街54号",
         "province": "北京市",
         "city": "北京市",
-        "area": "老城区",
+        "area": "老城区", // 必选（用于区分类型，名称可自定义）
         "street_id": "251ef2782013eaeb3310af90",
         "detail": 1,
-        "uid": "251ef2782013eaeb3310af90",
-        "img": "/marker/bridge.gif"
+        "id": "251ef2782013eaeb3310af90", // 必选（字段固定，设置唯一值）
+        "img": "/marker/bridge.gif", // 必须（字段固定，设置初始图标）
+        "chooseImg": "/marker/checkpoint.png", // 可选（字段固定，设置点击替换的图标）
     },
     {
         "name": "北京京鲁缘宾馆(北京站朝阳门南小街店)",
@@ -10411,8 +10411,9 @@ const MYPOIS = [
         "street_id": "2938bddee92bfa1828201ab4",
         "telephone": "(010)65125088",
         "detail": 1,
-        "uid": "2938bddee92bfa1828201ab4",
-        "img": "/marker/bridge.gif"
+        "id": "2938bddee92bfa1828201ab4",
+        "img": "/marker/bridge.gif",
+        "chooseImg": "/marker/checkpoint.png",
     },
     {
         "name": "北京烽联宾馆",
@@ -10426,8 +10427,9 @@ const MYPOIS = [
         "area": "东城区",
         "street_id": "fa01e93704767e53774ff178",
         "detail": 1,
-        "uid": "fa01e93704767e53774ff178",
-        "img": "/marker/event.gif"
+        "id": "fa01e93704767e53774ff178",
+        "img": "/marker/warning_marker.png",
+        "chooseImg": "/marker/warning_marker_choose.png",
     },
     {
         "name": "北京蓉驿致家酒店",
@@ -10442,8 +10444,9 @@ const MYPOIS = [
         "street_id": "0eef2aa98ad4fa5c02ec013c",
         "telephone": "(010)62386688-6186",
         "detail": 1,
-        "uid": "0eef2aa98ad4fa5c02ec013c",
-        "img": "/marker/event.gif"
+        "id": "0eef2aa98ad4fa5c02ec013c",
+        "img": "/marker/warning_marker.png",
+        "chooseImg": "/marker/warning_marker_choose.png",
     },
     {
         "name": "和旭盛世宾馆(北京同仁医院北京站店)",
@@ -10458,8 +10461,9 @@ const MYPOIS = [
         "street_id": "6904b6626c87ce93725e801b",
         "telephone": "(010)67162585",
         "detail": 1,
-        "uid": "6904b6626c87ce93725e801b",
-        "img": "/marker/event.gif"
+        "id": "6904b6626c87ce93725e801b",
+        "img": "/marker/warning_marker.png",
+        "chooseImg": "/marker/warning_marker_choose.png",
     },
     {
         "name": "平安府宾馆",
@@ -10473,8 +10477,9 @@ const MYPOIS = [
         "area": "老城区",
         "street_id": "083a55fa89bee560246e9807",
         "detail": 1,
-        "uid": "083a55fa89bee560246e9807",
-        "img": "/marker/bridge.gif"
+        "id": "083a55fa89bee560246e9807",
+        "img": "/marker/bridge.gif",
+        "chooseImg": "/marker/checkpoint.png",
     },
     {
         "name": "北方朗悦酒店(北京鼓楼店)",
@@ -10489,8 +10494,9 @@ const MYPOIS = [
         "street_id": "0c0b8d40b48d071d9d9d686c",
         "telephone": "(010)84133358",
         "detail": 1,
-        "uid": "0c0b8d40b48d071d9d9d686c",
-        "img": "/marker/event.gif"
+        "id": "0c0b8d40b48d071d9d9d686c",
+        "img": "/marker/warning_marker.png",
+        "chooseImg": "/marker/warning_marker_choose.png",
     },
     {
         "name": "北京诺家宾馆",
@@ -10505,8 +10511,9 @@ const MYPOIS = [
         "street_id": "",
         "telephone": "15117937536,18010190193",
         "detail": 1,
-        "uid": "81334e515a0ef3abc6effb69",
-        "img": "/marker/bridge.gif"
+        "id": "81334e515a0ef3abc6effb69",
+        "img": "/marker/bridge.gif",
+        "chooseImg": "/marker/checkpoint.png",
     },
     {
         "name": "北京碧水兰轩宾馆(协和医院店)",
@@ -10521,8 +10528,9 @@ const MYPOIS = [
         "street_id": "e26dea96968b7a569cec2b11",
         "telephone": "18611540523",
         "detail": 1,
-        "uid": "e26dea96968b7a569cec2b11",
-        "img": "/marker/event.gif"
+        "id": "e26dea96968b7a569cec2b11",
+        "img": "/marker/warning_marker.png",
+        "chooseImg": "/marker/warning_marker_choose.png",
     },
     {
         "name": "嘉园之星(北京站店)",
@@ -10537,8 +10545,9 @@ const MYPOIS = [
         "street_id": "",
         "telephone": "17710177588",
         "detail": 1,
-        "uid": "4b739d14e57d94bad42ce255",
-        "img": "/marker/bridge.gif"
+        "id": "4b739d14e57d94bad42ce255",
+        "img": "/marker/bridge.gif",
+        "chooseImg": "/marker/checkpoint.png",
     },
     {
         "name": "北京康泰福宾馆",
@@ -10553,8 +10562,9 @@ const MYPOIS = [
         "street_id": "fa835ce23920bcafe812e45f",
         "telephone": "(010)67050108",
         "detail": 1,
-        "uid": "fa835ce23920bcafe812e45f",
-        "img": "/marker/event.gif"
+        "id": "fa835ce23920bcafe812e45f",
+        "img": "/marker/warning_marker.png",
+        "chooseImg": "/marker/warning_marker_choose.png",
     },
     {
         "name": "宏昌盛达酒店(北京南站永定门外地铁站店)",
@@ -10569,8 +10579,9 @@ const MYPOIS = [
         "street_id": "",
         "telephone": "(010)67237939",
         "detail": 1,
-        "uid": "e116be54e4214806c91b95d4",
-        "img": "/marker/event.gif"
+        "id": "e116be54e4214806c91b95d4",
+        "img": "/marker/warning_marker.png",
+        "chooseImg": "/marker/warning_marker_choose.png",
     },
     {
         "name": "博昊宾馆",
@@ -10584,8 +10595,9 @@ const MYPOIS = [
         "area": "老城区",
         "telephone": "18518275161",
         "detail": 1,
-        "uid": "0a04131e55248ab3364aae19",
-        "img": "/marker/bridge.gif"
+        "id": "0a04131e55248ab3364aae19",
+        "img": "/marker/bridge.gif",
+        "chooseImg": "/marker/checkpoint.png",
     },
     {
         "name": "博昊宾馆2",
@@ -10599,8 +10611,9 @@ const MYPOIS = [
         "area": "东城区",
         "telephone": "18518275161",
         "detail": 1,
-        "uid": "0a04131e55248ab3364aae18",
-        "img": "/marker/event.gif"
+        "id": "0a04131e55248ab3364aae18",
+        "img": "/marker/warning_marker.png",
+        "chooseImg": "/marker/warning_marker_choose.png",
     },
     {
         "name": "宏昌盛达酒店(北京南站永定门外地铁站店)1",
@@ -10615,8 +10628,9 @@ const MYPOIS = [
         "street_id": "",
         "telephone": "(010)67237939",
         "detail": 1,
-        "uid": "e116be54e4214806c91b95d3",
-        "img": "/marker/overSpeed.gif"
+        "id": "e116be54e4214806c91b95d3",
+        "img": "/marker/overSpeed.gif",
+        "chooseImg": "/marker/start_point.png",
     },
     {
         "name": "宏昌盛达酒店(北京南站永定门外地铁站店)2",
@@ -10631,8 +10645,9 @@ const MYPOIS = [
         "street_id": "",
         "telephone": "(010)67237939",
         "detail": 1,
-        "uid": "e116be54e4214806c91b95d2",
-        "img": "/marker/event.gif"
+        "id": "e116be54e4214806c91b95d2",
+        "img": "/marker/warning_marker.png",
+        "chooseImg": "/marker/warning_marker_choose.png",
     },
     {
         "name": "宏昌盛达酒店(北京南站永定门外地铁站店)3",
@@ -10647,8 +10662,9 @@ const MYPOIS = [
         "street_id": "",
         "telephone": "(010)67237939",
         "detail": 1,
-        "uid": "e116be54e4214806c91b95d1",
-        "img": "/marker/event.gif"
+        "id": "e116be54e4214806c91b95d1",
+        "img": "/marker/warning_marker.png",
+        "chooseImg": "/marker/warning_marker_choose.png",
     },
     {
         "name": "北京成信宾馆(天坛店)",
@@ -10662,8 +10678,9 @@ const MYPOIS = [
         "area": "其他",
         "street_id": "832489f9240f80c0a4c756b4",
         "detail": 1,
-        "uid": "832489f9240f80c0a4c756b4",
-        "img": "/marker/weather.gif"
+        "id": "832489f9240f80c0a4c756b4",
+        "img": "/marker/weather.gif",
+        "chooseImg": "/marker/weather_sunny.png",
     },
     {
         "name": "百时快捷酒店(北京天坛店)",
@@ -10674,11 +10691,12 @@ const MYPOIS = [
         "address": "北京市东城区法华寺街10号",
         "province": "北京市",
         "city": "北京市",
-        "area": "东城区",
+        "area": "其他",
         "street_id": "251374c9474cc926a11de901",
         "detail": 1,
-        "uid": "251374c9474cc926a11de901",
-        "img": "/marker/event.gif"
+        "id": "251374c9474cc926a11de901",
+        "img": "/marker/weather.gif",
+        "chooseImg": "/marker/weather_sunny.png",
     },
     {
         "name": "北京花园宜成宾馆",
@@ -10692,8 +10710,9 @@ const MYPOIS = [
         "area": "西城区",
         "street_id": "c79a073ec09ab6ee72210ba7",
         "detail": 1,
-        "uid": "c79a073ec09ab6ee72210ba7",
-        "img": "/marker/overSpeed.gif"
+        "id": "c79a073ec09ab6ee72210ba7",
+        "img": "/marker/overSpeed.gif",
+        "chooseImg": "/marker/start_point.png",
     },
     {
         "name": "北京宝鼎中心酒店式公寓",
@@ -10708,8 +10727,9 @@ const MYPOIS = [
         "street_id": "e80284283dd5ddb48e77273a",
         "telephone": "18601157111",
         "detail": 1,
-        "uid": "e80284283dd5ddb48e77273a",
-        "img": "/marker/overSpeed.gif"
+        "id": "e80284283dd5ddb48e77273a",
+        "img": "/marker/overSpeed.gif",
+        "chooseImg": "/marker/start_point.png",
     },
     {
         "name": "首都宾馆-停车场",
@@ -10723,8 +10743,9 @@ const MYPOIS = [
         "area": "东城区",
         "street_id": "",
         "detail": 1,
-        "uid": "5ffb1816fb28e65e6e476087",
-        "img": "/marker/event.gif"
+        "id": "5ffb1816fb28e65e6e476087",
+        "img": "/marker/warning_marker.png",
+        "chooseImg": "/marker/warning_marker_choose.png",
     },
     {
         "name": "北京诺富特和平宾馆-停车场",
@@ -10738,8 +10759,9 @@ const MYPOIS = [
         "area": "西城区",
         "street_id": "",
         "detail": 1,
-        "uid": "cc8aa959befbfa53a8175a13",
-        "img": "/marker/overSpeed.gif"
+        "id": "cc8aa959befbfa53a8175a13",
+        "img": "/marker/overSpeed.gif",
+        "chooseImg": "/marker/start_point.png",
     }
 ];
 
