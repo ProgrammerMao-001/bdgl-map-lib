@@ -73,7 +73,7 @@ export default {
         // clusterArr: require("/public/markerCluster/poiData").default,
         clusterArr: require("/public/markerCluster/warningData").default,
         isCustomDialog: false, // 是否需要自定义弹窗
-        titleType: ["title"], // ['title', 'tooltip']
+        titleType: ['tooltip'], // ['title', 'tooltip']
         setNewIcon: true,
         setNewCenterAndZoom: ["center"], // ['center', 'zoom']
         contextTitle: "name", // 设置点位上方的标题文字的字段
