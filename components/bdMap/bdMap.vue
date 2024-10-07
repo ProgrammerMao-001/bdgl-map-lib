@@ -1379,12 +1379,26 @@ export default {
         }
       });
       this.clusterGL.on(Cluster.ClusterEvent.MOUSE_OVER, (e) => {
-        // console.log('ClusterEvent.MOUSEOVER', e);
         // todo 鼠标移入添加 new BMapGL.InfoWindow
+        if (titleType.includes("tooltip") && !e.isCluster) {
+          const p = e.target.properties?.location;
+          const markerGl = new this.BMapGL.Point(p.lng, p.lat);
+          this.isOpenInfoWindow({
+            flag: true,
+            html: `<span style="color: #000">${e.target.properties[contextTitle]}</span>`,
+            offsetX: -20,
+            offsetY: 45,
+            marker: markerGl,
+            isFloatShadow: false, // 气泡阴影
+          });
+        }
       });
       this.clusterGL.on(Cluster.ClusterEvent.MOUSE_OUT, (e) => {
         // console.log('ClusterEvent.MOUSEOUT', e);
         // todo 鼠标移出移出 new BMapGL.InfoWindow
+        if (titleType.includes("tooltip") && !e.isCluster) {
+          this.isOpenInfoWindow({ flag: false });
+        }
       });
       const points = Cluster.pointTransformer(clusterArr, (data) => {
         return {

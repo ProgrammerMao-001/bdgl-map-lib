@@ -63,9 +63,9 @@ export default {
       },
 
       bdInfoWindowStyle: {
-        "--popBg": "#114683", // 气泡体的背景色
+        "--popBg": "#fff", // 气泡体的背景色
         "--imgDisplay": "none", // 气泡体的图片 (可选值：block、none)
-        "--closeBtnColor": "#fff", // 气泡关闭按钮的颜色
+        "--closeBtnColor": "#000", // 气泡关闭按钮的颜色
         "--titleHeight": "8px", // 气泡顶部标题高度
       },
 
@@ -73,7 +73,7 @@ export default {
         // clusterArr: require("/public/markerCluster/poiData").default,
         clusterArr: require("/public/markerCluster/warningData").default,
         isCustomDialog: false, // 是否需要自定义弹窗
-        titleType: ['tooltip'], // ['title', 'tooltip']
+        titleType: ["title", "tooltip"], // ['title', 'tooltip']
         setNewIcon: true,
         setNewCenterAndZoom: ["center"], // ['center', 'zoom']
         contextTitle: "name", // 设置点位上方的标题文字的字段
