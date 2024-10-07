@@ -1130,7 +1130,7 @@ export default {
      * contextTitle: "提示文字", // 字段名称可自定义
      * contextType: "学校", // 字段名称可自定义
      * location: {lat: 30, lng: 120},
-     * area: "自定义类型",
+     // * area: "自定义类型",
      * "img": "/marker/point_png",
      * "chooseImg": "/marker/choose_point.png",
      * }], // 确保对象中每个字段必须一模一样

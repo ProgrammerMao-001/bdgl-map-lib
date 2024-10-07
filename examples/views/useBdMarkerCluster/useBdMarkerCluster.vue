@@ -49,10 +49,12 @@ export default {
       ak: require("/public/ak").default,
       bdMapConfig: {
         center: {
-          lng: 116.414,
-          lat: 39.915,
+          lat: 36.539553878889485,
+          lng: 114.54600561053593,
+          // lng: 116.414,
+          // lat: 39.915,
         },
-        zoom: 12,
+        zoom: 10,
         style: {
           custom: "",
           styleId: "616efba0a2fe5826442ba384dc5b285c",
@@ -68,13 +70,14 @@ export default {
       },
 
       markerClusterParams: {
-        clusterArr: require("/public/markerCluster/poiData").default,
+        // clusterArr: require("/public/markerCluster/poiData").default,
+        clusterArr: require("/public/markerCluster/warningData").default,
         isCustomDialog: false, // 是否需要自定义弹窗
         titleType: ["title"], // ['title', 'tooltip']
         setNewIcon: true,
         setNewCenterAndZoom: ["center"], // ['center', 'zoom']
         contextTitle: "name", // 设置点位上方的标题文字的字段
-        contextType: "area", // 区分点位类型的字段 【学校、医院...】
+        contextType: "type", // 区分点位类型的字段 【学校、医院...】
       },
     };
   },

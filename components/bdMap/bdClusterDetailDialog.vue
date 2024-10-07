@@ -105,7 +105,6 @@ export default {
   width: 340px;
   max-height: 600px;
   overflow-y: auto;
-  padding: 10px;
   z-index: 2000 !important;
   position: absolute;
   right: 20px;
@@ -117,11 +116,11 @@ export default {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-bottom: 4px;
+    padding: 10px 10px 4px 10px;
   }
 
   .bd-cluster-item {
-    padding: 6px 0;
+    padding: 4px 10px;
     color: #8e8e8e;
     border-bottom: 1px solid #ccc;
 
