@@ -8,10 +8,13 @@
 -->
 <template>
   <div
-    class="bd-cluster-detail-dialog"
     v-if="dialogVisible"
     v-div-drag
     v-div-esc-close="hideDialog"
+    :class="[
+      dialogVisible ? 'bd-cluster-detail-dialog-animation' : '',
+      'bd-cluster-detail-dialog',
+    ]"
   >
     <div class="bd-cluster-detail-dialog-header">
       <span> 详情 </span>
@@ -101,6 +104,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 .bd-cluster-detail-dialog {
   width: 340px;
   max-height: 50vh;
@@ -112,6 +124,10 @@ export default {
   background: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12), 0 0 6px rgba(0, 0, 0, 0.04);
   padding-bottom: 6px;
+
+  &-animation {
+    animation: fadeIn 0.8s ease-in-out;
+  }
 
   &-header {
     display: flex;

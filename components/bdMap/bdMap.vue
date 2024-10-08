@@ -1106,6 +1106,7 @@ export default {
       this.bdMap.addEventListener("dragend", (e) => {
         this.viewport = this.getMapViewport();
         this.$emit("map-change", this.viewport); // 将更新的数据传给父组件
+        this.$refs.bdClusterDetailDialog?.hideDialog();
         // console.log(this.viewport, "地图拖拽事件");
       });
 
@@ -1113,6 +1114,7 @@ export default {
         console.error("地图点击了", e);
         this.bdMap.closeInfoWindow();
         this.$emit("map-click", e);
+        this.$refs.bdClusterDetailDialog?.hideDialog();
       });
     },
 
@@ -1354,9 +1356,7 @@ export default {
               this.$emit("return-cluster-children", childrenPoints);
             } else {
               console.log("打开内置的弹窗");
-              setTimeout(() => {
-                this.$refs.bdClusterDetailDialog.showDialog(childrenPoints);
-              }, 800)
+              this.$refs.bdClusterDetailDialog.showDialog(childrenPoints);
             }
             console.log("没有可以展开的点位了，showDialog");
           } else {
