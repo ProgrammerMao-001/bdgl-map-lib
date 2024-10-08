@@ -56,16 +56,16 @@ export default {
         },
         zoom: 10,
         style: {
-          custom: "",
+          custom: "styleJson",
           styleId: "616efba0a2fe5826442ba384dc5b285c",
           styleJson: require("/public/json/custom_map_style.json"),
         },
       },
 
       bdInfoWindowStyle: {
-        "--popBg": "#fff", // 气泡体的背景色
+        "--popBg": "#114683", // 气泡体的背景色
         "--imgDisplay": "none", // 气泡体的图片 (可选值：block、none)
-        "--closeBtnColor": "#000", // 气泡关闭按钮的颜色
+        "--closeBtnColor": "#fff", // 气泡关闭按钮的颜色
         "--titleHeight": "8px", // 气泡顶部标题高度
       },
 
@@ -74,6 +74,11 @@ export default {
         clusterArr: require("/public/markerCluster/warningData").default,
         isCustomDialog: false, // 是否需要自定义弹窗
         titleType: ["title", "tooltip"], // ['title', 'tooltip']
+        tooltipConfig: {
+          color: "#fff",
+          offsetX: -20,
+          offsetY: 45,
+        }, // tooltip配置
         setNewIcon: true,
         setNewCenterAndZoom: ["center"], // ['center', 'zoom']
         contextTitle: "name", // 设置点位上方的标题文字的字段
@@ -134,5 +139,11 @@ export default {
       margin: 10px 0 0 10px;
     }
   }
+}
+
+::v-deep .single-marker-title {
+  background: #0e335b;
+  color: #fff;
+  padding: 4px 8px;
 }
 </style>

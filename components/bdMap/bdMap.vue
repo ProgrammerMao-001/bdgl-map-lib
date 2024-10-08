@@ -1145,6 +1145,11 @@ export default {
         zoom = this.bdMap.getZoom(), // 新的缩放层级
         contextTitle = "contextTitle", // 展示在点位上方的标题
         contextType = "contextType", // 用来区分点位类型 【如： 学校、医院...】
+        tooltipConfig = {
+          color: "#000",
+          offsetX: -20,
+          offsetY: 45,
+        },
       } = params;
       console.log("drawMarkerCluster");
 
@@ -1379,23 +1384,21 @@ export default {
         }
       });
       this.clusterGL.on(Cluster.ClusterEvent.MOUSE_OVER, (e) => {
-        // todo 鼠标移入添加 new BMapGL.InfoWindow
+        // 鼠标移入添加 new BMapGL.InfoWindow
         if (titleType.includes("tooltip") && !e.isCluster) {
           const p = e.target.properties?.location;
           const markerGl = new this.BMapGL.Point(p.lng, p.lat);
           this.isOpenInfoWindow({
             flag: true,
-            html: `<span style="color: #000">${e.target.properties[contextTitle]}</span>`,
-            offsetX: -20,
-            offsetY: 45,
+            html: `<span style="color: ${tooltipConfig.color}">${e.target.properties[contextTitle]}</span>`,
+            offsetX: tooltipConfig.offsetX, // -20,
+            offsetY: tooltipConfig.offsetY, // 45,
             marker: markerGl,
             isFloatShadow: false, // 气泡阴影
           });
         }
       });
       this.clusterGL.on(Cluster.ClusterEvent.MOUSE_OUT, (e) => {
-        // console.log('ClusterEvent.MOUSEOUT', e);
-        // todo 鼠标移出移出 new BMapGL.InfoWindow
         if (titleType.includes("tooltip") && !e.isCluster) {
           this.isOpenInfoWindow({ flag: false });
         }
