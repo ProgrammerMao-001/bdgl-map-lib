@@ -1354,7 +1354,9 @@ export default {
               this.$emit("return-cluster-children", childrenPoints);
             } else {
               console.log("打开内置的弹窗");
-              this.$refs.bdClusterDetailDialog.showDialog(childrenPoints);
+              setTimeout(() => {
+                this.$refs.bdClusterDetailDialog.showDialog(childrenPoints);
+              }, 800)
             }
             console.log("没有可以展开的点位了，showDialog");
           } else {

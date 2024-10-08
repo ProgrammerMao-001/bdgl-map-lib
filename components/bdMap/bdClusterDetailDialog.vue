@@ -103,14 +103,15 @@ export default {
 <style lang="scss" scoped>
 .bd-cluster-detail-dialog {
   width: 340px;
-  max-height: 600px;
+  max-height: 50vh;
   overflow-y: auto;
   z-index: 2000 !important;
   position: absolute;
-  right: 20px;
-  top: 100px;
+  right: calc(50% - 390px);
+  top: calc(50% - 50px);
   background: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12), 0 0 6px rgba(0, 0, 0, 0.04);
+  padding-bottom: 6px;
 
   &-header {
     display: flex;
